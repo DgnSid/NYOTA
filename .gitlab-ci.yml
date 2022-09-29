@@ -30,7 +30,7 @@ sonarqube-check:
   cache:
     key: "${CI_JOB_NAME}"
     paths:
-      - .sonar/cache
+      - .sonar/cache/${CI_JOB_NAME}
   script:
     - sonar-scanner -Dsonar.projectKey=${CI_PROJECT_NAME} -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectVersion=${CI_COMMIT_SHA} -Dsonar.sourceEncoding=UTF-8 -Dsonar.links.scm=${CI_PROJECT_URL}
   allow_failure: true
