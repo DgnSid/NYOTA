@@ -32,6 +32,8 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script:
+    - apt-get update
+    - apt-get install npx
     - npx browserslist@latest --update-db
     - sonar-scanner -Dsonar.projectKey=${CI_PROJECT_NAME} -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectVersion=${CI_COMMIT_SHA} -Dsonar.sourceEncoding=UTF-8 -Dsonar.links.scm=${CI_PROJECT_URL}
   allow_failure: true
