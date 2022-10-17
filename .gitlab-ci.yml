@@ -16,8 +16,27 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-stages:          # List of stages for jobs, and their order of execution
+
+stages:
+  - build
   - test
+
+
+
+fetch-home-in-preprod:
+  stage: build
+  image: ubuntu:latest
+  script:
+    - apt-get update
+    - apt-get -y install curl
+    - mkdir pp-html
+    - cd pp-html
+    - curl --basic -u "pré-prod:léoparddesneiges" -o home.html https://${CI_PROJECT_NAME}.adveris.dev/
+  artifacts:
+    name: "preprod-html"
+    paths:
+      - pp-html
+    expire_in: 2 days
 
 sonarqube-check:
   stage: test
