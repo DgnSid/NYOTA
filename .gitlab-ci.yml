@@ -37,7 +37,7 @@ fetch-home-in-preprod:
           PP_BASE_URL="https://${CI_PROJECT_NAME}.adveris.dev/"
         fi
     - echo "PP Base URL = ${PP_BASE_URL}"
-    - curl --basic -u "pré-prod:léoparddesneiges" -o home.html ${PP_BASE_URL}
+    - curl --basic -u "${PP_USER_PASS}" -o home.html ${PP_BASE_URL}
   artifacts:
     name: "preprod-html"
     paths:
