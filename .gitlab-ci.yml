@@ -31,7 +31,7 @@ fetch-home-in-preprod:
     - apt-get -y install curl
     - mkdir pp-html
     - cd pp-html
-    - if [ -z "${PP_BASE_URL}" ]
+    - if [ ! -z "${PP_BASE_URL}" ]
     - then
     -   PP_BASE_URL="https://${CI_PROJECT_NAME}.adveris.dev/"
     - fi
