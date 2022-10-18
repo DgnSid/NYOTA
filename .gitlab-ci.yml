@@ -28,10 +28,14 @@ fetch-home-in-preprod:
   image: ubuntu:latest
   script:
     - apt-get update
-    - apt-get -y install curl
-    - mkdir pp-html
-    - cd pp-html
-    - curl --basic -u "pré-prod:léoparddesneiges" -o home.html https://${CI_PROJECT_NAME}.adveris.dev/
+      apt-get -y install curl
+      mkdir pp-html
+      cd pp-html
+      if [ -z "${PP_BASE_URL}" ]
+      then
+        PP_BASE_URL = "https://${CI_PROJECT_NAME}.adveris.dev/"
+      fi
+      curl --basic -u "pré-prod:léoparddesneiges" -o home.html ${PP_BASE_URL}
   artifacts:
     name: "preprod-html"
     paths:
