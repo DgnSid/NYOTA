@@ -32,11 +32,11 @@ fetch-home-in-preprod:
     - mkdir pp-html
     - cd pp-html
     - echo "PP Base URL = ${PP_BASE_URL}"
-    - >
-    if [ $PP_BASE_URL == '' ]; then
-      PP_BASE_URL="https://${CI_PROJECT_NAME}.adveris.dev/"
-    fi
-    - curl --basic -u "pré-prod:léoparddesneiges" -o home.html ${PP_BASE_URL}
+#    -
+#    if [ $PP_BASE_URL == '' ]; then
+#      PP_BASE_URL="https://${CI_PROJECT_NAME}.adveris.dev/"
+#    fi
+#    - curl --basic -u "pré-prod:léoparddesneiges" -o home.html ${PP_BASE_URL}
   artifacts:
     name: "preprod-html"
     paths:
