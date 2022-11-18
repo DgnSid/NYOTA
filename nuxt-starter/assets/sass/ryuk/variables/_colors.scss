@@ -1,0 +1,72 @@
+/*
+|---------------------------------------------------------------
+| COLORS
+|---------------------------------------------------------------
+| Define colors
+|
+|
+*/
+
+/*
+|
+| Colors declaration
+|----------------------
+|
+*/
+$black:           #000000;
+$very-dark-grey:  #0F0E0F;
+$dark-grey:       #424242;
+$grey:            #7f8c8d;
+$light-grey:      #dedede;
+$very-light-grey: #fafafa;
+$white:           #FFFFFF;
+$white-opacity:   rgba(255, 255, 255, 0.8);
+$black-opacity:   rgba(0, 0, 0, 0.6);
+$blue: #2980b9;
+
+//Nyota
+$very-dark-blue: #09102C;
+$dark-blue: #162044;
+$blue: #2457EE;
+$dark-grey: #3C3C3B;
+$grey: #A5A39F;
+$white: #FFFFFF;
+$gradientBlue   : linear-gradient(225deg, rgba(16,110,162,1) 0%, rgba(160,47,138,1) 100%);
+$gradientOrange : linear-gradient(90deg, rgba(255,122,0,1) 0%, rgba(251,155,17,1) 100%);
+$orange         : #fb9b11;
+
+
+/*
+|
+| Assign colors
+|---------------
+|
+*/
+$border-color:                  $grey;
+$text-color:                    $very-dark-grey;
+$default-background-overlay:    $black-opacity;
+
+
+/*
+|-------------
+| Colors map
+|-------------
+| - How to use: add lines to create more "color classes"
+| - Generated classes: .bg-{color} & .color-{color}
+|
+*/
+$colors : (
+  //Required colors
+  'black'          : $black,
+  'very-dark-grey' : $very-dark-grey,
+  'dark-grey'      : $dark-grey,
+  'grey'           : $grey,
+  'light-grey'     : $light-grey,
+  'very-light-grey': $very-light-grey,
+  'white'          : $white
+);
+
+
+
+
+

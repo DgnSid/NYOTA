@@ -1,0 +1,133 @@
+/*
+|--------------------------
+|      Form
+|--------------------------
+*/
+
+.form {
+
+    //row
+    .form__row {
+
+        & + .form__row {
+            margin-top: 20px;
+        }
+    }
+
+    input[type="text"], input[type="number"], input[type="tel"], input[type="email"]{
+        width: 100%;
+
+        padding: 10px;
+
+        background: none;
+        border: none;
+        border-bottom: 1px solid $white;
+
+        color: $white;
+
+        &::placeholder {
+            color: rgba($white, 0.6);
+        }
+    }
+
+    textarea {
+        width: 100%;
+
+        padding: 10px;
+
+        background: none;
+        border: none;
+        border: 1px solid $white;
+
+        color: $white;
+
+        resize: none;
+
+        height: 150px;
+
+        &::placeholder {
+            color: rgba($white, 0.6);
+        }
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 1em;
+        height: 1em;
+        border: 0.15em solid currentColor;
+        border-radius: 0;
+        transform: translateY(-0.075em);
+        margin-right: 10px;
+
+        display: grid;
+        place-content: center;
+
+        cursor: pointer;
+
+        &:before {
+            content: "";
+            width: 0.35em;
+            height: 0.35em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em $white;
+        }
+
+        &:checked {
+
+            &:before {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .formulate-input-element-decorator {
+        display: none;
+    }
+
+    .formulate-input-errors {
+        color: rgb(211, 36, 36);
+        font-size: 12px;
+    }
+
+    .form__checkbox {
+        
+        .formulate-input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    button[type="submit"]{
+        padding: 20px 40px;
+    
+        font-weight: 600;
+
+        border: solid 1px;
+
+        cursor: pointer;
+
+        transition: all 0.5s ease;
+
+        background-color: $white;
+        color: $black;
+        border-color: $white;
+
+        &:hover {
+            background-color: transparent;
+            color: $white;
+        }
+    }
+
+    // [data-has-errors="true"]{
+
+    //     input[type="text"], input[type="number"], input[type="tel"], input[type="email"]{
+    //         border-bottom-color: rgb(211, 36, 36);;
+    //     }
+    // }
+}

@@ -1,0 +1,99 @@
+/*
+|--------------------
+|    FONTS IMPORTS
+|--------------------
+|
+| 100 - Extra Light or Ultra Light
+| 200 - Light or Thin
+| 300 - Book or Demi
+| 400 - Normal or Regular
+| 500 - Medium
+| 600 - Semibold, Demibold
+| 700 - Bold
+| 800 - Black, Extra Bold or Heavy
+| 900 - Extra Black, Fat, Poster or Ultra Black
+|
+*/
+
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	src: url('~@/assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2'),
+// 	url('~@/assets/fonts/montserrat/Montserrat-Bold.woff') format('woff');
+// 	font-weight: bold;
+// 	font-style: normal;
+// 	font-display: swap;
+// }
+// 
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	src: url('~@/assets/fonts/montserrat/Montserrat-Medium.woff2') format('woff2'),
+// 	url('~@/assets/fonts/montserrat/Montserrat-Medium.woff') format('woff');
+// 	font-weight: 500;
+// 	font-style: normal;
+// 	font-display: swap;
+// }
+// 
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	src: url('~@/assets/fonts/montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+// 	url('~@/assets/fonts/montserrat/Montserrat-SemiBold.woff') format('woff');
+// 	font-weight: 600;
+// 	font-style: normal;
+// 	font-display: swap;
+// }
+// 
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	src: url('~@/assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2'),
+// 	url('~@/assets/fonts/montserrat/Montserrat-Regular.woff') format('woff');
+// 	font-weight: normal;
+// 	font-style: normal;
+// 	font-display: swap;
+// }
+// 
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	src: url('~@/assets/fonts/montserrat/Montserrat-Light.woff2') format('woff2'),
+// 	url('~@/assets/fonts/montserrat/Montserrat-Light.woff') format('woff');
+// 	font-weight: 300;
+// 	font-style: normal;
+// 	font-display: swap;
+// }
+
+// DM SERIF
+@font-face {
+	font-family: 'DM Serif';
+	src: url('~@/assets/fonts/dm_serif/DMSans-Regular.ttf') format('ttf'),
+	url('~@/assets/fonts/dm_serif/DMSans-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+// SF PRO
+@font-face {
+	font-family: 'SF Pro';
+	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Regular.otf') format('otf'),
+	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Regular.otf') format('otf');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SF Pro';
+	src: url('~@/assets/fonts/sf_pro/SF-Pro-Text-Bold.otf') format('otf'),
+	url('~@/assets/fonts/sf_pro/SF-Pro-Text-Bold.otf') format('otf');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SF Pro';
+	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Black.otf') format('otf'),
+	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Black.otf') format('otf');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
