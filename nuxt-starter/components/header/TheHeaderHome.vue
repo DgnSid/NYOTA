@@ -2,7 +2,7 @@
     <header class="c-header-home">
         <div class="container">
             <div class="row">
-                <div :class="big ? 'col-lg-11 offset-lg-1' : 'col-lg-14 offset-lg-1'">
+                <div :class="big ? 'col-lg-11 offset-lg-1' : 'col-lg-13 offset-lg-1'">
                     <h1 class="c-header-home__title" :class="class_title">
                         <span class="--intro_title">{{small_title}}</span>
                         <span v-html="big_title"></span>

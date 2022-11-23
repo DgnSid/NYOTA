@@ -33,6 +33,32 @@
                 />
             </div>
 
+            <div v-if="hook_title">
+                <div class="row">
+                    <div class="col-lg-22 offset-lg-1">
+                        <div class="c-section-listnews__hook">
+                            <div class="c-section-listnews__hook__image-container">
+                                <img class="c-section-listnews__hook__image" :src="hook_image.url" :alt="hook_image.alt" />                                
+                            </div>
+                            <div class="c-section-listnews__hook__text-container">
+                                <h2 class="c-section-listnews__hook__title" v-html="hook_title"></h2>
+                                <div class="c-section-listnews__hook__cta-container">
+                                    <cta 
+                                        :url="hook_cta_first.url"
+                                        :title="hook_cta_first.title"
+                                        class="--bordered"
+                                    />
+                                    <cta 
+                                        :url="hook_cta_second.url"
+                                        :title="hook_cta_second.title"
+                                        class="--bordered --white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -48,6 +74,10 @@
             title: String,
             news: Array,
             cta: Object,
+            hook_title: String,
+            hook_cta_first: Object,
+            hook_image: Object,
+            hook_cta_second: Object,
         }
     }
 </script>
@@ -81,6 +111,45 @@ Style scoped
         .c-section-listnews__cta-container {
             display: table;
             margin: 0 auto;
+        }
+
+        .c-section-listnews__hook {
+            background-color: $white;
+            border-radius: 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            margin-top: 50px;
+
+            .c-section-listnews__hook__image-container {
+                height: 370px;
+                width: 430px;
+                border-radius: 40px;
+                overflow: hidden;
+                margin-right: 50px;
+
+                .c-section-listnews__hook__image {
+                    object-fit: cover;
+                    object-position: center;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .c-section-listnews__hook__text-container {
+                .c-section-listnews__hook__title {
+                    color: $black;
+                    font-size: 4rem;
+                    line-height: 4.2rem;
+                    font-family: $font-family-custom;
+                    margin-bottom: 40px;
+                }
+
+                .c-section-listnews__hook__cta-container {
+                    display: flex;
+                }
+            }
         }
     }
 </style>

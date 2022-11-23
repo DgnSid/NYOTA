@@ -34,6 +34,21 @@ Style scoped
            }
         }
 
+        &.--white {
+            background: $white;
+            .c-cta__text {
+                color: $orange;
+            }
+
+            &:hover {
+                background: $gradientOrange;
+
+                .c-cta__text {
+                    color: $white;
+                }
+            }
+        }
+
         &.--bordered {
             border: 1px solid $orange;
         }

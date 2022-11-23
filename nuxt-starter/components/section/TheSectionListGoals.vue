@@ -1,5 +1,5 @@
 <template>
-    <section class="c-section-listgoals">
+    <section class="c-section-listgoals" :class="background ? '--background' : ''">
         <h2 class="c-section-listgoals__title">{{title}}</h2>
         <div class="container">
             <div class="row jc-center">
@@ -8,6 +8,8 @@
                         :icon="element.icon"
                         :title="element.title"
                         :description="element.description"
+                        :price="element.price"
+                        :cta="element.cta"
                     />
                 </div>
             </div>
@@ -24,6 +26,7 @@
         props: {
             title: String,
             goals: Array,
+            background: Boolean,
         }
     }
 </script>
@@ -37,6 +40,12 @@ Style scoped
     .c-section-listgoals {
         padding: 60px 0;
         background-color: $white;
+
+        &.--background {
+            background-image: url('/gradient-home.png');
+            background-position: center;
+            background-size: cover;
+        }
 
         .c-section-listgoals__title {
             font-weight: 600;

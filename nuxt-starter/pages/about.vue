@@ -32,10 +32,20 @@
             title="Nos objectifs"
             :goals="aboutData.blockGoals.goals"
         />
+        <TheSectionPodcast
+            :title="aboutData.blockPodcast.title"
+            :image="aboutData.blockPodcast.image"
+            :text="aboutData.blockPodcast.description"
+            :cta="{'title':`S'inscrire sur notre plateforme`, 'url':'#'}"
+        />
         <TheSectionListNews
             title="Découvrez nos actualités"
             :news="aboutData.blockNews.news"
             :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
+            hook_title="Vous êtes<br>intéréssés ?"
+            :hook_image="{'url':'/img_hook_news.png', 'alt':'#'}"
+            :hook_cta_first="{'title':'JE SUIS UN TALENT', 'url':'#'}"
+            :hook_cta_second="{'title':'Découvrir nos offres', 'url':'#'}"
         />
     </div>
 </template>
@@ -45,6 +55,7 @@ import TheHeaderHome from '../components/header/TheHeaderHome.vue';
 import TheSectionListNews from '../components/section/TheSectionListNews.vue';
 import TheSectionTwocols from '../components/section/TheSectionTwocols.vue';
 import TheSectionListGoals from '../components/section/TheSectionListGoals.vue';
+import TheSectionPodcast from '../components/section/TheSectionPodcast.vue';
 
 export default {
     name: "IndexPage",
@@ -53,6 +64,7 @@ export default {
         TheHeaderHome,
         TheSectionListNews,
         TheSectionListGoals,
+        TheSectionPodcast,
     },
     async asyncData({ params, $axios, $config: { baseURL } }) {
         const aboutData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/fr/aboutpage`, {
