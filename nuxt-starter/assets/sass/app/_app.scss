@@ -1,0 +1,30 @@
+// ==========================================================================
+// Main app file
+//
+// This file is just an importer file for the app folder
+// ==========================================================================
+
+// Settings
+// ==========================================================================
+@import 'settings/variables';
+@import 'settings/fonts';
+@import 'settings/default';
+
+// Layout
+// ==========================================================================
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/content';
+
+// Pages
+// ==========================================================================
+@import 'pages/home';
+
+// Elements
+// ==========================================================================
+@import 'elements/swiper';
+@import 'elements/forms';
+
+// Animations
+// ==========================================================================
+@import 'animations/transitions';

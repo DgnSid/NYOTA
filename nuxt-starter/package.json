@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve"
+  },
+  "dependencies": {
+    "@braid/vue-formulate": "^2.5.3",
+    "@nuxtjs/axios": "^5.11.0",
+    "direction": "2.0.0",
+    "gsap": "npm:@gsap/shockingly",
+    "hast-util-select": "5.0.0",
+    "moment": "^2.27.0",
+    "nuxt": "^2.13.0",
+    "property-information": "6.0.1",
+    "sass-loader": "^9.0.2",
+    "swiper": "5.4.5",
+    "unist-util-visit": "3.1.0",
+    "vue-awesome-swiper": "4.1.1",
+    "zwitch": "2.0.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^4.14.1"
+  }
+}
