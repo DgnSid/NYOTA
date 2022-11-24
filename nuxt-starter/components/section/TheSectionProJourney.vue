@@ -1,27 +1,16 @@
 <template>
-    <section class="c-section-twocols" :class="background ? '--background' : ''">
+    <section class="c-section-projourney">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-r order-md-2 order-sm-2 order-2" :class="is_image_left ? 'order-lg-1' : 'offset-lg-2 order-lg-2'">
-                    <ImageBordered 
-                        :url="image.url"
-                        :alt="image.alt"
-                        class_string="--right"
-                    />
+                <div class="col-lg-20 offset-lg-2">
+                    <h2>{{title}}</h2>
                 </div>
-                <div class="col-lg-14 order-md-1 order-sm-1 order-1" :class="is_image_left ? 'offset-lg-2 order-lg-2' : 'order-lg-1'">
-                    <h2 class="c-section-twocols__title">
-                        {{title}}
-                    </h2>
-                    <div class="c-section-twocols__subtitle">
-                        {{subtitle}}
+                <div class="col-lg-20 offset-lg-2" v-for="(element, index) in news.slice(2, 4)" :key="index">
+                    <div class="c-section-projourney__element">
+                        <div class="c-section-projourney__element__figure">{{index}}.</div>
+                        <div>{{element.title}}</div>
+                        <div>{{element.text}}</div>
                     </div>
-                    <div class="c-section-twocols__text" v-html="text"></div>
-                    <cta v-if="cta"
-                        :url="cta.url"
-                        :title="cta.title"
-                        class=""
-                    />
                 </div>
             </div>
         </div>

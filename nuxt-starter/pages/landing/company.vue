@@ -11,6 +11,8 @@
             :ellipse="true"
             :bulb="false"
             :logo="false"
+            :list="landingCompanyData.blockHeader.list"
+            :cta="landingCompanyData.blockHeader.cta"
         />
         <TheSectionTwocols
             :title="landingCompanyData.blockOurApproach.title"
@@ -33,6 +35,16 @@
             :title="landingCompanyData.blockPartners.title"
             :partners="landingCompanyData.blockPartners.partners"
         />
+        <TheSectionListFeaturesAlt
+            title="Les plus de Nyota"
+            :features="landingCompanyData.blockFeatures.features"
+            :background="true"
+        />
+        <TheSectionTestimonial 
+            :title="landingCompanyData.blockTestimonials.title"
+            :slides="landingCompanyData.blockTestimonials.testimonials"
+            :cta="landingCompanyData.blockTestimonials.cta"
+        />
         <TheSectionListNews
             title="Découvrez nos actualités"
             :news="landingCompanyData.blockNews.news"
@@ -51,6 +63,8 @@ import TheSectionTwocols from '../../components/section/TheSectionTwocols.vue';
 import TheSectionListNews from '../../components/section/TheSectionListNews.vue';
 import TheSectionPartners from '../../components/section/TheSectionPartners.vue';
 import TheSectionListGoals from '../../components/section/TheSectionListGoals.vue';
+import TheSectionListFeaturesAlt from '../../components/section/TheSectionListFeaturesAlt.vue';
+import TheSectionTestimonial from '../../components/section/TheSectionTestimonial.vue';
 
 export default {
     name: "IndexPage",
@@ -60,6 +74,8 @@ export default {
         TheSectionListNews,
         TheSectionPartners,
         TheSectionListGoals,
+        TheSectionListFeaturesAlt,
+        TheSectionTestimonial,
     },
     async asyncData({ params, $axios, $config: { baseURL } }) {
         const landingCompanyData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/fr/landing-company`, {

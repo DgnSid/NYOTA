@@ -2,14 +2,14 @@
     <header class="c-header-home">
         <div class="container">
             <div class="row">
-                <div :class="big ? 'col-lg-11 offset-lg-1' : 'col-lg-13 offset-lg-1'">
+                <div :class="big ? 'col-lg-11 offset-lg-1' : list ? 'col-lg-10 offset-lg-1' : 'col-lg-13 offset-lg-1'">
                     <h1 class="c-header-home__title" :class="class_title">
                         <span class="--intro_title">{{small_title}}</span>
                         <span v-html="big_title"></span>
                         <b>{{big_title_alt}}</b>
                     </h1>
                     <div class="c-header-home__text" v-html="text"></div>
-                    <div class="c-header-home__ctas">
+                    <div v-if="cta_left" class="c-header-home__ctas">
                         <cta
                             v-if="cta_left" 
                             :url="cta_left.url"
@@ -24,8 +24,30 @@
                             class=""
                         />
                     </div>
+                    <div v-if="list" class="c-header-home__list-container">
+                        <div class="c-header-home__list-element" v-for="(element, index) in list" :key="index">
+                            <svg class="c-header-home__list-element__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29 10L15 24L8 17" stroke="url(#paint0_linear_2427_4495)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <defs>
+                                <linearGradient id="paint0_linear_2427_4495" x1="8" y1="24" x2="29.0491" y2="10.0742" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FF7A00"/>
+                                <stop offset="0.645833" stop-color="#FB9B11"/>
+                                </linearGradient>
+                                </defs>
+                            </svg>
+                            <span class="c-header-home__list-element__text">{{element.text}}</span>
+                        </div>
+                        <div v-if="list" class="c-header-home__list-cta-container">
+                            <cta
+                                v-if="cta"
+                                :url="cta.url"
+                                :title="cta.title"
+                                class="--bordered"
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div :class="big ? 'col-lg-7 offset-lg-5' : 'col-lg-7 offset-lg-2'" class="md-down-mt-md">
+                <div :class="big ? 'col-lg-7 offset-lg-5' : list ? 'col-lg-7 offset-lg-5' : 'col-lg-7 offset-lg-2'" class="md-down-mt-md">
                     <ImageBordered 
                         :url="image_top.url"
                         :alt="image_top.alt"
@@ -113,6 +135,8 @@
             text: String,
             image_top: Object,
             image_bottom: Object,
+            cta: Object,
+            list: Array,
             cta_left: Object,
             cta_right: Object,
             ellipse: Boolean,
@@ -208,6 +232,32 @@ Style scoped
                flex-direction: column;
                align-items: flex-start;
             }
+        }
+
+        .c-header-home__list-container {
+            position: relative;
+            background-color: $white;
+            border-radius: 40px;
+            padding: 40px;
+
+            .c-header-home__list-element {
+
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+                .c-header-home__list-element__icon {
+                    margin-right: 20px;
+                }
+                .c-header-home__list-element__text {
+                    color: $black;
+                }
+            }
+        }
+
+        .c-header-home__list-cta-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .c-header-home__ellipse {

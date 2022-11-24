@@ -65,7 +65,7 @@ Style scoped
 
         .c-section-twocols__title {
             font-family: $font-family-custom;
-            font-weight: 400;
+            font-weight: 600;
             
             font-size: 4.125rem;
             line-height: 4.5rem;
