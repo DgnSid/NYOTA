@@ -57,7 +57,7 @@ import TheSectionListFeaturesAlt from '../../components/section/TheSectionListFe
 import TheSectionTestimonial from '../../components/section/TheSectionTestimonial.vue';
 
 export default {
-    name: "IndexPage",
+    name: "LandingTalentPage",
     components: {
         TheHeaderHome,
         TheSectionTwocols,
@@ -66,11 +66,11 @@ export default {
         TheSectionListFeaturesAlt,
         TheSectionTestimonial,
     },
-    async asyncData({ params, $axios, $config: { baseURL } }) {
-        const landingTalentData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/fr/landing-talent`, {
+    async asyncData({app, params, $axios, $config: { baseURL } }) {
+        const landingTalentData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/landing-talent`, {
             headers: {
               'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-              'lang': 'fr',
+              'Accept-Language': app.i18n.locale,
             }
         });
 

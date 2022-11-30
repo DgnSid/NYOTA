@@ -28,7 +28,7 @@
             :formulas="homeData.blockFormulas.formulas"
         />
         <TheSectionFigures 
-            title="Nyota en<br>chiffres c’est..."
+            :title="$t('section_figures_title')"
             :key_numbers="homeData.blockKeyNumbers.keyNumbers"
         />
         <TheSectionListNews
@@ -57,10 +57,12 @@ export default {
         TheSectionFigures,
         TheSectionListNews,
     },
-    async asyncData({ params, $axios, $config: { baseURL } }) {
-        const homeData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/fr/homepage`, {
+    async asyncData({app, params, $axios, $config: { baseURL } }) {
+        
+        const homeData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/homepage`, {
             headers: {
               'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
+              'Accept-Language': app.i18n.locale,
             }
         });
 

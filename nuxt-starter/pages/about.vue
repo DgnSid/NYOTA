@@ -58,7 +58,7 @@ import TheSectionListGoals from '../components/section/TheSectionListGoals.vue';
 import TheSectionPodcast from '../components/section/TheSectionPodcast.vue';
 
 export default {
-    name: "IndexPage",
+    name: "AboutPage",
     components: {
         TheSectionTwocols,
         TheHeaderHome,
@@ -66,10 +66,11 @@ export default {
         TheSectionListGoals,
         TheSectionPodcast,
     },
-    async asyncData({ params, $axios, $config: { baseURL } }) {
-        const aboutData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/fr/aboutpage`, {
+    async asyncData({ app, params, $axios, $config: { baseURL } }) {
+        const aboutData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/aboutpage`, {
             headers: {
               'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
+              'Accept-Language': app.i18n.locale,
             }
         });
 
