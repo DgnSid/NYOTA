@@ -14,7 +14,7 @@
         name: 'cardFigure',
         props: {
             class_string: String,
-            title: String,
+            title: Number,
             description: String,
         }
     }

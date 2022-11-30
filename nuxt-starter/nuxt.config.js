@@ -1,3 +1,4 @@
+import i18n from './plugins/i18n'
 
 export default {
 
@@ -88,7 +89,25 @@ export default {
   */
   buildModules: [
     '@braid/vue-formulate/nuxt',
-    '~/modules/gsap'
+    '~/modules/gsap',
+    [
+      'nuxt-i18n',
+      {
+        vueI18nLoader: true,
+        defaultLocale: 'fr',
+         locales: [
+          {
+             code: 'en',
+             name: 'English'
+          },
+          {
+             code: 'fr',
+             name: 'Français'
+          }
+        ],
+        vueI18n: i18n
+      }
+    ]
   ],
 
   /*

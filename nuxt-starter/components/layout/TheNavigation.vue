@@ -15,6 +15,13 @@ Template
             <li class="navigation__item">
                 <nuxt-link to="/components">Components</nuxt-link>
             </li>
+            <li>
+                <nuxt-link
+                    v-for="locale in availableLocales"
+                    :key="locale.code"
+                    :to="switchLocalePath(locale.code)">{{ locale.name }}
+                </nuxt-link>
+            </li>
         </ul>
     </aside>
 </template>
@@ -70,6 +77,11 @@ Script
                 this.isOpen = false;
                 this.closeBurger();
                 this.removeHiddenOnBody();
+            }
+        },
+        computed: {
+            availableLocales () {
+                return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
             }
         }
     };
