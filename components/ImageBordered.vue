@@ -22,10 +22,11 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-image-container {
-        background-color: red;
         position: relative;
         z-index: 2;
         overflow: hidden;
+
+        transition: transform 1s ease-in-out;
 
         &:not(:last-child) {
             margin-bottom: 22px;
