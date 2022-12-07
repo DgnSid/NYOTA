@@ -11,21 +11,30 @@
                         :title="element.title"
                         :url="element.url"
                         slug="lorem-ipsum"
+                        class_string=""
                     />
                 </div>
             </div>
+        </div>
+        <div class="container">
+            <Pagination v-if="(total > 1)" :total="total" :perPage="1" />
         </div>
     </div>
 </template>
 
 <script>
-    import cardNewsAlt from '../card/cardNewsAlt.vue';
+    import cardNewsAlt from '@/components/card/cardNewsAlt.vue';
+    import Pagination from '@/components/Pagination.vue';
 
     export default {
         name: 'TheSectionListNews',
-        components: { cardNewsAlt },
+        components: { cardNewsAlt, Pagination },
         props: {
             news: Array,
+            total: {
+                type: Number,
+                default: 0,
+            },
         }
     }
 </script>
