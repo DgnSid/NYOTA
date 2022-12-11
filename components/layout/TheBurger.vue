@@ -128,7 +128,6 @@ Style scoped
         }
 
         .burger__text {
-            margin-left: 0.5rem;
             text-transform: uppercase;
         }
     }

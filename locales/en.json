@@ -1,6 +1,15 @@
 {
+    "menu": {
+        "about_title": "About",
+        "about_url": "/en/about",
+        "talent": "Talent",
+        "company": "Company",
+        "contact": "Contact",
+        "news": "News",
+        "register": "Register",
+        "login": "Login"
+    },
     "section_figures_title": "Nyota in<br>figures it's...",
-    
     "single_news": {
         "back": "Back to news",
         "published": "published",

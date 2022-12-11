@@ -1,9 +1,9 @@
 <template>
     <section class="c-section-testimonials">
-        <h2 class="c-section-testimonials__title">{{title}}</h2>
+        <h2 class="c-section-testimonials__title a-stagger-element__testimonials">{{title}}</h2>
         <div class="container">
             <div class="row no-gutters">
-                <div class="col-lg-22 offset-lg-1">
+                <div class="col-lg-22 offset-lg-1 a-stagger-element__testimonials">
                     <div v-swiper="swiperOptions">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" v-for="(element, index) in slides" :key="index">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="c-section-testimonials__cta-container">
+        <div class="c-section-testimonials__cta-container a-stagger-element__testimonials">
             <cta v-if="cta"
                 :url="cta.url"
                 :title="cta.title"
@@ -47,6 +47,12 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
 
     import Cta from '../Cta.vue';
     import cardTestimonial from '../card/cardTestimonial.vue';
@@ -85,6 +91,18 @@
                     }
                 }
             }
+        },
+        mounted() {
+            const gsap = this.$gsap;
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-section-testimonials",
+                }
+            })
+
+            this.tl.set('.a-stagger-element__testimonials', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__testimonials', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+                   
         },
     }
 

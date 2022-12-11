@@ -42,13 +42,17 @@
   		  	  	</div>
   		  	</form>
 		</div>
+		<shape-ellipse class="c-formcontact__ellipse" :size="302" />
 	</div>
 </template>
 
 <script>
-  export default {
-      name: 'theFormContact',
-  }
+	import ShapeEllipse from '@/components/ui/ShapeEllipse';
+
+  	export default {
+      	name: 'theFormContact',
+		components: { ShapeEllipse }
+  	}
 </script>
 
 <!-----
@@ -58,8 +62,21 @@ Style scoped
 ------>
 <style lang="scss" scoped>
 	.c-formcontact {
+		position: relative;
 		padding-top: 48px;
 		background-color: $white;
+		overflow-x: hidden;
+
+		.c-formcontact__ellipse {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translate(50%, -50%);
+
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+		}
 
 		label {
 			color: $black;

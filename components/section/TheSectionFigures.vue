@@ -7,16 +7,16 @@
                 <div class="container">
                     <div class="row ai-center">
                         <div class="col-lg-9 offset-lg-1">
-                            <h2 class="c-section-figures__title" v-html="title"></h2>
+                            <h2 class="c-section-figures__title a-stagger-element__figures" v-html="title"></h2>
                         </div>
-                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm">
+                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm a-stagger-element__figures">
                             <cardFigure v-for="(element, index) in key_numbers.slice(0,2)"
                                 :key="index"
                                 :title="element.number"
                                 :description="element.description"
                             />
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 a-stagger-element__figures">
                             <cardFigure v-for="(element, index) in key_numbers.slice(2,4)"
                                 :key="index"
                                 :title="element.number"
@@ -31,6 +31,13 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     import cardFigure from '../card/cardFigure.vue';
 
     export default {
@@ -41,7 +48,19 @@
         props: {
             title: String,
             key_numbers: Array,
-        }
+        },
+        mounted() {
+            const gsap = this.$gsap;
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-section-figures",
+                }
+            })
+
+            this.tl.set('.a-stagger-element__figures', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__figures', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+                   
+        },
     }
 </script>
 

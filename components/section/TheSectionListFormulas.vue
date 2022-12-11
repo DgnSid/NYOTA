@@ -1,6 +1,6 @@
 <template>
     <section class="c-section-listformulas">
-        <h2 class="c-section-listformulas__title">{{title}}</h2>
+        <h2 class="c-section-listformulas__title a-stagger-element__listformulas">{{title}}</h2>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 md-down-mb-xl" v-for="(element, index) in formulas" :key="index">
@@ -8,6 +8,7 @@
                         :title="element.title"
                         :description="element.description"
                         :cta="element.cta"
+                        class="a-stagger-element__listformulas"
                     />
                 </div>
             </div>
@@ -16,6 +17,13 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     import cardFormula from '../card/cardFormula.vue';
 
     export default {
@@ -24,7 +32,19 @@
         props: {
             title: String,
             formulas: Array,
-        }
+        },
+        mounted() {
+            const gsap = this.$gsap;
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-section-listformulas",
+                }
+            })
+
+            this.tl.set('.a-stagger-element__listformulas', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__listformulas', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+                   
+        },
     }
 </script>
 

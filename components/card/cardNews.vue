@@ -106,7 +106,7 @@ Style scoped
                 color: $orange;
             }
             .c-image-container {
-                transform: scale(1.1);
+                // transform: scale(1.1);
             }
         }
     }
