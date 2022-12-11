@@ -2,7 +2,7 @@
     <section class="c-section-listfeatures">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-r order-lg-1 order-md-2 order-sm-2 order-2">
+                <div class="col-lg-8 p-r order-lg-1 order-md-2 order-sm-2 order-2 a-stagger-element__listfeatures">
                     <ImageBordered 
                         :url="image.url"
                         :alt="image.alt"
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-lg-14 offset-lg-2 order-lg-2 order-md-1 order-sm-1 order-1">
-                    <h2 class="c-section-listfeatures__title">
+                    <h2 class="c-section-listfeatures__title a-stagger-element__listfeatures">
                         {{title}}
                     </h2>
 
@@ -26,6 +26,7 @@
                         :title="element.title"
                         :description="element.description"
                         :url="element.url"
+                        class="a-stagger-element__listfeatures"
                     />
                 </div>
             </div>
@@ -34,6 +35,13 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     import Cta from '../Cta.vue';
     import ImageBordered from '../ImageBordered.vue';
     import cardFeature from '../card/cardFeature.vue';
@@ -46,7 +54,19 @@
             image: Object,
             cta: Object,
             features: Array,
-        }
+        },
+        mounted() {
+            const gsap = this.$gsap;
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-section-listfeatures",
+                }
+            })
+
+            this.tl.set('.a-stagger-element__listfeatures', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__listfeatures', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+                   
+        },
     }
 </script>
 

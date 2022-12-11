@@ -1,12 +1,12 @@
 <template>
     <section class="c-section-listfeatures-alt" :class="background ? '--background' : ''">
         <div class="container">
-            <h2 class="c-section-listfeatures-alt__title">
+            <h2 class="c-section-listfeatures-alt__title a-stagger-element__listfeatures-alt">
                 {{title}}
             </h2>
             <div class="row">
                 <div v-for="(element, index) in features" :key="index">
-                    <div class="col-lg-18 offset-lg-3">                  
+                    <div class="col-lg-18 offset-lg-3 a-stagger-element__listfeatures-alt">                  
                         <div class="c-section-listfeatures-alt__element">
                             <div class="c-section-listfeatures-alt__element__figure">0{{index + 1}}.</div>
                             <div class="c-section-listfeatures-alt__element__title">{{element.title}}</div>
@@ -20,13 +20,32 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     export default {
         name: 'TheSectionListFeaturesAlt',
         props: {
             title: String,
             features: Array,
             background: Boolean,
-        }
+        },
+        mounted() {
+            const gsap = this.$gsap;
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-section-listfeatures-alt",
+                }
+            })
+
+            this.tl.set('.a-stagger-element__listfeatures-alt', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__listfeatures-alt', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+                   
+        },
     }
 </script>
 

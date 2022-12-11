@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'Image',
+        name: 'ImageBordered',
         props: {
             class_string: String,
             url: String,

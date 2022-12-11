@@ -28,10 +28,8 @@ Style scoped
         border-radius: 100px;
         text-align: center;
 
-        @include media-breakpoint-down(sm) {
-           &:not(:last-child) {
+        @include media-breakpoint-down(md) {
             margin-bottom: 10px;
-           }
         }
 
         &.--white {

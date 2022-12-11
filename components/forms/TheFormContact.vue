@@ -1,0 +1,155 @@
+<template>
+	<div class="c-formcontact">
+  		<div class="container">
+  		  	<form @submit.prevent="handleSubmit">
+  		  	  	<div class="row">
+					<div class="offset-lg-1 col-lg-18">
+  		  	  	  		<label>Objet</label>
+  		  	  	  		<input type="text" name="object" placeholder="" />
+					</div>
+					<div class="offset-lg-1 col-lg-9">
+  		  	  	  		<label>Nom complet <span>*</span></label>
+  		  	  	  		<input type="text" name="name" placeholder="" required />
+					</div>
+					<div class="col-lg-9">
+  		  	  	  		<label>Entreprise</label>
+  		  	  	  		<input type="text" name="company" placeholder="" />
+					</div>
+					<div class=" offset-lg-1 col-lg-9">
+  		  	  	  		<label>Adresse e-mail <span>*</span></label>
+  		  	  	  		<input type="text" name="mail" placeholder="" required />
+					</div>
+					<div class="col-lg-9">
+  		  	  	  		<label>Numéro de téléphone</label>
+  		  	  	  		<input type="text" name="phone" placeholder="" />
+					</div>
+					<div class="offset-lg-1 col-lg-18">
+  		  	  	  		<label>Message  <span>* (1500 caratères max)</span></label>
+  		  	  	  		<textarea name="message"></textarea>
+					</div>
+					<div class="offset-lg-1 col-lg-18">
+  		  	  	  		<input id="rgpd" type="checkbox" name="name" placeholder="" required />
+						<label for="rgpd" name="rgpd" class="--checkbox">En cochant cette case, j’affirme avoir pris connaissance de la <a href="#">politique de confidentialité</a> de Nyota.</label>
+					</div>
+					<div class="offset-lg-1 col-lg-18">
+  		  	  	  		<button type="submit">
+							<span>Envoyer un message</span>
+						</button>
+					</div>
+					<div class="offset-lg-1 col-lg-18">
+						<div class="c-formcontact__mandatory-text">* champ obligatoire</div>
+					</div>
+  		  	  	</div>
+  		  	</form>
+		</div>
+		<shape-ellipse class="c-formcontact__ellipse" :size="302" />
+	</div>
+</template>
+
+<script>
+	import ShapeEllipse from '@/components/ui/ShapeEllipse';
+
+  	export default {
+      	name: 'theFormContact',
+		components: { ShapeEllipse }
+  	}
+</script>
+
+<!-----
+*
+Style scoped
+*
+------>
+<style lang="scss" scoped>
+	.c-formcontact {
+		position: relative;
+		padding-top: 48px;
+		background-color: $white;
+		overflow-x: hidden;
+
+		.c-formcontact__ellipse {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translate(50%, -50%);
+
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+		}
+
+		label {
+			color: $black;
+			text-transform: uppercase;
+			font-size: 0.75rem;
+			letter-spacing: 3px;
+			margin-bottom: 10px;
+
+			a,
+			span {
+				color: $orange;
+			}
+
+			a {
+				text-decoration: underline;
+			}
+
+			&.--checkbox {
+				font-size: .75rem;
+				line-height: 1.5rem;
+				text-transform: none;
+				letter-spacing: 0;
+				cursor: pointer;
+			}
+		}
+
+		input[type="text"] {
+			border: 1px solid $grey;
+			border-radius: 40px;
+			height: 50px;
+			width: 100%;
+			margin-bottom: 32px;
+			padding-left: 20px;
+		}
+
+		textarea {
+			display: block;
+			border: 1px solid $grey;
+			border-radius: 40px;
+			width: 100%;
+			height: 320px;
+			margin-bottom: 32px;
+		}
+
+		[type="submit"] {
+			position: relative;
+       		background: $gradientOrange;
+       		padding: 24px 40px;
+       		border-radius: 100px;
+       		text-align: center;
+			cursor: pointer;
+			margin-top: 40px;
+			margin-bottom: 16px;
+			border: 1px solid $orange;
+
+			span {
+				text-transform: uppercase;
+				color: $white;
+			}
+
+			&:hover {
+            	background: $white;
+            	span {
+                	color: $orange;
+            	}
+        	}
+		}
+
+		.c-formcontact__mandatory-text {
+			font-size: .75rem;
+			color: $black;
+			display: block;
+			padding-bottom: 50px;
+		}
+	}
+</style>

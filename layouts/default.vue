@@ -15,6 +15,7 @@ Template
         <!-- Nuxt component -->
         <Nuxt />
 
+        <the-footer />
     </div>
 </template>
 

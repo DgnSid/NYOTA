@@ -1,9 +1,34 @@
 {
+    "menu": {
+        "about_title": "A propos",
+        "about_url": "/about",
+        "talent_title": "Talent",
+        "talent_url": "/landing/talent",
+        "company_title": "Entreprises",
+        "company_url": "/landing/company",
+        "contact_title": "Contact",
+        "contact_url": "/contact",
+        "news_title": "Actualités",
+        "news_url": "/news",
+        "register": "S'inscrire",
+        "login": "Connexion"
+    },
     "section_figures_title": "Nyota en<br>chiffres c’est...",
-
     "single_news": {
         "back": "Retour aux actualités",
         "published": "Publié le",
         "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser FR"
+    }, 
+    "footer": {
+        "baseline": "Nous connectons les meilleurs talents avec de grandes entreprises mondiales",
+        "menu": {
+            "about": " A propos",
+            "talent": "Talent",
+            "company": "Entreprises"
+        },
+        "mentions": "Mentions légales",
+        "rgpd": "Politique de confidentialité",
+        "adveris": "Site internet crée par Adveris",
+        "contact": "Nous contacter"
     }
 }

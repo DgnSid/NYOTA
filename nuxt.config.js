@@ -130,7 +130,7 @@ export default {
         'Accept': 'application/json'
       },
     },
-    baseUrl: process.env.API_URL,
+    baseURL: process.env.API_URL,
     https: true
   },
 
