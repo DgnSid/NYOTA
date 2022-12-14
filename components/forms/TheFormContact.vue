@@ -32,7 +32,7 @@
 						<label for="rgpd" name="rgpd" class="--checkbox">En cochant cette case, j’affirme avoir pris connaissance de la <a href="#">politique de confidentialité</a> de Nyota.</label>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<button type="submit">
+  		  	  	  		<button type="submit ">
 							<span>Envoyer un message</span>
 						</button>
 					</div>
@@ -51,8 +51,30 @@
 
   	export default {
       	name: 'theFormContact',
-		components: { ShapeEllipse }
-  	}
+		components: { ShapeEllipse },
+		async mounted() {
+  			try {
+  			  await this.$recaptcha.init()
+  			} catch (e) {
+  			  console.error(e);
+  			}
+		},
+		methods: {
+			async handleSubmit() {
+				console.log('handleSubmit')
+
+ 			 	try {
+ 			 	  	const token = await this.$recaptcha.execute('login')
+ 			 	  	console.log('ReCaptcha token:', token)				
+ 			 	} catch (error) {
+ 			 	  	console.log('Login error:', error)
+ 			 	}
+			}
+		},
+		beforeDestroy() {
+  			this.$recaptcha.destroy()
+		}
+	}
 </script>
 
 <!-----

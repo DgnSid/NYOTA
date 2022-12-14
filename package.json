@@ -12,6 +12,7 @@
   "dependencies": {
     "@braid/vue-formulate": "^2.5.3",
     "@nuxtjs/axios": "^5.11.0",
+    "@nuxtjs/recaptcha": "^1.1.1",
     "direction": "2.0.0",
     "gsap": "npm:@gsap/shockingly",
     "hast-util-select": "5.0.0",
@@ -22,7 +23,7 @@
     "sass-loader": "^9.0.2",
     "swiper": "5.4.5",
     "unist-util-visit": "3.1.0",
-    "vue-awesome-swiper": "^5.0.1",
+    "vue-awesome-swiper": "4.1.1",
     "zwitch": "2.0.2"
   },
   "devDependencies": {
