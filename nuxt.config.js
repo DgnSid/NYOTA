@@ -60,7 +60,7 @@ export default {
   ** Get env variable : you must create a .env file
   */
   publicRuntimeConfig: {
-    backendUrl: process.env.BACKEND_URL
+    backendUrl: process.env.BACKEND_URL,
   },
 
   /*
@@ -116,8 +116,16 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/recaptcha',
   ],
+
+  recaptcha: {
+    hideBadge: true,
+    mode: 'base',
+    siteKey: process.env.RECAPTCHA_SITE_KEY,
+    version: 3,
+  },
 
   /*
   ** Axios module configuration
