@@ -2,11 +2,15 @@
     <header class="c-header-small">
         <div class="container">
             <div class="c-header-small__content">
-                <h1 class="c-header-small__title a-stagger-element__header-small">
-                    {{title}}
-                </h1>
-                <div class="c-header-small__text a-stagger-element__header-small">
-                    {{text}}
+                <div class="row">
+                    <div class="offset-lg-1">
+                        <h1 class="c-header-small__title a-stagger-element__header-small">
+                            {{title}}
+                        </h1>
+                        <div class="c-header-small__text a-stagger-element__header-small">
+                            {{text}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+    import ImageBordered from '../ImageBordered.vue';
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -29,7 +34,7 @@
 
     export default {
         name: 'HeaderSmall',
-        components: {},
+        components: { ImageBordered },
         props: {
             title: String,
             text: String,

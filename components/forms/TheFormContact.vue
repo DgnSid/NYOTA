@@ -25,15 +25,15 @@
 					</div>
 					<div class="offset-lg-1 col-lg-18">
   		  	  	  		<label>Message  <span>* (1500 caratères max)</span></label>
-  		  	  	  		<textarea name="message"></textarea>
+  		  	  	  		<textarea name="message" maxlength="1500"></textarea>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
   		  	  	  		<input id="rgpd" type="checkbox" name="name" placeholder="" required />
 						<label for="rgpd" name="rgpd" class="--checkbox">En cochant cette case, j’affirme avoir pris connaissance de la <a href="#">politique de confidentialité</a> de Nyota.</label>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<button type="submit ">
-							<span>Envoyer un message</span>
+  		  	  	  		<button class="c-formcontact__submit --bordered" type="submit ">
+							<span class="c-formcontact__submit__text">Envoyer un message</span>
 						</button>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
@@ -141,6 +141,8 @@ Style scoped
 			width: 100%;
 			height: 320px;
 			margin-bottom: 32px;
+			padding-top: 20px;
+			padding-left: 20px;
 		}
 
 		[type="submit"] {
@@ -172,6 +174,41 @@ Style scoped
 			color: $black;
 			display: block;
 			padding-bottom: 50px;
+		}
+
+		.c-formcontact__submit {
+        	position: relative;
+        	background: $gradientOrange;
+        	padding: 24px 40px;
+        	border-radius: 100px;
+        	text-align: center;
+			cursor: pointer;
+			margin: 10px 0;
+
+       		@include media-breakpoint-down(md) {
+       		    margin-bottom: 10px;
+       		}
+
+       		&.--bordered {
+       		    border: 1px solid $orange;
+       		}
+
+        	.c-formcontact__submit__text {
+        	    font-weight: 700;
+        	    font-size: 0.675rem;
+        	    text-transform: uppercase;
+        	    letter-spacing: 4px;
+        	    color: $white;
+
+        	    transition: .2s ease-out;
+        	}
+
+        	&:hover {
+        	    background: $white;
+        	    .c-formcontact__submit__text {
+        	        color: $orange;
+        	    }
+        	}
 		}
 	}
 </style>
