@@ -1,5 +1,5 @@
 <template>
-    <header class="c-section-profile-cv">
+    <section class="c-section-profile-cv">
         <div class="container">
             <div class="c-section-profile-cv__content">
                 <h2 class="c-section-profile-cv__title a-stagger-element__section-profile-cv">Formation et expérience</h2>
@@ -103,7 +103,8 @@
                 </div>
             </div>
         </div>
-    </header>
+        <shape-ellipse class="c-section-profile-cv__ellipse a-stagger-element__section-profile-cv" size="216" />
+    </section>
 </template>
 
 <script>
@@ -114,8 +115,11 @@
         gsap.registerPlugin(ScrollTrigger);
     }
 
+    import ShapeEllipse from '@/components/ui/ShapeEllipse.vue'
+
     export default {
         name: 'TheSectionProfileCv',
+        components: { ShapeEllipse },
         props: {
             data: Object,
         },
@@ -141,6 +145,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-section-profile-cv {
+        position: relative;
         background-color: $white;
         padding: 80px 0;
 
@@ -174,6 +179,13 @@ Style scoped
                     margin-right: 10px;
                 }
             }
+        }
+
+        .c-section-profile-cv__ellipse {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -60px;
         }
     }
 </style>

@@ -1,0 +1,22 @@
+<template>
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 28H7C6.73478 28 6.48043 27.8946 6.29289 27.7071C6.10536 27.5196 6 27.2652 6 27V5C6 4.73478 6.10536 4.48043 6.29289 4.29289C6.48043 4.10536 6.73478 4 7 4H19L26 11V27C26 27.2652 25.8946 27.5196 25.7071 27.7071C25.5196 27.8946 25.2652 28 25 28Z" stroke="url(#paint0_linear_2055_6194)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 4V11H26" stroke="url(#paint1_linear_2055_6194)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+        <linearGradient id="paint0_linear_2055_6194" x1="6" y1="28" x2="31.391" y2="18.6676" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF7A00"/>
+        <stop offset="0.645833" stop-color="#FB9B11"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_2055_6194" x1="19" y1="11" x2="27.4447" y2="7.27542" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF7A00"/>
+        <stop offset="0.645833" stop-color="#FB9B11"/>
+        </linearGradient>
+        </defs>
+    </svg>
+</template>
+
+<script>
+    export default {
+        name: 'File',
+    };
+</script>

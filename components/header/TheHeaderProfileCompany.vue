@@ -1,51 +1,41 @@
 <template>
-    <header class="c-header-profiletalent">
+    <header class="c-header-profilecompany">
         <div class="container">
-            <div class="c-header-profiletalent__content">
+            <div class="c-header-profilecompany__content">
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="c-header-profiletalent__left">
-                            <div class="c-header-profiletalent__photocontainer">
-                                <img v-if="photo" class="c-header-profiletalent__photo" :src="photo" alt="Avatar" />
+                    <div class="col-lg-12">
+                        <div class="c-header-profilecompany__left">
+                            <div class="c-header-profilecompany__photocontainer a-stagger-element__header-profile-company">
+                                <img v-if="photo" class="c-header-profilecompany__photo" :src="photo" alt="Avatar" />
                                 <no-avatar v-else />
                             </div>
-                            <h1 class="c-header-profiletalent__title a-stagger-element__header-profile-talent">
-                                {{name}}
+                            <h1 class="c-header-profilecompany__title a-stagger-element__header-profile-company">
+                                {{company_name}}
                             </h1>
-                            <div class="c-header-profiletalent__updatephoto a-stagger-element__header-profile-talent">
+                            <div class="c-header-profilecompany__updatephoto a-stagger-element__header-profile-company">
                                 Modifier ma photo de profil
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-13 offset-lg-2">
+                    <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="c-header-profiletalent__content__infos">
-                                    <h2 class="c-header-profiletalent__content__infos__title">Informations personnelles</h2>
-                                    <div class="c-header-profiletalent__content__infos__name">{{name}}</div>
-                                    <div class="c-header-profiletalent__content__infos__mail">
+                            <div class="col-lg-10 offset-lg-2">
+                                <div class="c-header-profilecompany__content__infos">
+                                    <h2 class="c-header-profilecompany__content__infos__title a-stagger-element__header-profile-company">Contact référent</h2>
+                                    <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
+                                    <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
+                                    <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
+                                        <IconPhone class="mr-xs" />
+                                        <div>{{contact_mail}}</div>
+                                    </a>
+                                    <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
                                         <IconMail class="mr-xs" />
-                                        <div>{{mail}}</div>
-                                    </div>
+                                        <div>{{contact_phone}}</div>
+                                    </a>
                                     <cta
                                         url=""
                                         title="Modifier"
-                                        class="--bordered"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-8 offset-lg-4">
-                                <div class="c-header-profiletalent__content__infos">
-                                    <h2 class="c-header-profiletalent__content__infos__title">CV</h2>
-                                    <div class="c-header-profiletalent__content__infos__file">
-                                        <IconFile class="mr-xs" />
-                                        <div class="c-header-profiletalent__content__infos__file__name">{{file}}</div>
-                                    </div>
-                                    <div class="my-lg" style="color: red">File upload TODO</div>
-                                    <cta
-                                        url=""
-                                        title="Valider"
-                                        class="--bordered"
+                                        class="--bordered a-stagger-element__header-profile-company"
                                     />
                                 </div>
                             </div>
@@ -63,7 +53,7 @@
 
     import NoAvatar from '@/components/svg/NoAvatar.vue'
     import IconMail from '@/components/svg/Mail.vue'
-    import IconFile from '@/components/svg/File.vue'
+    import IconPhone from '@/components/svg/Phone.vue'
     import Cta from '../Cta.vue';
 
     if (process.client) {
@@ -72,23 +62,25 @@
 
     export default {
         name: 'HeaderProfileTalent',
-        components: { NoAvatar, IconMail, IconFile, Cta },
+        components: { NoAvatar, IconMail, IconPhone, Cta },
         props: {
             photo: String,
-            name: String,
-            mail: String,
-            file: String,
+            company_name: String,
+            contact_name: String,
+            contact_role: String,
+            contact_mail: String,
+            contact_phone: String,
         },
         mounted() {
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".c-header-profiletalent",
+                    trigger: ".c-header-profilecompany",
                 }
             })
 
-            this.tl.set('.a-stagger-element__header-profile-talent', {autoAlpha: 0, y:30})
-            this.tl.staggerTo('.a-stagger-element__header-profile-talent', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+            this.tl.set('.a-stagger-element__header-profile-company', {autoAlpha: 0, y:30})
+            this.tl.staggerTo('.a-stagger-element__header-profile-company', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
                    
         },
     }
@@ -100,7 +92,7 @@ Style scoped
 *
 ------>
 <style lang="scss" scoped>
-    .c-header-profiletalent {
+    .c-header-profilecompany {
         position: relative;
         height: 512px;
 
@@ -112,38 +104,47 @@ Style scoped
         background-position: center;
         background-size: cover;
 
-        .c-header-profiletalent__content {
-            .c-header-profiletalent__content__infos {
-                .c-header-profiletalent__content__infos__title {
+        .c-header-profilecompany__content {
+            .c-header-profilecompany__content__infos {
+                .c-header-profilecompany__content__infos__title {
                     color: $black;
                     font-size: 2rem;
                     line-height: 2.25rem;
                     margin-bottom: 16px;
                 }
 
-                .c-header-profiletalent__content__infos__name {
+                .c-header-profilecompany__content__infos__name {
                     font-size: 1.5rem;
                     line-height: 1.5rem;
-                    margin-bottom: 20px;
 
                     background: $gradientOrange;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
 
-                .c-header-profiletalent__content__infos__mail {
+                .c-header-profilecompany__content__infos__role {
+                    color: $black;
+                    margin-bottom: 20px;
+                }
+                .c-header-profilecompany__content__infos__phone {
                     display: flex;
                     align-items: center;
                     color: $black;
-                    margin-bottom: 80px;
                 }
 
-                .c-header-profiletalent__content__infos__file {
+                .c-header-profilecompany__content__infos__mail {
+                    display: flex;
+                    align-items: center;
+                    color: $black;
+                    margin-bottom: 20px;
+                }
+
+                .c-header-profilecompany__content__infos__file {
                     display: flex;
                     align-items: center;
                     color: $black;
 
-                    .c-header-profiletalent__content__infos__file__name {
+                    .c-header-profilecompany__content__infos__file__name {
                         word-break: break-all;
                     }
 
@@ -154,20 +155,21 @@ Style scoped
             }
         }
 
-        .c-header-profiletalent__photo {
+        .c-header-profilecompany__photo {
             object-fit: cover;
             object-position: center;
             height: 100%;
             width: 100%;
         }
-        .c-header-profiletalent__left {
+        .c-header-profilecompany__left {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             border-right: 1px solid $light-grey;
+            height: 100%;
         }
-        .c-header-profiletalent__photocontainer {
+        .c-header-profilecompany__photocontainer {
             height: 100px;
             width: 100px;
             border-radius: 100%;
@@ -179,7 +181,7 @@ Style scoped
             justify-content: center;
         }
 
-        .c-header-profiletalent__title {
+        .c-header-profilecompany__title {
             font-family: $font-family-custom;
             font-size: 4rem;
             line-height: 4.5rem;
@@ -208,14 +210,14 @@ Style scoped
             }
         }
 
-        .c-header-profiletalent__updatephoto {
+        .c-header-profilecompany__updatephoto {
             color: $orange;
             text-decoration: underline;
             font-size: 1.125rem;
             cursor: pointer;
         }
 
-        .c-header-profiletalent__logo {
+        .c-header-profilecompany__logo {
             position: absolute;
             right: 0;
             top: 50%;

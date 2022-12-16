@@ -17,7 +17,7 @@ import TheHeaderProfileTalent from '@/components/header/TheHeaderProfileTalent.v
 import TheSectionProfileCv from '@/components/section/TheSectionProfileCv.vue'
 
 export default {
-    name: "contactPage",
+    name: "ProfileTalent",
     components: {
         TheHeaderProfileTalent,
         TheSectionProfileCv,
