@@ -105,8 +105,13 @@ Style scoped
             .c-card-news__text__title {
                 color: $orange;
             }
-            .c-image-container {
-                // transform: scale(1.1);
+
+            .c-card-news__text__arrow-container {
+                background: $white;
+
+                svg > path {
+                    fill: $orange
+                }
             }
         }
     }

@@ -208,6 +208,9 @@ Style scoped
 *
 ------>
 <style lang="scss" scoped>
+    .layout-about {
+        overflow-x: hidden;
+    }
     .c-about-ellipse-whoweare {
         position: absolute;
         bottom: 0;

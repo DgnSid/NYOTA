@@ -13,7 +13,7 @@
                         :url="element.url"
                     />
                 </div>
-                <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index">
+                <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index + 2">
                     <cardNews
                         :image_url="element.image.url"
                         :image_alt="element.image.alt"

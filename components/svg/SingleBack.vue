@@ -1,16 +1,13 @@
 
 <template>
-    <svg
-      class="fill-current w-5 h-5"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-    >
-      <title>Back</title>
-      <path
-        fill-rule="evenodd"
-        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-        clip-rule="evenodd"
-      />
+    <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.0234 5.1394L7.16297 10.9999L13.0234 16.8603" stroke="url(#paint0_linear_1768_4988)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <defs>
+    <linearGradient id="paint0_linear_1768_4988" x1="13.0234" y1="16.8603" x2="4.96984" y2="15.0843" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FF7A00"/>
+    <stop offset="0.645833" stop-color="#FB9B11"/>
+    </linearGradient>
+    </defs>
     </svg>
   </template>
   

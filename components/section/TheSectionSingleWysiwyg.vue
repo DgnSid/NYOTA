@@ -2,7 +2,7 @@
     <section class="c-section-single-wysiwyg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-20 offset-lg-2">
+                <div class="col-lg-16 offset-lg-1">
                     <div class="c-section-single-wysiwyg__wysiwyg" v-html="wysiwyg"></div>
                 </div>
             </div>

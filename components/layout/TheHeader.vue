@@ -8,7 +8,7 @@ Template
         <div class="container">            
             <div class="header__inner">
                 <nuxt-link class="a-stagger-element__header" to="/">
-                    <img src="/logo.png" alt="Nyota logo" />
+                    <img src="/logo-nyota.png" alt="Nyota logo" />
                 </nuxt-link>
                 <div class="header__inner__menu">
                     <nuxt-link :to="$t('menu.about_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.about_title')}}</nuxt-link>
@@ -18,11 +18,11 @@ Template
                     <nuxt-link :to="$t('menu.news_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.news_title')}}</nuxt-link>
                     <div class="header__inner__menu__element --orange">
                         <nuxt-link class="a-stagger-element__header" to="/">
-                            <span>{{$t('menu.register')}}</span>
+                            <span>{{$t('menu.register_title')}}</span>
                             <arrow-down />
                         </nuxt-link>
                         <span class="mx-xs a-stagger-element__header">|</span>
-                        <nuxt-link to="/" class="a-stagger-element__header">{{$t('menu.login')}}</nuxt-link>
+                        <nuxt-link to="/" class="a-stagger-element__header">{{$t('menu.login_title')}}</nuxt-link>
                     </div>
                     <nuxt-link
                         class="header__inner__menu__element a-stagger-element__header"
@@ -37,6 +37,7 @@ Template
                 <the-burger  class="header__inner__burger" />
             </div>
         </div>
+        <popup-register />
     </header>
 </template>
 
@@ -53,10 +54,11 @@ Script
         gsap.registerPlugin(ScrollTrigger);
     }
 
+    import popupRegister from '@/components/popup/popupRegister';
     import ArrowDown from '@/components/svg/ArrowDown';
 
     export default {
-        components: { ArrowDown },
+        components: { ArrowDown, popupRegister },
         beforeMount () {
             window.addEventListener('scroll', this.handleScroll);
         },
@@ -160,6 +162,10 @@ Style scoped
 
                 &:not(:last-child) {
                     padding-right: 48px;
+                }
+
+                svg {
+                    margin-bottom: 2px;
                 }
 
                 &.--orange {

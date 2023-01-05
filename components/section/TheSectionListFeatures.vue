@@ -16,7 +16,7 @@
                         />
                     </div>
                 </div>
-                <div class="col-lg-14 offset-lg-2 order-lg-2 order-md-1 order-sm-1 order-1">
+                <div class="col-lg-14 offset-lg-2 order-lg-2 order-md-1 order-sm-1 order-1 p-r">
                     <h2 class="c-section-listfeatures__title a-stagger-element__listfeatures">
                         {{title}}
                     </h2>
@@ -77,7 +77,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-section-listfeatures {
-        padding: 60px 0;
+        padding: 60px 0 80px 0;
         background-color: $white;
         background-image: url('/gradient-home.png');
         background-position: center;

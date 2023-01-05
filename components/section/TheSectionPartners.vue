@@ -23,7 +23,18 @@
                     </div>
                 </div>
             </div>
-            <div class="c-section-partners__ellipse">
+            <div class="c-section-partners__slider">
+                <div v-swiper="swiperOptions">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="(element, index) in partners" :key="index">
+                            <a :href="element.url" target="_blank" rel="noopener noreferrer" class="c-section-partners__logo">
+                                <img :src="element.image.url" :alt="element.image.alt" class="c-section-partners__logo__image" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="ellipse" class="c-section-partners__ellipse">
                 <shape-ellipse 
                     :size="300"
                 />
@@ -50,6 +61,30 @@
         },
         components: {
             ShapeEllipse,
+        },
+        data() {
+            return {
+                swiperOptions: {
+                    loop: true,
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                    speed: 1000,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets',
+                    },
+                    navigation: {
+                        nextEl: '.swiper__next',
+                        prevEl: '.swiper__prev',
+                    },
+                    breakpoints: {
+                        767: {
+                            slidesPerView: 3,
+                            spaceBetween: 25
+                        }
+                    }
+                }
+            }
         },
         mounted() {
             const gsap = this.$gsap;
@@ -105,8 +140,26 @@ Style scoped
         .c-section-partners__ellipse {
             position: absolute;
             bottom: 0;
-            right: -100px;
+            right: -150px;
             transform: translateY(50%);
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
+        }
+
+        .c-section-partners__logo-container {
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
+        }
+
+        .c-section-partners__slider {
+            display: none;
+
+            @include media-breakpoint-down(md) {
+                display: block;
+            }
         }
 
         .c-section-partners__logo {

@@ -1,46 +1,58 @@
 <template>
-    <header class="c-header-profilecompany">
+    <header class="c-header-profilecompany page-offset">
         <div class="container">
             <div class="c-header-profilecompany__content">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="c-header-profilecompany__left">
-                            <div class="c-header-profilecompany__photocontainer a-stagger-element__header-profile-company">
-                                <img v-if="photo" class="c-header-profilecompany__photo" :src="photo" alt="Avatar" />
-                                <no-avatar v-else />
-                            </div>
-                            <h1 class="c-header-profilecompany__title a-stagger-element__header-profile-company">
-                                {{company_name}}
-                            </h1>
-                            <div class="c-header-profilecompany__updatephoto a-stagger-element__header-profile-company">
-                                Modifier ma photo de profil
+                <shape-ellipse class="c-header-profilecompany__content__ellipse" :size="220" />
+                <div class="c-header-profilecompany__content__top">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-header-profilecompany__left">
+                                <div class="c-header-profilecompany__photocontainer a-stagger-element__header-profile-company">
+                                    <img v-if="photo" class="c-header-profilecompany__photo" :src="photo" alt="Avatar" />
+                                    <no-avatar v-else />
+                                </div>
+                                <h1 class="c-header-profilecompany__title a-stagger-element__header-profile-company">
+                                    {{company_name}}
+                                </h1>
+                                <div class="c-header-profilecompany__updatephoto a-stagger-element__header-profile-company">
+                                    Modifier ma photo de profil
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-10 offset-lg-2">
-                                <div class="c-header-profilecompany__content__infos">
-                                    <h2 class="c-header-profilecompany__content__infos__title a-stagger-element__header-profile-company">Contact référent</h2>
-                                    <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
-                                    <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
-                                    <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
-                                        <IconPhone class="mr-xs" />
-                                        <div>{{contact_mail}}</div>
-                                    </a>
-                                    <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
-                                        <IconMail class="mr-xs" />
-                                        <div>{{contact_phone}}</div>
-                                    </a>
-                                    <cta
-                                        url=""
-                                        title="Modifier"
-                                        class="--bordered a-stagger-element__header-profile-company"
-                                    />
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-2">
+                                    <div class="c-header-profilecompany__content__infos">
+                                        <h2 class="c-header-profilecompany__content__infos__title a-stagger-element__header-profile-company">Contact référent</h2>
+                                        <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
+                                        <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
+                                        <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
+                                            <IconPhone class="mr-xs" />
+                                            <div>{{contact_mail}}</div>
+                                        </a>
+                                        <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
+                                            <IconMail class="mr-xs" />
+                                            <div>{{contact_phone}}</div>
+                                        </a>
+                                        <cta
+                                            url=""
+                                            title="Modifier"
+                                            class="--bordered a-stagger-element__header-profile-company"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="c-header-profilecompany__content__bottom">
+                    <h2  class="c-header-profilecompany__content__bottom__title">{{ title }}</h2>
+                    <div  class="c-header-profilecompany__content__bottom__text">{{ text }}</div>
+                    <div  class="c-header-profilecompany__content__bottom__searchtext">{{ search_title }}</div>
+                    <form class="c-header-profilecompany__content__bottom__form" method="get">
+                        <input type="text" :placeholder="search_placeholder" />
+                        <input type="submit" value="" />
+                    </form>
                 </div>
             </div>
         </div>
@@ -55,6 +67,7 @@
     import IconMail from '@/components/svg/Mail.vue'
     import IconPhone from '@/components/svg/Phone.vue'
     import Cta from '../Cta.vue';
+    import ShapeEllipse from "../ui/ShapeEllipse";
 
     if (process.client) {
         gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +75,7 @@
 
     export default {
         name: 'HeaderProfileTalent',
-        components: { NoAvatar, IconMail, IconPhone, Cta },
+        components: { NoAvatar, IconMail, IconPhone, Cta, ShapeEllipse },
         props: {
             photo: String,
             company_name: String,
@@ -70,6 +83,10 @@
             contact_role: String,
             contact_mail: String,
             contact_phone: String,
+            title: String,
+            text: String,
+            search_title: String,
+            search_placeholder: String,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -94,7 +111,7 @@ Style scoped
 <style lang="scss" scoped>
     .c-header-profilecompany {
         position: relative;
-        height: 512px;
+        // height: 512px;
 
         display: flex;
         align-items: center;
@@ -104,7 +121,17 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        margin-bottom: 180px;
+
         .c-header-profilecompany__content {
+            padding-top: 50px;
+
+            .c-header-profilecompany__content__ellipse {
+                position: absolute;
+                bottom: 120px;
+                right: -80px;
+            }
+            
             .c-header-profilecompany__content__infos {
                 .c-header-profilecompany__content__infos__title {
                     color: $black;
@@ -225,6 +252,81 @@ Style scoped
 
             @include media-breakpoint-down(md) {
                 display: none;
+            }
+        }
+
+        .c-header-profilecompany__content__top {
+            margin-bottom: 70px;
+        }
+
+        .c-header-profilecompany__content__bottom {
+            color: $black;
+            text-align: center;
+
+            .c-header-profilecompany__content__bottom__title {
+                font-size: 4rem;
+                line-height: 4.2rem;
+                margin-bottom: 24px;
+            }
+
+            .c-header-profilecompany__content__bottom__text {
+                margin-bottom: 50px;
+            }
+
+            .c-header-profilecompany__content__bottom__searchtext {
+                color: $orange;
+                font-family: $font-family-custom;
+                text-align: center;
+                font-size: 2rem;
+            }
+
+            .c-header-profilecompany__content__bottom__form {
+                transform: translateY(50%);
+                position: relative;
+                display: table;
+                margin: 0 auto;
+
+                input[type="text"] {
+                    height: 72px;
+                    border: 1px solid $orange;
+                    width: 360px;
+                    max-width: 95%;
+                    border-radius: 90px;
+                    padding-left: 40px;
+                    padding-right: 70px;
+
+                    &::placeholder {
+                        color: $orange;
+                    }
+
+                    background-image: url('/search-glass.svg');
+                    background-repeat: no-repeat;
+                    background-position: 15px center;
+                }
+
+                input[type="submit"] {
+                    position: absolute;
+                    right: 18px;
+                    cursor: pointer;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: 56px;
+                    width: 56px;
+                    border-radius: 100%;
+                    background-color: $orange;
+                    border: 1px solid $orange;
+                    color: $white;
+
+                    background-image: url('/arrow.svg');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+
+                    &:hover {
+                        background-color: $white;
+                        color: $orange;
+                        background-image: url('/arrow-orange.svg');
+                    }
+                }
             }
         }
     }

@@ -44,12 +44,13 @@
         <div class="c-header-news-single__bottom">
             <div class="container">
                 <div class="row">
-                    <div class="offset-lg-1 col-lg-18">
+                    <div class="offset-lg-1 col-lg-18 p-r">
                         <ImageBordered 
                             :url="image.url"
                             :alt="image.alt"
-                            class_string="--right"
+                            class_string="--left"
                         />
+                        <shape-ellipse class="c-header-news-single__bottom__ellipse" :size="300" />
                     </div>
                 </div>            
             </div>
@@ -63,10 +64,11 @@
 <script>
 
     import ImageBordered from '../ImageBordered.vue';
+import ShapeEllipse from '../ui/ShapeEllipse.vue';
 
     export default {
         name: 'HeaderHome',
-        components: {ImageBordered},
+        components: {ImageBordered, ShapeEllipse},
         props: {
             type: String,
             date: String,
@@ -102,6 +104,7 @@ Style scoped
             z-index: 2;
 
             .c-header-news-single__content__back {
+                margin-top: 70px;
                 margin-bottom: 70px;
                 color: $orange;
 
@@ -154,6 +157,13 @@ Style scoped
 
             .c-image-container {
                 margin-top: -70px;
+            }
+
+            .c-header-news-single__bottom__ellipse {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateX(50%);
             }
         }
 

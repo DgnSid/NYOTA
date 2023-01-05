@@ -1,7 +1,12 @@
 <template>
     <section class="c-section-listformulas">
-        <h2 class="c-section-listformulas__title a-stagger-element__listformulas">{{title}}</h2>
-        <div class="container">
+        <div class="container p-r">            
+            <h2 class="c-section-listformulas__title a-stagger-element__listformulas">
+                {{title}}
+            </h2>
+            <thumbs-up class="c-section-listformulas__thumbs  a-stagger-element__listformulas" />
+        </div>
+        <div class="container p-r">
             <div class="row">
                 <div class="col-lg-8 md-down-mb-xl" v-for="(element, index) in formulas" :key="index">
                     <cardFormula
@@ -26,9 +31,11 @@
 
     import cardFormula from '../card/cardFormula.vue';
 
+    import ThumbsUp from '@/components/svg/ThumbsUp.vue'
+
     export default {
         name: 'TheSectionListFormulas',
-        components: { cardFormula },
+        components: { cardFormula, ThumbsUp },
         props: {
             title: String,
             formulas: Array,
@@ -55,7 +62,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-section-listformulas {
-        padding: 60px 0;
+        padding: 60px 0 150px 0;
         background-color: $white;
 
         .c-section-listformulas__title {
@@ -72,6 +79,16 @@ Style scoped
             @include media-breakpoint-down(md) {
                 font-size: 3.125rem;
                 line-height: 3.5rem;
+            }
+        }
+
+        .c-section-listformulas__thumbs {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+
+            @include media-breakpoint-down(md) {
+                display: none;
             }
         }
     }

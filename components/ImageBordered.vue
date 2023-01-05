@@ -33,13 +33,13 @@ Style scoped
         }
 
         &.--right {
-            border-top-right-radius: 60px;
-            border-bottom-left-radius: 60px;
+            border-top-right-radius: 90px;
+            border-bottom-left-radius: 90px;
         }
 
         &.--left {
-            border-top-left-radius: 60px;
-            border-bottom-right-radius: 60px;
+            border-top-left-radius: 90px;
+            border-bottom-right-radius: 90px;
         }
 
         height: 100%;

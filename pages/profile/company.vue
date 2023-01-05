@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-contact">
+    <div class="layout-profile-company">
         <TheHeaderProfileCompany
             :photo="profileCompanyData.blockHeader.photo"
             :company_name="profileCompanyData.blockHeader.company_name"
@@ -7,13 +7,16 @@
             :contact_role="profileCompanyData.blockHeader.contact_role"
             :contact_mail="profileCompanyData.blockHeader.mail"
             :contact_phone="profileCompanyData.blockHeader.phone"
+            title="Les talents"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget."
+            search_title="Rechercher un profil"
+            search_placeholder="Poste, secteur, formation"
         />
     </div>
 </template>
 
 <script>
 import TheHeaderProfileCompany from '@/components/header/TheHeaderProfileCompany.vue'
-import TheSectionProfileCv from '@/components/section/TheSectionProfileCv.vue'
 
 export default {
     name: "ProfileCompany",

@@ -84,11 +84,21 @@ Style scoped
             display: flex;
             align-items: center;
             justify-content: center;
+
+            transition: background-color .2s ease-out;
         }
 
         &:hover {
             .c-card-feature__text__title {
                 color: $orange;
+            }
+
+            .c-card-feature__arrow-container {
+                background-color: $white;
+
+                svg > path {
+                    fill: $orange;
+                }
             }
         }
     }

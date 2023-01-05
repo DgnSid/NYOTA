@@ -2,12 +2,18 @@
     "menu": {
         "about_title": "About",
         "about_url": "/en/about",
-        "talent": "Talent",
-        "company": "Company",
-        "contact": "Contact",
-        "news": "News",
-        "register": "Register",
-        "login": "Login"
+        "talent_title": "Talent",
+        "talent_url": "en/talent",
+        "company_title": "Company",
+        "company_url": "/en/company",
+        "contact_title": "Contact",
+        "contact_url": "/en/contact",
+        "news_title": "News",
+        "news_url": "/en/news",
+        "register_title": "Register",
+        "register_url": "/en/register",
+        "login_title": "Login",
+        "login_url": "/en/login"
     },
     "section_figures_title": "Nyota in<br>figures it's...",
     "single_news": {

@@ -1,20 +1,8 @@
 <template>
-    <div class="c-pagination">
-      <div v-if="currentPage === 1" :class="disabledStyle">
-        <span class="hidden">First</span>
-        <SingleBack /> 
-      </div>
-  
-      <nuxt-link
-        v-else
-        :to="{ name: 'news-page-page___fr', params: { page: 1 } }"
-        :class="buttonStyles"
-      >
-        <DoubleBack />
-        <span class="hidden">First</span>
-      </nuxt-link>
-  
-      <div v-if="currentPage === 1" :class="disabledStyle">
+    <div class="c-pagination"> 
+
+      <!--BACK-->
+      <div v-if="currentPage === 1" class="disabledStyle">
         <span class="hidden">Prev</span>
         <SingleBack />
       </div>  
@@ -27,54 +15,106 @@
         <span class="hidden">Prev</span>
       </nuxt-link>
 
+      <!--FIRST PAGE-->
       <nuxt-link
+          v-if="currentPage < totalPagesMinusTwo"
           :to="{ name: 'news-page-page___fr', params: { page: currentPage } }"
           :class="buttonStyles"
-          class="current"
+          class="c-pagination__page current"
       >
+        <span v-if="currentPage < 10">0</span>
         {{(currentPage)}}
       </nuxt-link>
 
-        <nuxt-link
-            :to="{ name: 'news-page-page___fr', params: { page: nextPagePlusOne } }"
-            :class="buttonStyles"
-        >
-          {{(currentPage + 1)}}
-        </nuxt-link>
+      <!--SECOND PAGE-->
+      <nuxt-link
+          v-if="currentPage + 1 < totalPagesMinusTwo"
+          :to="{ name: 'news-page-page___fr', params: { page: nextPagePlusOne } }"
+          :class="buttonStyles"
+          class="c-pagination__page"
+      >
+        <span v-if="currentPage + 1 < 10">0</span>
+        {{(currentPage + 1)}}
+      </nuxt-link>
 
+      <!--THIRD PAGE-->
         <nuxt-link
+            v-if="currentPage + 2 < totalPagesMinusTwo"
             :to="{ name: 'news-page-page___fr', params: { page: nextPagePlusTwo } }"
             :class="buttonStyles"
+            class="c-pagination__page"
         >
+          <span v-if="currentPage + 2 < 10">0</span>
           {{(currentPage + 2)}}
         </nuxt-link>
 
-      <div v-if="currentPagePlusTwo > totalPagesMinusTwo">
+      <!-- SEPARATOR -->
+      <div v-if="currentPage + 2 < totalPagesMinusTwo">
         <div style="color: red">...</div>
       </div>
 
+      <!-- ANTE ANTE LAST PAGE -->
       <nuxt-link
         :to="{ name: 'news-page-page___fr', params: { page: totalPagesMinusTwo } }"
         :class="buttonStyles"
+        class="c-pagination__page current"
+        v-if="currentPage == totalPagesMinusTwo"
       >
-      {{totalPagesMinusTwo}}
+        <span v-if="totalPagesMinusTwo < 10">0</span>
+        {{totalPagesMinusTwo}}
+      </nuxt-link>
+      <nuxt-link
+        :to="{ name: 'news-page-page___fr', params: { page: totalPagesMinusTwo } }"
+        :class="buttonStyles"
+        class="c-pagination__page"
+        v-else
+      >
+        <span v-if="totalPagesMinusTwo < 10">0</span>
+        {{totalPagesMinusTwo}}
       </nuxt-link>
 
+      <!-- ANTE LAST PAGE -->
       <nuxt-link
         :to="{ name: 'news-page-page___fr', params: { page: totalPagesMinusOne } }"
         :class="buttonStyles"
+        class="c-pagination__page current"
+        v-if="currentPage == totalPagesMinusOne"
       >
+        <span v-if="totalPagesMinusOne < 10">0</span>
+        {{totalPagesMinusOne}}
+      </nuxt-link>
+      <nuxt-link
+        :to="{ name: 'news-page-page___fr', params: { page: totalPagesMinusOne } }"
+        :class="buttonStyles"
+        class="c-pagination__page"
+        v-else
+      >
+        <span v-if="totalPagesMinusOne < 10">0</span>
         {{totalPagesMinusOne}}
       </nuxt-link>
 
+      <!-- LAST PAGE -->
       <nuxt-link
         :to="{ name: 'news-page-page___fr', params: { page: totalPages } }"
         :class="buttonStyles"
+        class="c-pagination__page current"
+        v-if="currentPage == totalPages"
       >
+        <span v-if="totalPages < 10">0</span>
+        {{totalPages}}
+      </nuxt-link>
+      <nuxt-link
+        :to="{ name: 'news-page-page___fr', params: { page: totalPages } }"
+        :class="buttonStyles"
+        class="c-pagination__page"
+        v-else
+      >
+        <span v-if="totalPages < 10">0</span>
         {{totalPages}}
       </nuxt-link>
 
-      <div v-if="currentPage === totalPages" :class="disabledStyle">
+      <!-- FORWARD -->
+      <div v-if="currentPage == totalPages" class="disabledStyle">
         <span class="hidden">Next</span>
         <SingleFwd />
       </div>
@@ -87,11 +127,13 @@
         <span class="hidden">Next</span>
         <SingleFwd />
       </nuxt-link>
-  
+
+      <!--
       <div v-if="currentPage === totalPages" :class="disabledStyle">
         <span class="hidden">Last</span>
         <DoubleFwd />
       </div>
+      -->
   
       <nuxt-link
         v-else
@@ -184,6 +226,18 @@
                 display: none;
             }
 
+            .disabledStyle {
+              filter: grayscale(1);
+            }
+
+            svg {
+              margin-bottom: 3px;
+            }
+
+            .c-pagination__page {
+              padding: 0 15px;
+            }
+
             a {
                 height: 20px;
                 width: 20px;
@@ -194,6 +248,7 @@
 
                 &.current {
                     color: $orange;
+                    font-weight: 700;
                 }
             }
         }

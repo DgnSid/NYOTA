@@ -1,6 +1,6 @@
 {
     "menu": {
-        "about_title": "A propos",
+        "about_title": "À propos",
         "about_url": "/about",
         "talent_title": "Talent",
         "talent_url": "/landing/talent",
@@ -10,8 +10,9 @@
         "contact_url": "/contact",
         "news_title": "Actualités",
         "news_url": "/news",
-        "register": "S'inscrire",
-        "login": "Connexion"
+        "register_title": "S'inscrire",
+        "login_title": "Connexion",
+        "login_url": "/connexion"
     },
     "section_figures_title": "Nyota en<br>chiffres c’est...",
     "single_news": {
@@ -30,5 +31,12 @@
         "rgpd": "Politique de confidentialité",
         "adveris": "Site internet crée par Adveris",
         "contact": "Nous contacter"
+    },
+    "pagetalentlist": {
+        "header": {
+            "title": "Recherche",
+            "placeholder": "consultant junior",
+            "results": "résultats"
+        }
     }
 }
