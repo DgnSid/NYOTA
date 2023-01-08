@@ -102,6 +102,10 @@ Style scoped
             ::v-deep p {
                 margin-bottom: 20px;
             }
+
+            @include media-breakpoint-down(md) {
+                padding: 0 10px;
+            }
         }
 
         .c-section-podcast__ellipse-top {

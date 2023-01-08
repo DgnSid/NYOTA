@@ -164,15 +164,27 @@ Style scoped
             line-height: 3rem;
             margin-bottom: 48px;
             color: $black;
+
+            @include media-breakpoint-down(md) {
+                padding: 0 15px;
+            }
         }
 
         .c-section-profile-cv__question {
             color: $black;
             margin-bottom: 15px;
+
+            @include media-breakpoint-down(md) {
+                padding: 0 15px;
+            }
         }
 
         .c-section-profile-cv__answers {
             display: flex;
+
+            @include media-breakpoint-down(md) {
+                padding: 0 15px;
+            }
             .c-section-profile-cv__answers__element {
                 color: $orange;
                 border: 1px solid $grey;
@@ -195,6 +207,10 @@ Style scoped
             top: 50%;
             transform: translateY(-50%);
             right: -60px;
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
     }
 </style>
