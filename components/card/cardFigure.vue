@@ -1,7 +1,12 @@
 <template>
     <article class="c-card-figure" :class="class_string" >
-        <h2 class="c-card-figure__title">
-            {{title}}
+        <h2 class="c-card-figure__title" :data-index="key_index">
+            <span v-if="title > 5">
+                {{title - 5}}
+            </span>
+            <span>
+                0
+            </span>
         </h2>
         <div class="c-card-figure__text">
             {{description}}
@@ -10,13 +15,40 @@
 </template>
 
 <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     export default {
         name: 'cardFigure',
         props: {
             class_string: String,
             title: Number,
             description: String,
-        }
+            key_index: {
+                type: Number,
+                default: 0,
+            },
+        },
+        mounted() {
+            const gsap = this.$gsap;
+
+            this.tl = new gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".c-card-figure",
+                }
+            })
+
+            this.tl.to(`.c-card-figure__title[data-index="${this.key_index}"]`, { innerText: this.title, duration: .5, delay: .5, 
+                snap: {
+                    innerText: 1
+                } 
+            });
+                   
+        },
     }
 </script>
 

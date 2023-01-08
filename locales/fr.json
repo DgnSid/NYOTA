@@ -1,6 +1,6 @@
 {
     "menu": {
-        "about_title": "A propos",
+        "about_title": "À propos",
         "about_url": "/about",
         "talent_title": "Talent",
         "talent_url": "/landing/talent",
@@ -10,8 +10,9 @@
         "contact_url": "/contact",
         "news_title": "Actualités",
         "news_url": "/news",
-        "register": "S'inscrire",
-        "login": "Connexion"
+        "register_title": "S'inscrire",
+        "login_title": "Connexion",
+        "login_url": "/connexion"
     },
     "section_figures_title": "Nyota en<br>chiffres c’est...",
     "single_news": {
@@ -30,5 +31,44 @@
         "rgpd": "Politique de confidentialité",
         "adveris": "Site internet crée par Adveris",
         "contact": "Nous contacter"
+    },
+    "pageabout": {
+        "section_goals": {
+            "title": "Nos objectifs"
+        },
+        "section_podcast": {
+            "cta_text": "S'inscrire sur notre plateforme",
+            "cta_url": "#"
+        },
+        "section_news": {
+            "title": "Découvrez nos actualités",
+            "hook": "Vous êtes<br>intéréssés ?",
+            "cta_first_text": "JE SUIS UN TALENT",
+            "cta_first_url": "#",
+            "cta_second_text": "Découvrir nos offres",
+            "cta_second_url": "#"
+        }
+    },
+    "pagetalentlist": {
+        "header": {
+            "title": "Recherche",
+            "placeholder": "consultant junior",
+            "results": "résultats",
+            "delete_all": "Tout supprimer",
+            "search": "Rechercher"
+        },
+        "card": {
+            "years_of_experience": "an(s) d'expérience",
+            "already_seen": "déjà consulté"
+        }
+    },
+    "pagetalentsingle": {
+        "backtotalents_url": "/talents",
+        "backtotalents_text": "Retour à la liste de candidat",
+        "formation": "Formation",
+        "experience": "Expérience",
+        "post": "Poste recherché",
+        "sector": "Secteurs d'activités",
+        "download_cv": "Télécharger le cv"
     }
 }

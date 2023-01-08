@@ -35,18 +35,18 @@
             title="A chaque besoin une offre adaptée"
             :goals="landingCompanyData.blockOffers.offers"
         />
+
+        <TheSectionListFeaturesAlt
+            title="Les plus de Nyota"
+            :features="landingCompanyData.blockFeatures.features"
+            :background="true"
+        />
          
         <TheSectionPartners 
             :title="landingCompanyData.blockPartners.title"
             :partners="landingCompanyData.blockPartners.partners"
         />
         
-        <TheSectionListFeaturesAlt
-            title="Les plus de Nyota"
-            :features="landingCompanyData.blockFeatures.features"
-            :background="true"
-        />
-
         <TheSectionTestimonial 
             :title="landingCompanyData.blockTestimonials.title"
             :slides="landingCompanyData.blockTestimonials.testimonials"
@@ -191,6 +191,55 @@ export default {
                     "alt": "alt à défnir"
                 },
             "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
+            },
+            {
+                "image": {
+                    "url": "/la-maison-afrique-logo.png",
+                    "alt": "alt à défnir"
+                },
+            "url": "https://www.adveris.fr/"
             }
         ]
     },
@@ -231,7 +280,7 @@ export default {
                 },
                 "title": "Faciliter le recrutement en Afrique",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing gravida tortor nibh donec vitae platea sagittis, vitae. Molestie.",
-                "price": "1200 $"
+                "price": ""
             },
             {
                 "cta": {
@@ -240,7 +289,7 @@ export default {
                 },
                 "title": "Faciliter le recrutement en Afrique",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing gravida tortor nibh donec vitae platea sagittis, vitae. Molestie.",
-                "price": "1200 $"
+                "price": ""
             },
             {
                 "cta": {
@@ -249,7 +298,7 @@ export default {
                 },
                 "title": "Faciliter le recrutement en Afrique",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing gravida tortor nibh donec vitae platea sagittis, vitae. Molestie.",
-                "price": "1200 $"
+                "price": ""
             }
         ]
     },
@@ -315,3 +364,14 @@ export default {
     }
 }
 </script>
+<!-----
+*
+Style scoped
+*
+------>
+<style lang="scss" scoped>
+    .layout-landing-company {
+      overflow-x: hidden;
+    }
+</style>
+

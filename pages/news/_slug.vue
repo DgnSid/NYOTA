@@ -20,6 +20,7 @@ Template
             :title="$t('single_news.bottom_title')"
             :news="singleNewsData.blockNews.news"
             :cta="{'title': 'Voir toutes les actualités', 'url': '/news'}"
+            :logo="true"
         />
     </div>
 </template>

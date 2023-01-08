@@ -4,9 +4,12 @@
             <h2 class="c-section-listfeatures-alt__title a-stagger-element__listfeatures-alt">
                 {{title}}
             </h2>
-            <div class="row">
+            <div class="c-section-listfeatures-alt__list row p-r">
+                <div class="c-section-listfeatures-alt__decoration-container col-lg-18 offset-lg-2 a-stagger-element__listfeatures-alt">
+                    <div class="c-section-listfeatures-alt__decoration"></div>
+                </div>
                 <div v-for="(element, index) in features" :key="index">
-                    <div class="col-lg-18 offset-lg-3 a-stagger-element__listfeatures-alt">                  
+                    <div class="col-lg-18 offset-lg-3 a-stagger-element__listfeatures-alt">
                         <div class="c-section-listfeatures-alt__element">
                             <div class="c-section-listfeatures-alt__element__figure">0{{index + 1}}.</div>
                             <div class="c-section-listfeatures-alt__element__title">{{element.title}}</div>
@@ -65,17 +68,38 @@ Style scoped
             background-size: cover;
         }
 
+
+        .c-section-listfeatures-alt__decoration-container {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+        .c-section-listfeatures-alt__decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 140px;
+            background-color: $white;
+            border-top-right-radius: 90px;
+            border-bottom-left-radius: 90px;
+        }
+
         .c-section-listfeatures-alt__title {
             font-size: 4.125rem;
             line-height: 4.5rem;
             text-align: center;
             color: $black;
-            padding-bottom: 60px;
 
             @include media-breakpoint-down(md) {
                 font-size: 3.125rem;
                 line-height: 3.5rem;
             }
+        }
+
+        .c-section-listfeatures-alt__list {
+            padding-top: 60px;
         }
 
         .c-section-listfeatures-alt__element {

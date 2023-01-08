@@ -1,6 +1,6 @@
 <template>
     <section class="c-section-listgoals" :class="background ? '--background' : ''">
-        <target class="c-section-listgoals__target a-stagger-element__listgoals" />
+        <target v-if="target" class="c-section-listgoals__target a-stagger-element__listgoals" />
         <h2 class="c-section-listgoals__title a-stagger-element__listgoals">{{title}}</h2>
         <div class="container">
             <div class="row jc-center">
@@ -38,6 +38,7 @@
             title: String,
             goals: Array,
             background: Boolean,
+            target: Boolean,
         },
         mounted() {
             const gsap = this.$gsap;

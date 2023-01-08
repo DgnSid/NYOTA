@@ -9,11 +9,12 @@
                         <div class="col-lg-9 offset-lg-1">
                             <h2 class="c-section-figures__title a-stagger-element__figures" v-html="title"></h2>
                         </div>
-                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm a-stagger-element__figures">
+                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm a-stagger-element__figures pt-xl">
                             <cardFigure v-for="(element, index) in key_numbers.slice(0,2)"
                                 :key="index"
                                 :title="element.number"
                                 :description="element.description"
+                                :key_index="index"
                             />
                         </div>
                         <div class="col-lg-6 a-stagger-element__figures">
@@ -21,6 +22,7 @@
                                 :key="index"
                                 :title="element.number"
                                 :description="element.description"
+                                :key_index="index + 2"
                             />
                         </div>
                     </div>
@@ -58,8 +60,7 @@
             })
 
             this.tl.set('.a-stagger-element__figures', {autoAlpha: 0, y:30})
-            this.tl.staggerTo('.a-stagger-element__figures', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
-                   
+            this.tl.staggerTo('.a-stagger-element__figures', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")                   
         },
     }
 </script>

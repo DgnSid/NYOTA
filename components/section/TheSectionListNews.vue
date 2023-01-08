@@ -1,6 +1,6 @@
 <template>
     <section class="c-section-listnews">
-        <div class="container">
+        <div class="c-section-listnews-container container">
             <h2 class="c-section-listnews__title a-stagger-element__listnews">{{title}}</h2>
             <div class="row">
                 <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(0, 2)" :key="index">
@@ -13,7 +13,7 @@
                         :url="element.url"
                     />
                 </div>
-                <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index">
+                <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index + 2">
                     <cardNews
                         :image_url="element.image.url"
                         :image_alt="element.image.alt"
@@ -60,6 +60,7 @@
                 </div>
             </div>
         </div>
+        <logo v-if="logo" class="c-section-listnews__logo" />
     </section>
 </template>
 
@@ -73,10 +74,11 @@
 
     import cardNews from '../card/cardNews.vue';
     import Cta from '../Cta.vue';
+    import Logo from '@/components/svg/Logo'
 
     export default {
         name: 'TheSectionListNews',
-        components: { Cta, cardNews },
+        components: { Cta, cardNews, Logo },
         props: {
             title: String,
             news: Array,
@@ -85,6 +87,7 @@
             hook_cta_first: Object,
             hook_image: Object,
             hook_cta_second: Object,
+            logo: Boolean,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -113,6 +116,18 @@ Style scoped
         background-image: url('/gradient-home.png');
         background-position: center;
         background-size: cover;
+        position: relative;
+
+        .c-section-listnews__logo {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .c-section-listnews-container {
+            position: relative;
+            z-index: 2;
+        }
 
         .c-section-listnews__title {
             font-size: 4.125rem;

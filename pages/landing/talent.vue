@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-landing-company">
+    <div class="layout-landing-talent">
         <TheHeaderHome 
             :small_title="landingTalentData.blockHeader.smallTitle"
             :big_title="landingTalentData.blockHeader.bigTitle"
@@ -278,3 +278,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+    .layout-landing-talent {
+        overflow-x: hidden;
+    }
+</style>

@@ -137,6 +137,10 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        @media screen and (max-height: 800px) {
+            height: calc(100vh + 180px);
+        }
+
         .c-header-home__share {
             position: absolute;
             bottom: 0;
@@ -268,7 +272,7 @@ Style scoped
             top: 50%;
             transform: translateY(-50%);
 
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
                 display: none;
             }
         }
@@ -276,6 +280,14 @@ Style scoped
         .c-header-home__images {
             z-index: 2;
             position: relative;
+
+            @include media-breakpoint-down(md) {
+                display: flex;
+
+                .c-image-container:first-child {
+                    margin-right: 10px;
+                }
+            }
         }
 
         .c-header-home__bulb {
@@ -284,7 +296,7 @@ Style scoped
             top: 50%;
             transform: translate(-50%, -50%);
 
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
                 display: none;
             }
         }
@@ -294,6 +306,10 @@ Style scoped
             left: 60%;
             bottom: 0;
             transform: translate(-50%, 0);
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
     }
 </style>

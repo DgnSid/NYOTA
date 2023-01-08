@@ -24,23 +24,30 @@
             :cta="homeData.blockFeatures.cta"
             :features="homeData.blockFeatures.features"
         />
-        <TheSectionListFormulas
-            :title="homeData.blockFormulas.title"
-            :formulas="homeData.blockFormulas.formulas"
-        />
+        <div class="p-r">
+          <shape-ellipse class="c-section-listfeatures-ellipse" :size="140" />
+          <TheSectionListFormulas
+              :title="homeData.blockFormulas.title"
+              :formulas="homeData.blockFormulas.formulas"
+          />
+        </div>
         <TheSectionFigures 
             :title="$t('section_figures_title')"
             :key_numbers="homeData.blockKeyNumbers.keyNumbers"
         />
-        <TheSectionTestimonial 
-            :title="homeData.blockTestimonials.title"
-            :slides="homeData.blockTestimonials.testimonials"
-            :cta="homeData.blockTestimonials.cta"
-        />
+        <div class="p-r">
+          <shape-ellipse class="c-section-testimonial-ellipse" :size="300" />
+          <TheSectionTestimonial 
+              :title="homeData.blockTestimonials.title"
+              :slides="homeData.blockTestimonials.testimonials"
+              :cta="homeData.blockTestimonials.cta"
+          />
+        </div>
         <TheSectionListNews
             title="Découvrez nos actualités"
             :news="homeData.blockNews.news"
             :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
+            :logo="false"
         />
     </div>
 </template>
@@ -53,6 +60,7 @@ import TheSectionListFormulas from '../components/section/TheSectionListFormulas
 import TheSectionFigures from '../components/section/TheSectionFigures.vue';
 import TheSectionTestimonial from '../components/section/TheSectionTestimonial.vue';
 import TheSectionListNews from '../components/section/TheSectionListNews.vue';
+import ShapeEllipse from '../components/ui/ShapeEllipse';
 
 export default {
     name: "IndexPage",
@@ -64,6 +72,7 @@ export default {
         TheSectionFigures,
         TheSectionTestimonial,
         TheSectionListNews,
+        ShapeEllipse,
     },
     async asyncData({app, params, $axios, $config: { baseURL } }) {
         
@@ -108,6 +117,55 @@ export default {
         "image": {
           "url": "/la-maison-afrique-logo.png",
           "alt": "alt à définir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
+        },
+        "url": "https://www.adveris.fr/"
+      },
+      {
+        "image": {
+          "url": "/la-maison-afrique-logo.png",
+          "alt": "alt à défnir"
         },
         "url": "https://www.adveris.fr/"
       },
@@ -180,19 +238,19 @@ export default {
   "blockKeyNumbers": {
     "keyNumbers": [
       {
-        "number": 0,
+        "number": 10,
         "description": "string"
       },
       {
-        "number": 1,
+        "number": 12,
         "description": "string"
       },
       {
-        "number": 2,
+        "number": 10,
         "description": "string"
       },
       {
-        "number": 3,
+        "number": 5,
         "description": "string"
       }
     ]
@@ -296,3 +354,25 @@ export default {
     }
 }
 </script>
+<!-----
+*
+Style scoped
+*
+------>
+<style lang="scss" scoped>
+    .layout-home {
+      overflow-x: hidden;
+    }
+    .c-section-listfeatures-ellipse {
+      position: absolute;
+      left: -50px;
+      top: 45px;
+    }
+
+    .c-section-testimonial-ellipse {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      transform: translate(-50%, 50%);
+    }
+</style>

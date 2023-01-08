@@ -71,13 +71,18 @@
         data() {
             return {
                 swiperOptions: {
+                    autoplay: {
+                        delay: 10000,
+                    },
                     loop: true,
                     slidesPerView: 1,
+                    slidesPerGroup: 2,
                     spaceBetween: 30,
                     speed: 1000,
                     pagination: {
                         el: '.swiper-pagination',
                         type: 'bullets',
+                        clickable: true,
                     },
                     navigation: {
                         nextEl: '.swiper__next',
