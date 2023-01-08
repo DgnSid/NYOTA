@@ -8,6 +8,7 @@ Template
         <TheHeaderTalentsList 
             :title="$t('pagetalentlist.header.title')"
             :placeholder="$t('pagetalentlist.header.placeholder')"
+            :totalresults="talentsData['hydra:totalItems']"
         />
         <the-section-list-talents 
             :list="talentsData['hydra:member']"
@@ -46,8 +47,9 @@ Template
             "firstname": "John",
             "lastname": "Doe",
             "job": "Consultant technique",
+            "from": "Paris",
             "profilePicture": {
-                "url": "string"
+                "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
             },
             "school": "string",
             "yearsOfExperience": 1,

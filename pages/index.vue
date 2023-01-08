@@ -47,6 +47,7 @@
             title="Découvrez nos actualités"
             :news="homeData.blockNews.news"
             :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
+            :logo="false"
         />
     </div>
 </template>
@@ -370,6 +371,7 @@ Style scoped
 
     .c-section-testimonial-ellipse {
       position: absolute;
+      z-index: 2;
       bottom: 0;
       transform: translate(-50%, 50%);
     }

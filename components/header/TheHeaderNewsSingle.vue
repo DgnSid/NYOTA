@@ -50,7 +50,24 @@
                             :alt="image.alt"
                             class_string="--left"
                         />
+                        <div class="c-header-news-single__bottom__caption">Légende image</div>
                         <shape-ellipse class="c-header-news-single__bottom__ellipse" :size="300" />
+                    </div>
+                    <div class="offset-lg-1 col-lg-3">
+                        <div class="c-header-news-single__bottom__share">
+                            <a class="c-header-news-single__bottom__share__element" href="#">
+                                <Link />
+                            </a>
+                            <a class="c-header-news-single__bottom__share__element" href="#">
+                                <Facebook />
+                            </a>
+                            <a class="c-header-news-single__bottom__share__element" href="#">
+                                <Twitter />
+                            </a>
+                            <a class="c-header-news-single__bottom__share__element" href="#">
+                                <Linkedin />
+                            </a>
+                        </div>
                     </div>
                 </div>            
             </div>
@@ -64,11 +81,15 @@
 <script>
 
     import ImageBordered from '../ImageBordered.vue';
-import ShapeEllipse from '../ui/ShapeEllipse.vue';
+    import ShapeEllipse from '../ui/ShapeEllipse.vue';
+    import Link from '@/components/svg/Link';
+    import Facebook from '@/components/svg/Facebook';
+    import Twitter from '@/components/svg/Twitter';
+    import Linkedin from '@/components/svg/Linkedin';
 
     export default {
         name: 'HeaderHome',
-        components: {ImageBordered, ShapeEllipse},
+        components: {ImageBordered, ShapeEllipse, Facebook, Twitter, Linkedin, Link},
         props: {
             type: String,
             date: String,
@@ -159,11 +180,41 @@ Style scoped
                 margin-top: -70px;
             }
 
+            .c-header-news-single__bottom__caption {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+                font-family: $font-family-custom;
+                font-style: italic;
+                color: $black;
+            }
+
             .c-header-news-single__bottom__ellipse {
                 position: absolute;
                 bottom: 0;
                 right: 0;
                 transform: translateX(50%);
+            }
+
+            .c-header-news-single__bottom__share {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: -25px;
+                .c-header-news-single__bottom__share__element {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 56px;
+                    min-width: 56px;
+                    border-radius: 100%;
+                    background: $gradientOrange;
+                    margin: 0 8px 8px 0;
+                    border: 1px solid $orange;
+
+                    &:hover {
+                        background: rgba($orange, .5);                        
+                    }
+                }
             }
         }
 

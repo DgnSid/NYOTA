@@ -2,13 +2,14 @@
     <div class="c-pagination"> 
 
       <!--BACK-->
-      <div v-if="currentPage === 1" class="disabledStyle">
+      <div v-if="currentPage === 1" class="c-pagination-prev disabledStyle">
         <span class="hidden">Prev</span>
         <SingleBack />
       </div>  
       <nuxt-link
         v-else
         :to="{ name: 'news-page-page___fr', params: { page: prevPage } }"
+        class="c-pagination-prev"
         :class="buttonStyles"
       >
         <SingleBack />
@@ -50,7 +51,7 @@
 
       <!-- SEPARATOR -->
       <div v-if="currentPage + 2 < totalPagesMinusTwo">
-        <div style="color: red">...</div>
+        <div class="c-pagination__separator">...</div>
       </div>
 
       <!-- ANTE ANTE LAST PAGE -->
@@ -114,7 +115,7 @@
       </nuxt-link>
 
       <!-- FORWARD -->
-      <div v-if="currentPage == totalPages" class="disabledStyle">
+      <div v-if="currentPage == totalPages" class="c-pagination-next disabledStyle">
         <span class="hidden">Next</span>
         <SingleFwd />
       </div>
@@ -123,6 +124,7 @@
         v-else
         :to="{ name: 'news-page-page___fr', params: { page: nextPage } }"
         :class="buttonStyles"
+        class="c-pagination-next"
       >
         <span class="hidden">Next</span>
         <SingleFwd />
@@ -222,6 +224,14 @@
             align-items: center;
             justify-content: center;
 
+            .c-pagination-next {
+              margin-left: 40px;
+            }
+
+            .c-pagination-prev {
+              margin-right: 40px;
+            }
+
             .hidden {
                 display: none;
             }
@@ -236,6 +246,11 @@
 
             .c-pagination__page {
               padding: 0 15px;
+            }
+
+            .c-pagination__separator {
+              color: $orange;
+              filter: grayscale(1);
             }
 
             a {

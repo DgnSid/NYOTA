@@ -3,11 +3,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 a-stagger-element__listtalents" v-for="(element, index) in list" :key="index">
-                    test {{ element.firstname }}
+                    <card-talent 
+                        :firstname="element.firstname"
+                        :lastname="element.lastname.slice(0,1)"
+                        :job="element.job"
+                        :school="element.school"
+                        :profilePicture="element.profilePicture"
+                        :yearsOfExperience="element.yearsOfExperience"
+                        :hasBeenConsulted="element.hasBeenConsulted"
+                        from="Paris"
+                        :industry="element.industry"
+                        :id="element.id"
+                    />
                 </div>
             </div>
         </div>
-        <div class="container a-stagger-element__listtalents">
+        <div v-if="list.totalItems > 9" class="container a-stagger-element__listtalents">
             <cta
                 url="cta.url"
                 title="Afficher plus de profil"
@@ -25,7 +36,7 @@
         gsap.registerPlugin(ScrollTrigger);
     }
 
-    import cardTalent from '@/components/card/cardNewsAlt.vue';
+    import cardTalent from '@/components/card/cardTalent.vue';
     import Cta from '../Cta.vue';
 
     export default {

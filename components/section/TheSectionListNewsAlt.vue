@@ -65,7 +65,8 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-section-listnewsalt {
-        padding: 60px 0;
+        margin-top: -210px;
+        padding: 0 0 60px 0;
         background-color: $white;
     }
 </style>

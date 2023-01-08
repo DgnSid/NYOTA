@@ -30,6 +30,11 @@
                 </defs>
                 </svg>
             </div>
+            <select class="c-header-news__select a-stagger-element">
+                <option value="">Type</option>
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+            </select>
         </div>
         
         <div class="c-header-news__logo a-stagger-element">
@@ -83,6 +88,23 @@ Style scoped
             right: 0;
             top: 50%;
             transform: translate(0, -50%);
+        }
+
+        .c-header-news__select {
+            margin-top: 70px;
+
+            border: 1px solid $orange;
+            border-radius: 40px;
+            color: $black;
+            width: 200px;
+            background-color: transparent;
+            padding: 20px 16px;
+
+            appearance: none;
+            background-image: url('/arrow-down.svg');
+            background-repeat: no-repeat;
+            background-position: calc(100% - 20px) center;
+
         }
 
         .c-header-news__content {

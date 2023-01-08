@@ -35,23 +35,24 @@
             <shape-ellipse :size="292" class="c-about-ellipse-future"/>
         </div>
         <TheSectionListGoals
-            title="Nos objectifs"
+            :title="$t('pageabout.section_goals.title')"
             :goals="aboutData.blockGoals.goals"
+            :target="true"
         />
         <TheSectionPodcast
             :title="aboutData.blockPodcast.title"
             :image="aboutData.blockPodcast.image"
             :text="aboutData.blockPodcast.description"
-            :cta="{'title':`S'inscrire sur notre plateforme`, 'url':'#'}"
+            :cta="{'title': $t('pageabout.section_podcast.cta_text'), 'url':$t('pageabout.section_podcast.cta_url')}"
         />
         <TheSectionListNews
-            title="Découvrez nos actualités"
+            :title="$t('pageabout.section_news.title')"
             :news="aboutData.blockNews.news"
             :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
-            hook_title="Vous êtes<br>intéréssés ?"
+            :hook_title="$t('pageabout.section_news.hook')"
             :hook_image="{'url':'/img_hook_news.png', 'alt':'#'}"
-            :hook_cta_first="{'title':'JE SUIS UN TALENT', 'url':'#'}"
-            :hook_cta_second="{'title':'Découvrir nos offres', 'url':'#'}"
+            :hook_cta_first="{'title': $t('pageabout.section_news.cta_first_text'), 'url': $t('pageabout.section_news.cta_first_url')}"
+            :hook_cta_second="{'title': $t('pageabout.section_news.cta_first_text'), 'url': $t('pageabout.section_news.cta_first_url')}"
         />
     </div>
 </template>

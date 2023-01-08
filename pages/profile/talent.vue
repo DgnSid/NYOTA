@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-contact">
+    <div class="layout-profile-talent">
         <TheHeaderProfileTalent
             :photo="profileTalentData.blockHeader.photo"
             :name="profileTalentData.blockHeader.name"
@@ -8,6 +8,7 @@
         />
         <TheSectionProfileCv
             :data="profileTalentData.blockContent"
+            :ellipse="true"
         />
     </div>
 </template>
@@ -61,3 +62,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+    .layout-profile-talent {
+        overflow-x: hidden;
+    }
+</style>

@@ -50,3 +50,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .layout-profile-company {
+        overflow-x: hidden;
+    }
+</style>

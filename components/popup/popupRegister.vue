@@ -41,19 +41,25 @@ Script
 <script>
     import Cta from '../Cta.vue';
     import Close from '../svg/Close';
+    import { eventHub } from '@/plugins/eventhub'
 
     export default {
         name: 'popupRegister',
-        components: { Cta, Close, Close },
+        components: { Cta, Close},
         data: function () {
             return {
-                isActive: false,
+                isActive: false
             }
+        },
+        mounted: function () {
+            eventHub.$on('open-popup', (data) => {
+                this.isActive = data
+            })
         },
         methods: {
             closePopup() {
-                console.log('close')
                 this.isActive = false
+                eventHub.$emit('close-popup', false)
             },
         }
     };

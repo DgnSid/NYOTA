@@ -64,6 +64,10 @@ Style scoped
             height: 100%;
         }
 
+        .c-card-news-alt__image {
+            height: 308px;
+        }
+
         .c-card-news-alt__text {
             padding-left: 20px;
             .c-card-news-alt__text__date {
@@ -85,6 +89,14 @@ Style scoped
                 font-size: 1.375rem;
                 line-height: 1.625rem;
                 font-weight: 400;
+
+                transition: color .2s ease-out;
+            }    
+        }
+
+        &:hover {
+            .c-card-news-alt__text__title {
+                color: $orange;
             }
         }
     }

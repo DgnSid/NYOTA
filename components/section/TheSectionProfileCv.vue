@@ -1,10 +1,12 @@
 <template>
-    <section class="c-section-profile-cv">
+    <section class="c-section-profile-cv" :class="nopadding">
         <div class="container">
             <div class="c-section-profile-cv__content">
-                <h2 class="c-section-profile-cv__title a-stagger-element__section-profile-cv">Formation et expérience</h2>
+                <div :class="offset">
+                    <h2 class="c-section-profile-cv__title a-stagger-element__section-profile-cv">Formation et expérience</h2>
+                </div>
                 <div class="row">
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_industry_passed" :key="index">
@@ -20,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_industry_wish" :key="index">
@@ -36,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_specialisation" :key="index">
@@ -52,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_work_where_wish" :key="index">
@@ -68,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_from" :key="index">
@@ -84,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
+                    <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_nationality" :key="index">
@@ -103,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <shape-ellipse class="c-section-profile-cv__ellipse a-stagger-element__section-profile-cv" size="216" />
+        <shape-ellipse v-if="ellipse" class="c-section-profile-cv__ellipse a-stagger-element__section-profile-cv" size="216" />
     </section>
 </template>
 
@@ -122,6 +124,9 @@
         components: { ShapeEllipse },
         props: {
             data: Object,
+            ellipse: Boolean,
+            offset: String,
+            nopadding: String,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -148,6 +153,10 @@ Style scoped
         position: relative;
         background-color: $white;
         padding: 80px 0;
+
+        &.--nopadding {
+            padding: 0;
+        }
 
         .c-section-profile-cv__title {
             font-family: $font-family-custom;

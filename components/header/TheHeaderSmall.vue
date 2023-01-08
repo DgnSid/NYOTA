@@ -3,7 +3,7 @@
         <div class="container">
             <div class="c-header-small__content">
                 <div class="row">
-                    <div class="offset-lg-1 col-lg-11">
+                    <div class="offset-lg-1 col-lg-12">
                         <h1 class="c-header-small__title a-stagger-element__header-small">
                             {{title}}
                         </h1>
@@ -32,7 +32,7 @@
 
     export default {
         name: 'HeaderSmall',
-        components: { ImageBordered },
+        components: { },
         props: {
             title: String,
             text: String,
