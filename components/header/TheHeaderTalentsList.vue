@@ -188,11 +188,19 @@ Style scoped
         position: relative;
         padding-top: 140px;
 
+        @include media-breakpoint-down(md) {
+            overflow-x: hidden;
+        }
+
         .c-header-talentslist__ellipse {
             position: absolute;
             top: 50%;
             right: -72px;
             transform: translateY(-50%);
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
 
         .c-header-talentslist__title {
@@ -218,6 +226,10 @@ Style scoped
 
                 &::placeholder {
                     color: $orange;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
                 }
 
             }

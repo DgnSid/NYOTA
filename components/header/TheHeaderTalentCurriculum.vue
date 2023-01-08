@@ -6,7 +6,7 @@
             </svg>
         </div>
         <div class="container">
-            <div class="offset-lg-1 col-lg-23">
+            <div class="offset-lg-1 col-lg-23 md-down-p-0">
                 <div class="c-section-talent-curriculum-container">
                     <nuxt-link class="c-section-talent-curriculum-container__back" :to="$t('pagetalentsingle.backtotalents_url')">
                         <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +122,10 @@
             position: absolute;
             top: 0;
             right: 0;
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
        
 
@@ -200,6 +204,10 @@
             border-top: 1px solid $orange;
             border-bottom: 1px solid $orange;
             color: $black;
+
+            @include media-breakpoint-down(md) {
+                padding: 48px 10px;
+            }
 
             .c-section-talent-curriculum__bottom-container__title {
                 font-size: 2rem;

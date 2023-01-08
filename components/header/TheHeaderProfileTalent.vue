@@ -112,6 +112,11 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        @include media-breakpoint-down(md) {
+            height: auto;
+            padding-top: 120px;
+        }
+
         .c-header-profiletalent__content {
             .c-header-profiletalent__content__infos {
                 .c-header-profiletalent__content__infos__title {
@@ -136,6 +141,10 @@ Style scoped
                     align-items: center;
                     color: $black;
                     margin-bottom: 80px;
+
+                    @include media-breakpoint-down(md) {
+                        margin-bottom: 20px;
+                    }
                 }
 
                 .c-header-profiletalent__content__infos__file {
@@ -200,6 +209,8 @@ Style scoped
 
                 font-size: 4.75rem;
                 line-height: 3.875rem;
+
+                padding-top: 20px;
             }
 
             @include media-breakpoint-down(sm) {
@@ -213,6 +224,10 @@ Style scoped
             text-decoration: underline;
             font-size: 1.125rem;
             cursor: pointer;
+
+            @include media-breakpoint-down(md) {
+                margin-bottom: 80px;
+            }
         }
 
         .c-header-profiletalent__logo {

@@ -130,6 +130,10 @@ Style scoped
                 position: absolute;
                 bottom: 120px;
                 right: -80px;
+
+                @include media-breakpoint-down(md) {
+                    display: none;
+                }
             }
             
             .c-header-profilecompany__content__infos {

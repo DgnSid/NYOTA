@@ -85,6 +85,10 @@ Style scoped
             position: absolute;
             top: 170px;
             left: 0;
+
+            @include media-breakpoint-down(md) {
+                padding: 0 10px;
+            }
         }
 
         .c-header-connexion__title {
@@ -123,6 +127,10 @@ Style scoped
 
         .c-header-connexion__image {
             height: 700px;
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
 
         .c-header-connexion__logo {

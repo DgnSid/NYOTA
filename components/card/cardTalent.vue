@@ -94,6 +94,7 @@ Style scoped
 
             .c-card-talent__top__name {
                 font-size: 2rem;
+                line-height: 2rem;
                 font-family: $font-family-custom;
             }
             
@@ -186,6 +187,7 @@ Style scoped
         &:hover {
             .c-card-talent__top__name {
                 color: $orange;
+
             }
             
             .c-card-talent__top__arrow {
