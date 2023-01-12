@@ -1,40 +1,26 @@
 <template>
 	<div class="c-formregistertalent">
   		<div class="container">
-  		  	<form>
   		  	  	<div class="row">
-					<div class="offset-lg-7 col-lg-10">
+					<div class="offset-lg-8 col-lg-12">
 						<h2 class="c-formregistertalent__title">
 							{{ title }}
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
-  		  	  	  		
 						<div class="c-formregistertalent__field">
-                        	<label>Nom  <span>*</span></label>
-  		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputFirstName($event)" />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
-						</div>
-
-						<div class="c-formregistertalent__field">
-                        	<label>Prénom <span>*</span></label>
-  		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputLastName($event)" />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
-						</div>
-
-						<div class="c-formregistertalent__field">
-                        	<label>Genre <span>*</span></label>
-							<div class="c-formregistertalent__field__radiolist">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="drone" value="1" v-model="gender">
-									<label for="1">Homme</label>
+                        	<label class="ta-c">Où aimeriez-vous travailler ?</label>
+							<div class="c-formregistertalent__field__checkboxlist" role="radiogroup">
+								<div class="c-formregistertalent__field__checkboxelement">
+									<input type="checkbox" id="1" name="work_where" value="1" v-model="work_where" role="cjeckbox" aria-checked="false"  aria-labelledby="label-1">
+									<label id="label-1" for="1" tabindex="0">Afrique du Nord</label>
 								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="drone" value="2" v-model="gender">
-									<label for="2">Femme</label>							
+								<div class="c-formregistertalent__field__checkboxelement">
+									<input type="checkbox" id="2" name="work_where" value="2" v-model="work_where" role="cjeckbox" aria-checked="false" aria-labelledby="label-2">
+									<label id="label-2" for="2" tabindex="0">Afrique du Sud</label>							
 								</div>
-								<div class="c-formregistertalent__field__radioelement">									
-									<input type="radio" id="3" name="drone" value="3" v-model="gender">
-									<label for="3">Autre</label>							
+								<div class="c-formregistertalent__field__checkboxelement">									
+									<input type="checkbox" id="3" name="work_where" value="3" v-model="work_where" role="cjeckbox" aria-checked="false" aria-labelledby="label-3">
+									<label id="label-3" for="3" tabindex="0">Afrique de l'Est</label>							
 								</div>
 							</div>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
@@ -56,14 +42,12 @@
                                 </svg>
 								<span>{{back_title}}</span>
 							</nuxt-link>
-						    <button ref="submit" class="c-formregistertalent__bottom__submit --bordered disabled" type="submit">
+						    <button ref="submit" class="c-formregistertalent__bottom__submit --bordered disabled" @click="handleSubmit()">
 						    	<span class="c-formregistertalent__bottom__submit__text">{{submit_title}}</span>
 						    </button>
                         </div>
 					</div>
   		  	  	</div>
-  		  	</form>
-
 			<shape-ellipse class="c-formregistertalent__ellipse" :size="210" />
 		</div>
 	</div>
@@ -78,9 +62,7 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				input_firstname: '',
-				input_lastname: '',
-				gender: '',
+				work_where: [],
 				is_form_submittable: false,
 			}
 		},
@@ -91,37 +73,19 @@
 			back_title: String,
 			back_url: String,
 			submit_title: String,
+			submit_url: String,
         },
+		mounted() {
+			this.work_where = this.$store.state.registertalent.inputWorkWhereWanted
+		},
 		methods: {
-			async handleSubmit() {
-				console.log('handleSubmit')
-			},
-			checkInputFirstName($event) {
-				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
-					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
-					this.input_firstname = value
-    			} else {
-					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_firstname = ''
-    			}
-
-				this.isFormSubmittable()
-			},
-			checkInputLastName($event) {
-				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
-					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
-					this.input_lastname = value
-    			} else {
-					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_lastname = ''
-    			}
-
-				this.isFormSubmittable()
+			handleSubmit(){
+				this.$store.commit('registertalent/mutateInputWorkWhereWanted', this.work_where)
+				this.$router.push({path: '/register/talent/steps/2/5'})
 			},
 			isFormSubmittable() {
-				if(this.gender && this.input_lastname && this.input_firstname) {
+				console.log(this.work_where)
+				if(this.work_where.length >= 1) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -131,10 +95,10 @@
 			}
 		},
 		watch: {
-   			gender() {
+   			work_where() {
 				this.isFormSubmittable()
    			},
-		}
+		},
 	}
 </script>
 
@@ -213,20 +177,12 @@ Style scoped
 			}
 		}
 
-		input[type="text"] {
-			border: 1px solid rgba($dark-grey, .2);
-			border-radius: 40px;
-			height: 50px;
-			width: 100%;
-			padding-left: 20px;
-		}
-
-
-		.c-formregistertalent__field__radiolist {
+		.c-formregistertalent__field__checkboxlist {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 		}
-		.c-formregistertalent__field__radioelement {
+		.c-formregistertalent__field__checkboxelement {
 			display: flex;
 			align-items: center;
 
@@ -244,15 +200,21 @@ Style scoped
 				padding: 5px 15px;
 			}
 
-			input[type="radio"] {
+			input[type="checkbox"] {
 				display: none;
 			}
 
-			input[type="radio"]:checked + label {
+			input[type="checkbox"]:checked + label {
 				background-color: $orange;
 				color: $white;
 				font-weight: 400;
 			}
+
+			// input[type="checkbox"] + label:focus {
+			// 	background-color: $orange;
+			// 	color: $white;
+			// 	font-weight: 400;
+			// }
 		}
 
 		
@@ -289,6 +251,7 @@ Style scoped
 					color: $white;
 				}				
 
+				&:focus,
 				&:hover {
         	    	background: $white;
         	    	span {

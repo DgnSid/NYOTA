@@ -53,7 +53,8 @@ export default {
   plugins: [
     '~/plugins/filters.js',
     '~/plugins/mixins.js',
-    { src: '@/plugins/slider', mode: 'client' }
+    { src: '@/plugins/slider', mode: 'client' },
+    { src: '@/plugins/persistedState.js' },
   ],
 
   /*

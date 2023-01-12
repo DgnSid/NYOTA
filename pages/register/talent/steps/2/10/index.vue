@@ -4,21 +4,21 @@ Template
 *
 ------>
 <template>
-	<div class="layout__talents">
+	<div class="layout__registertalents">
         <TheHeaderRegister
             :title="$t('registertalent.header.title')"
             :text="$t('registertalent.header.text')"
             :logo="true"
         />
         <TheSectionListRegisterSteps
-            :step="1"
+            :step="2"
         />
-        <TheFormRegisterTalent 
-            :title="$t('registerform.steps.one.title')"
-            :step_current_specific="1"
-            :step_current_total="1"
+        <TheFormRegisterTalentStepTwoTen
+            :title="$t('registerform.steps.two.title')"
+            :step_current_specific="10"
+            :step_current_total="12"
             :back_title="$t('registerform.form.back_title')"
-            back_url="#"
+            back_url="/register/talent/steps/2/9"
             :submit_title="$t('registerform.form.next')"
         />
     </div>
@@ -27,15 +27,19 @@ Template
 <script>
     import TheHeaderRegister from '@/components/header/TheHeaderRegister'
     import TheSectionListRegisterSteps from '@/components/section/TheSectionListRegisterSteps'
-    import TheFormRegisterTalent from '@/components/forms/TheFormRegisterTalent';
+    import TheFormRegisterTalentStepTwoTen from '@/components/forms/TheFormRegisterTalentStepTwoTen';
 
     export default {
         name: "Talents",
-        components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalent },
+        components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoTen },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
 
         }
     }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .layout__registertalents {
+        overflow-x: hidden;
+    }
+</style>

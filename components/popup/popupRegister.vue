@@ -14,7 +14,7 @@ Template
                 <div class="c-popup-register__content__left__intro">Je cherche une opportunité en Afrique</div>
                 <div class="c-popup-register__content__left__text">Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.</div>
                 <cta
-                    url="#"
+                    url="/register/talent/steps/1"
                     title="s'inscrire"
                     class="c-popup-register__content__left__cta"
                 />
