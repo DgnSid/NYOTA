@@ -70,5 +70,37 @@
         "post": "Poste recherché",
         "sector": "Secteurs d'activités",
         "download_cv": "Télécharger le cv"
+    },
+    "registertalent": {
+        "header": {
+            "title": "S’inscrire",
+            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        }
+    },
+    "registerform": {
+        "steps": {
+            "one": {
+                "title": "Informations personnelles",
+                "url": "#"
+            },
+            "two": {
+                "title": "Formation et expérience",
+                "url": "#"
+            },
+            "three": {
+                "title": "CV",
+                "url": "#"
+            },
+            "four": {
+                "title": "Création du compte",
+                "url": "#"
+            }
+        },
+        "form": {
+            "back_title": "Retour",
+            "next": "suivant",
+            "mandatory": "* champs obligatoire",
+            "error_message": "Le champ n'est pas correct"
+        }
     }
 }
