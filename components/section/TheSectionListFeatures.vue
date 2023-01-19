@@ -2,7 +2,7 @@
     <section class="c-section-listfeatures">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-r order-lg-1 order-md-2 order-sm-2 order-2 a-stagger-element__listfeatures">
+                <div class="col-lg-8 p-r order-lg-1 order-md-2 order-sm-2 order-2 sm-down-mt-md a-stagger-element__listfeatures">
                     <ImageBordered 
                         :url="image.url"
                         :alt="image.alt"
@@ -98,8 +98,8 @@ Style scoped
             padding-bottom: 60px;
 
             @include media-breakpoint-down(md) {
-                font-size: 3.125rem;
-                line-height: 3.5rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
     }

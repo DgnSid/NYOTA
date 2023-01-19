@@ -15,19 +15,22 @@
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('poste', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Poste</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Poste</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="post_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="poste">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="post_checkbox" type="checkbox" :name="'postes_' + index" :id="'postes_' + index" />
-                        <label :for="'postes_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'postes_' + index"  @click="countActiveCheckboxes('post_checkbox', 'post_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('post_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('post_checkbox', 'post_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
 
@@ -35,95 +38,110 @@
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('sector', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Secteur</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Secteur</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="sector_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="sector">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="sector_checkbox" type="checkbox" :name="'sector_' + index" :id="'sector_' + index" />
-                        <label :for="'sector_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'sector_' + index" @click="countActiveCheckboxes('sector_checkbox', 'sector_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox', 'sector_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
             <!---->
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('formation', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Formation</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Formation</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="formation_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="formation">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="formation_checkbox" type="checkbox" :name="'formation_' + index" :id="'formation_' + index" />
-                        <label :for="'formation_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'formation_' + index" @click="countActiveCheckboxes('formation_checkbox', 'formation_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('formation_checkbox', 'formation_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
             <!---->
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('contract', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Contrat</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Contrat</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="contract_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="contract">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="contract_checkbox" type="checkbox" :name="'contract_' + index" :id="'contract_' + index" />
-                        <label :for="'contract_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'contract_' + index" @click="countActiveCheckboxes('contract_checkbox', 'contract_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('contract_checkbox', 'contract_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
             <!---->
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('date', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Date</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Date</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="date_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="date">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="date_checkbox" type="checkbox" :name="'date_' + index" :id="'date_' + index" />
-                        <label :for="'contract_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'date_' + index" @click="countActiveCheckboxes('date_checkbox', 'date_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('date_checkbox', 'date_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
             <!---->
             <div class="c-header-talentslist__bottom__element">
                 <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('location', $event)">
                     <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <span class="c-header-talentslist__bottom__element__top__text">Lieu</span>
+                    <div class="c-header-talentslist__bottom__element__top__text">
+                        <span>Lieu</span>
+                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="location_number"></div>
+                    </div>
                     <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                 </div>
                 <div class="c-header-talentslist__bottom__element__dropdown" ref="location">
                     <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
                         <input ref="location_checkbox" type="checkbox" :name="'location_' + index" :id="'location_' + index" />
-                        <label :for="'contract_' + index">Ceci est un sous-menu 01</label>
+                        <label :for="'location_' + index" @click="countActiveCheckboxes('location_checkbox', 'location_number')">Ceci est un sous-menu 01</label>
                     </div>
 
                     <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
                     <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('location_checkbox', 'location_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
         </div>
@@ -161,10 +179,34 @@
                    
         },
         methods: {
-            uncheckCheckboxes(ref) {
+            countActiveCheckboxes(ref_checkbox, ref_number) {
+                let count = 0;
+
+                setTimeout(() => {
+                    this.$refs[ref_checkbox].forEach( el => {
+                        if(el.checked) {
+                            count++
+                        }
+                    })
+
+                    if(count) {
+                        this.$refs[ref_number].classList.add('active')
+                        this.$refs[ref_number].innerHTML = ''
+                        this.$refs[ref_number].append(count)
+                    } else {
+                        this.$refs[ref_number].classList.remove('active')
+                        this.$refs[ref_number].innerHTML = ''
+                    }
+                })
+
+                
+            },
+            uncheckCheckboxes(ref, ref_number) {
                 this.$refs[ref].forEach( el => {
                     el.checked = false;
                 })
+
+                this.countActiveCheckboxes(ref, ref_number)
             },
             dropdownFilter(ref, $event) {
                 $event.target.closest('.js-filtermenutoggle-element').classList.toggle('active')
@@ -284,6 +326,8 @@ Style scoped
                 cursor: pointer;
 
                 .c-header-talentslist__bottom__element__top {
+                    display: flex;
+                    align-items: center;
                 .c-header-talentslist__bottom__element__top__cover {
                         position: absolute;
                         top: 0;
@@ -299,7 +343,38 @@ Style scoped
                     }
                 }
 
+                .c-header-talentslist__bottom__element__top__text {
+                    position: relative;
+                }
+                .c-header-talentslist__bottom__element__top__text__number {
+                    height: 18px;
+                    width: 18px;
+                    border-radius: 100%;
+                    background-color: $orange;
+                    color: $white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    right: 4px;
+
+                    font-size: .8rem;
+                    line-height: .8rem;
+
+                    opacity: 0;
+                    visibility: hidden;
+                    display: none;
+
+                    &.active {
+                        display: flex;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
                 span {
+                    position: relative;
                     padding-right: 24px;
                     font-weight: 700;
                 }

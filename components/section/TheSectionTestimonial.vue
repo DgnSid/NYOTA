@@ -128,6 +128,11 @@
             margin-bottom: 80px;
             max-width: 925px;
             margin: 0 auto;
+
+            @include media-breakpoint-down(md) {
+                font-size: 2.825rem;
+                line-height: 3rem;
+            }
         }
 
         .swiper-slide {

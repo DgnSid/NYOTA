@@ -14,6 +14,22 @@
         "login_title": "Connexion",
         "login_url": "/connexion"
     },
+    "popup_register": {
+        "talent": {
+            "type": "Talent",
+            "title": "Je cherche une opportunité en Afrique",
+            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "cta_url": "#",
+            "cta_title": "S'inscrire"
+        },
+        "company": {
+            "type": "Entreprise",
+            "title": "Je suis une entreprise implantée en Afrique",
+            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "cta_url": "#",
+            "cta_title": "S'inscrire"
+        }
+    },
     "section_figures_title": "Nyota en<br>chiffres c’est...",
     "single_news": {
         "back": "Retour aux actualités",
@@ -32,6 +48,13 @@
         "adveris": "Site internet crée par Adveris",
         "contact": "Nous contacter"
     },
+    "pagehome": {
+        "section_news": {
+            "title": "Découvrez nos actualités",
+            "cta_url": "/news/page/1",
+            "cta_title": "Voir toutes les actualités"
+        }
+    },
     "pageabout": {
         "section_goals": {
             "title": "Nos objectifs"
@@ -43,6 +66,47 @@
         "section_news": {
             "title": "Découvrez nos actualités",
             "hook": "Vous êtes<br>intéréssés ?",
+            "cta_title": "Découvrez nos actualités",
+            "cta_url": "/news/page/1",
+            "cta_first_text": "JE SUIS UN TALENT",
+            "cta_first_url": "#",
+            "cta_second_text": "Découvrir nos offres",
+            "cta_second_url": "#"
+        }
+    },
+    "pagelandingcompany": {
+        "section_goals_one": {
+            "title": "Bénéficier des meilleurs talents avec Nyota"
+        },
+        "section_goals_two": {
+            "title": "A chaque besoin une offre adaptée"
+        },
+        "section_feature": {
+            "title": "Les plus de Nyota"
+        },
+        "section_news": {
+            "title": "Découvrez nos actualités",
+            "hook": "Vous êtes<br>intéréssés ?",
+            "cta_title": "Découvrez nos actualités",
+            "cta_url": "/news/page/1",
+            "cta_first_text": "JE SUIS UN TALENT",
+            "cta_first_url": "#",
+            "cta_second_text": "Découvrir nos offres",
+            "cta_second_url": "#"
+        }
+    },
+    "pagelandingtalent": {
+        "section_goals_one": {
+            "title": "Nyota, une nouvelle façon de faire les choses"
+        },
+        "section_goals_two": {
+            "title": "Enrichir son parcours professionnel"
+        },
+        "section_news": {
+            "title": "Découvrez nos actualités",
+            "hook": "Vous êtes<br>intéréssés ?",
+            "cta_title": "Découvrez nos actualités",
+            "cta_url": "/news/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
             "cta_first_url": "#",
             "cta_second_text": "Découvrir nos offres",
@@ -70,6 +134,21 @@
         "post": "Poste recherché",
         "sector": "Secteurs d'activités",
         "download_cv": "Télécharger le cv"
+    },
+    "pageregistercompany": {
+        "id_company_name": "id_company_name",
+        "label_company_name": "Nom de l'entreprise",
+        "id_contact_name": "id_contact_name",
+        "label_contact_name": "Nom et prénom du contact référent",
+        "label_email": "Adresse e-mail du contact référent",
+        "label_phone": "Numéro de téléphone du contact référent",
+        "label_logo": "Logo de l’entreprise",
+        "label_password": "Mot de passe",
+        "label_password_confirm": "Confirmation mot de passe",
+        "label_rgpd": "En cochant cette case, j’affirme avoir pris connaissance de la politique de confidentialité de Nyota.",
+        "label_marketing": "marketing",
+        "submit_title": "Créer mon compte",
+        "mandatory": "* Champ obligatoire"
     },
     "registertalent": {
         "header": {

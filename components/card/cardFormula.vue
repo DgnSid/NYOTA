@@ -59,7 +59,7 @@ Style scoped
             font-family: $font-family-custom;
             font-style: italic;
             font-size: 2rem;
-            line-height: 2.75rem;
+            line-height: 2.2rem;
             background: $gradientOrange;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;

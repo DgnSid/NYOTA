@@ -6,7 +6,7 @@
                     {{title}}
                 </h1>
 
-                <svg class="a-stagger-element" width="108" height="101" viewBox="0 0 108 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="c-header-news__pen a-stagger-element" width="108" height="101" viewBox="0 0 108 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1549_2044)">
                 <path d="M70.1202 71.89C73.0702 73.48 109.01 5.59999 106.06 4.00999C104.79 3.31999 102.24 1.94999 100.97 1.26999C98.3202 -0.16001 62.3802 67.72 65.0302 69.15C66.3002 69.84 68.8502 71.21 70.1202 71.89Z" stroke="#1D67F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M75.6104 50.83C75.1104 51.94 74.6104 53.04 74.1104 54.15" stroke="#1D67F1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,11 +83,21 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        .c-header-news__pen {
+            @include media-breakpoint-down(sm) {
+                display: none;
+            }
+        }
+
         .c-header-news__logo {
             position: absolute;
             right: 0;
             top: 50%;
             transform: translate(0, -50%);
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
 
         .c-header-news__select {

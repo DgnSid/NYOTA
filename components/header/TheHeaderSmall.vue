@@ -96,8 +96,8 @@ Style scoped
             }
 
             @include media-breakpoint-down(sm) {
-                font-size: 3.75rem;
-                line-height: 2.875rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
 
