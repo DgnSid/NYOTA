@@ -10,24 +10,28 @@ Template
                 <close />
             </div>
             <div class="c-popup-register__content__left">
-                <h2 class="c-popup-register__content__left__title">Talent</h2>
-                <div class="c-popup-register__content__left__intro">Je cherche une opportunité en Afrique</div>
-                <div class="c-popup-register__content__left__text">Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.</div>
-                <cta
-                    url="/register/talent/steps/1"
-                    title="s'inscrire"
-                    class="c-popup-register__content__left__cta"
-                />
+                <h2 class="c-popup-register__content__left__title">{{ $t('popup_register.talent.type') }}</h2>
+                <div class="c-popup-register__content__left__intro">{{ $t('popup_register.talent.title') }}</div>
+                <div class="c-popup-register__content__left__text">{{ $t('popup_register.talent.text') }}</div>
+                <div @click="closePopup">
+                    <cta
+                        :url="$t('popup_register.talent.cta_url')"
+                        :title="$t('popup_register.talent.cta_title')"
+                        class="c-popup-register__content__left__cta"
+                    />
+                </div>
             </div>
             <div class="c-popup-register__content__right">
-                <h2 class="c-popup-register__content__right__title">Entreprise</h2>
-                <div class="c-popup-register__content__right__intro">Je suis une entreprise implantée en Afrique</div>
-                <div class="c-popup-register__content__right__text">Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.</div>
-                <cta
-                    url="#"
-                    title="s'inscrire"
-                    class="c-popup-register__content__right__cta --bordered"
-                />
+                <h2 class="c-popup-register__content__right__title">{{ $t('popup_register.company.type') }}</h2>
+                <div class="c-popup-register__content__right__intro">{{ $t('popup_register.company.title') }}</div>
+                <div class="c-popup-register__content__right__text">{{ $t('popup_register.company.text') }}</div>
+                <div @click="closePopup">
+                    <cta
+                        :url="$t('popup_register.company.cta_url')"
+                        :title="$t('popup_register.company.cta_title')"
+                        class="c-popup-register__content__right__cta --bordered"
+                    />
+                </div>
             </div>
         </div>
     </div>

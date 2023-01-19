@@ -137,8 +137,8 @@ Style scoped
             text-align: center;
 
             @include media-breakpoint-down(md) {
-                font-size: 3.125rem;
-                line-height: 3.5rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
 
@@ -189,6 +189,12 @@ Style scoped
                     line-height: 4.2rem;
                     font-family: $font-family-custom;
                     margin-bottom: 40px;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 2.825rem;
+                        line-height: 3rem;
+                        margin-top: 40px;
+                    }
                 }
 
                 .c-section-listnews__hook__cta-container {

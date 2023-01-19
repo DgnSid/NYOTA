@@ -163,6 +163,11 @@ Style scoped
                 font-size: 4.125rem;
                 line-height: 4.5rem;
                 margin-bottom: 20px;
+
+                @include media-breakpoint-down(md) {
+                    font-size: 2.825rem;
+                    line-height: 3rem;
+                }
             }
 
             .c-header-news-single__content__text {
@@ -200,6 +205,11 @@ Style scoped
                 display: flex;
                 flex-wrap: wrap;
                 margin-top: -25px;
+
+                @include media-breakpoint-down(md) {
+                    margin-top: 50px;
+                }
+
                 .c-header-news-single__bottom__share__element {
                     display: flex;
                     align-items: center;
@@ -222,6 +232,10 @@ Style scoped
             position: absolute;
             right: 0;
             bottom: 0;
+
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
     }
 </style>

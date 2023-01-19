@@ -87,8 +87,8 @@ Style scoped
             margin: 0 auto;
 
             @include media-breakpoint-down(md) {
-                font-size: 3.125rem;
-                line-height: 3.5rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
     }

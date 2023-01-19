@@ -110,13 +110,13 @@ Style scoped
                 display: flex;
                 flex-direction: column;
 
-                font-size: 4.75rem;
-                line-height: 3.875rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
 
             @include media-breakpoint-down(sm) {
-                font-size: 3.75rem;
-                line-height: 2.875rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
 

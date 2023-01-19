@@ -29,7 +29,7 @@ Style scoped
         text-align: center;
 
         @include media-breakpoint-down(md) {
-            margin-bottom: 10px;
+            margin: 10px;
         }
 
         &.--white {
@@ -71,6 +71,10 @@ Style scoped
             color: $white;
 
             transition: .2s ease-out;
+
+            @include media-breakpoint-down(md) {
+                letter-spacing: 2px;
+            }
         }
 
         &:hover {

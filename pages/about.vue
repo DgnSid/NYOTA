@@ -48,11 +48,11 @@
         <TheSectionListNews
             :title="$t('pageabout.section_news.title')"
             :news="aboutData.blockNews.news"
-            :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
+            :cta="{'title': $t('pageabout.section_news.cta_title'), 'url': $t('pageabout.section_news.cta_url')}"
             :hook_title="$t('pageabout.section_news.hook')"
             :hook_image="{'url':'/img_hook_news.png', 'alt':'#'}"
             :hook_cta_first="{'title': $t('pageabout.section_news.cta_first_text'), 'url': $t('pageabout.section_news.cta_first_url')}"
-            :hook_cta_second="{'title': $t('pageabout.section_news.cta_first_text'), 'url': $t('pageabout.section_news.cta_first_url')}"
+            :hook_cta_second="{'title': $t('pageabout.section_news.cta_second_text'), 'url': $t('pageabout.section_news.cta_second_url')}"
         />
     </div>
 </template>

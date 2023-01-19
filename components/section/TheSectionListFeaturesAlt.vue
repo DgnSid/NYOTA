@@ -84,6 +84,10 @@ Style scoped
             background-color: $white;
             border-top-right-radius: 90px;
             border-bottom-left-radius: 90px;
+
+            @include media-breakpoint-down(md) {
+                left: 10px;
+            }
         }
 
         .c-section-listfeatures-alt__title {
@@ -93,8 +97,8 @@ Style scoped
             color: $black;
 
             @include media-breakpoint-down(md) {
-                font-size: 3.125rem;
-                line-height: 3.5rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
 
@@ -107,6 +111,10 @@ Style scoped
             border-bottom: 1px solid $orange;
             padding-bottom: 32px;
             margin-bottom: 32px;
+
+            @include media-breakpoint-down(md) {
+                flex-direction: column;
+            }
 
             .c-section-listfeatures-alt__element__figure {
                 font-size: 2rem;
@@ -126,11 +134,19 @@ Style scoped
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 max-width: 45%;
+
+                @include media-breakpoint-down(md) {
+                    max-width: 90%;
+                }
             }
 
             .c-section-listfeatures-alt__element__text {
                 color: $black;
                 max-width: 45%;
+
+                @include media-breakpoint-down(md) {
+                    max-width: 90%;
+                }
             }
         }
     }

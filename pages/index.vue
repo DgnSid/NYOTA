@@ -44,9 +44,9 @@
           />
         </div>
         <TheSectionListNews
-            title="Découvrez nos actualités"
+            :title="$t('pagehome.section_news.title')"
             :news="homeData.blockNews.news"
-            :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
+            :cta="{'title': $t('pagehome.section_news.cta_title'), 'url': $t('pagehome.section_news.cta_url')}"
             :logo="false"
         />
     </div>

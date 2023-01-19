@@ -26,18 +26,18 @@
         />
         
         <TheSectionListGoals
-            title="Bénéficier des meilleurs talents avec Nyota"
+            :title="$t('pagelandingcompany.section_goals_one.title')"
             :goals="landingCompanyData.blockBenefits.benefits"
             :background="true"
         />
        
         <TheSectionListGoals
-            title="A chaque besoin une offre adaptée"
+            :title="$t('pagelandingcompany.section_goals_two.title')"
             :goals="landingCompanyData.blockOffers.offers"
         />
 
         <TheSectionListFeaturesAlt
-            title="Les plus de Nyota"
+            :title="$t('pagelandingcompany.section_feature.title')"
             :features="landingCompanyData.blockFeatures.features"
             :background="true"
         />
@@ -54,15 +54,14 @@
         />
 
         <TheSectionListNews
-            title="Découvrez nos actualités"
+            :title="$t('pagelandingcompany.section_news.title')"
             :news="landingCompanyData.blockNews.news"
-            :cta="{'title': 'Voir toutes les actualités', 'url': '#'}"
-            hook_title="Vous êtes<br>intéréssés ?"
+            :cta="{'title': $t('pagelandingcompany.section_news.cta_title'), 'url': $t('pagelandingcompany.section_news.cta_url')}"
+            :hook_title="$t('pagelandingcompany.section_news.hook')"
             :hook_image="{'url':'/img_hook_news.png', 'alt':'#'}"
-            :hook_cta_first="{'title':'JE SUIS UN TALENT', 'url':'#'}"
-            :hook_cta_second="{'title':'Découvrir nos offres', 'url':'#'}"
-        />
-    
+            :hook_cta_first="{'title': $t('pagelandingcompany.section_news.cta_first_text'), 'url': $t('pagelandingcompany.section_news.cta_first_url')}"
+            :hook_cta_second="{'title': $t('pagelandingcompany.section_news.cta_second_text'), 'url': $t('pagelandingcompany.section_news.cta_second_url')}"
+        />    
     </div>
 </template>
 

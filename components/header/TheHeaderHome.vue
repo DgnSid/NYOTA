@@ -142,6 +142,7 @@ Style scoped
         }
 
         .c-header-home__share {
+            cursor: pointer;
             position: absolute;
             bottom: 0;
             right: 40px;
@@ -154,6 +155,15 @@ Style scoped
             justify-content: center;
             background-color: $orange;
             z-index: 2;
+            border: 1px $orange solid;
+
+            &:hover {
+                background-color: $white;
+
+                svg {
+                    filter: invert(1);
+                }
+            }
         }
 
         @include media-breakpoint-down(md) {
@@ -168,11 +178,6 @@ Style scoped
             font-weight: 800;
             margin-bottom: 24px;
             color: $black;
-
-            @include media-breakpoint-down(md) {
-                font-size: 2.125rem;
-                line-height: 2.5rem;
-            }
 
             span.--intro_title {
                 display: block;
@@ -206,13 +211,13 @@ Style scoped
                 display: flex;
                 flex-direction: column;
 
-                font-size: 4.75rem;
-                line-height: 3.875rem;
+                font-size: 2.525rem;
+                line-height: 2.6rem;
             }
 
             @include media-breakpoint-down(sm) {
-                font-size: 3.75rem;
-                line-height: 2.875rem;
+                font-size: 2.825rem;
+                line-height: 3rem;
             }
         }
 
@@ -245,6 +250,10 @@ Style scoped
             background-color: $white;
             border-radius: 40px;
             padding: 40px;
+
+            @include media-breakpoint-down(md) {
+                margin-bottom: 60px;
+            }
 
             .c-header-home__list-element {
 
