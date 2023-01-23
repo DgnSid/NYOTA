@@ -1,0 +1,297 @@
+.c-formregistertalent {
+    position: relative;
+    padding-top: 60px;
+    .c-formregistertalent__title {
+        color: $black;
+        font-size: 32px;
+        font-weight: 200;
+        font-family: $font-family-default;
+        margin-bottom: 40px;
+        text-align: center;
+
+        sup {
+            color: $orange;
+        }
+    }
+
+    .c-formregistertalent__mandatory {
+        color: $black;
+        font-size: .75rem;
+        margin-bottom: 42px;
+    }
+
+    .c-formregistertalent__separator {
+        height: 250px;
+        width: 1px;
+        background-color: $orange;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .c-formregistertalent__upload {
+
+        .c-formregistertalent__upload__title {
+            color: $black;
+            font-size: 2rem;
+            line-height: 2rem;
+            text-align: center;
+            font-family: $font-family-default;
+            font-weight: 200;
+            margin-bottom: 40px;
+        }
+
+        .c-formregistertalent__upload__trigger {
+            border: 1px dashed orange;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 90px;
+            height: 150px;
+            cursor: pointer;
+
+            .c-formregistertalent__upload__trigger__uploaded {
+                width: 100%;
+                height: 100%;
+                background-size: contain;
+
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $black;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+
+            .c-formregistertalent__upload__trigger__container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+
+            .c-formregistertalent__upload__trigger__icon {
+                margin-bottom: 20px;
+            }
+
+            .c-formregistertalent__upload__trigger__text {
+                color: $black;
+                font-size: .8rem;
+                margin-bottom: 20px;
+            }
+
+            .c-formregistertalent__upload__trigger__meta {
+                color: $orange;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .c-formregistertalent__field {
+        margin-bottom: 32px;
+
+        input[type="password"],
+        input[type="text"] {
+            border: 1px solid $grey;
+			border-radius: 40px;
+			height: 50px;
+			width: 100%;
+			margin-bottom: 10px;
+			padding-left: 20px;
+        }
+
+        .c-formregistertalent__field__error {
+            font-size: .625rem;
+            text-align: right;
+            display: none;
+        }
+
+        &.error {
+            input[type="text"] {
+                border-color: red;
+                color: red;
+            }
+
+            .c-formregistertalent__field__error {
+                display: block;
+                color: red;
+            }
+        }
+    }
+
+    label {
+        color: $black;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+
+        &.--question {
+            margin-bottom: 40px;
+            justify-content: center;
+            display: flex;
+        }
+
+        a,
+        span {
+            color: $orange;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        &.--checkbox {
+            font-size: .75rem;
+            line-height: 1.5rem;
+            text-transform: none;
+            letter-spacing: 0;
+            cursor: pointer;
+        }
+    }
+
+    .c-formregistertalent__field__radiolist {
+        display: flex;
+        align-items: center;
+    }
+    .c-formregistertalent__field__radioelement {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+
+        label {
+            border: 1px solid rgba($dark-grey, .2);
+            border-radius: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: $orange;
+            font-weight: 700;
+            padding: 5px 15px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]:checked + label {
+            background-color: $orange;
+            color: $white;
+            font-weight: 400;
+        }
+
+        input[type="radio"] + label:focus {
+            background-color: $orange;
+            color: $white;
+            font-weight: 400;
+        }
+    }
+
+    .c-formregistertalent__field__checkboxlist {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .c-formregistertalent__field__checkboxelement {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+
+        label {
+            border: 1px solid rgba($dark-grey, .2);
+            border-radius: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: $orange;
+            font-weight: 700;
+            padding: 5px 15px;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]:checked + label {
+            background-color: $orange;
+            color: $white;
+            font-weight: 400;
+        }
+    }
+
+    select {
+        border: 1px solid $orange;
+        border-radius: 40px;
+        color: $black;
+        width: 300px;
+        background-color: transparent;
+        padding: 20px 16px;
+        margin: 0 auto;
+        display: block;
+
+        appearance: none;
+        background-image: url('/arrow-down.svg');
+        background-repeat: no-repeat;
+        background-position: calc(100% - 20px) center;
+    }
+
+    
+
+    .c-formregistertalent__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .c-formregistertalent__bottom__back {
+            color: $orange;
+
+            svg {
+                margin-bottom: 2px;
+                margin-right: 10px;
+            }
+        }
+        .c-formregistertalent__bottom__submit {
+            position: relative;
+            width: 270px;
+               background: $gradientOrange;
+               padding: 24px 40px;
+               border-radius: 100px;
+               text-align: center;
+            cursor: pointer;
+            border: 1px solid $orange;
+
+            &.disabled {
+                filter: grayscale(1);
+                pointer-events: none;
+            }
+
+            span {
+                text-transform: uppercase;
+                color: $white;
+            }				
+
+            &:focus,
+            &:hover {
+                background: $white;
+                span {
+                    color: $orange;
+                }
+            }
+        }
+    }
+
+    .c-formregistertalent__ellipse {
+        position: absolute;
+        right: -100px;
+        bottom: 0;
+    }
+}

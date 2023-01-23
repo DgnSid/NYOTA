@@ -35,6 +35,7 @@ export default {
   */
   css: [
     '@/assets/sass/main.scss',
+    'vue-multiselect/dist/vue-multiselect.min.css',
   ],
 
   /*

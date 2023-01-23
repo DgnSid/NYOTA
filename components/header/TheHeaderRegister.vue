@@ -77,8 +77,8 @@ Style scoped
 
         .c-header-register__title {
             font-family: $font-family-default;
-            font-size: 5.75rem;
-            line-height: 4.875rem;
+            font-size: 4.25rem;
+            line-height: 4.575rem;
             font-weight: 800;
             margin-bottom: 24px;
             margin-right: 20px;

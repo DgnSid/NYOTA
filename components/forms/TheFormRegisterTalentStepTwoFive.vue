@@ -2,13 +2,19 @@
 	<div class="c-formregistertalent">
   		<div class="container">
   		  	  	<div class="row">
-					<div class="offset-lg-7 col-lg-10">
+					<div class="offset-lg-4 col-lg-16">
 						<h2 class="c-formregistertalent__title">
 							{{ title }}
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label>Où êtes-vous situé ? (TODO)</label>
+                        	<label class="--question">Où êtes-vous situé ?</label>
+							<select v-model="country_from">
+								<option value="">Pays</option>
+								<option value="1">Pays 1</option>
+								<option value="2">Pays 2</option>
+								<option value="3">Pays 3</option>
+							</select>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
@@ -48,7 +54,7 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				industry: '',
+				country_from: '',
 				is_form_submittable: true,
 			}
 		},
@@ -62,15 +68,15 @@
 			submit_url: String,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputIndustryWanted
+			this.country_from = this.$store.state.registertalent.selectCountryFrom
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$store.commit('registertalent/mutateSelectCountryFrom', this.country_from)
 				this.$router.push({path: '/register/talent/steps/2/6'})
 			},
 			isFormSubmittable() {
-				if(this.industry) {
+				if(this.country_from) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -80,7 +86,7 @@
 			}
 		},
 		watch: {
-   			industry() {
+   			country_from() {
 				this.isFormSubmittable()
    			},
 		},
@@ -93,163 +99,5 @@ Style scoped
 *
 ------>
 <style lang="scss" scoped>
-	.c-formregistertalent {
-		position: relative;
-		padding-top: 60px;
-		.c-formregistertalent__title {
-			color: $black;
-			font-size: 32px;
-			font-weight: 200;
-			font-family: $font-family-default;
-			margin-bottom: 40px;
-			text-align: center;
-
-			sup {
-				color: $orange;
-			}
-		}
-
-		.c-formregistertalent__mandatory {
-			color: $black;
-			font-size: .75rem;
-			margin-bottom: 42px;
-		}
-
-		.c-formregistertalent__field {
-			margin-bottom: 32px;
-
-			.c-formregistertalent__field__error {
-				font-size: .625rem;
-				text-align: right;
-				display: none;
-			}
-
-			&.error {
-				input[type="text"] {
-					border-color: red;
-					color: red;
-				}
-
-				.c-formregistertalent__field__error {
-					display: block;
-					color: red;
-				}
-			}
-		}
-
-		label {
-			color: $black;
-			text-transform: uppercase;
-			font-size: 0.75rem;
-			letter-spacing: 3px;
-			margin-bottom: 10px;
-
-			a,
-			span {
-				color: $orange;
-			}
-
-			a {
-				text-decoration: underline;
-			}
-
-			&.--checkbox {
-				font-size: .75rem;
-				line-height: 1.5rem;
-				text-transform: none;
-				letter-spacing: 0;
-				cursor: pointer;
-			}
-		}
-
-		.c-formregistertalent__field__radiolist {
-			display: flex;
-			align-items: center;
-		}
-		.c-formregistertalent__field__radioelement {
-			display: flex;
-			align-items: center;
-
-			&:not(:last-child) {
-				margin-right: 8px;
-			}
-
-			label {
-				border: 1px solid rgba($dark-grey, .2);
-				border-radius: 40px;
-				cursor: pointer;
-				text-transform: uppercase;
-				color: $orange;
-				font-weight: 700;
-				padding: 5px 15px;
-			}
-
-			input[type="radio"] {
-				display: none;
-			}
-
-			input[type="radio"]:checked + label {
-				background-color: $orange;
-				color: $white;
-				font-weight: 400;
-			}
-
-			input[type="radio"] + label:focus {
-				background-color: $orange;
-				color: $white;
-				font-weight: 400;
-			}
-		}
-
-		
-
-		.c-formregistertalent__bottom {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			.c-formregistertalent__bottom__back {
-				color: $orange;
-
-				svg {
-					margin-bottom: 2px;
-					margin-right: 10px;
-				}
-			}
-			.c-formregistertalent__bottom__submit {
-				position: relative;
-				width: 270px;
-       			background: $gradientOrange;
-       			padding: 24px 40px;
-       			border-radius: 100px;
-       			text-align: center;
-				cursor: pointer;
-				border: 1px solid $orange;
-
-				&.disabled {
-					filter: grayscale(1);
-					pointer-events: none;
-				}
-
-				span {
-					text-transform: uppercase;
-					color: $white;
-				}				
-
-				&:focus,
-				&:hover {
-        	    	background: $white;
-        	    	span {
-        	        	color: $orange;
-        	    	}
-        		}
-			}
-		}
-
-		.c-formregistertalent__ellipse {
-			position: absolute;
-			right: -100px;
-			bottom: 0;
-
-		}
-	}
+	@import '@/assets/sass/app/form/register.scss';
 </style>

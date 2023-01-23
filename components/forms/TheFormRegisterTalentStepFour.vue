@@ -1,43 +1,37 @@
 <template>
 	<div class="c-formregistertalent">
   		<div class="container">
-
   		  	  	<div class="row">
-					<div class="offset-lg-7 col-lg-10">
+					<div class="offset-lg-10 col-lg-7">
 						<h2 class="c-formregistertalent__title">
 							{{ title }}
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
-  		  	  	  		
 						<div class="c-formregistertalent__field">
-                        	<label>Nom  <span>*</span></label>
-  		  	  	  			<input v-model="input_lastname" type="text" name="object" placeholder="" required @change="checkInputLastName($event)" />
+                        	<label>Adresse e-mail  <span>*</span></label>
+  		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputEmail($event)" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
-
-						<div class="c-formregistertalent__field">
-                        	<label>Prénom <span>*</span></label>
-  		  	  	  			<input  v-model="input_firstname" type="text" name="object" placeholder="" required @change="checkInputFirstName($event)" />
+						<div ref="error_password" class="c-formregistertalent__field">
+                        	<label>Mot de passe  <span>*</span></label>
+  		  	  	  			<input v-model="input_password" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
-
+						<div ref="error_password" class="c-formregistertalent__field">
+                        	<label>Confirmation mot de passe  <span>*</span></label>
+  		  	  	  			<input v-model="input_password_confirm" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+						</div>
 						<div class="c-formregistertalent__field">
-                        	<label>Genre <span>*</span></label>
-							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="drone" value="1" v-model="gender" role="radio" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Homme</label>
-								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="drone" value="2" v-model="gender" role="radio" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Femme</label>							
-								</div>
-								<div class="c-formregistertalent__field__radioelement">									
-									<input type="radio" id="3" name="drone" value="3" v-model="gender" role="radio" aria-checked="false" aria-labelledby="label-3">
-									<label id="label-3" for="3" tabindex="0">Autre</label>							
-								</div>
-							</div>
-							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
+  		  	  	  			<input v-model="rgpd" type="checkbox" name="rgpd" placeholder="" required />
+							<label>RGPD  <span>*</span></label>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+						</div>
+						<div class="c-formregistertalent__field">
+                        	
+  		  	  	  			<input type="checkbox" name="marketing" placeholder="" />
+							<label>Marketing</label>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -62,8 +56,6 @@
                         </div>
 					</div>
   		  	  	</div>
-
-
 			<shape-ellipse class="c-formregistertalent__ellipse" :size="210" />
 		</div>
 	</div>
@@ -74,13 +66,14 @@
 
   	
 	export default {
-      	name: 'FormRegisterTalentStepOne',
+      	name: 'FormRegisterTalent',
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				input_firstname: '',
-				input_lastname: '',
-				gender: '',
+				input_email: '',
+				input_password:'',
+				input_password_confirm:'',
+				rgpd: '',
 				is_form_submittable: false,
 			}
 		},
@@ -94,62 +87,53 @@
 			submit_url: String,
         },
 		mounted() {
-			this.input_lastname = this.$store.state.registertalent.inputLastName
-			this.input_firstname = this.$store.state.registertalent.inputFirstName
-			this.gender = this.$store.state.registertalent.inputGender
+			this.industry = this.$store.state.registertalent.inputIndustryWanted
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputLastName', this.input_lastname)
-				this.$store.commit('registertalent/mutateInputFirstName', this.input_firstname)
-				this.$store.commit('registertalent/mutateInputGender', this.gender)
-				this.$router.push({path: '/register/talent/steps/2/1'})
-			},
-			checkInputFirstName($event) {
-				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
-					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
-					this.input_firstname = value
-    			} else {
-					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_firstname = ''
-    			}
-
-				this.isFormSubmittable()
-			},
-			checkInputLastName($event) {
-				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
-					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
-					this.input_lastname = value
-    			} else {
-					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_lastname = ''
-    			}
-
-				this.isFormSubmittable()
+				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$router.push({path: '/register/talent/confirm'})
 			},
 			isFormSubmittable() {
-				if(this.gender && this.input_lastname && this.input_firstname) {
+				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
 					this.$refs.submit.classList.add('disabled')
 					this.is_form_submittable = false
 				}
+			},
+			checkInputEmail($event) {
+				const value = $event.target.value
+				if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
+					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
+					this.input_email = value
+    			} else {
+					$event.target.closest('.c-formregistertalent__field').classList.add('error')
+					this.input_email = ''
+    			}
+
+				this.isFormSubmittable()
+			},
+			checkInputPasswordMatch($event) {
+				if(this.input_password && this.input_password_confirm) {
+					if((this.input_password == this.input_password_confirm) && (this.input_password.length >= 8)) {
+						this.$refs.error_password.classList.remove('error')
+					} else {
+						this.$refs.error_password.classList.add('error')
+					}
+				} else {
+					this.$refs.error_password.classList.remove('error')
+				}
+
+				this.isFormSubmittable()
 			}
 		},
 		watch: {
-   			gender() {
-				
+   			rgpd() {				
 				this.isFormSubmittable()
    			},
 		},
-		computed: {
-    		count () {
-      			return this.$store.state.count
-    		}
-		}
 	}
 </script>
 

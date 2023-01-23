@@ -11,137 +11,176 @@
             </div>
             <shape-ellipse class="c-header-talentslist__ellipse" :size="200" />
         </form>
-        <div class="c-header-talentslist__bottom">
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('poste', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Poste</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="post_number"></div>
+        <div class="c-header-talentslist__bottom">            
+            <div class="c-header-talentslist__bottom__container">
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('sector', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Secteur</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="sector_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="sector">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="sector_checkbox" type="checkbox" :name="'sector_' + index" :id="'sector_' + index" />
+                            <label :for="'sector_' + index" @click="countActiveCheckboxes('sector_checkbox', 'sector_number')">Ceci est un sous-menu 01</label>
+                        </div>
+
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox', 'sector_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
                 </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="poste">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="post_checkbox" type="checkbox" :name="'postes_' + index" :id="'postes_' + index" />
-                        <label :for="'postes_' + index"  @click="countActiveCheckboxes('post_checkbox', 'post_number')">Ceci est un sous-menu 01</label>
+                <!---->
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('poste', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Poste</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="post_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="poste">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="post_checkbox" type="checkbox" :name="'postes_' + index" :id="'postes_' + index" />
+                            <label :for="'postes_' + index"  @click="countActiveCheckboxes('post_checkbox', 'post_number')">Ceci est un sous-menu 01</label>
+                        </div>
 
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('post_checkbox', 'post_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('post_checkbox', 'post_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('formation', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Formation</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="formation_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+                    </div>
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="formation">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="formation_checkbox" type="checkbox" :name="'formation_' + index" :id="'formation_' + index" />
+                            <label :for="'formation_' + index" @click="countActiveCheckboxes('formation_checkbox', 'formation_number')">Ceci est un sous-menu 01</label>
+                        </div>
+
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('formation_checkbox', 'formation_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
+                </div>
+                <!---->
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('contract', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Contrat</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="contract_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+                    </div>
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="contract">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="contract_checkbox" type="checkbox" :name="'contract_' + index" :id="'contract_' + index" />
+                            <label :for="'contract_' + index" @click="countActiveCheckboxes('contract_checkbox', 'contract_number')">Ceci est un sous-menu 01</label>
+                        </div>
+
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('contract_checkbox', 'contract_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
+                </div>
+                <!---->
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('date', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Date</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="date_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+                    </div>
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="date">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="date_checkbox" type="checkbox" :name="'date_' + index" :id="'date_' + index" />
+                            <label :for="'date_' + index" @click="countActiveCheckboxes('date_checkbox', 'date_number')">Ceci est un sous-menu 01</label>
+                        </div>
+
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('date_checkbox', 'date_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
+                </div>
+                <!---->
+                <div class="c-header-talentslist__bottom__element">
+                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('location', $event)">
+                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
+                        <div class="c-header-talentslist__bottom__element__top__text">
+                            <span>Lieu</span>
+                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="location_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+                    </div>
+                    <div class="c-header-talentslist__bottom__element__dropdown" ref="location">
+                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input ref="location_checkbox" type="checkbox" :name="'location_' + index" :id="'location_' + index" />
+                            <label :for="'location_' + index" @click="countActiveCheckboxes('location_checkbox', 'location_number')">Ceci est un sous-menu 01</label>
+                        </div>
+
+                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
+
+                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('location_checkbox', 'location_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
+                    </div>
                 </div>
             </div>
-
-            <!---->
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('sector', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Secteur</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="sector_number"></div>
-                    </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
-                </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="sector">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="sector_checkbox" type="checkbox" :name="'sector_' + index" :id="'sector_' + index" />
-                        <label :for="'sector_' + index" @click="countActiveCheckboxes('sector_checkbox', 'sector_number')">Ceci est un sous-menu 01</label>
-                    </div>
-
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox', 'sector_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
-                </div>
+            <div class="c-header-talentslist__bottom__cta" @click="toggleMobileFilter()">
+                <cta
+                    :title="$t('pagetalentlist.header.filter')"
+                    class="--bordered"
+                />
             </div>
-            <!---->
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('formation', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Formation</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="formation_number"></div>
-                    </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
+            <div class="c-header-talentslist__bottom__mobilefilter" ref="menufilter">
+                <div class="c-header-talentslist__bottom__mobilefilter__close" @click="toggleMobileFilter()">
+                    <close />
                 </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="formation">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="formation_checkbox" type="checkbox" :name="'formation_' + index" :id="'formation_' + index" />
-                        <label :for="'formation_' + index" @click="countActiveCheckboxes('formation_checkbox', 'formation_number')">Ceci est un sous-menu 01</label>
+                <div class="c-header-talentslist__bottom__mobilefilter__menu">
+
+                    <!-- FIRST STEP MENU -->
+                    <div class="c-header-talentslist__bottom__mobilefilter__menu__element js-filtermenutoggle-element" @click="toggleFilterMobile('post_filtermenu')">
+                        <div class="c-header-talentslist__bottom__mobilefilter__menu__element__cover"></div>
+                        <div class="c-header-talentslist__bottom__mobilefilter__menu__element__text">
+                            <span>{{$t('pagetalentlist.header.post')}}</span>
+                            <div class="c-header-talentslist__bottom__mobilefilter__menu__element__text__number" ref="post_number"></div>
+                        </div>
+                        <arrow-down class="c-header-talentslist__bottom__mobilefilter__menu__element__arrow" />
                     </div>
 
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('formation_checkbox', 'formation_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
-                </div>
-            </div>
-            <!---->
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('contract', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Contrat</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="contract_number"></div>
+                     <!-- SECOND STEP MENU -->
+                    <div class="c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu" ref="post_filtermenu">
+                        <div class="c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__close" @click="toggleMobileFilter()">
+                            <close />
+                        </div>
+                        <div class="c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__content">
+                            <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__content__filter">
+                                <input ref="post_checkbox" type="checkbox" :name="'postes_mobile_' + index" :id="'postes_mobile_' + index" />
+                                <label :for="'postes_mobile_' + index"  @click="countActiveCheckboxes('post_checkbox', 'post_number')">Ceci est un sous-menu 01</label>
+                            </div>
+                        </div>
+                        <div class="c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__back" @click="toggleFilterMobile('post_filtermenu')">{{$t('pagetalentlist.header.return')}}</div>
                     </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
-                </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="contract">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="contract_checkbox" type="checkbox" :name="'contract_' + index" :id="'contract_' + index" />
-                        <label :for="'contract_' + index" @click="countActiveCheckboxes('contract_checkbox', 'contract_number')">Ceci est un sous-menu 01</label>
-                    </div>
-
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('contract_checkbox', 'contract_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
-                </div>
-            </div>
-            <!---->
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('date', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Date</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="date_number"></div>
-                    </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
-                </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="date">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="date_checkbox" type="checkbox" :name="'date_' + index" :id="'date_' + index" />
-                        <label :for="'date_' + index" @click="countActiveCheckboxes('date_checkbox', 'date_number')">Ceci est un sous-menu 01</label>
-                    </div>
-
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('date_checkbox', 'date_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
-                </div>
-            </div>
-            <!---->
-            <div class="c-header-talentslist__bottom__element">
-                <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('location', $event)">
-                    <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                    <div class="c-header-talentslist__bottom__element__top__text">
-                        <span>Lieu</span>
-                        <div class="c-header-talentslist__bottom__element__top__text__number" ref="location_number"></div>
-                    </div>
-                    <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
-                </div>
-                <div class="c-header-talentslist__bottom__element__dropdown" ref="location">
-                    <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                        <input ref="location_checkbox" type="checkbox" :name="'location_' + index" :id="'location_' + index" />
-                        <label :for="'location_' + index" @click="countActiveCheckboxes('location_checkbox', 'location_number')">Ceci est un sous-menu 01</label>
-                    </div>
-
-                    <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                    <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                    <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('location_checkbox', 'location_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                 </div>
             </div>
         </div>
@@ -153,6 +192,8 @@
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
     import ShapeEllipse from '../ui/ShapeEllipse.vue';
     import ArrowDown from '../svg/ArrowDown.vue';
+    import Close from '../svg/Close.vue';
+    import Cta from "../Cta.vue";
 
     if (process.client) {
         gsap.registerPlugin(ScrollTrigger);
@@ -160,7 +201,7 @@
 
     export default {
         name: 'HeaderTalentList',
-        components: { ShapeEllipse, ArrowDown },
+        components: { ShapeEllipse, ArrowDown, Cta, Close },
         props: {
             title: String,
             placeholder: String,
@@ -210,6 +251,13 @@
             },
             dropdownFilter(ref, $event) {
                 $event.target.closest('.js-filtermenutoggle-element').classList.toggle('active')
+                this.$refs[ref].classList.toggle('active')
+            },
+            toggleMobileFilter() {
+                this.$refs.menufilter.classList.toggle('active')
+            },
+            toggleFilterMobile(ref) {
+                console.log('toggleFilterMobile')
                 this.$refs[ref].classList.toggle('active')
             }
         }
@@ -317,6 +365,24 @@ Style scoped
             align-items: center;
             justify-content: center;
             margin-top: 50px;
+
+            .c-header-talentslist__bottom__cta {
+                display: none;
+
+                @include media-breakpoint-down(md) {
+                    display: flex;
+                }
+            }
+
+            .c-header-talentslist__bottom__container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @include media-breakpoint-down(md) {
+                    display: none;
+                }
+            }
 
             .c-header-talentslist__bottom__element {
                 position: relative;
@@ -501,6 +567,167 @@ Style scoped
                         }
                     }
                 }
+            }
+        }
+
+        .c-header-talentslist__bottom__mobilefilter {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $white;
+            transform: translateX(100%);
+            z-index: 10;
+            transition: transform .2s ease-in-out;
+            padding: 80px;
+
+            .c-header-talentslist__bottom__mobilefilter__menu {
+                .c-header-talentslist__bottom__mobilefilter__menu__element {
+                    
+                    display: flex;
+                    align-items: center;
+
+                    .c-header-talentslist__bottom__mobilefilter__menu__element__text {
+                        position: relative;
+                        color: $black;
+                        font-size: 2rem;
+                        padding-right: 20px;
+                        cursor: pointer;
+
+                        .c-header-talentslist__bottom__mobilefilter__menu__element__text__number {
+                            height: 18px;
+                            width: 18px;
+                            border-radius: 100%;
+                            background-color: $orange;
+                            color: $white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            top: 0;
+                            right: 4px;
+
+                            font-size: .8rem;
+                            line-height: .8rem;
+
+                            opacity: 0;
+                            visibility: hidden;
+                            display: none;
+
+                            &.active {
+                                display: flex;
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+                    }
+                }
+
+                .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu {
+                    height: 100vh;
+                    width: 100vw;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    background-color: $orange;
+                    transform: translateX(100%);
+                    transition: transform .2s ease-out;
+                    &.active {
+                        transform: translateX(0);
+                    }
+                    .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__content {
+                        padding: 80px;
+
+                        .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__content__filter {
+                            display: flex;
+                            position: relative;
+                            margin-bottom: 15px;
+
+                            input {
+                                display: none;
+                            }
+
+                            label {
+                                cursor: pointer;
+                                color: $white;
+                                padding-left: 5px;
+                                margin-left: 12px;
+                                font-size: .75rem;
+                                line-height: .75rem;
+
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0;
+                                    top: 50%;
+                                    border: 1px solid $white;
+                                    height: 12px;
+                                    width: 12px;
+                                    border-radius: 4px;
+                                    background-color: $orange;
+                                    transform: translate(0, -50%);
+                                }
+                            }
+
+                            input:checked + label::before {
+                                content: '.';
+                                color: $orange;
+                                background-color: $white;
+                            }
+
+                            input:checked + label::after {
+                                content: '✔';
+                                color: $orange;
+                                position: absolute;
+                                left: 3px;
+                                top: 1px;
+                                font-size: 8px;
+                            }
+                        }
+                    }
+                    .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__close {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        cursor: pointer;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 100%;
+                        background-color: $orange;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__back {
+                        position: absolute;
+                        bottom: 10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+
+            &.active {
+                transform: translateX(0);
+            }
+
+            .c-header-talentslist__bottom__mobilefilter__close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                height: 50px;
+                width: 50px;
+                border-radius: 100%;
+                background-color: $orange;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

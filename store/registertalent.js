@@ -5,7 +5,9 @@ export const state = () => ({
     inputIndustryExperience: "",
     inputIndustryWanted: "",
     inputSpecialization: "",
-    inputWorkWhereWanted: [],    
+    inputWorkWhereWanted: [],
+    selectCountryFrom: "",
+    selectNationality: "",
 })
 
 export const mutations = {
@@ -29,5 +31,11 @@ export const mutations = {
     },
     mutateInputWorkWhereWanted (state, payload) {
         state.inputWorkWhereWanted = payload
-    }
+    },
+    mutateSelectCountryFrom(state, payload) {
+        state.selectCountryFrom = payload
+    },
+    mutateSelectNationality(state, payload) {
+        state.selectNationality = payload
+    },
 }
