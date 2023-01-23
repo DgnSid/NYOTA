@@ -119,7 +119,10 @@
             "placeholder": "consultant junior",
             "results": "résultats",
             "delete_all": "Tout supprimer",
-            "search": "Rechercher"
+            "search": "Rechercher",
+            "filter": "Filtrer",
+            "return": "Retour",
+            "post": "Poste"
         },
         "card": {
             "years_of_experience": "an(s) d'expérience",
@@ -153,7 +156,9 @@
     "registertalent": {
         "header": {
             "title": "S’inscrire",
-            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+            "confirm_title": "Vous êtes inscrit !",
+            "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
         }
     },
     "registerform": {
@@ -173,11 +178,16 @@
             "four": {
                 "title": "Création du compte",
                 "url": "#"
+            },
+            "confirm": {
+                "title": "Confirmation",
+                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
             }
         },
         "form": {
             "back_title": "Retour",
             "next": "suivant",
+            "submit": "valider",
             "mandatory": "* champs obligatoire",
             "error_message": "Le champ n'est pas correct"
         }

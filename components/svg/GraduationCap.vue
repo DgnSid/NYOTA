@@ -26,6 +26,3 @@
         name: 'GraduationCap',
     };
 </script>
-
-
-    

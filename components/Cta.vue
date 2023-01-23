@@ -1,6 +1,6 @@
 <template>
     <div class="c-cta">
-        <NuxtLink class="c-cta__link" :to="url"></NuxtLink>
+        <NuxtLink v-if="url" class="c-cta__link" :to="url"></NuxtLink>
         <span class="c-cta__text">{{title}}</span>
     </div>
 </template>
