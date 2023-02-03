@@ -29,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <logo-figures class="c-section-figures__logo" />
     </section>
 </template>
 
@@ -41,11 +42,13 @@
     }
 
     import cardFigure from '../card/cardFigure.vue';
+    import LogoFigures from "../svg/LogoFigures.vue";
 
     export default {
         name: 'TheSectionFigures',
         components: {
           cardFigure,
+          LogoFigures,
         },
         props: {
             title: String,
@@ -72,6 +75,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-section-figures {
+        position: relative;
         background-color: $white;
 
         .c-section-figures__title {
@@ -105,7 +109,7 @@ Style scoped
                 position: absolute;
                 top: 0;
                 left: 0;
-                background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg');
+                background-image: url('/bkg-figures.png');
                 background-size: cover;
                 width: 100%;
                 height: 100%;
@@ -115,6 +119,17 @@ Style scoped
                 position: relative;
                 z-index: 3;
                 padding: 60px 0;
+            }
+        }
+
+        .c-section-figures__logo {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+
+            @include media-breakpoint-down(md) {
+                display: none;
             }
         }
     }

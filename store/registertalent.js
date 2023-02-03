@@ -8,6 +8,7 @@ export const state = () => ({
     inputWorkWhereWanted: [],
     selectCountryFrom: "",
     selectNationality: "",
+    selectLangs: "",
 })
 
 export const mutations = {
@@ -37,5 +38,8 @@ export const mutations = {
     },
     mutateSelectNationality(state, payload) {
         state.selectNationality = payload
+    },
+    mutateSelectLangs(state, payload) {
+        state.selectLangs = payload
     },
 }

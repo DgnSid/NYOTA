@@ -1,7 +1,17 @@
 import i18n from './plugins/i18n'
+import path from 'path'
+import fs from 'fs'
 
 export default {
 
+  // server: {
+  //   port: 8000, // default: 3000
+  //   host: 'nyota.adveris.dev', // default: localhost
+  //   https: {
+  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+  //   },
+  // },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -35,7 +45,6 @@ export default {
   */
   css: [
     '@/assets/sass/main.scss',
-    'vue-multiselect/dist/vue-multiselect.min.css',
   ],
 
   /*
@@ -120,6 +129,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/recaptcha',
+    '@nuxtjs/proxy',
   ],
 
   recaptcha: {
@@ -134,15 +144,23 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    proxy: process.env.NODE_ENV === 'production' ? false : true,
-    header: {
-      common: {
-        'Accept': 'application/json'
-      },
-    },
     baseURL: process.env.API_URL,
-    https: true
   },
+
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL
+  },
+
+  // proxy: {
+  //   '/api/': {
+  //     target: process.env.API_URL,
+  //     pathRewrite: { '^/api/': '' },
+  //     secure: false,
+  //     changeOrigin: true,
+  //     credentials: true,
+  //     proxyHeaders: true
+  //   },
+  // },
 
   /**
    * Gsap module options

@@ -11,7 +11,7 @@
                 <div class="col-lg-7 offset-lg-3 p-r order-md-2 order-sm-2 order-2 order-lg-1 a-stagger-element__podcast p-r">
                     
                         <ImageBordered 
-                            :url="image.url"
+                            :url="this.$config.API_URL + image.url"
                             :alt="image.alt"
                             class_string="--right"
                         />

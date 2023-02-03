@@ -1,12 +1,10 @@
 <template>
     <div class="c-card-goal" :class="class_string" >
-        <img v-if="icon" class="c-card-goal__icon" :src="icon.url" :alt="icon.alt" />
+        <img v-if="icon" class="c-card-goal__icon" :src="this.$config.API_URL + icon.url" :alt="icon.alt" />
         <h2 class="c-card-goal__title">
             {{title}}
         </h2>
-        <div class="c-card-goal__description">
-            {{description}}
-        </div>
+        <div class="c-card-goal__description" v-html="description"></div>
         <div class="c-card-goal__price">{{price}}</div>
         <div class="c-card-goal__cta-container">
             <cta
@@ -53,6 +51,7 @@ Style scoped
             margin: 0 auto;
             display: block;
             padding-bottom: 20px;
+            height: 80px;
         }
         .c-card-goal__title {
             font-family: $font-family-custom;

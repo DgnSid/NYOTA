@@ -53,6 +53,18 @@
             "title": "Découvrez nos actualités",
             "cta_url": "/news/page/1",
             "cta_title": "Voir toutes les actualités"
+        },
+        "section_features": {
+            "cta": {
+                "title": "Nous contacter",
+                "url": "#"
+            }
+        },
+        "section_quotes": {
+            "cta": {
+                "title": "S'inscrire",
+                "url": "#"
+            }
         }
     },
     "pageabout": {
@@ -75,6 +87,13 @@
         }
     },
     "pagelandingcompany": {
+        "header": {
+            "list": ["Un stage pour vivre une nouvelle expérience", "Un emploi dans une entreprise en phase avec vos valeurs", "Une mission qui a du sens"],
+            "cta": {
+                "title": "Nous contacter",
+                "url":"/contact"
+            }
+        },
         "section_goals_one": {
             "title": "Bénéficier des meilleurs talents avec Nyota"
         },
@@ -96,6 +115,13 @@
         }
     },
     "pagelandingtalent": {
+        "header": {
+            "list": ["Un stage pour vivre une nouvelle expérience", "Un emploi dans une entreprise en phase avec vos valeurs", "Une mission qui a du sens"],
+            "cta": {
+                "title": "Déposer votre cv",
+                "url":"/register/talent/steps/one"
+            }
+        },
         "section_goals_one": {
             "title": "Nyota, une nouvelle façon de faire les choses"
         },
@@ -111,6 +137,12 @@
             "cta_first_url": "#",
             "cta_second_text": "Découvrir nos offres",
             "cta_second_url": "#"
+        },
+        "section_quotes": {
+            "cta": {
+                "title": "S'inscrire",
+                "url": "/register/talent/steps/one"
+            }
         }
     },
     "pagetalentlist": {
@@ -151,7 +183,12 @@
         "label_rgpd": "En cochant cette case, j’affirme avoir pris connaissance de la politique de confidentialité de Nyota.",
         "label_marketing": "marketing",
         "submit_title": "Créer mon compte",
-        "mandatory": "* Champ obligatoire"
+        "mandatory": "* Champ obligatoire",
+        "label_download_instruction": "Sélectionner ou glisser le logo de votre entreprise",
+        "label_download_extension": "PDF, JPG ou PNG - 5mo maximum"
+    },
+    "pageconnexion": {
+
     },
     "registertalent": {
         "header": {
@@ -190,6 +227,11 @@
             "submit": "valider",
             "mandatory": "* champs obligatoire",
             "error_message": "Le champ n'est pas correct"
+        }
+    },
+    "pagenews": {
+        "header": {
+            "title": "Actualités"
         }
     }
 }

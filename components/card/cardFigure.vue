@@ -26,7 +26,7 @@
         name: 'cardFigure',
         props: {
             class_string: String,
-            title: Number,
+            title: String,
             description: String,
             key_index: {
                 type: Number,

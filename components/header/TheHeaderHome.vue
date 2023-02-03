@@ -34,7 +34,7 @@
                                 </linearGradient>
                                 </defs>
                             </svg>
-                            <span class="c-header-home__list-element__text">{{element.text}}</span>
+                            <span class="c-header-home__list-element__text">{{element}}</span>
                         </div>
                         <div v-if="list" class="c-header-home__list-cta-container">
                             <cta
@@ -51,12 +51,12 @@
                 </div>
                 <div :class="big ? 'col-lg-7 offset-lg-5' : list ? 'col-lg-7 offset-lg-5' : 'col-lg-7 offset-lg-2'" class="c-header-home__images md-down-mt-md a-stagger-element">
                     <ImageBordered 
-                        :url="image_top.url"
+                        :url="this.$config.API_URL + image_top.url"
                         :alt="image_top.alt"
                         class_string="--right --h300"
                     />
                     <ImageBordered 
-                        :url="image_bottom.url"
+                        :url="this.$config.API_URL + image_bottom.url"
                         :alt="image_bottom.alt"
                         class_string="--left --h300"
                     />
@@ -227,6 +227,8 @@ Style scoped
             margin-bottom: 44px;
             color: $dark-grey;
 
+            ::v-deep b,
+            ::v-deep strong,
             ::v-deep span {
                 background: $gradientOrange;
                 -webkit-background-clip: text;
@@ -256,7 +258,8 @@ Style scoped
             }
 
             .c-header-home__list-element {
-
+                display: flex;
+                
                 &:not(:last-child) {
                     margin-bottom: 10px;
                 }

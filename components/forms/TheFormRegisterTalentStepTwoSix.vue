@@ -8,11 +8,8 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Quelle est votre nationalité ? (TODO)</label>
-							<multiselect
-      							v-model="selected"
-      							:options="options">
-    						</multiselect>
+                        	<label class="--question">Quelle est votre nationalité ?</label>
+							<multiselect v-model="nationality" :multiple="true" :options="options" :searchable="false" :close-on-select="false" :show-labels="false" placeholder="Pick a value" :internal-search="false"></multiselect>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -52,8 +49,8 @@
 		components: { ShapeEllipse, Multiselect },
 		data: () => {
 			return {
-				selected: null,
-        		options: ['list', 'of', 'options'],
+				nationality: '',
+        		options: ['France', 'Algérie', 'Maroc', 'Tunisie', 'Mali', 'Sénégal'],
 				is_form_submittable: true,
 			}
 		},
@@ -67,7 +64,7 @@
 			submit_url: String,
         },
 		mounted() {
-			// this.nationality = this.$store.state.registertalent.selectNationality
+			this.nationality = this.$store.state.registertalent.selectNationality
 		},
 		methods: {
 			handleSubmit(){
@@ -75,7 +72,7 @@
 				this.$router.push({path: '/register/talent/steps/2/7'})
 			},
 			isFormSubmittable() {
-				if(this.nationality) {
+				if(this.nationality.length) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -92,7 +89,8 @@
 	}
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style lang="scss" scoped>
-	@import '@/assets/sass/app/form/register.scss';
+<style src="@/node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
+
+<style lang="scss">
+	@import '@/assets/sass/app/form/register.scss';	
 </style>

@@ -5,9 +5,7 @@
             <h2 class="c-card-feature__text__title">
                 {{title}}
             </h2>
-            <div class="c-card-feature__text__description">
-                {{description}}
-            </div>
+            <div class="c-card-feature__text__description" v-html="description"></div>
         </div>
         <div class="c-card-feature__arrow-container">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +55,7 @@ Style scoped
 
         .c-card-feature__text {
             color: $black;
-            padding-right: 40px;
+            padding-right: 126px;
             .c-card-feature__text__title {
                 font-family: $font-family-default;
                 font-size: 2rem;
@@ -77,6 +75,11 @@ Style scoped
         }
 
         .c-card-feature__arrow-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
             height: 86px;
             min-width: 86px;
             border-radius: 100%;

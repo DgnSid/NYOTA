@@ -1,6 +1,6 @@
 <template>
     <article class="c-card-news" :class="class_string" >
-        <NuxtLink class="c-card-news__link" :to="url"></NuxtLink>
+        <NuxtLink class="c-card-news__link" :to="'/news/' + url"></NuxtLink>
         <div class="c-card-news__image">
             <ImageBordered 
                 :url="image_url"

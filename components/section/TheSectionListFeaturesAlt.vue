@@ -13,7 +13,7 @@
                         <div class="c-section-listfeatures-alt__element">
                             <div class="c-section-listfeatures-alt__element__figure">0{{index + 1}}.</div>
                             <div class="c-section-listfeatures-alt__element__title">{{element.title}}</div>
-                            <div class="c-section-listfeatures-alt__element__text">{{element.text}}</div>
+                            <div class="c-section-listfeatures-alt__element__text" v-html="element.description"></div>
                         </div>
                     </div>
                 </div>

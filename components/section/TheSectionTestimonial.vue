@@ -1,6 +1,7 @@
 <template>
     <section class="c-section-testimonials">
         <h2 class="c-section-testimonials__title a-stagger-element__testimonials">{{title}}</h2>
+        
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-22 offset-lg-1 a-stagger-element__testimonials">
@@ -9,10 +10,9 @@
                             <div class="swiper-slide" v-for="(element, index) in slides" :key="index">
                                 <cardTestimonial
                                     :quote="element.quote"
-                                    :firstname="element.firstname"
-                                    :lastname="element.lastname"
-                                    :role="element.role"
-                                    :image="element.image"
+                                    :firstname="element.name"
+                                    :role="element.job"
+                                    :image="element.photo"
                                 />
                             </div>
                         </div>
@@ -33,13 +33,16 @@
                 </div>
             </div>
         </div>
+        
 
         <div class="c-section-testimonials__cta-container a-stagger-element__testimonials">
+            
             <cta v-if="cta"
                 :url="cta.url"
                 :title="cta.title"
                 class="--bordered"
             />
+            
         </div>
 
         <div class="swiper-pagination-bullet"></div>
@@ -137,6 +140,8 @@
 
         .swiper-slide {
             margin-top: 40px;
+            height: auto;
+            display: flex;
         }
     }
 
