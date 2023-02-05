@@ -4,9 +4,7 @@
         <h2 class="c-card-formula__title">
             {{title}}
         </h2>
-        <div class="c-card-formula__description">
-            {{description}}
-        </div>
+        <div class="c-card-formula__description" v-html="description"></div>
         <div class="c-card-formula__cta-container">
             <cta
                 v-if="cta" 

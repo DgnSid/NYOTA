@@ -4,15 +4,15 @@
             <div class="row">
                 <div class="col-lg-8 p-r order-lg-1 order-md-2 order-sm-2 order-2 sm-down-mt-md a-stagger-element__listfeatures">
                     <ImageBordered 
-                        :url="image.url"
+                        :url="this.$config.API_URL + image.url"
                         :alt="image.alt"
                         class_string="--right"
                     />
                     <div class="c-section-listfeatures__cta-container">
                         <cta 
-                                :url="cta.url"
-                                :title="cta.title"
-                                class=""
+                            :url="cta.url"
+                            :title="cta.title"
+                            class=""
                         />
                     </div>
                 </div>

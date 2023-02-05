@@ -4,18 +4,18 @@
   		  	<form @submit.prevent="handleSubmit">
   		  	  	<div class="row">
 					<div class="offset-lg-1 col-lg-9">
-  		  	  	  		<label>Adresse e-mail  <span>*</span></label>
-  		  	  	  		<input type="text" name="object" placeholder="" required />
+  		  	  	  		<label>{{$t('pageconnexion.label_mail')}} <span>*</span></label>
+  		  	  	  		<input type="text" :name="$t('pageconnexion.id_mail')" placeholder="" required />
 						
-						<label>Mot de passe <span>*</span></label>
-  		  	  	  		<input type="password" name="name" placeholder="" required />
+						<label>{{$t('pageconnexion.label_password')}} <span>*</span></label>
+  		  	  	  		<input type="password" :name="$t('pageconnexion.id_password')" placeholder="" required />
 
 						<div>
-							<nuxt-link class="c-formconnexion__link" to="/forgotten-password">mot de passe oublié</nuxt-link>
+							<nuxt-link class="c-formconnexion__link" to="/forgotten-password">{{$t('pageconnexion.label_forgottenpassword')}}</nuxt-link>
 						</div>
 
 						<button class="c-formconnexion__submit --bordered" type="submit ">
-							<span class="c-formconnexion__submit__text">Connexion</span>
+							<span class="c-formconnexion__submit__text">{{$t('pageconnexion.label_submit')}}</span>
 						</button>
 
 						<div class="c-formconnexion__mandatory-text">* champ obligatoire</div>

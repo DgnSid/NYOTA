@@ -30,10 +30,9 @@
                 </defs>
                 </svg>
             </div>
-            <select class="c-header-news__select a-stagger-element">
+            <select v-model="category_filter" class="c-header-news__select a-stagger-element">
                 <option value="">Type</option>
-                <option value="1">Type 1</option>
-                <option value="2">Type 2</option>
+                <option v-for="(element, index) in category_list" :key="index" :value="element['@id'].split('/').pop()">{{element.name}}</option>
             </select>
         </div>
         
@@ -46,9 +45,16 @@
 </template>
 
 <script>
+    import { eventHub } from '@/plugins/eventhub'
+
     export default {
         name: 'HeaderHome',
         components: {},
+        data() {
+            return {
+                category_filter: '',
+            }
+        },
         props: {
             title: String,
             category_list: Array,
@@ -62,6 +68,12 @@
             this.tl.set('.a-stagger-element', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
         },
+        watch: {
+            category_filter() {
+                console.log(this.category_filter)
+                eventHub.$emit('filter-news-by-category', this.category_filter)
+            }
+        }
     }
 </script>
 

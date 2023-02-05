@@ -2,7 +2,7 @@
     <div class="c-section-listnewsalt">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 a-stagger-element__listnewsalt" v-for="(element, index) in news" :key="index">
+                <div class="col-lg-8 a-stagger-element__listnewsalt" v-for="(element, index) in mutableNews" :key="index">
                     <cardNewsAlt
                         :image_url="element.image.url"
                         :image_alt="element.image.alt"
@@ -10,8 +10,7 @@
                         :date="element.publicationDate|date('DD.MM.YYYY')"
                         :title="element.title"
                         :url="element.url"
-                        slug="lorem-ipsum"
-                        class_string=""
+                        :slug="element['@id'].split('/').pop()"
                     />
                 </div>
             </div>
@@ -25,6 +24,7 @@
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+    import { eventHub } from '@/plugins/eventhub'
 
     if (process.client) {
         gsap.registerPlugin(ScrollTrigger);
@@ -36,6 +36,11 @@
     export default {
         name: 'TheSectionListNews',
         components: { cardNewsAlt, Pagination },
+        data: function () {
+            return {
+                mutableNews: this.$props.news
+            }
+        },
         props: {
             news: Array,
             total: {
@@ -53,6 +58,11 @@
 
             this.tl.set('.a-stagger-element__listnewsalt', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__listnewsalt', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+
+            eventHub.$on('update-news-by-category', (data) => {
+                console.log('data', data['hydra:member'])
+                this.mutableNews = data['hydra:member']
+            })
                    
         },
     }

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-8 p-r order-md-2 order-sm-2 order-2" :class="is_image_left ? 'order-lg-1' : 'offset-lg-2 order-lg-2'">
                     <ImageBordered 
-                        :url="image.url"
+                        :url="this.$config.API_URL + image.url"
                         :alt="image.alt"
                         class_string="--right a-stagger-element__twocols"
                     />

@@ -24,7 +24,7 @@ Style scoped
     .c-cta {
         position: relative;
         background: $gradientOrange;
-        padding: 24px 40px;
+        padding: 16px 24px;
         border-radius: 100px;
         text-align: center;
 
@@ -72,7 +72,7 @@ Style scoped
 
             transition: .2s ease-out;
 
-            @include media-breakpoint-down(md) {
+            @media screen and (max-width: 1400px) {
                 letter-spacing: 2px;
             }
         }

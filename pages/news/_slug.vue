@@ -6,15 +6,15 @@ Template
 <template>
 	<div class="layout__blog__single">
         <TheHeaderNewsSingle
-            :type="singleNewsData.blockHeader.type"
-            :date="singleNewsData.blockHeader.date|date('DD.MM.YYYY')"
-            :title="singleNewsData.blockHeader.title"
-            :text="singleNewsData.blockHeader.text"
-            :image="singleNewsData.blockHeader.image"
+            :type="singleNewsDataApi.category"
+            :date="singleNewsDataApi.publicationDate|date('DD.MM.YYYY')"
+            :title="singleNewsDataApi.title"
+            :text="singleNewsDataApi.text"
+            :image="singleNewsDataApi.image"
             :logo="true"
         />
         <TheSectionSingleWysiwyg
-            :wysiwyg="singleNewsData.blockWysiwyg.wysiwyg"
+            :wysiwyg="singleNewsDataApi.wysiwyg"
         />
         <TheSectionListNews
             :title="$t('single_news.bottom_title')"
@@ -34,14 +34,33 @@ export default {
     name: "NewsSingle",
     components: { TheHeaderNewsSingle, TheSectionListNews, TheSectionSingleWysiwyg },
     async asyncData({ app, params, $axios, $config: { baseURL } }) {
-        const singleNewsData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/news/${params.slug}`, {
-            headers: {
-              'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-              'Accept-Language': app.i18n.locale,
-            }
+        const singleNewsDataApi = await $axios.$get(`/api/news/${params.slug}`, {
+          headers: {
+            'Accept-Language': app.i18n.locale,
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.error(err)
         });
 
-        return { singleNewsData }
+        const  singleNewsList = await $axios.$get(`/api/news?itemsPerPage=4&page=1&category=${singleNewsDataApi.category['@id'].split('/').pop()}`, {
+          headers: {
+            'Accept-Language': app.i18n.locale,
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.error(err)
+        });  
+
+        return { singleNewsList, singleNewsDataApi }
     }
 }
 </script>

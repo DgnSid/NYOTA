@@ -5,22 +5,22 @@
             <div class="row">
                 <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(0, 2)" :key="index">
                     <cardNews
-                        :image_url="element.image.url"
+                        :image_url="api_url + element.image.url"
                         :image_alt="element.image.alt"
                         image_style="--right"
                         :date="element.publicationDate|date('DD.MM.YYYY')"
                         :title="element.title"
-                        :url="element.url"
+                        :url="element.title|slugify"
                     />
                 </div>
                 <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index + 2">
                     <cardNews
-                        :image_url="element.image.url"
+                        :image_url="api_url + element.image.url"
                         :image_alt="element.image.alt"
                         image_style="--left"
                         :date="element.publicationDate|date('DD.MM.YYYY')"
                         :title="element.title"
-                        :url="element.url"
+                        :url="element.title|slugify"
                     />
                 </div>
             </div>
@@ -79,6 +79,11 @@
     export default {
         name: 'TheSectionListNews',
         components: { Cta, cardNews, Logo },
+        data() {
+            return {
+                api_url: this.$config.API_URL,
+            }
+        },
         props: {
             title: String,
             news: Array,

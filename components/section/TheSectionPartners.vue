@@ -18,7 +18,7 @@
                 <div class="row jc-center">
                     <div class="col-lg-8 col-sm-12" v-for="(element, index) in partners" :key="index">
                         <a :href="element.url" target="_blank" rel="noopener noreferrer" class="c-section-partners__logo">
-                            <img :src="element.image.url" :alt="element.image.alt" class="c-section-partners__logo__image" />
+                            <img :src="api_url + element.image.url" :alt="element.image.alt" class="c-section-partners__logo__image" />
                         </a>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(element, index) in partners" :key="index">
                             <a :href="element.url" target="_blank" rel="noopener noreferrer" class="c-section-partners__logo">
-                                <img :src="element.image.url" :alt="element.image.alt" class="c-section-partners__logo__image" />
+                                <img :src="api_url + element.image.url" :alt="element.image.alt" class="c-section-partners__logo__image" />
                             </a>
                         </div>
                     </div>
@@ -64,6 +64,7 @@
         },
         data() {
             return {
+                api_url: this.$config.API_URL,
                 swiperOptions: {
                     loop: true,
                     slidesPerView: 2,

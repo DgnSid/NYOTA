@@ -1,9 +1,9 @@
 <template>
-    <article class="c-card-news-alt" :class="class_string" >
+    <article class="c-card-news-alt" >
         <NuxtLink class="c-card-news-alt__link" :to="'/news/' + slug"></NuxtLink>
         <div class="c-card-news-alt__image">
             <ImageBordered 
-                :url="image_url"
+                :url="this.$config.API_URL + image_url"
                 :alt="image_alt"
                 :class_string="image_style"
             />

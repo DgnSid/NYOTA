@@ -6,43 +6,77 @@ Template
 <template>
 	<div class="layout__blog">
         <TheHeaderNewsArchive
-            :title="pageNewsData.blockHeader.title"
-            :category_list="pageNewsData.blockHeader.text"
+            :title="$t('pagenews.header.title')"
+            :category_list="newsCategories['hydra:member']"
             :pen="true"
             :logo="true"
         />
         <TheSectionListNewsAlt
-            :news="pageNewsDataPaginated.blockNews.news"
-            :total="pageNewsData.blockNews.news.length"
+            :news="newsList['hydra:member']"
+            :total="newsList['hydra:totalItems']"
         />
     </div>
 </template>
 
 <script>
-
+import { eventHub } from '@/plugins/eventhub'
 import TheHeaderNewsArchive from '../../../components/header/TheHeaderNewsArchive.vue';
 import TheSectionListNewsAlt from '../../../components/section/TheSectionListNewsAlt.vue';
 
 export default {
     name: "NewsPage",
     components: { TheHeaderNewsArchive, TheSectionListNewsAlt },
+    mounted: function() {
+      eventHub.$on('filter-news-by-category', (data) => {
+        console.log(data)
+        console.log(this.$i18n.locale)
+        this.$axios.$get(`/api/news?itemsPerPage=1&page=1&category=${data}`, {
+          headers: {
+            'Accept-Language': this.$i18n.locale,
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          eventHub.$emit('update-news-by-category', res)
+        })
+        .catch((err) => {
+          console.error(err)
+        });
+      })
+    },
     async asyncData({ app, params, route, $axios, $config: { baseURL } }) {
         const current_lang = app.i18n.locale
         const current_page = route.params.page
 
-        // const pageNewsDataPaginated = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/news?page=${current_page}`, {
-        //     headers: {
-        //       'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-        //       'Accept-Language': app.i18n.locale,
-        //     }
-        // });
+        console.log(params)
 
-        // const pageNewsData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/news`, {
-        //     headers: {
-        //       'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-        //       'Accept-Language': app.i18n.locale,
-        //     }
-        // });
+        const newsCategories = await $axios.$get(`/api/categories`, {
+            headers: {
+              'Accept-Language': app.i18n.locale,
+            },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.error(err)
+        });
+
+        const newsList = await $axios.$get(`/api/news?itemsPerPage=1&page=${params.page}`, {
+          headers: {
+            'Accept-Language': app.i18n.locale,
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.error(err)
+        });  
+
+
 
         
 
@@ -146,7 +180,7 @@ export default {
     }
 }
 
-        return { pageNewsData, pageNewsDataPaginated, current_lang }
+        return { newsCategories, newsList, pageNewsData, pageNewsDataPaginated, current_lang }
     }
 }
 </script>

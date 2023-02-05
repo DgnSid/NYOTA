@@ -192,6 +192,21 @@ Style scoped
                         color: $orange;
                     }
                 }
+
+                @media  screen and (max-width: 1400px) {
+                    letter-spacing: 1px;
+                    &:not(:last-child) {
+                        padding-right: 24px;
+                    }
+                }
+
+                @media  screen and (max-width: 1100px) {
+                    letter-spacing: 1px;
+
+                    &:not(:last-child) {
+                        padding-right: 20px;
+                    }
+                }
             }
         }
 

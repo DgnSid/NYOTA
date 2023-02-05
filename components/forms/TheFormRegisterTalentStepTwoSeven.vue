@@ -8,7 +8,8 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Dans quelles langues pouvez-vous travailler ? (TODO)</label>
+                        	<label class="--question">Dans quelles langues pouvez-vous travailler ?</label>
+							<multiselect v-model="langs" :multiple="true" :options="options" :searchable="false" :close-on-select="false" :show-labels="false" placeholder="Pick a value" :internal-search="false"></multiselect>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -39,15 +40,17 @@
 </template>
 
 <script>
-	import ShapeEllipse from '@/components/ui/ShapeEllipse';
+	import ShapeEllipse from '@/components/ui/ShapeEllipse'
+	import Multiselect from 'vue-multiselect'
 
   	
 	export default {
       	name: 'FormRegisterTalent',
-		components: { ShapeEllipse},
+		components: { ShapeEllipse, Multiselect},
 		data: () => {
 			return {
-				industry: '',
+				langs: '',
+				options: ['France', 'Algérie', 'Maroc', 'Tunisie', 'Mali', 'Sénégal'],
 				is_form_submittable: true,
 			}
 		},
@@ -61,15 +64,15 @@
 			submit_url: String,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputIndustryWanted
+			this.langs = this.$store.state.registertalent.selectLangs
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$store.commit('registertalent/mutateSelectLangs', this.langs)
 				this.$router.push({path: '/register/talent/steps/2/8'})
 			},
 			isFormSubmittable() {
-				if(this.industry) {
+				if(this.langs.length) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -79,18 +82,15 @@
 			}
 		},
 		watch: {
-   			industry() {
+   			langs() {
 				this.isFormSubmittable()
    			},
 		},
 	}
 </script>
 
-<!-----
-*
-Style scoped
-*
------->
+<style src="@/node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style lang="scss" scoped>
 	@import '@/assets/sass/app/form/register.scss';
 </style>

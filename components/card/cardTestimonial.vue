@@ -16,15 +16,14 @@
             </defs>
             </svg>
         </div>
-        <div class="c-card-testimonial__quote">
-            {{quote}}
-        </div>
+        <div class="c-card-testimonial__quote" v-html="quote"></div>
+        
         <div class="c-card-testimonial__data">
             <div class="c-card-testimonial__data__image-container">
-                <img class="c-card-testimonial__data__image" :src="image.url" :alt="image.alt" />
+                <img v-if="image" class="c-card-testimonial__data__image" :src="this.$config.API_URL + image.url" :alt="image.alt" />
             </div>
             <div class="c-card-testimonial__data__text">
-                <div class="c-card-testimonial__data__text__name">{{firstname}} {{lastname|truncate(0, 1,'')}}.</div>
+                <div class="c-card-testimonial__data__text__name">{{firstname}}</div>
                 <div class="c-card-testimonial__data__text__role">{{role}}</div>
             </div>
         </div>
@@ -61,7 +60,7 @@ Style scoped
             transform: translateY(-50%);
         }
 
-        padding: 80px 55px 20px 55px;
+        padding: 80px 55px 105px 55px;
         .c-card-testimonial__quote {
             color: $black;
             margin-bottom: 24px;
@@ -69,6 +68,8 @@ Style scoped
 
         .c-card-testimonial__data {
             display: flex;
+            position: absolute;
+            bottom: 20px;
 
             .c-card-testimonial__data__image-container {
                 height: 80px;

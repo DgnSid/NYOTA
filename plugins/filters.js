@@ -19,3 +19,18 @@ Vue.filter('date', (val, dateValue) => {
 Vue.filter('truncate', (val, from, length, suffix) => {
     return val.length < length ? val : `${val.slice(from, length)}${suffix}`;
 })
+
+/**
+ * Slugify strings
+ * 
+ * Use it : {{ text_field|slugify }}
+ */
+Vue.filter('slugify', (val) => {
+if (typeof val !== 'undefined') {
+    return val.toLowerCase()
+      .replace(/[^\w ]+/g, '')
+      .replace(/ +/g, '-');
+  }
+
+  return val;
+})
