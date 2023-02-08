@@ -146,16 +146,19 @@
 
 					const formData = new FormData();
 					formData.append("imageFile", this.files);
-					await this.$axios.post('/api/profile-pictures', formData, {
-    					headers: {
-      						'Content-Type': 'multipart/form-data'
-    					}
-					})
-					.then(function (response) {
-						image_uploaded_id = response.data['@id']
-  					})
 
-					console.log('image_uploaded_id : ', image_uploaded_id)
+					if(this.files.name) {
+						await this.$axios.post('/api/profile-pictures', formData, {
+    						headers: {
+      							'Content-Type': 'multipart/form-data'
+    						}
+						})
+						.then(function (response) {
+							image_uploaded_id = response.data['@id']
+  						})
+
+						console.log('image_uploaded_id : ', image_uploaded_id)
+					}
 
 					await this.$axios.post('/api/companies/register', {
   					  	"company": this.input_company,
