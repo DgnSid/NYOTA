@@ -26,7 +26,7 @@
 					</div>
 					<div class="col-lg-9">
   		  	  	  		<label>{{$t('pageregistercompany.label_phone')}}</label>
-  		  	  	  		<input type="text" :name="$t('pageregistercompany.label_contact_name')" placeholder="" required />
+  		  	  	  		<input v-model="input_phone" type="text" :name="$t('pageregistercompany.id_phone')" placeholder="" required />
 					</div>
 					<div class="offset-lg-1 col-lg-18">
 						<div class="c-formcompany__field">
@@ -41,7 +41,7 @@
 										<div class="c-formcompany__field__upload__trigger__meta">{{$t('pageregistercompany.label_download_extension')}}</div>
 									</div>
 								</div>
-								<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" />
+								<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" @change="onChangeInput($event)"/>
 								<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						<label for="rgpd" name="rgpd" class="--checkbox">{{$t('pageregistercompany.label_rgpd')}}</label>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<input id="marketing" type="checkbox" name="name" placeholder="" />
+  		  	  	  		<input v-model="marketing" id="marketing" type="checkbox" name="name" placeholder="" />
 						<label for="marketing" name="marketing" class="--checkbox">{{$t('pageregistercompany.label_marketing')}}</label>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
@@ -85,18 +85,21 @@
 
 <script>
 	import ShapeEllipse from '@/components/ui/ShapeEllipse';
+	import IconPicture from '@/components/svg/IconPicture';
 
   	export default {
       	name: 'theFormContact',
-		components: { ShapeEllipse },
+		components: { ShapeEllipse, IconPicture },
 		data: () => {
 			return {
 				input_company: '',
 				input_contact: '',
 				input_email: '',
+				input_phone: '',
 				input_password: '',
 				input_password_confirm: '',
 				rgpd: false,
+				marketing: false,
 				files: [],
 			}
 		},
@@ -127,7 +130,53 @@
 
  			 	try {
  			 	  	const token = await this.$recaptcha.execute('login')
- 			 	  	console.log('ReCaptcha token:', token)				
+					let image_uploaded_id = null
+
+					console.log("company : ", this.input_company)
+  					console.log("name : ", this.input_contact)
+  					console.log("email : ", this.input_email)
+  					console.log("phone : ", this.input_phone)
+  					console.log("Profile Picture : ", this.files)
+  					console.log("password : ", this.input_password)
+  					console.log("passwordConfirmation : ", this.input_password_confirm)
+  					console.log("captcha : ", token)					
+  					console.log("gdpr : ", this.rgpd)
+  					console.log("marketing : ", this.marketing)
+
+
+					const formData = new FormData();
+					formData.append("imageFile", this.files);
+					await this.$axios.post('/api/profile-pictures', formData, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+						image_uploaded_id = response.data['@id']
+  					})
+
+					console.log('image_uploaded_id : ', image_uploaded_id)
+
+					await this.$axios.post('/api/companies/register', {
+  					  	"company": this.input_company,
+  						"name": this.input_contact,
+  						"email": this.input_email,
+  						"phone": this.input_phone,
+  						"profilePicture": image_uploaded_id,
+  						"password": this.input_password,
+  						"passwordConfirmation": this.input_password_confirm,
+  						"captcha": await this.$recaptcha.execute('login'),
+  						"gdpr": this.rgpd,
+  						"marketing": this.marketing
+  					})
+					.then(function (response) {
+  						console.log(response);
+  					})
+  					.catch(function (error) {
+  						console.log(error);
+  					});
+
+					await this.$recaptcha.reset()
  			 	} catch (error) {
  			 	  	console.log('Login error:', error)
  			 	}
@@ -156,7 +205,6 @@
 				this.isFormSubmittable()
 			},
 			checkInputPasswordMatch() {
-				console.log('loooool')
 				if(this.input_password && this.input_password_confirm) {
 					if((this.input_password == this.input_password_confirm) && (this.input_password.length >= 8)) {
 						this.$refs.error_password.classList.remove('error')
@@ -179,6 +227,8 @@
 				if(type === 'image/jpeg' || type === 'image/png') {
 					if(size <= 5000000) {
 						this.files = this.$refs.input_file_logo[0]
+
+						console.log(this.files)
 
 						this.$refs.input_file_logo_uploaded.classList.remove('hidden')
 						this.$refs.input_file_logo_container.classList.add('hidden')
@@ -207,7 +257,13 @@
 				this.$refs.input_file_logo = e.dataTransfer.files;
 
 				this.onChange(e)
-			}
+			},
+			onChangeInput() {
+
+				this.$refs.input_file_logo = e.dataTransfer.files;
+
+				this.onChange(e)
+			},
 		},
 		beforeDestroy() {
   			this.$recaptcha.destroy()
@@ -223,6 +279,9 @@
 				this.isFormSubmittable()
    			},
 		},
+		beforeDestroy() {
+  			this.$recaptcha.destroy()
+		}
 	}
 </script>
 

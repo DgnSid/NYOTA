@@ -52,7 +52,7 @@
         components: {},
         data() {
             return {
-                category_filter: '',
+                category_filter: this.$store.state.newsarchive.inputCategoryFilter,
             }
         },
         props: {
@@ -67,10 +67,14 @@
 
             this.tl.set('.a-stagger-element', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+
+            this.category_filter = this.$store.state.newsarchive.inputCategoryFilter
         },
         watch: {
             category_filter() {
-                console.log(this.category_filter)
+                console.log('WATCH CATEGORY FILTER')
+                // this.$router.push({path: '/news/page/1'})
+                this.$store.commit('newsarchive/mutateInputCategoryFilter', this.category_filter)
                 eventHub.$emit('filter-news-by-category', this.category_filter)
             }
         }

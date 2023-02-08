@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="container a-stagger-element__listnewsalt">
-            <Pagination v-if="(total > 1)" :total="total" :perPage="1" />
+            <Pagination v-if="(mutableTotal > 1)" :total="mutableTotal" :perPage="1" />
         </div>
     </div>
 </template>
@@ -38,7 +38,8 @@
         components: { cardNewsAlt, Pagination },
         data: function () {
             return {
-                mutableNews: this.$props.news
+                mutableNews: this.$props.news,
+                mutableTotal: this.$props.total
             }
         },
         props: {
@@ -60,8 +61,9 @@
             this.tl.staggerTo('.a-stagger-element__listnewsalt', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
 
             eventHub.$on('update-news-by-category', (data) => {
-                console.log('data', data['hydra:member'])
+                console.log('data', data['hydra:totalItems'])
                 this.mutableNews = data['hydra:member']
+                this.mutableTotal = data['hydra:totalItems']
             })
                    
         },
