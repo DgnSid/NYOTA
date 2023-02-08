@@ -171,6 +171,10 @@
         type: Number,
         default: 5,
       },
+      category: {
+        type: String,
+        default: '',
+      }
     },
     computed: {
       buttonStyles() {

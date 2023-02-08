@@ -13,7 +13,7 @@
                 {{date}}
             </div>
             <h2 class="c-card-news-alt__text__title">
-                {{title}}
+                {{title}} - id : {{ slug }}
             </h2>            
             <div class="c-card-news-alt__text__arrow-container">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

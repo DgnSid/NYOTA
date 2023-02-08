@@ -19,14 +19,14 @@
             "type": "Talent",
             "title": "Je cherche une opportunité en Afrique",
             "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
-            "cta_url": "#",
+            "cta_url": "/register/talent/steps/1",
             "cta_title": "S'inscrire"
         },
         "company": {
             "type": "Entreprise",
             "title": "Je suis une entreprise implantée en Afrique",
             "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
-            "cta_url": "#",
+            "cta_url": "/register/company",
             "cta_title": "S'inscrire"
         }
     },
@@ -177,6 +177,7 @@
         "label_contact_name": "Nom et prénom du contact référent",
         "label_email": "Adresse e-mail du contact référent",
         "label_phone": "Numéro de téléphone du contact référent",
+        "id_phone": "id_phone",
         "label_logo": "Logo de l’entreprise",
         "label_password": "Mot de passe",
         "label_password_confirm": "Confirmation mot de passe",
