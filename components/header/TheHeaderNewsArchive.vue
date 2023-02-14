@@ -72,8 +72,6 @@
         },
         watch: {
             category_filter() {
-                console.log('WATCH CATEGORY FILTER')
-                // this.$router.push({path: '/news/page/1'})
                 this.$store.commit('newsarchive/mutateInputCategoryFilter', this.category_filter)
                 eventHub.$emit('filter-news-by-category', this.category_filter)
             }

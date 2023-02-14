@@ -34,6 +34,7 @@
 								<label>{{$t('pageregistercompany.label_logo')}}</label>
 								<div ref="input_file_dropzone" class="c-formcompany__field__upload__trigger" @click="triggerUpload('input_file_logo')">
 									<div class="c-formcompany__field__upload__dropzone" @dragenter="onDragenter('input_file_dropzone')" @dragleave="onDragleave('input_file_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_dropzone')"></div>
+									<div class="c-formcompany__field__upload__delete" ref="input_file_close" @click="deleteFile($event)">X</div>
 									<div class="c-formcompany__field__upload__trigger__uploaded hidden" ref="input_file_logo_uploaded"></div>
 									<div class="c-formcompany__field__upload__trigger__container" ref="input_file_logo_container">
 										<icon-picture class="c-formcompany__field__upload__trigger__icon" />
@@ -115,7 +116,7 @@
 
 				if(file) {					
 					this.$refs.input_file_logo_uploaded.classList.remove('hidden')
-					this.$refs.input_file_logo_uploaded.append(file.name)
+					this.$refs.input_file_logo_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_logo_container.classList.add('hidden')
 				} else {
@@ -131,19 +132,6 @@
  			 	try {
  			 	  	const token = await this.$recaptcha.execute('login')
 					let image_uploaded_id = null
-
-					console.log("company : ", this.input_company)
-  					console.log("name : ", this.input_contact)
-  					console.log("email : ", this.input_email)
-  					console.log("phone : ", this.input_phone)
-  					console.log("Profile Picture : ", this.files)
-  					console.log("password : ", this.input_password)
-  					console.log("passwordConfirmation : ", this.input_password_confirm)
-  					console.log("captcha : ", token)					
-  					console.log("gdpr : ", this.rgpd)
-  					console.log("marketing : ", this.marketing)
-
-
 					const formData = new FormData();
 					formData.append("imageFile", this.files);
 
@@ -224,19 +212,20 @@
 				this.$refs[`${ref}`].click()
 			},
 			onChange($event) {
-				const type = this.$refs.input_file_logo[0].type
-				const size = this.$refs.input_file_logo[0].size
+
+				const type = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0].type : this.$refs.input_file_logo[0].type
+				const size = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0].size : this.$refs.input_file_logo[0].size
 
 				if(type === 'image/jpeg' || type === 'image/png') {
 					if(size <= 5000000) {
-						this.files = this.$refs.input_file_logo[0]
-
-						console.log(this.files)
+						this.files = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0] : this.$refs.input_file_logo[0]
 
 						this.$refs.input_file_logo_uploaded.classList.remove('hidden')
 						this.$refs.input_file_logo_container.classList.add('hidden')
 
-						this.$refs.input_file_logo_uploaded.append(this.files.name)
+						this.$refs.input_file_close.classList.add('active')
+
+						this.$refs.input_file_logo_uploaded.innerHTML = this.files.name
 
 						$event.target.closest('.c-formcompany__field').classList.remove('error')
 						return;
@@ -259,14 +248,21 @@
 
 				this.$refs.input_file_logo = e.dataTransfer.files;
 
-				this.onChange(e)
-			},
-			onChangeInput() {
-
-				this.$refs.input_file_logo = e.dataTransfer.files;
+				console.log('this.$refs.input_file_logo', this.$refs.input_file_logo)
 
 				this.onChange(e)
 			},
+			onChangeInput(e) {
+				console.log(this.$refs.input_file_logo.value)
+
+				console.log('this.$refs.input_file_logo', this.$refs.input_file_logo)
+
+				this.onChange(e)
+			},
+			deleteFile(e) {
+				e.preventDefault()
+				console.log(this.$refs.input_file_logo.value)
+			}
 		},
 		beforeDestroy() {
   			this.$recaptcha.destroy()
@@ -404,6 +400,22 @@ Style scoped
 				left: 0;
 				width: 100%;
 				height: 100%;
+			}
+
+			.c-formcompany__field__upload__delete {
+				position: absolute;
+				top: 40px;
+				right: 10px;
+				z-index: 2;
+				color: red;
+
+				opacity: 0;
+				display: none;
+
+				&.active {
+					display: block;
+					opacity: 1;
+				}
 			}
 			.c-formcompany__field__upload__trigger {
 				border: 1px dashed orange;

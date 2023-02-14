@@ -10,31 +10,23 @@
                         </h2>
   		  	  	  		
 						<div class="c-formregistertalent__field">
-                        	<label>Nom  <span>*</span></label>
-  		  	  	  			<input v-model="input_lastname" type="text" name="object" placeholder="" required @change="checkInputLastName($event)" />
+                        	<label>{{$t('registerform.steps.one.label_name')}}  <span>*</span></label>
+  		  	  	  			<input v-model="input_lastname" type="text" :name="$t('registerform.steps.one.id_name')" placeholder="" required @change="checkInputLastName($event)" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
 						<div class="c-formregistertalent__field">
-                        	<label>Prénom <span>*</span></label>
-  		  	  	  			<input  v-model="input_firstname" type="text" name="object" placeholder="" required @change="checkInputFirstName($event)" />
+                        	<label>{{$t('registerform.steps.one.label_firstname')}} <span>*</span></label>
+  		  	  	  			<input  v-model="input_firstname" type="text" :name="$t('registerform.steps.one.label_firstname')" placeholder="" required @change="checkInputFirstName($event)" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
 						<div class="c-formregistertalent__field">
-                        	<label>Genre <span>*</span></label>
+                        	<label>{{$t('registerform.steps.one.label_gender')}} <span>*</span></label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="drone" value="1" v-model="gender" role="radio" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Homme</label>
-								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="drone" value="2" v-model="gender" role="radio" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Femme</label>							
-								</div>
-								<div class="c-formregistertalent__field__radioelement">									
-									<input type="radio" id="3" name="drone" value="3" v-model="gender" role="radio" aria-checked="false" aria-labelledby="label-3">
-									<label id="label-3" for="3" tabindex="0">Autre</label>							
+								<div v-for="(element) in genders" :key="element.id" class="c-formregistertalent__field__radioelement">
+									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="gender" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
+									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
@@ -92,6 +84,7 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			genders: Array,
         },
 		mounted() {
 			this.input_lastname = this.$store.state.registertalent.inputLastName
@@ -107,7 +100,7 @@
 			},
 			checkInputFirstName($event) {
 				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
+				if (/^[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ]*((-|'|\s)*[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ])*$/.test(value)) {
 					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
 					this.input_firstname = value
     			} else {
@@ -119,7 +112,7 @@
 			},
 			checkInputLastName($event) {
 				const value = $event.target.value
-				if (/^[_A-z]*((-|'|\s)*[_A-z])*$/.test(value)) {
+				if (/^[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ]*((-|'|\s)*[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ])*$/.test(value)) {
 					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
 					this.input_lastname = value
     			} else {

@@ -10,17 +10,9 @@
 						<div class="c-formregistertalent__field">
                         	<label class="--question">Quel est votre salaire minimum attendu ?</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="industry" value="1" v-model="industry" role="radio" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Agriculture</label>
-								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="industry" value="2" v-model="industry" role="radio" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Conseil</label>							
-								</div>
-								<div class="c-formregistertalent__field__radioelement">									
-									<input type="radio" id="3" name="industry" value="3" v-model="industry" role="radio" aria-checked="false" aria-labelledby="label-3">
-									<label id="label-3" for="3" tabindex="0">Construction</label>							
+								<div v-for="(element) in salaries" :key="element.id" class="c-formregistertalent__field__radioelement">
+									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="salary" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
+									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
@@ -62,7 +54,7 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				industry: '',
+				salary: '',
 				is_form_submittable: false,
 			}
 		},
@@ -74,17 +66,18 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			salaries: Array,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputIndustryWanted
+			this.salary = this.$store.state.registertalent.inputSalaries
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$store.commit('registertalent/mutateInputSalaries', this.salary)
 				this.$router.push({path: '/register/talent/steps/3'})
 			},
 			isFormSubmittable() {
-				if(this.industry) {
+				if(this.salary) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -94,7 +87,7 @@
 			}
 		},
 		watch: {
-   			industry() {
+   			salary() {
 				this.isFormSubmittable()
    			},
 		},

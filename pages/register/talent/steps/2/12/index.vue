@@ -20,6 +20,7 @@ Template
             :back_title="$t('registerform.form.back_title')"
             back_url="/register/talent/steps/2/11"
             :submit_title="$t('registerform.form.next')"
+            :salaries="this.SalariesApi['hydra:member']"
         />
     </div>
 </template>
@@ -33,7 +34,16 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoTwelve },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
+            const SalariesApi = await $axios.$get(`/api/salaries`)
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});    
 
+			return { SalariesApi }
         }
     }
 </script>

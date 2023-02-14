@@ -8,19 +8,11 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Où aimeriez-vous travailler ?</label>
+                        	<label class="--question">{{$t('registerform.steps.two.four.label_question')}}</label>
 							<div class="c-formregistertalent__field__checkboxlist" role="radiogroup">
-								<div class="c-formregistertalent__field__checkboxelement">
-									<input type="checkbox" id="1" name="work_where" value="1" v-model="work_where" role="cjeckbox" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Afrique du Nord</label>
-								</div>
-								<div class="c-formregistertalent__field__checkboxelement">
-									<input type="checkbox" id="2" name="work_where" value="2" v-model="work_where" role="cjeckbox" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Afrique du Sud</label>							
-								</div>
-								<div class="c-formregistertalent__field__checkboxelement">									
-									<input type="checkbox" id="3" name="work_where" value="3" v-model="work_where" role="cjeckbox" aria-checked="false" aria-labelledby="label-3">
-									<label id="label-3" for="3" tabindex="0">Afrique de l'Est</label>							
+								<div v-for="(element) in workplaces" :key="element.id" class="c-formregistertalent__field__checkboxelement">
+									<input type="checkbox" :id="element.id" :name="element.name" :value="'/api/workplaces/' + element.id" v-model="workplace" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
+									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
@@ -62,7 +54,7 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				work_where: [],
+				workplace: [],
 				is_form_submittable: false,
 			}
 		},
@@ -74,18 +66,19 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			workplaces: Array,
         },
 		mounted() {
-			this.work_where = this.$store.state.registertalent.inputWorkWhereWanted
+			this.workplace = this.$store.state.registertalent.inputWorkWhereWanted
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputWorkWhereWanted', this.work_where)
+				this.$store.commit('registertalent/mutateInputWorkWhereWanted', this.workplace)
 				this.$router.push({path: '/register/talent/steps/2/5'})
 			},
 			isFormSubmittable() {
-				console.log(this.work_where)
-				if(this.work_where.length >= 1) {
+				console.log(this.workplace)
+				if(this.workplace.length >= 1) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -95,7 +88,7 @@
 			}
 		},
 		watch: {
-   			work_where() {
+   			workplace() {
 				this.isFormSubmittable()
    			},
 		},

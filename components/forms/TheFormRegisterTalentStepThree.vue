@@ -88,7 +88,8 @@
 			submit_url: String,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputFileCv
+			// this.file_cv = this.$store.state.registertalent.inputFileCv
+			// this.file_picture = this.$store.state.registertalent.inputFilePicture			
 
 			this.$refs.input_file_cv.addEventListener('change', () => {
 				const file = this.$refs.input_file_cv.files[0];			
@@ -121,8 +122,41 @@
 			})
 		},
 		methods: {
-			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+			async handleSubmit(){
+				let cv_uploaded_id = null
+				let picture_uploaded_id = null
+				const formData_cv = new FormData();					
+				formData_cv.append("file", this.file_cv)
+				
+				if(this.file_cv.name) {
+					await this.$axios.post('/api/resumes', formData_cv, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+						cv_uploaded_id = response.data['@id']
+  					})
+
+					this.$store.commit('registertalent/mutateInputFileCv', cv_uploaded_id)
+				}
+
+				const formData = new FormData();					
+				formData.append("imageFile", this.file_picture)
+
+				if(this.file_picture.name) {
+					await this.$axios.post('/api/profile-pictures', formData, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+						picture_uploaded_id = response.data['@id']
+  					})
+
+					this.$store.commit('registertalent/mutateInputFilePicture', picture_uploaded_id)
+				}
+
 				this.$router.push({path: '/register/talent/steps/4/'})
 			},
 			isFormSubmittable() {

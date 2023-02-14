@@ -130,6 +130,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/recaptcha',
     '@nuxtjs/proxy',
+    '@nuxtjs/auth-next',
   ],
 
   recaptcha: {
@@ -137,6 +138,25 @@ export default {
     mode: 'base',
     siteKey: process.env.RECAPTCHA_SITE_KEY,
     version: 3,
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+        },
+        user: {
+          property: 'user',
+          autoFetch: false
+        },
+        endpoints: {
+          login: { url: `${process.env.API_URL}api/companies/login_check`, method: 'post' },
+          user: { url: `${process.env.API_URL}api/c/me`, method: 'get'},
+        }
+      }
+    },
   },
 
   /*

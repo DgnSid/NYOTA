@@ -32,9 +32,6 @@ Template
     export default {
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoTen },
-        async asyncData({ app, params, $axios, $config: { baseURL } }) {
-
-        }
     }
 </script>
 

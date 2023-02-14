@@ -8,24 +8,23 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Intitulé du poste souhaité <span>*</span></label>
-  		  	  	  			<input v-model="job_name" type="text" name="job_name" placeholder="" required />
+                        	<label class="--question">{{$t('registerform.steps.two.nine.label_question_one')}} <span>*</span></label>
+  		  	  	  			<input v-model="job_name" type="text" name="job_name" :placeholder="$t('registerform.steps.two.nine.placeholder_question_one')" required />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
+
 						<div class="c-formregistertalent__field">
-                        	<label>Quel niveau de poste visez-vous ?</label>
+                        	<label class="--question">{{$t('registerform.steps.two.nine.label_question_three')}} <span>*</span></label>
+  		  	  	  			<input v-model="years_of_experience" type="text" name="job_name" :placeholder="$t('registerform.steps.two.nine.placeholder_question_three')" required />
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+						</div>
+
+						<div class="c-formregistertalent__field">
+                        	<label>{{$t('registerform.steps.two.nine.label_question_two')}}</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="industry" value="1" v-model="industry" role="radio" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Agriculture</label>
-								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="industry" value="2" v-model="industry" role="radio" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Conseil</label>							
-								</div>
-								<div class="c-formregistertalent__field__radioelement">									
-									<input type="radio" id="3" name="industry" value="3" v-model="industry" role="radio" aria-checked="false" aria-labelledby="label-3">
-									<label id="label-3" for="3" tabindex="0">Construction</label>							
+								<div v-for="(element) in contracts" :key="element.id" class="c-formregistertalent__field__radioelement">
+									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="contract" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
+									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
 						</div>
@@ -65,7 +64,9 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				industry: '',
+				job_name: '',
+				contract: '',
+				years_of_experience: '',
 				is_form_submittable: false,
 			}
 		},
@@ -77,17 +78,22 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			contracts: Array,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputIndustryWanted
+			this.contract = this.$store.state.registertalent.inputContract
+			this.job_name = this.$store.state.registertalent.inputJobName
+			this.years_of_experience = this.$store.state.registertalent.inputYearsOfExperience
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$store.commit('registertalent/mutateInputContract', this.contract)
+				this.$store.commit('registertalent/mutateInputJobName', this.job_name)
+				this.$store.commit('registertalent/mutateInputYearsOfExperience', this.years_of_experience)
 				this.$router.push({path: '/register/talent/steps/2/10'})
 			},
 			isFormSubmittable() {
-				if(this.industry) {
+				if(this.contract && this.job_name && this.years_of_experience) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -97,7 +103,13 @@
 			}
 		},
 		watch: {
-   			industry() {
+			job_name() {
+				this.isFormSubmittable()
+   			},
+   			contract() {
+				this.isFormSubmittable()
+   			},
+			years_of_experience() {
 				this.isFormSubmittable()
    			},
 		},

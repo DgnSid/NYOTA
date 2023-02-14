@@ -29,7 +29,7 @@
 						</div>
 						<div class="c-formregistertalent__field">
                         	
-  		  	  	  			<input type="checkbox" name="marketing" placeholder="" />
+  		  	  	  			<input v-model="marketing" type="checkbox" name="marketing" placeholder="" />
 							<label>Marketing</label>
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
@@ -63,6 +63,7 @@
 
 <script>
 	import ShapeEllipse from '@/components/ui/ShapeEllipse';
+import { cpuUsage } from 'process';
 
   	
 	export default {
@@ -74,6 +75,7 @@
 				input_password:'',
 				input_password_confirm:'',
 				rgpd: '',
+				marketing: '',
 				is_form_submittable: false,
 			}
 		},
@@ -90,9 +92,49 @@
 			this.industry = this.$store.state.registertalent.inputIndustryWanted
 		},
 		methods: {
-			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
-				this.$router.push({path: '/register/talent/confirm'})
+			async handleSubmit(){
+				const nationalities_code_array =  this.$store.state.registertalent.selectNationality.map(a => a.code)
+				const langs_code_array =  this.$store.state.registertalent.selectLangs.map(a => a.code)
+				const has_african_passed_experience_bool = this.$store.state.registertalent.inputHasAfricanPastExperience === "true" ? true : false
+				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))
+
+				await this.$axios.post('/api/talents/register', {						
+					"profilePicture": this.$store.state.registertalent.inputFilePicture,
+					"email": this.input_email,
+					"password": this.input_password,
+					"passwordConfirmation": this.input_password_confirm,
+					"resume": this.$store.state.registertalent.inputFileCv,
+					"lastname": this.$store.state.registertalent.inputLastName,
+					"firstname": this.$store.state.registertalent.inputFirstName,
+					"gender": `/api/genders/${this.$store.state.registertalent.inputGender}`,
+					"yearsOfExperience": parseInt(this.$store.state.registertalent.inputYearsOfExperience),
+					"oldIndustry": `/api/industries/${this.$store.state.registertalent.inputIndustryExperience}`,
+					"newIndustry": `/api/industries/${this.$store.state.registertalent.inputIndustryWanted}`,
+					"country": this.$store.state.registertalent.selectCountryFrom,
+					"nationalities": nationalities_code_array,
+					"languages": langs_code_array,
+					"expectedStartDate": `/api/expected_start_dates/${this.$store.state.registertalent.inputExpectedStartDate}`,
+					"job": `${this.$store.state.registertalent.inputJobName}`,
+					"salary": `/api/salaries/${this.$store.state.registertalent.inputSalaries}`,
+					"hasAfricanPastExperience": has_african_passed_experience_bool,
+					"contract":  `/api/contracts/${this.$store.state.registertalent.inputContract}`,
+					"domain": `/api/domains/${this.$store.state.registertalent.inputContract}`,
+					"workplaces": workplace_json,
+					"diploma": `/api/diplomas/${this.$store.state.registertalent.inputDiplomas}`,
+					"school": `${this.$store.state.registertalent.inputSchoolname}`,
+  					"captcha": await this.$recaptcha.execute('login'),
+  					// "gdpr": this.rgpd,
+  					// "marketing": this.marketing
+  				})
+				.then(function (response) {
+  					console.log(response);
+					app.router.push({path: '/register/talent/steps/confirm'})
+  				})
+  				.catch(function (error) {
+  					console.log(error);
+  				});
+
+				await this.$recaptcha.reset()
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {

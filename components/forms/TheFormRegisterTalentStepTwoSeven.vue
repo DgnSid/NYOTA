@@ -8,8 +8,10 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Dans quelles langues pouvez-vous travailler ?</label>
-							<multiselect v-model="langs" :multiple="true" :options="options" :searchable="false" :close-on-select="false" :show-labels="false" placeholder="Pick a value" :internal-search="false"></multiselect>
+                        	<label class="--question">{{ $t('registerform.steps.two.seven.label_question') }}</label>
+							<multiselect v-model="langs" track-by="name" label="name" :multiple="true" :options="languages" :searchable="false" :close-on-select="false" :show-labels="false" :placeholder="$t('registerform.steps.two.seven.select_placeholder')" :internal-search="false">
+								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.name }}</strong></template>
+							</multiselect>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -62,6 +64,7 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			languages: Array,
         },
 		mounted() {
 			this.langs = this.$store.state.registertalent.selectLangs

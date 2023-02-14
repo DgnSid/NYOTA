@@ -1,20 +1,20 @@
 <template>
 	<div class="c-formconnexion">
   		<div class="container">
-  		  	<form @submit.prevent="handleSubmit">
+  		  	<form @submit.prevent="userLogin">
   		  	  	<div class="row">
 					<div class="offset-lg-1 col-lg-9">
   		  	  	  		<label>{{$t('pageconnexion.label_mail')}} <span>*</span></label>
-  		  	  	  		<input type="text" :name="$t('pageconnexion.id_mail')" placeholder="" required />
+  		  	  	  		<input v-model="login.username" type="text" :name="$t('pageconnexion.id_mail')" placeholder="" required />
 						
 						<label>{{$t('pageconnexion.label_password')}} <span>*</span></label>
-  		  	  	  		<input type="password" :name="$t('pageconnexion.id_password')" placeholder="" required />
+  		  	  	  		<input v-model="login.password" type="password" :name="$t('pageconnexion.id_password')" placeholder="" required />
 
 						<div>
 							<nuxt-link class="c-formconnexion__link" to="/forgotten-password">{{$t('pageconnexion.label_forgottenpassword')}}</nuxt-link>
 						</div>
 
-						<button class="c-formconnexion__submit --bordered" type="submit ">
+						<button class="c-formconnexion__submit --bordered" type="submit">
 							<span class="c-formconnexion__submit__text">{{$t('pageconnexion.label_submit')}}</span>
 						</button>
 
@@ -31,12 +31,87 @@
 </template>
 
 <script>
+	import axios from 'axios';
+
   	export default {
       	name: 'theFormConnexion',
-		methods: {
-			async handleSubmit() {
-				console.log('handleSubmit')
+		// auth: false,
+		data: function () {
+			return {
+                login: {
+                    username: '',
+                    password: ''
+                },
+                formErrors: false,
+                formErrorsMessage: "",
+                isLogout: false,
+                isUpdated: false
 			}
+		},
+		head() {
+			return {
+				title: 'Connexion',
+				meta: [
+					{
+						hid: 'description',
+						name: 'description',
+						content: 'Ma description personnalisée'
+					}
+				]
+			}
+		},
+		beforeCreate: function() {
+            let userStorage = this.$auth.$storage.getUniversal('user')
+
+            if (userStorage) {
+                this.$auth.setUser(userStorage)
+            }
+
+            if (this.$auth.user) {
+                this.$router.push('/')
+            }
+        },
+		methods: {
+			async userLogin() {
+				try {
+					
+					//let response = await axios.post('/api/companies/login_check', {
+  					//	"username": this.login.input_email,
+  					//	"password": this.login.input_password,
+  					//})
+
+					let response = await this.$auth.loginWith('local', { data: this.login })
+
+					let token = response.data.token
+
+					console.log('pmpm', response)
+
+					// set token
+                    this.$auth.strategy.token.set(token)
+
+                    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+
+					// get user
+                    response = await axios.get(this.$auth.strategies.local.options.endpoints.user.url)
+ 
+                    let user = response.data
+
+					console.log('user', user)
+ 
+                    user.token = token
+ 
+                    this.$auth.setUser(user)
+ 
+                    this.$auth.$storage.setUniversal('user', user, true)
+
+					console.log('looooooooool')
+					this.$router.push(`/profile/company/3`)
+				}
+				catch (error) {
+ 			 	  	console.log('Login error:', error)
+ 			 	}
+            }
+
 		},
 	}
 </script>
