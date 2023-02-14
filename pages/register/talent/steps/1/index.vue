@@ -21,6 +21,7 @@ Template
             back_url="#"
             :submit_title="$t('registerform.form.next')"
             submit_url="/register/talent/steps/2/1"
+            :genders="this.GendersApi['hydra:member']"
         />
     </div>
 </template>
@@ -34,8 +35,17 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepOne },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
+            const GendersApi = await $axios.$get(`/api/genders`)
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});    
 
-        }
+			return { GendersApi }
+        },
     }
 </script>
 

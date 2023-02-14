@@ -8,15 +8,11 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Avez-vous une expérience professionnelle antérieure en Afrique ? </label>
+                        	<label class="--question">{{$t('registerform.steps.two.ten.label_question')}}</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="1" name="industry" value="1" v-model="industry" role="radio" aria-checked="false"  aria-labelledby="label-1">
-									<label id="label-1" for="1" tabindex="0">Oui</label>
-								</div>
-								<div class="c-formregistertalent__field__radioelement">
-									<input type="radio" id="2" name="industry" value="2" v-model="industry" role="radio" aria-checked="false" aria-labelledby="label-2">
-									<label id="label-2" for="2" tabindex="0">Non</label>							
+								<div v-for="(element) in $t('registerform.steps.two.ten.answers')" :key="element.value" class="c-formregistertalent__field__radioelement">
+									<input type="radio" :id="element.value" :name="element.name" :value="element.value" v-model="has_african_past_experience" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.value">
+									<label :id="'label-'+ element.value" :for="element.value" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
@@ -58,7 +54,7 @@
 		components: { ShapeEllipse},
 		data: () => {
 			return {
-				industry: '',
+				has_african_past_experience: '',
 				is_form_submittable: false,
 			}
 		},
@@ -72,15 +68,15 @@
 			submit_url: String,
         },
 		mounted() {
-			this.industry = this.$store.state.registertalent.inputIndustryWanted
+			this.has_african_past_experience = this.$store.state.registertalent.inputHasAfricanPastExperience
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputIndustryWanted', this.industry)
+				this.$store.commit('registertalent/mutateInputHasAfricanPastExperience', this.has_african_past_experience)
 				this.$router.push({path: '/register/talent/steps/2/11'})
 			},
 			isFormSubmittable() {
-				if(this.industry) {
+				if(this.has_african_past_experience) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -90,7 +86,7 @@
 			}
 		},
 		watch: {
-   			industry() {
+			has_african_past_experience() {
 				this.isFormSubmittable()
    			},
 		},

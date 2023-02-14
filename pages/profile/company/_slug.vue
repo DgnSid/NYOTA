@@ -24,12 +24,28 @@ export default {
         TheHeaderProfileCompany,
     },
     async asyncData({ app, params, $axios, $config: { baseURL } }) {
-        // const profileCompanyData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/contact`, {
-        //     headers: {
-        //       'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-        //       'Accept-Language': app.i18n.locale,
-        //     }
-        // });
+        const profileCompanyDataApi = await $axios.$get(`/api/c/companies/${params.slug}`, {
+            headers: {
+              'Accept-Language': app.i18n.locale,
+            },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.log(app)
+
+            if (!app.$auth.$storage.getUniversal('user').id) {
+                app.router.push('/')
+            } else {
+                app.router.push(`/profile/company/${app.$auth.$storage.getUniversal('user').id}`)
+            }
+
+          console.log()
+          console.error(err)
+        });
+
 
         const profileCompanyData = {
             "seo": {
@@ -46,7 +62,7 @@ export default {
             },
         }
 
-        return { profileCompanyData }
+        return { profileCompanyData, profileCompanyDataApi }
     }
 }
 </script>

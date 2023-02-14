@@ -10,7 +10,7 @@
                         image_style="--right"
                         :date="element.publicationDate|date('DD.MM.YYYY')"
                         :title="element.title"
-                        :url="element.title|slugify"
+                        :url="element['@id'].split('/').pop()"
                     />
                 </div>
                 <div class="col-lg-12 a-stagger-element__listnews" v-for="(element, index) in news.slice(2, 4)" :key="index + 2">
@@ -20,7 +20,7 @@
                         image_style="--left"
                         :date="element.publicationDate|date('DD.MM.YYYY')"
                         :title="element.title"
-                        :url="element.title|slugify"
+                        :url="element['@id'].split('/').pop()"
                     />
                 </div>
             </div>

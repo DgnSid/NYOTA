@@ -20,6 +20,7 @@ Template
             :back_title="$t('registerform.form.back_title')"
             back_url="/register/talent/steps/2/6"
             :submit_title="$t('registerform.form.next')"
+            :languages="this.LanguagesApi['hydra:member']"
         />
     </div>
 </template>
@@ -32,9 +33,18 @@ Template
     export default {
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoSeven },
-        async asyncData({ app, params, $axios, $config: { baseURL } }) {
+        async asyncData({app, params, $axios, $config: { baseURL } }) {      
+			const LanguagesApi = await $axios.$get(`/api/languages`)
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});    
 
-        }
+			return { LanguagesApi }
+  		},
     }
 </script>
 

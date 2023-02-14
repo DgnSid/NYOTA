@@ -8,12 +8,10 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Où êtes-vous situé ?</label>
+                        	<label class="--question">{{$t('registerform.steps.two.five.label_question')}}</label>
 							<select v-model="country_from">
-								<option value="">Pays</option>
-								<option value="1">Pays 1</option>
-								<option value="2">Pays 2</option>
-								<option value="3">Pays 3</option>
+								<option value="">{{$t('registerform.steps.two.five.select_placeholder')}}</option>
+								<option  v-for="(element, index) in countries" :key="index" :value="element.code">{{ element.name }}</option>								
 							</select>
 							<div class="c-formregistertalent__field__error ta-l">{{ $t('registerform.form.error_message') }}</div>
 						</div>
@@ -47,7 +45,6 @@
 
 <script>
 	import ShapeEllipse from '@/components/ui/ShapeEllipse';
-
   	
 	export default {
       	name: 'FormRegisterTalent',
@@ -66,10 +63,12 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			countries: Array,
         },
 		mounted() {
 			this.country_from = this.$store.state.registertalent.selectCountryFrom
 		},
+		
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateSelectCountryFrom', this.country_from)

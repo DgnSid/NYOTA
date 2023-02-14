@@ -8,8 +8,10 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Quelle est votre nationalité ?</label>
-							<multiselect v-model="nationality" :multiple="true" :options="options" :searchable="false" :close-on-select="false" :show-labels="false" placeholder="Pick a value" :internal-search="false"></multiselect>
+                        	<label class="--question">{{ $t('registerform.steps.two.six.label_question') }}</label>
+							<multiselect v-model="nationality" track-by="name" label="name" :multiple="true" :options="countries" :searchable="false" :close-on-select="false" :show-labels="false" :placeholder="$t('registerform.steps.two.six.select_placeholder')" :internal-search="false">
+								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.name }}</strong></template>
+							</multiselect>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -62,6 +64,7 @@
 			back_url: String,
 			submit_title: String,
 			submit_url: String,
+			countries: Array,
         },
 		mounted() {
 			this.nationality = this.$store.state.registertalent.selectNationality

@@ -5,10 +5,21 @@ export const state = () => ({
     inputIndustryExperience: "",
     inputIndustryWanted: "",
     inputSpecialization: "",
-    inputWorkWhereWanted: [],
     selectCountryFrom: "",
     selectNationality: "",
     selectLangs: "",
+    inputExpectedStartDate: "",
+    inputDiplomas: "",
+    inputHasAfricanPastExperience: "",
+    inputJobName: "",
+    inputDiplomas: "",
+    inputContract: "",
+    inputSchoolname: "",
+    inputSalaries: "",
+    inputWorkplaces: [],
+    inputYearsOfExperience: "",
+    inputFilePicture: "",
+    inputFileCv: "",
 })
 
 export const mutations = {
@@ -41,5 +52,41 @@ export const mutations = {
     },
     mutateSelectLangs(state, payload) {
         state.selectLangs = payload
+    },
+    mutateInputExpectedStartDate(state, payload) {
+        state.inputExpectedStartDate = payload
+    },
+    mutateInputDiplomas(state, payload) {
+        state.inputDiplomas = payload
+    },
+    mutateInputHasAfricanPastExperience(state, payload) {
+        state.inputHasAfricanPastExperience = payload
+    },
+    mutateInputJobName(state, payload) {
+        state.inputJobName = payload
+    },
+    mutateInputDiplomas(state, payload) {
+        state.inputDiplomas = payload
+    },
+    mutateInputSchoolname(state, payload) {
+        state.inputSchoolname = payload
+    },
+    mutateInputSalaries(state, payload) {
+        state.inputSalaries = payload
+    },
+    mutateInputContract(state, payload) {
+        state.inputContract = payload
+    },
+    mutateInputWorkplaces(state, payload) {
+        state.inputWorkplaces = payload
+    },
+    mutateInputYearsOfExperience(state, payload) {
+        state.inputYearsOfExperience = payload
+    },
+    mutateInputFilePicture(state, payload) {
+        state.inputFilePicture = payload
+    },
+    mutateInputFileCv(state, payload) {
+        state.inputFileCv = payload
     },
 }

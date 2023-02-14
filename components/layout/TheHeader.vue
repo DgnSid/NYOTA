@@ -16,13 +16,18 @@ Template
                     <nuxt-link :to="$t('menu.company_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.company_title')}}</nuxt-link>
                     <nuxt-link :to="$t('menu.contact_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.contact_title')}}</nuxt-link>
                     <nuxt-link :to="$t('menu.news_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.news_title')}}</nuxt-link>
-                    <div class="header__inner__menu__element --orange">
+                    <div v-if="this.$auth.loggedIn" class="header__inner__menu__element --orange">
+                        <span @click="logOut" :to="$t('menu.disconnect_url')" class="a-stagger-element__header">{{$t('menu.profile_title')}}</span>
+                        <span class="mx-xs a-stagger-element__header">|</span>
+                        <span @click="logOut" :to="$t('menu.disconnect_url')" class="a-stagger-element__header">{{$t('menu.disconnect_title')}}</span>
+                    </div>
+                    <div v-else class="header__inner__menu__element --orange">
                         <span class="a-stagger-element__header" @click="openPopup">
                             <span>{{$t('menu.register_title')}}</span>
                             <arrow-down />
                         </span>
                         <span class="mx-xs a-stagger-element__header">|</span>
-                        <nuxt-link to="/connexion" class="a-stagger-element__header">{{$t('menu.login_title')}}</nuxt-link>
+                        <nuxt-link :to="$t('menu.login_url')" class="a-stagger-element__header">{{$t('menu.login_title')}}</nuxt-link>
                     </div>
                     <nuxt-link
                         class="header__inner__menu__element a-stagger-element__header"
@@ -100,6 +105,11 @@ Script
                     this.$refs.header.classList.remove('active')
                     this.active = false
                 }
+            },
+
+            logOut() {
+                this.$auth.logout()
+                this.$auth.$storage.removeUniversal('user')
             },
 
             openPopup() {

@@ -160,10 +160,13 @@
     .c-formregistertalent__field__radiolist {
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     .c-formregistertalent__field__radioelement {
         display: flex;
         align-items: center;
+        margin-bottom: 8px;
 
         &:not(:last-child) {
             margin-right: 8px;
@@ -204,6 +207,7 @@
     .c-formregistertalent__field__checkboxelement {
         display: flex;
         align-items: center;
+        margin-bottom: 8px;
 
         &:not(:last-child) {
             margin-right: 8px;

@@ -20,6 +20,7 @@ Template
             :back_title="$t('registerform.form.back_title')"
             back_url="/register/talent/steps/2/2"
             :submit_title="$t('registerform.form.next')"
+            :domains="this.DomainsApi['hydra:member']"
         />
     </div>
 </template>
@@ -33,7 +34,16 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoThree },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
+            const DomainsApi = await $axios.$get(`/api/domains`)
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});    
 
+			return { DomainsApi }
         }
     }
 </script>

@@ -20,7 +20,7 @@
                                 <span>{{$t('single_news.back')}}</span>
                             </nuxt-link>
                             <div class="c-header-news-single__content__top">
-                                <div v-if="type" class="c-header-news-single__content__top__type">{{type}}</div>
+                                <div v-if="type" class="c-header-news-single__content__top__type">{{type.name}}</div>
                                 <div class="c-header-news-single__content__top__date">{{$t('single_news.published')}} {{(date)}}</div>
                             </div>
                             <h1 class="c-header-news-single__content__title">
@@ -46,11 +46,11 @@
                 <div class="row">
                     <div class="offset-lg-1 col-lg-18 p-r">
                         <ImageBordered 
-                            :url="image.url"
+                            :url="this.$config.API_URL + image.url"
                             :alt="image.alt"
                             class_string="--left"
                         />
-                        <div class="c-header-news-single__bottom__caption">Légende image</div>
+                        <div class="c-header-news-single__bottom__caption">{{image.alt}}</div>
                         <shape-ellipse class="c-header-news-single__bottom__ellipse" :size="300" />
                     </div>
                     <div class="offset-lg-1 col-lg-3">
