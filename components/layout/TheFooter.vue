@@ -43,9 +43,9 @@ Template
                 </div>
                 <div class="a-stagger-element__footer">
                     <cta 
-                        url="/"
+                        url="/contact"
                         :title="$t('footer.contact')"
-                        class="--bordered"
+                        class="--bordered cta-h-small"
                     />
                 </div>
             </div>
@@ -202,6 +202,10 @@ Style scoped
             .c-footer__bottom__element {
                 padding: 0 30px;
                 font-size: 0.75rem;
+
+                &:first-child {
+                    color: $orange;
+                }
             }
 
             a {

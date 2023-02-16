@@ -77,6 +77,14 @@ Style scoped
             }
         }
 
+        &.cta-h-small {
+            padding: 8px 14px;
+
+            @media screen and (min-width: 1360px) {
+                padding: 8px 40px;
+            }
+        }
+
         &:hover {
             background: $white;
             .c-cta__text {

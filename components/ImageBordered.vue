@@ -48,6 +48,10 @@ Style scoped
             height: 292px;
         }
 
+        &.--h250 {
+            height: 250px;
+        }
+
         .c-image {
             object-fit: cover;
             object-position: center;
