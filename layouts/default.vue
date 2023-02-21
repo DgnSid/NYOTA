@@ -19,6 +19,16 @@ Template
     </div>
 </template>
 
+<script>	
+  	export default {
+		beforeCreate: function() {
+            if(!this.$auth.loggedIn) {
+                this.$auth.$storage.removeUniversal('user')
+            }
+        },
+	}
+</script>
+
 <!-----
 *
 Style

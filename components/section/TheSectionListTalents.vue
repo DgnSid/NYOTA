@@ -2,7 +2,7 @@
     <div class="c-section-listtalents">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 a-stagger-element__listtalents" v-for="(element, index) in list" :key="index">
+                <div class="col-lg-8 a-stagger-element__listtalents" v-for="(element, index) in mutableTalents" :key="index">
                     <card-talent 
                         :firstname="element.firstname"
                         :lastname="element.lastname.slice(0,1)"
@@ -13,7 +13,7 @@
                         :hasBeenConsulted="element.hasBeenConsulted"
                         from="Paris"
                         :industry="element.industry"
-                        :id="element.id"
+                        :id="element['@id'].split('/').pop()"
                     />
                 </div>
             </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+    import { eventHub } from '@/plugins/eventhub'
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -42,6 +43,11 @@
     export default {
         name: 'TheSectionListTalents',
         components: { cardTalent, Cta },
+        data: function () {
+            return {
+                mutableTalents: this.$props.list,
+            }
+        },
         props: { 
             list: Array,
         },
@@ -55,7 +61,10 @@
 
             this.tl.set('.a-stagger-element__listtalents', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__listtalents', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
-                   
+
+            eventHub.$on('update-talents-list', (data) => {
+                this.mutableTalents = data['hydra:member']
+            })                   
         },
     }
 </script>

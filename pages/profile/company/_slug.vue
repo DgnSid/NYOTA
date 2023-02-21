@@ -1,16 +1,17 @@
 <template>
     <div class="layout-profile-company">
         <TheHeaderProfileCompany
-            :photo="profileCompanyData.blockHeader.photo"
-            :company_name="profileCompanyData.blockHeader.company_name"
-            :contact_name="profileCompanyData.blockHeader.contact_name"
-            :contact_role="profileCompanyData.blockHeader.contact_role"
-            :contact_mail="profileCompanyData.blockHeader.mail"
-            :contact_phone="profileCompanyData.blockHeader.phone"
-            title="Les talents"
-            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget."
-            search_title="Rechercher un profil"
-            search_placeholder="Poste, secteur, formation"
+            :photo="profileCompanyDataApi.profilePicture"
+            :company_name="profileCompanyDataApi.name"
+            :contact_name="profileCompanyDataApi.contactName"
+            :contact_role="profileCompanyDataApi.contactRole"
+            :contact_mail="profileCompanyDataApi.email"
+            :contact_phone="profileCompanyDataApi.phoneNumber"
+            :id="id"
+            :title="$t('page_profile_company.talent_title')"
+            :text="$t('page_profile_company.talent_text')"
+            :search_title="$t('page_profile_company.talent_search_title')"
+            :search_placeholder="$t('page_profile_company.talent_placeholder')"
         />
     </div>
 </template>
@@ -24,7 +25,8 @@ export default {
         TheHeaderProfileCompany,
     },
     async asyncData({ app, params, $axios, $config: { baseURL } }) {
-        const profileCompanyDataApi = await $axios.$get(`/api/c/companies/${params.slug}`, {
+        const id = params.slug
+        const profileCompanyDataApi = await $axios.$get(`/api/c/companies/${id}`, {
             headers: {
               'Accept-Language': app.i18n.locale,
             },
@@ -46,23 +48,7 @@ export default {
           console.error(err)
         });
 
-
-        const profileCompanyData = {
-            "seo": {
-                "title": "string",
-                "description": "string"
-            },
-            "blockHeader": {
-                "photo": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                "company_name": "Entreprise",
-                "contact_name": "John Smith",
-                "contact_role": "Chargé de recrutement",
-                "mail": "johnsmith@gmail.com",
-                "phone": "06 73 45 98 01",
-            },
-        }
-
-        return { profileCompanyData, profileCompanyDataApi }
+        return { profileCompanyDataApi, id }
     }
 }
 </script>

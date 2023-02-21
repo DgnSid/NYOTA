@@ -8,7 +8,7 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Quel est votre salaire minimum attendu ?</label>
+                        	<label class="--question">{{$t('registerform.steps.two.twelve.label_question')}}</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
 								<div v-for="(element) in salaries" :key="element.id" class="c-formregistertalent__field__radioelement">
 									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="salary" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">

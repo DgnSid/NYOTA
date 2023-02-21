@@ -27,6 +27,19 @@ export default {
         //     }
         // });
 
+        const contactDataApi = await $axios.$get(`/api/contact`, {
+            headers: {
+              'Accept-Language': app.i18n.locale,
+            },
+        })
+        .then((res) => {
+          console.log(res)
+          return res
+        })
+        .catch((err) => {
+          console.error(err)
+        });
+
         const contactData = {
     "seo": {
         "title": "string",
@@ -38,7 +51,7 @@ export default {
     }
 }
 
-        return { contactData }
+        return { contactData, contactDataApi }
     }
 }
 </script>

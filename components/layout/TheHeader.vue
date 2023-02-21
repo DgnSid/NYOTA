@@ -17,7 +17,8 @@ Template
                     <nuxt-link :to="$t('menu.contact_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.contact_title')}}</nuxt-link>
                     <nuxt-link :to="$t('menu.news_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.news_title')}}</nuxt-link>
                     <div v-if="this.$auth.loggedIn" class="header__inner__menu__element --orange">
-                        <span @click="logOut" :to="$t('menu.disconnect_url')" class="a-stagger-element__header">{{$t('menu.profile_title')}}</span>
+                        <nuxt-link v-if="user_type == 'Talent'" :to="$t('menu.profile_talent_url') + user_id" class="a-stagger-element__header">{{$t('menu.profile_title')}}</nuxt-link>
+                        <nuxt-link v-else :to="$t('menu.profile_company_url') + user_id" class="a-stagger-element__header">{{$t('menu.profile_title')}}</nuxt-link>
                         <span class="mx-xs a-stagger-element__header">|</span>
                         <span @click="logOut" :to="$t('menu.disconnect_url')" class="a-stagger-element__header">{{$t('menu.disconnect_title')}}</span>
                     </div>
@@ -74,7 +75,9 @@ Script
         data: function () {
             return {
                 isPopupActive: false,
-                active: false
+                active: false,
+                user_id: this.$auth.user.id ? this.$auth.user.id : '',
+                user_type: this.$auth.user['@type'],
             }
         },
         mounted: function () {
@@ -95,6 +98,8 @@ Script
             eventHub.$on('close-popup', (data) => {
                 this.isPopupActive = data
             })
+
+            console.log('this.$auth.user', this.$auth.user.id)
         },
         methods: {
             handleScroll(e) {

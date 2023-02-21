@@ -8,14 +8,15 @@
                         <div class="col-lg-12">
                             <div class="c-header-profilecompany__left">
                                 <div class="c-header-profilecompany__photocontainer a-stagger-element__header-profile-company">
-                                    <img v-if="photo" class="c-header-profilecompany__photo" :src="photo" alt="Avatar" />
+                                    <img v-if="photo" class="c-header-profilecompany__photo" :src="this.$config.API_URL + photo.contentUrl" :alt="'Avatar of' + company_name" />
                                     <no-avatar v-else />
                                 </div>
                                 <h1 class="c-header-profilecompany__title a-stagger-element__header-profile-company">
                                     {{company_name}}
                                 </h1>
                                 <div class="c-header-profilecompany__updatephoto a-stagger-element__header-profile-company">
-                                    Modifier ma photo de profil
+                                    <span @click="triggerPictureUpload()">{{ $t('page_profile_company.editpicture') }}</span>
+                                    <input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" />
                                 </div>
                             </div>
                         </div>
@@ -27,11 +28,11 @@
                                         <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
                                         <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
                                         <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
-                                            <IconPhone class="mr-xs" />
+                                            <IconMail class="mr-xs" />
                                             <div>{{contact_mail}}</div>
                                         </a>
                                         <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
-                                            <IconMail class="mr-xs" />
+                                            <IconPhone class="mr-xs" />
                                             <div>{{contact_phone}}</div>
                                         </a>
                                         <cta
@@ -50,8 +51,8 @@
                     <div  class="c-header-profilecompany__content__bottom__text">{{ text }}</div>
                     <div  class="c-header-profilecompany__content__bottom__searchtext">{{ search_title }}</div>
                     <form class="c-header-profilecompany__content__bottom__form" method="get">
-                        <input type="text" :placeholder="search_placeholder" />
-                        <input type="submit" value="" />
+                        <input v-model="input_search" type="text" :placeholder="search_placeholder" />
+                        <input type="submit" value="" @click.prevent="redirectSearchTalent()" />
                     </form>
                 </div>
             </div>
@@ -76,8 +77,13 @@
     export default {
         name: 'HeaderProfileTalent',
         components: { NoAvatar, IconMail, IconPhone, Cta, ShapeEllipse },
+        data () {
+            return {
+                input_search: '',
+            }
+        },
         props: {
-            photo: String,
+            photo: Object,
             company_name: String,
             contact_name: String,
             contact_role: String,
@@ -87,8 +93,9 @@
             text: String,
             search_title: String,
             search_placeholder: String,
+            id: String,
         },
-        mounted() {
+        async mounted() {
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({
                 scrollTrigger: {
@@ -98,8 +105,47 @@
 
             this.tl.set('.a-stagger-element__header-profile-company', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__header-profile-company', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+
+            this.$refs.input_file_logo.addEventListener('change', async () => {
+
+                let image_uploaded_id = null
+				const formData = new FormData();
+				formData.append("imageFile", this.$refs.input_file_logo.files[0]);
+
+                if(this.$refs.input_file_logo.files[0].name) {
+					await this.$axios.post('/api/profile-pictures', formData, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+						image_uploaded_id = response.data['@id']
+                        console.log('image_uploaded_id : ', image_uploaded_id)
+  					})
+
+                    await this.$axios.put(`/api/c/companies/${this.$props.id}`, {
+                        "email": this.$props.contact_mail,
+                        "name": this.$props.company_name,
+                        "contactName": this.$props.contact_name,
+                        "profilePicture": image_uploaded_id
+                    })
+                    .then(function (response) {
+                        console.log('response', response)
+                        window.location.reload(true)
+  					})
+				}
+            })
                    
         },
+        methods: {
+            triggerPictureUpload() {
+                this.$refs.input_file_logo.click()
+            },
+            redirectSearchTalent() {
+                console.log('redirectSearchTalent')
+                this.$router.push({ path: '/talents', query: { job: this.input_search } })
+            }
+        }
     }
 </script>
 

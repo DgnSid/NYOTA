@@ -22,6 +22,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-cta {
+        cursor: pointer;
         position: relative;
         background: $gradientOrange;
         padding: 16px 24px;

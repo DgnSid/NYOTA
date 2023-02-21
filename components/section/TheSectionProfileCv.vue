@@ -3,102 +3,103 @@
         <div class="container">
             <div class="c-section-profile-cv__content">
                 <div :class="offset">
-                    <h2 class="c-section-profile-cv__title a-stagger-element__section-profile-cv">Formation et expérience</h2>
+                    <h2 class="c-section-profile-cv__title a-stagger-element__section-profile-cv">{{ $t('pagetalentsingle.formation_experience') }}</h2>
                 </div>
                 <div class="row">
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.one.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_industry_passed" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element" :key="index">
+                                {{data.oldIndustry.name}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.seven.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_langs" :key="index">
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.languages" :key="index">
                                 {{element}}
                             </div>
                         </div>
                     </div>
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.two.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_industry_wish" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.newIndustry.name}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.eight.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_work_when" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.expectedStartDate.name}}
                             </div>
                         </div>
                     </div>
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.three.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_specialisation" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.domain.name}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.nine.label_question_two')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_post_type" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.contract.name}}
                             </div>
                         </div>
                     </div>
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.four.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_work_where_wish" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.workplaces" :key="index">
+                                {{element.name}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.ten.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_worked_in_africa_before" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                <span v-if="data.hasAfricanPastExperience">Oui</span>
+                                <span v-else>Non</span>
                             </div>
                         </div>
                     </div>
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.five.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_from" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.country}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.eleven.label_question_one')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_level" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.diploma}}
                             </div>
                         </div>
                     </div>
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.six.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_nationality" :key="index">
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.nationalities" :key="index">
                                 {{element}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
-                        <div class="c-section-profile-cv__question">Dans quelle industrie avez-vous travaillé ?</div>
+                        <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.twelve.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.talent_salary" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element">
+                                {{data.salary}}
                             </div>
                         </div>
                     </div>
