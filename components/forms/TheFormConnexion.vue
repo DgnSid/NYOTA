@@ -4,6 +4,13 @@
   		  	<form @submit.prevent="userLogin">
   		  	  	<div class="row">
 					<div class="offset-lg-1 col-lg-9">
+						<label>{{$t('pageconnexion.label_type')}} <span>*</span></label>
+  		  	  	  		<select v-model="login_type" type="text" :name="$t('pageconnexion.id_type')" required>
+							<option v-for="(element, index) in $t('pageconnexion.option_type')" :key="index" :value="element.value">
+								{{ element.name }}
+							</option>
+						</select>
+
   		  	  	  		<label>{{$t('pageconnexion.label_mail')}} <span>*</span></label>
   		  	  	  		<input v-model="login.username" type="text" :name="$t('pageconnexion.id_mail')" placeholder="" required />
 						
@@ -40,8 +47,9 @@
 			return {
                 login: {
                     username: '',
-                    password: ''
+                    password: '',
                 },
+				login_type: 'company',
                 formErrors: false,
                 formErrorsMessage: "",
                 isLogout: false,
@@ -80,11 +88,12 @@
   					//	"password": this.login.input_password,
   					//})
 
-					let response = await this.$auth.loginWith('local', { data: this.login })
+
+					let response = this.login_type == "talent" ? await this.$auth.loginWith('local_talent', { data: this.login }) : await this.$auth.loginWith('local_company', { data: this.login })
+
+					console.log(response)
 
 					let token = response.data.token
-
-					console.log('pmpm', response)
 
 					// set token
                     this.$auth.strategy.token.set(token)
@@ -92,11 +101,9 @@
                     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
 					// get user
-                    response = await axios.get(this.$auth.strategies.local.options.endpoints.user.url)
+					response = this.login_type == "talent" ? await axios.get(this.$auth.strategies.local_talent.options.endpoints.user.url) : await axios.get(this.$auth.strategies.local_company.options.endpoints.user.url)
  
                     let user = response.data
-
-					console.log('user', user)
  
                     user.token = token
  
@@ -104,8 +111,7 @@
  
                     this.$auth.$storage.setUniversal('user', user, true)
 
-					console.log('looooooooool')
-					this.$router.push(`/profile/company/3`)
+					this.$router.push(`/`)
 				}
 				catch (error) {
  			 	  	console.log('Login error:', error)
@@ -154,6 +160,22 @@ Style scoped
 			margin-bottom: 32px;
 			padding-left: 20px;
 		}
+
+		select {
+        	border: 1px solid $orange;
+        	border-radius: 40px;
+        	color: $black;
+        	width: 300px;
+        	background-color: transparent;
+        	padding: 20px 16px;
+			margin-bottom: 32px;
+        	display: block;
+
+        	appearance: none;
+        	background-image: url('/arrow-down.svg');
+        	background-repeat: no-repeat;
+        	background-position: calc(100% - 20px) center;
+    	} 
 
 		.c-formconnexion__mandatory-text {
 			font-size: .75rem;

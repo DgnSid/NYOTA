@@ -15,6 +15,8 @@
         "login_url": "/login",
         "disconnect_title": "Se déconnecter",
         "profile_title": "Mon profil",
+        "profile_company_url": "/profile/company/",
+        "profile_talent_url": "/profile/talent/",
         "disconnect_url": "/login?logout=true"
     },
     "popup_register": {
@@ -60,7 +62,7 @@
         "section_features": {
             "cta": {
                 "title": "Nous contacter",
-                "url": "#"
+                "url": "/contact"
             }
         },
         "section_quotes": {
@@ -171,13 +173,16 @@
         "experience": "Expérience",
         "post": "Poste recherché",
         "sector": "Secteurs d'activités",
-        "download_cv": "Télécharger le cv"
+        "download_cv": "Télécharger le cv",
+        "years": "an(s)",
+        "formation_experience": "Formation et expérience"
     },
     "pageregistercompany": {
         "id_company_name": "id_company_name",
         "label_company_name": "Nom de l'entreprise",
         "id_contact_name": "id_contact_name",
         "label_contact_name": "Nom et prénom du contact référent",
+        "label_contact_role": "Rôle du contact référent",
         "label_email": "Adresse e-mail du contact référent",
         "label_phone": "Numéro de téléphone du contact référent",
         "id_phone": "id_phone",
@@ -192,6 +197,18 @@
         "label_download_extension": "PDF, JPG ou PNG - 5mo maximum"
     },
     "pageconnexion": {
+        "label_type": "Vous êtes",
+        "id_type": "id_type",
+        "option_type": [
+            {
+                "value": "talent",
+                "name": "Un talent"
+            },
+            {
+                "value": "company",
+                "name": "Une entreprise"
+            }
+        ],
         "label_mail": "Adresse mail",
         "id_mail": "id_mail",
         "label_password": "Mot de passe",
@@ -519,6 +536,9 @@
                     ],
                     "label_question_two": "Dans quel établissement avez-vous effectué votre dernier niveau d’éducation ?",
                     "placeholder_question_two": "Etablissement"
+                },
+                "twelve": {
+                    "label_question": "Quel est votre salaire minimum attendu ?"
                 }
             },
             "three": {
@@ -546,5 +566,38 @@
         "header": {
             "title": "Actualités"
         }
+    },
+    "page_profile_talent": {
+        "editpicture" : "Modifier la photo",
+        "personal_info": "Informations personnelles",
+        "cv": "CV",
+        "modify": "Modifier",
+        "label_lastname": "Nom",
+        "label_firstname": "Prénom",
+        "label_phone": "Numéro de téléphone",
+        "label_mail": "Adresse mail",
+        "label_role": "Rôle du contact référent",
+        "label_name": "Nom du contact référent",
+        "label_submit": "Modifier"
+    },
+    "page_profile_company": {
+        "editpicture" : "Modifier la photo",
+        "talent_title": "Les talents",
+        "talent_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget.",
+        "talent_search_title": "Rechercher un profil",
+        "talent_placeholder": "Poste"
+        
+    },
+    "page_contact": {
+        "label_object": "Objet",
+        "label_name": "Nom complet",
+        "label_company": "Entreprise",
+        "label_mail": "Adresse e-mail",
+        "label_phone": "Numéro de téléphone",
+        "label_message": "Message",
+        "label_message_max": "(1500 CARATÈRES MAX)",
+        "label_rgpd": "rgpd",
+        "label_submit": "Envoyer un message",
+        "label_mandatory": "* champ obligatoire"
     }
 }

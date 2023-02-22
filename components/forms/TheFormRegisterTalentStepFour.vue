@@ -128,7 +128,7 @@ import { cpuUsage } from 'process';
   				})
 				.then(function (response) {
   					console.log(response);
-					app.router.push({path: '/register/talent/steps/confirm'})
+					this.app.router.push({path: '/register/talent/steps/confirm'})
   				})
   				.catch(function (error) {
   					console.log(error);

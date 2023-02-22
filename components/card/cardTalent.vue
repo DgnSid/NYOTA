@@ -3,7 +3,7 @@
         <NuxtLink class="c-card-talent__link" :to="'/talents/' + id"></NuxtLink>
         <div class="c-card-talent__top">
             <div class="c-card-talent__top__photocontainer">
-                <img v-if="profilePicture" class="c-card-talent__top__photo" :src="profilePicture.url" alt="Avatar" />
+                <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
                 <no-avatar v-else />
             </div>
             <div>
@@ -48,11 +48,16 @@ import BlueCheck from '../svg/BlueCheck.vue'
     export default {
         name: 'cardTalent',
         components: { NoAvatar, MapPin, Briefcase, GraduationCap, BlueCheck },
+        data () {
+            return {
+                mutable_photo: {},
+            }
+        },
         props: {
             firstname: String,
             lastname: String,
             job: String,
-            profilePicture: Object,
+            profilePicture: String,
             school: String,
             yearsOfExperience: Number,
             hasBeenConsulted: Boolean,
@@ -61,7 +66,16 @@ import BlueCheck from '../svg/BlueCheck.vue'
                 default: "Paris",
             },
             industry: Object,
-            id: Number,
+            id: String,
+        },
+        async mounted() {
+            await this.$axios.$get(this.$props.profilePicture)
+            .then((res) => {
+                this.mutable_photo = res
+            })
+            .catch((err) => {
+                console.error(err)
+            });
         }
     }
 </script>

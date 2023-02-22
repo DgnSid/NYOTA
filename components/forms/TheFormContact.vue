@@ -4,40 +4,40 @@
   		  	<form @submit.prevent="handleSubmit">
   		  	  	<div class="row">
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<label>Objet</label>
-  		  	  	  		<input type="text" name="object" placeholder="" />
+  		  	  	  		<label>{{ $t("page_contact.label_object") }}</label>
+  		  	  	  		<input v-model="input_object" type="text" name="object" placeholder="" />
 					</div>
 					<div class="offset-lg-1 col-lg-9">
-  		  	  	  		<label>Nom complet <span>*</span></label>
-  		  	  	  		<input type="text" name="name" placeholder="" required />
+  		  	  	  		<label>{{ $t("page_contact.label_name") }}<span>*</span></label>
+  		  	  	  		<input v-model="input_name" type="text" name="name" placeholder="" required />
 					</div>
 					<div class="col-lg-9">
-  		  	  	  		<label>Entreprise</label>
-  		  	  	  		<input type="text" name="company" placeholder="" />
+  		  	  	  		<label>{{ $t("page_contact.label_company") }}</label>
+  		  	  	  		<input v-model="input_company" type="text" name="company" placeholder="" />
 					</div>
 					<div class=" offset-lg-1 col-lg-9">
-  		  	  	  		<label>Adresse e-mail <span>*</span></label>
-  		  	  	  		<input type="text" name="mail" placeholder="" required />
+  		  	  	  		<label>{{ $t("page_contact.label_mail") }} <span>*</span></label>
+  		  	  	  		<input v-model="input_mail" type="text" name="mail" placeholder="" required />
 					</div>
 					<div class="col-lg-9">
-  		  	  	  		<label>Numéro de téléphone</label>
-  		  	  	  		<input type="text" name="phone" placeholder="" />
+  		  	  	  		<label>{{ $t("page_contact.label_phone") }}</label>
+  		  	  	  		<input v-model="input_phone" type="text" name="phone" placeholder="" />
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<label>Message  <span>* (1500 caratères max)</span></label>
-  		  	  	  		<textarea name="message" maxlength="1500"></textarea>
+  		  	  	  		<label>{{ $t("page_contact.label_message") }}  <span>* {{ $t("page_contact.label_message_max") }}</span></label>
+  		  	  	  		<textarea v-model="input_message" name="message" maxlength="1500"></textarea>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<input id="rgpd" type="checkbox" name="name" placeholder="" required />
-						<label for="rgpd" name="rgpd" class="--checkbox">En cochant cette case, j’affirme avoir pris connaissance de la <a href="#">politique de confidentialité</a> de Nyota.</label>
+  		  	  	  		<input v-model="input_rgpd" id="rgpd" type="checkbox" name="name" placeholder="" required />
+						<label for="rgpd" name="rgpd" class="--checkbox">{{ $t("page_contact.label_rgpd") }}</label>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
   		  	  	  		<button class="c-formcontact__submit --bordered" type="submit ">
-							<span class="c-formcontact__submit__text">Envoyer un message</span>
+							<span class="c-formcontact__submit__text">{{ $t("page_contact.label_submit") }}</span>
 						</button>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-						<div class="c-formcontact__mandatory-text">* champ obligatoire</div>
+						<div class="c-formcontact__mandatory-text">{{ $t("page_contact.label_mandatory") }}</div>
 					</div>
   		  	  	</div>
   		  	</form>
@@ -52,6 +52,18 @@
   	export default {
       	name: 'theFormContact',
 		components: { ShapeEllipse },
+		data () {
+			return {
+				input_object: '',
+				input_name: '',
+				input_company: '',
+				input_object: '',
+				input_mail: '',
+				input_phone: '',
+				input_message: '',
+				input_rgpd: false,
+			}
+		},
 		async mounted() {
   			try {
   			  await this.$recaptcha.init()
@@ -63,9 +75,26 @@
 			async handleSubmit() {
 				console.log('handleSubmit')
 
- 			 	try {
- 			 	  	const token = await this.$recaptcha.execute('login')
- 			 	  	console.log('ReCaptcha token:', token)				
+				try {
+
+					await this.$axios.post('/api/requests', {
+						"subject": this.input_object,
+    					"email": this.input_mail,
+						"phone": this.input_phone,
+						"company": this.input_company,
+    					"name": this.input_name,
+    					"captcha": await this.$recaptcha.execute('login'),
+    					"message": this.input_mail,
+    					"gdpr": this.input_rgpd
+  					})
+					.then(function (response) {
+  						console.log(response);
+  					})
+  					.catch(function (error) {
+  						console.log(error);
+  					});
+
+					await this.$recaptcha.reset()
  			 	} catch (error) {
  			 	  	console.log('Login error:', error)
  			 	}

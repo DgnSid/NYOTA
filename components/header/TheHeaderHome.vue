@@ -53,12 +53,12 @@
                     <ImageBordered 
                         :url="this.$config.API_URL + image_top.url"
                         :alt="image_top.alt"
-                        class_string="--right --h300"
+                        class_string="--right --h250"
                     />
                     <ImageBordered 
                         :url="this.$config.API_URL + image_bottom.url"
                         :alt="image_bottom.alt"
-                        class_string="--left --h300"
+                        class_string="--left --h250"
                     />
                 </div>
                 <div v-if="ellipse" class="c-header-home__ellipse a-stagger-element">
@@ -222,8 +222,8 @@ Style scoped
         }
 
         .c-header-home__text {
-            font-size: 1.125rem;
-            line-height: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4rem;
             margin-bottom: 44px;
             color: $dark-grey;
 
@@ -233,6 +233,7 @@ Style scoped
                 background: $gradientOrange;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+                font-weight: 900;
             }
         }
 
@@ -292,6 +293,8 @@ Style scoped
         .c-header-home__images {
             z-index: 2;
             position: relative;
+            // transform: translate(-50px, -40px);
+            margin-top: -40px;
 
             @include media-breakpoint-down(md) {
                 display: flex;

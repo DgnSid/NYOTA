@@ -22,6 +22,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-cta {
+        cursor: pointer;
         position: relative;
         background: $gradientOrange;
         padding: 16px 24px;
@@ -74,6 +75,14 @@ Style scoped
 
             @media screen and (max-width: 1400px) {
                 letter-spacing: 2px;
+            }
+        }
+
+        &.cta-h-small {
+            padding: 8px 14px;
+
+            @media screen and (min-width: 1360px) {
+                padding: 8px 40px;
             }
         }
 

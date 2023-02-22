@@ -1,3 +1,5 @@
+.c-formeditcompany,
+.c-formedittalent,
 .c-formregistertalent {
     position: relative;
     padding-top: 60px;
@@ -95,6 +97,8 @@
         }
     }
 
+    .c-editcompany__field,
+    .c-edittalent__field,
     .c-formregistertalent__field {
         margin-bottom: 32px;
 
@@ -108,6 +112,7 @@
 			padding-left: 20px;
         }
 
+        .c-edittalent__field__error,
         .c-formregistertalent__field__error {
             font-size: .625rem;
             text-align: right;
@@ -250,6 +255,8 @@
         background-position: calc(100% - 20px) center;
     } 
 
+    .c-editcompany__submit__bottom,
+    .c-edittalent__submit__bottom,
     .c-formregistertalent__bottom {
         display: flex;
         justify-content: space-between;
@@ -262,6 +269,9 @@
                 margin-right: 10px;
             }
         }
+
+        .c-editcompany__submit,
+        .c-edittalent__submit,
         .c-formregistertalent__bottom__submit {
             position: relative;
             width: 270px;

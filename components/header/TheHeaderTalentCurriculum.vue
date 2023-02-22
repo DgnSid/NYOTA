@@ -22,11 +22,11 @@
                     </nuxt-link>
                     <div class="c-section-talent-curriculum__top">
                          <div class="c-section-talent-curriculum__top__photo-container">
-                             <img class="c-section-talent-curriculum__top__photo" :src="data.profilePicture.url" alt="Avatar" />
+                                <img class="c-section-talent-curriculum__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of' + data.firstname + ' ' + data.lastname " />
                          </div>
                          <h1 class="c-section-talent-curriculum__top__name">{{ data.firstname }} {{ data.lastname }}</h1>
                          <div class="c-section-talent-curriculum__top__school">{{ data.school }}</div>
-                         <div class="c-section-talent-curriculum__top__location">{{ data.from }}</div>
+                         <div class="c-section-talent-curriculum__top__location">{{ mutable_country }}</div>
                     </div>
                     <div class="c-section-talent-curriculum__bottom">
                         <div class="offset-lg-2 col-lg-20 p-0">
@@ -37,7 +37,7 @@
                                             {{ $t('pagetalentsingle.formation') }}
                                         </div>
                                         <div class="c-section-talent-curriculum__bottom-container__text">
-                                            {{ data.graduation }}
+                                            {{ data.diploma }}
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -45,7 +45,7 @@
                                             {{ $t('pagetalentsingle.experience') }}
                                         </div>
                                         <div class="c-section-talent-curriculum__bottom-container__text">
-                                            {{ data.yearsOfExperience }}
+                                            {{ data.yearsOfExperience }} {{ $t('pagetalentsingle.years') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -53,7 +53,7 @@
                                             {{ $t('pagetalentsingle.post') }}
                                         </div>
                                         <div class="c-section-talent-curriculum__bottom-container__text">
-                                            {{ data.lookingFor }}
+                                            {{ data.contract.name }}
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -61,8 +61,8 @@
                                             {{ $t('pagetalentsingle.sector') }}
                                         </div>
                                         <div class="c-section-talent-curriculum__bottom-container__list">
-                                            <div class="c-section-talent-curriculum__bottom-container__list__element" v-for="(element, index) in data.industry" :key="index">
-                                                {{ element }}
+                                            <div class="c-section-talent-curriculum__bottom-container__list__element">
+                                                {{ data.newIndustry.name }}
                                             </div>
                                         </div>
                                     </div>
@@ -90,16 +90,41 @@
     export default {
         name: 'HeaderTalentCurriculum',
         components: { Cta, Logo },
+        data () {
+            return {
+                mutable_photo: {},
+                mutable_country: '',
+            }
+        },
         props: {
             data: Object,
         },
-        mounted() {
+        async mounted() {
+            console.log('data ', this.$props.data)
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({
                 scrollTrigger: {
                     trigger: ".c-section-testimonials",
                 }
             })
+
+            await this.$axios.$get(this.$props.data.profilePicture)
+            .then((res) => {
+                console.log(res)
+                this.mutable_photo = res
+            })
+            .catch((err) => {
+                console.error(err)
+            });
+
+            await this.$axios.$get('/api/countries/' + this.$props.data.country)
+            .then((res) => {
+                console.log(res)
+                this.mutable_country = res.name
+            })
+            .catch((err) => {
+                console.error(err)
+            });
 
             this.tl.set('.a-stagger-element__testimonials', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__testimonials', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")

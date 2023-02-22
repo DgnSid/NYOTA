@@ -142,7 +142,8 @@ export default {
 
   auth: {
     strategies: {
-      local: {
+      local_company: {
+        scheme: 'local',
         token: {
           property: 'token',
           global: true,
@@ -154,6 +155,21 @@ export default {
         endpoints: {
           login: { url: `${process.env.API_URL}api/companies/login_check`, method: 'post' },
           user: { url: `${process.env.API_URL}api/c/me`, method: 'get'},
+        }
+      },
+      local_talent: {
+        scheme: 'local',
+        token: {
+          property: 'token',
+          global: true,
+        },
+        user: {
+          property: 'user',
+          autoFetch: false
+        },
+        endpoints: {
+          login: { url: `${process.env.API_URL}api/talents/login_check`, method: 'post' },
+          user: { url: `${process.env.API_URL}api/t/me`, method: 'get'},
         }
       }
     },

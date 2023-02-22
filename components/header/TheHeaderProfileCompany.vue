@@ -8,14 +8,15 @@
                         <div class="col-lg-12">
                             <div class="c-header-profilecompany__left">
                                 <div class="c-header-profilecompany__photocontainer a-stagger-element__header-profile-company">
-                                    <img v-if="photo" class="c-header-profilecompany__photo" :src="photo" alt="Avatar" />
+                                    <img v-if="photo" class="c-header-profilecompany__photo" :src="this.$config.API_URL + photo.contentUrl" :alt="'Avatar of' + company_name" />
                                     <no-avatar v-else />
                                 </div>
                                 <h1 class="c-header-profilecompany__title a-stagger-element__header-profile-company">
                                     {{company_name}}
                                 </h1>
                                 <div class="c-header-profilecompany__updatephoto a-stagger-element__header-profile-company">
-                                    Modifier ma photo de profil
+                                    <span @click="triggerPictureUpload()">{{ $t('page_profile_company.editpicture') }}</span>
+                                    <input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" />
                                 </div>
                             </div>
                         </div>
@@ -27,18 +28,20 @@
                                         <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
                                         <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
                                         <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
-                                            <IconPhone class="mr-xs" />
+                                            <IconMail class="mr-xs" />
                                             <div>{{contact_mail}}</div>
                                         </a>
                                         <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
-                                            <IconMail class="mr-xs" />
+                                            <IconPhone class="mr-xs" />
                                             <div>{{contact_phone}}</div>
                                         </a>
-                                        <cta
-                                            url=""
-                                            title="Modifier"
-                                            class="--bordered a-stagger-element__header-profile-company"
-                                        />
+                                        <div @click="openFormInfo()">
+                                            <cta                                                
+                                                url=""
+                                                title="Modifier"
+                                                class="--bordered a-stagger-element__header-profile-company"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -50,10 +53,49 @@
                     <div  class="c-header-profilecompany__content__bottom__text">{{ text }}</div>
                     <div  class="c-header-profilecompany__content__bottom__searchtext">{{ search_title }}</div>
                     <form class="c-header-profilecompany__content__bottom__form" method="get">
-                        <input type="text" :placeholder="search_placeholder" />
-                        <input type="submit" value="" />
+                        <input v-model="input_search" type="text" :placeholder="search_placeholder" />
+                        <input type="submit" value="" @click.prevent="redirectSearchTalent()" />
                     </form>
                 </div>
+            </div>
+        </div>
+
+        <div class="c-header-profilecompany__popup-form-info" ref="form_edit" :class="{ active: is_form_edit_active }">
+            <div class="c-header-profilecompany__popup-form-info__content">
+                <div class="c-header-profilecompany__popup-form-info__content__close" @click="closeFormInfo()">✕</div>
+                <h2 class="c-header-profilecompany__popup-form-info__content__title">Modifier mes infos</h2>
+                
+                <form class="c-formeditcompany" @submit.prevent="handleSubmit">
+                    <div class="c-editcompany__field">
+                        <label>{{$t('page_profile_talent.label_name')}}</label>
+                        <input v-model="input_name" type="text" :name="$t('page_profile_talent.id_lastname')" placeholder="" />
+				        <div class="c-editcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+                    </div>
+
+                    <div class="c-editcompany__field">
+                        <label>{{$t('page_profile_talent.label_role')}}</label>
+                        <input v-model="input_role" type="text" :name="$t('page_profile_talent.id_firstname')" placeholder="" />
+				        <div class="c-editcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+                    </div>
+
+                    <div class="c-editcompany__field">
+                        <label>{{$t('page_profile_talent.label_mail')}}</label>
+                        <input v-model="input_mail" type="text" :name="$t('page_profile_talent.id_mail')" placeholder="" />
+				        <div class="c-editcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+                    </div>
+
+                    <div class="c-editcompany__field">
+                        <label>{{$t('page_profile_talent.label_phone')}}</label>
+                        <input v-model="input_phone" type="text" :name="$t('page_profile_talent.id_phone')" placeholder="" />
+				        <div class="c-editcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+                    </div>
+
+                    <div class="c-editcompany__submit__bottom">
+                        <button class="c-editcompany__submit --bordered" type="submit" ref="submit">
+					        <span class="c-editcompany__submit__text">{{$t('page_profile_talent.label_submit')}}</span>
+					    </button>
+                    </div>
+                </form>
             </div>
         </div>
     </header>
@@ -76,8 +118,18 @@
     export default {
         name: 'HeaderProfileTalent',
         components: { NoAvatar, IconMail, IconPhone, Cta, ShapeEllipse },
+        data () {
+            return {
+                input_search: '',
+                input_name: this.$props.contact_name,
+                input_mail: this.$props.contact_mail,
+                input_phone: this.$props.contact_phone,
+                input_role: this.$props.contact_role,
+                is_form_edit_active: false,
+            }
+        },
         props: {
-            photo: String,
+            photo: Object,
             company_name: String,
             contact_name: String,
             contact_role: String,
@@ -87,8 +139,9 @@
             text: String,
             search_title: String,
             search_placeholder: String,
+            id: String,
         },
-        mounted() {
+        async mounted() {
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({
                 scrollTrigger: {
@@ -98,8 +151,68 @@
 
             this.tl.set('.a-stagger-element__header-profile-company', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__header-profile-company', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
+
+            this.$refs.input_file_logo.addEventListener('change', async () => {
+
+                let image_uploaded_id = null
+				const formData = new FormData();
+				formData.append("imageFile", this.$refs.input_file_logo.files[0]);
+
+                if(this.$refs.input_file_logo.files[0].name) {
+					await this.$axios.post('/api/profile-pictures', formData, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+						image_uploaded_id = response.data['@id']
+                        console.log('image_uploaded_id : ', image_uploaded_id)
+  					})
+
+                    await this.$axios.put(`/api/c/companies/${this.$props.id}`, {
+                        "email": this.$props.contact_mail,
+                        "name": this.$props.company_name,
+                        "contactName": this.$props.contact_name,
+                        "profilePicture": image_uploaded_id
+                    })
+                    .then(function (response) {
+                        console.log('response', response)
+                        window.location.reload(true)
+  					})
+				}
+            })
                    
         },
+        methods: {
+            async handleSubmit() {
+                console.log('handleSubmit')
+
+                await this.$axios.put(`/api/c/companies/${this.$props.id}`, {
+                    "contactName": this.input_name,
+                    "contactJob": this.input_role,
+                    "email": this.input_mail,
+                    "phoneNumber": this.input_phone,
+                })
+                .then(function (response) {
+                    console.log('response', response)
+                    window.location.reload(true)
+  				})
+            },
+            triggerPictureUpload() {
+                this.$refs.input_file_logo.click()
+            },
+            redirectSearchTalent() {
+                console.log('redirectSearchTalent')
+                this.$router.push({ path: '/talents', query: { job: this.input_search } })
+            },
+            openFormInfo() {
+                console.log('openFormInfo')
+                this.$refs.form_edit.classList.add('active')
+            },
+            closeFormInfo() {
+                this.$refs.form_edit.classList.remove('active')
+            }
+        }
     }
 </script>
 
@@ -109,6 +222,7 @@ Style scoped
 *
 ------>
 <style lang="scss" scoped>
+    @import '@/assets/sass/app/form/register.scss';
     .c-header-profilecompany {
         position: relative;
         // height: 512px;
@@ -330,6 +444,53 @@ Style scoped
                         color: $orange;
                         background-image: url('/arrow-orange.svg');
                     }
+                }
+            }
+        }
+
+        .c-header-profilecompany__popup-form-info {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0,0,0,.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 0;
+            display: none;
+            visibility: hidden;
+            
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                display: flex;
+            }
+
+            .c-header-profilecompany__popup-form-info__content {
+                position: relative;
+                width: 90%;
+                max-width: 600px;
+                background-color: $white;
+                border-radius: 50px;
+                max-height: 90vh;
+                overflow-y: auto;
+                padding: 50px;
+
+                .c-header-profilecompany__popup-form-info__content__close {
+                    position: absolute;
+                    top: 40px;
+                    right: 50px;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    color: $orange;
+                }
+
+                .c-header-profilecompany__popup-form-info__content__title {
+                    color: $orange;
+                    font-size: 2rem;
                 }
             }
         }

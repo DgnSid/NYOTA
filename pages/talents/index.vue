@@ -8,10 +8,17 @@ Template
         <TheHeaderTalentsList 
             :title="$t('pagetalentlist.header.title')"
             :placeholder="$t('pagetalentlist.header.placeholder')"
-            :totalresults="talentsData['hydra:totalItems']"
+            :job="query_job"
+            :totalresults="talentsDataApi['hydra:totalItems']"
+
+            :industries="IndustriesApi['hydra:member']"
+            :domains="DomainsApi['hydra:member']"
+            :contracts="ContractsApi['hydra:member']"
+            :expectedStartDates="ExpectedStartDatesApi['hydra:member']"
+            :workplaces="WorkplacesApi['hydra:member']"
         />
         <the-section-list-talents 
-            :list="talentsData['hydra:member']"
+            :list="talentsDataApi['hydra:member']"
         />
     </div>
 </template>
@@ -23,46 +30,93 @@ Template
     export default {
         name: "Talents",
         components: { TheHeaderTalentsList, TheSectionListTalents },
-        async asyncData({ app, params, $axios, $config: { baseURL } }) {
+        async asyncData({ app, params, $axios, route, $config: { baseURL } }) {
             const current_lang = app.i18n.locale
+            const query_job = route.query.job
+            const talentsDataApi = await $axios.$get(`/api/c/talents?job=${query_job }`, {
+                headers: {
+                  'Accept-Language': app.i18n.locale,
+                },
+            })
+            .then((res) => {
+              console.log(res)
+              return res
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
-            //const talentsData = await $axios.$get(`https://4ed59c05-70d1-4a3d-9853-e7bf3a6fc552.mock.pstmn.io/talents`, {
-            //    headers: {
-            //      'x-api-key': 'PMAK-6375006c1d4a8b7337c50e05-92b517b7ee4aa56076bdf9ac26e1af6158',
-            //      'Accept-Language':'fr',
-            //    }
-            //});
+            //API REQUEST FOR FILTERS
+            const IndustriesApi = await $axios.$get(`/api/industries`, { 
+                headers: {
+                    'Accept-Language': app.i18n.locale,
+                }
+            })
+			      .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });
+          
+                  const DomainsApi = await $axios.$get(`/api/domains`, { 
+                      headers: {
+                          'Accept-Language': app.i18n.locale,
+                      }
+                  })
+			      .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });
+          
+                  const ContractsApi = await $axios.$get(`/api/contracts`, { 
+                      headers: {
+                          'Accept-Language': app.i18n.locale,
+                      }
+                  })
+			      .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });
+          
+                  const ExpectedStartDatesApi = await $axios.$get(`/api/expected_start_dates`, { 
+                      headers: {
+                          'Accept-Language': app.i18n.locale,
+                      }
+                  })
+			      .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });    
+          
+                  const WorkplacesApi = await $axios.$get(`/api/workplaces`, { 
+                      headers: {
+                          'Accept-Language': app.i18n.locale,
+                      }
+                  })
+			      .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });
 
-            //console.log(talentsData)
 
-            const talentsData = {
-    "@context": "/api/contexts/Talent",
-    "@id": "/api/talents",
-    "@type": "hydra:Collection",
-    "hydra:member": [
-        {
-            "@id": "/api/talents/4",
-            "@type": "Talent",
-            "id": 4,
-            "firstname": "John",
-            "lastname": "Doe",
-            "job": "Consultant technique",
-            "from": "Paris",
-            "profilePicture": {
-                "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-            },
-            "school": "string",
-            "yearsOfExperience": 1,
-            "hasBeenConsulted": true,
-            "industry": {
-                "name": "string"
-            }
-        }
-    ],
-    "hydra:totalItems": 1
-}
-
-            return { talentsData }
+            return { talentsDataApi, IndustriesApi, DomainsApi, ContractsApi, ExpectedStartDatesApi, WorkplacesApi, query_job }
+        },
+        mounted () {
+          console.log('params ', this.$route.query)
         }
     }
 </script>

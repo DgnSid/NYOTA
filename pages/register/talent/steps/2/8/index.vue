@@ -34,7 +34,11 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoEight },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
-            const ExpectedStartDatesApi = await $axios.$get(`/api/expected_start_dates`)
+            const ExpectedStartDatesApi = await $axios.$get(`/api/expected_start_dates`, { 
+                headers: {
+                    'Accept-Language': app.i18n.locale,
+                }
+            })
 			.then((res) => {
 			  console.log(res)
 			  return res

@@ -4,10 +4,11 @@
             <div class="container">
                 <h1 class="c-header-talentslist__title">{{ title }}</h1>
                 <div class="c-header-talentslist__formtop">
-                    <input type="text" :placeholder="placeholder" />
-                    <input type="submit" value="" />
+                    <input v-model="input_job" type="text" :placeholder="placeholder" />
+                    <input type="submit" value="" @click.prevent="filterTalents()" />
                 </div>
-                <div class="c-header-talentslist__results">{{totalresults}} resultat<span v-if="totalresults > 1">s</span></div>                
+                <div v-if="mutableTotalResults" class="c-header-talentslist__results">{{mutableTotalResults}} resultat<span v-if="mutableTotalResults > 1">s</span></div>
+                <div v-else class="c-header-talentslist__results">Désolé pas de résultat pour votre recherche.</div>
             </div>
             <shape-ellipse class="c-header-talentslist__ellipse" :size="200" />
         </form>
@@ -23,40 +24,17 @@
                         <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
                     <div class="c-header-talentslist__bottom__element__dropdown" ref="sector">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="sector_checkbox" type="checkbox" :name="'sector_' + index" :id="'sector_' + index" />
-                            <label :for="'sector_' + index" @click="countActiveCheckboxes('sector_checkbox', 'sector_number')">Ceci est un sous-menu 01</label>
+                        <div v-for="(item, index) in industries" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input v-model="input_sector" ref="sector_checkbox" type="checkbox" :name="'sector_' + item.id" :id="'sector_' + item.id" :value="item.id" />
+                            <label :for="'sector_' + item.id" @click="countActiveCheckboxes('sector_checkbox', 'sector_number')">{{item.name}}</label>
                         </div>
 
                         <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')" @click="filterTalents()"/>
                         <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('sector_checkbox', 'sector_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                     </div>
                 </div>
-                <!---->
-                <div class="c-header-talentslist__bottom__element">
-                    <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('poste', $event)">
-                        <div class="c-header-talentslist__bottom__element__top__cover"></div>
-                        <div class="c-header-talentslist__bottom__element__top__text">
-                            <span>Poste</span>
-                            <div class="c-header-talentslist__bottom__element__top__text__number" ref="post_number"></div>
-                        </div>
-                        <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
-                    </div>
-                    <div class="c-header-talentslist__bottom__element__dropdown" ref="poste">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="post_checkbox" type="checkbox" :name="'postes_' + index" :id="'postes_' + index" />
-                            <label :for="'postes_' + index"  @click="countActiveCheckboxes('post_checkbox', 'post_number')">Ceci est un sous-menu 01</label>
-                        </div>
-
-                        <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
-
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
-                        <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('post_checkbox', 'post_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
-                    </div>
-                </div>
-
                 <!---->
                 <div class="c-header-talentslist__bottom__element">
                     <div class="c-header-talentslist__bottom__element__top js-filtermenutoggle-element" @click="dropdownFilter('formation', $event)">
@@ -68,14 +46,14 @@
                         <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
                     <div class="c-header-talentslist__bottom__element__dropdown" ref="formation">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="formation_checkbox" type="checkbox" :name="'formation_' + index" :id="'formation_' + index" />
-                            <label :for="'formation_' + index" @click="countActiveCheckboxes('formation_checkbox', 'formation_number')">Ceci est un sous-menu 01</label>
+                        <div v-for="(item, index) in domains" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input v-model="input_domain" ref="formation_checkbox" type="checkbox" :name="'formation_' + item.id" :id="'formation_' + item.id" :value="item.id" />
+                            <label :for="'formation_' + item.id" @click="countActiveCheckboxes('formation_checkbox', 'formation_number')">{{ item.name }}</label>
                         </div>
 
                         <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')" @click="filterTalents()"/>
                         <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('formation_checkbox', 'formation_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                     </div>
                 </div>
@@ -90,14 +68,14 @@
                         <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
                     <div class="c-header-talentslist__bottom__element__dropdown" ref="contract">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="contract_checkbox" type="checkbox" :name="'contract_' + index" :id="'contract_' + index" />
-                            <label :for="'contract_' + index" @click="countActiveCheckboxes('contract_checkbox', 'contract_number')">Ceci est un sous-menu 01</label>
+                        <div v-for="(item, index) in contracts" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input v-model="input_contract" ref="contract_checkbox" type="checkbox" :name="'contract_' + item.id" :id="'contract_' + item.id" :value="item.id" />
+                            <label :for="'contract_' + item.id" @click="countActiveCheckboxes('contract_checkbox', 'contract_number')">{{ item.name}}</label>
                         </div>
 
                         <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')" @click="filterTalents()"/>
                         <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('contract_checkbox', 'contract_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                     </div>
                 </div>
@@ -112,14 +90,14 @@
                         <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
                     <div class="c-header-talentslist__bottom__element__dropdown" ref="date">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="date_checkbox" type="checkbox" :name="'date_' + index" :id="'date_' + index" />
-                            <label :for="'date_' + index" @click="countActiveCheckboxes('date_checkbox', 'date_number')">Ceci est un sous-menu 01</label>
+                        <div v-for="(item, index) in expectedStartDates" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input v-model="input_expected_start_date" ref="date_checkbox" type="checkbox" :name="'date_' + index" :id="'date_' + index" :value="item.id" />
+                            <label :for="'date_' + index" @click="countActiveCheckboxes('date_checkbox', 'date_number')">{{ item.name}}</label>
                         </div>
 
                         <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')" @click="filterTalents()"/>
                         <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('date_checkbox', 'date_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                     </div>
                 </div>
@@ -134,14 +112,14 @@
                         <arrow-down class="c-header-talentslist__bottom__element__top__arrow" />
                     </div>
                     <div class="c-header-talentslist__bottom__element__dropdown" ref="location">
-                        <div v-for="(item, index) in 4" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
-                            <input ref="location_checkbox" type="checkbox" :name="'location_' + index" :id="'location_' + index" />
-                            <label :for="'location_' + index" @click="countActiveCheckboxes('location_checkbox', 'location_number')">Ceci est un sous-menu 01</label>
+                        <div v-for="(item, index) in workplaces" :key="index" class="c-header-talentslist__bottom__element__dropdown__filter">
+                            <input v-model="input_workplace" ref="location_checkbox" type="checkbox" :name="'location_' + item.id" :id="'location_' + item.id" :value="item.id" />
+                            <label :for="'location_' + item.id" @click="countActiveCheckboxes('location_checkbox', 'location_number')">{{item.name}}</label>
                         </div>
 
                         <div class="c-header-talentslist__bottom__element__dropdown__separator"></div>
 
-                        <input type="submit" :value="$t('pagetalentlist.header.search')"/>
+                        <input type="submit" :value="$t('pagetalentlist.header.search')" @click="filterTalents()"/>
                         <div class="c-header-talentslist__bottom__element__dropdown__delete" @click="uncheckCheckboxes('location_checkbox', 'location_number')">{{$t('pagetalentlist.header.delete_all')}}</div>
                     </div>
                 </div>
@@ -188,6 +166,7 @@
 </template>
 
 <script>
+    import { eventHub } from '@/plugins/eventhub'
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
     import ShapeEllipse from '../ui/ShapeEllipse.vue';
@@ -202,10 +181,28 @@
     export default {
         name: 'HeaderTalentList',
         components: { ShapeEllipse, ArrowDown, Cta, Close },
+        data () {
+            return {
+                input_expected_start_date: [],
+                input_contract: [],
+                input_domain: [],
+                input_workplace: [],
+                input_sector: [],
+                input_diploma: [],
+                input_job: this.$props.job ? this.$props.job : '',
+                mutableTotalResults: this.$props.totalresults
+            }
+        },
         props: {
             title: String,
             placeholder: String,
             totalresults: Number,
+            industries: Array,
+            domains: Array,
+            workplaces: Array,
+            expectedStartDates: Array,
+            contracts: Array,
+            job: String,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -217,9 +214,37 @@
 
             this.tl.set('.a-stagger-element__header-small', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__header-small', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
-                   
+            
+            eventHub.$on('update-talents-list', (data) => {
+                console.log(data)
+                this.mutableTotalResults = data['hydra:totalItems']
+            }) 
         },
         methods: {
+            async filterTalents() {
+                const query_input_expected_start_date = JSON.stringify(this.input_expected_start_date).replace('[', '').replace(']', '')
+                const query_input_contract =            JSON.stringify(this.input_contract).replace('[', '').replace(']', '')
+                const query_input_domain =              JSON.stringify(this.input_domain).replace('[', '').replace(']', '')
+                const query_input_diploma =             JSON.stringify(this.input_diploma).replace('[', '').replace(']', '')
+                const query_input_workplace =           JSON.stringify(this.input_workplace).replace('[', '').replace(']', '')
+                const query_input_sector =              JSON.stringify(this.input_sector).replace('[', '').replace(']', '')
+
+                const url_query = `/api/c/talents?job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplace[]=${query_input_workplace}&sector[]=${query_input_sector}`
+
+                console.log(url_query)
+                await this.$axios.$get( url_query, {
+                    headers: {
+                      'Accept-Language': 'fr',
+                    },
+                })
+                .then((res) => {
+                    console.log(res)
+                    eventHub.$emit('update-talents-list', res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            },
             countActiveCheckboxes(ref_checkbox, ref_number) {
                 let count = 0;
 
@@ -244,10 +269,14 @@
             },
             uncheckCheckboxes(ref, ref_number) {
                 this.$refs[ref].forEach( el => {
-                    el.checked = false;
+                    if(el.checked) {
+                        el.click()
+                    }
                 })
 
                 this.countActiveCheckboxes(ref, ref_number)
+
+                this.filterTalents()
             },
             dropdownFilter(ref, $event) {
                 $event.target.closest('.js-filtermenutoggle-element').classList.toggle('active')
@@ -259,7 +288,7 @@
             toggleFilterMobile(ref) {
                 console.log('toggleFilterMobile')
                 this.$refs[ref].classList.toggle('active')
-            }
+            },
         }
     }
 </script>
@@ -512,8 +541,9 @@ Style scoped
                             color: $orange;
                             position: absolute;
                             left: 3px;
-                            top: 1px;
+                            top: calc(50% + 1px);
                             font-size: 8px;
+                            transform: translateY(-50%);
                         }
                     }
 
