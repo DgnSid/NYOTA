@@ -76,11 +76,16 @@ Script
             return {
                 isPopupActive: false,
                 active: false,
-                user_id: this.$auth.user.id ? this.$auth.user.id : '',
-                user_type: this.$auth.user['@type'],
+                user_id: '',
+                user_type: '',
             }
         },
         mounted: function () {
+            setTimeout(() => {
+                this.user_id = this.$auth.user ? this.$auth.user.id : ''
+                this.user_type = this.$auth.user ? this.$auth.user['@type'] : ''
+            }, 100)
+
             if(window.scrollY) {
                 this.$refs.header.classList.value = this.$refs.header.classList.value + ' active'
             }
@@ -99,7 +104,6 @@ Script
                 this.isPopupActive = data
             })
 
-            console.log('this.$auth.user', this.$auth.user.id)
         },
         methods: {
             handleScroll(e) {

@@ -1,3 +1,4 @@
+.c-formeditcompany,
 .c-formedittalent,
 .c-formregistertalent {
     position: relative;
@@ -96,6 +97,7 @@
         }
     }
 
+    .c-editcompany__field,
     .c-edittalent__field,
     .c-formregistertalent__field {
         margin-bottom: 32px;
@@ -253,6 +255,7 @@
         background-position: calc(100% - 20px) center;
     } 
 
+    .c-editcompany__submit__bottom,
     .c-edittalent__submit__bottom,
     .c-formregistertalent__bottom {
         display: flex;
@@ -267,6 +270,7 @@
             }
         }
 
+        .c-editcompany__submit,
         .c-edittalent__submit,
         .c-formregistertalent__bottom__submit {
             position: relative;

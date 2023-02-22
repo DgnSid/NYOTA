@@ -180,8 +180,9 @@
                 console.error(err)
             });
 
-            await this.$axios.$get(this.$props.resume['@id'])
+            await this.$axios.$get(`/api/c/talents/${this.id}/download-resume`)
             .then((res) => {
+                console.log('resume : ', res)
                 this.mutable_resume = res
             })
             .catch((err) => {
@@ -213,6 +214,7 @@
                 })
                 .then(function (response) {
                     console.log('response', response)
+                    window.location.reload(true)
   				})
             })
         },
@@ -228,6 +230,7 @@
                 })
                 .then(function (response) {
                     console.log('response', response)
+                    window.location.reload(true)
   				})
             },
             triggerPictureUpload() {
@@ -371,15 +374,22 @@ Style scoped
                     -webkit-text-fill-color: transparent;
                 }
 
-                .c-header-profiletalent__content__infos__mail {
+                .c-header-profiletalent__content__infos__phone {
                     display: flex;
                     align-items: center;
                     color: $black;
+
                     margin-bottom: 80px;
 
                     @include media-breakpoint-down(md) {
                         margin-bottom: 20px;
                     }
+                }
+                .c-header-profiletalent__content__infos__mail {
+                    display: flex;
+                    align-items: center;
+                    color: $black;
+                   
                 }
 
                 .c-header-profiletalent__content__infos__file {

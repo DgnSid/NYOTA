@@ -17,7 +17,7 @@
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.seven.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.languages" :key="index">
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in mutable_languages" :key="index">
                                 {{element}}
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.five.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element">
-                                {{data.country}}
+                                {{mutable_country}}
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.six.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.nationalities" :key="index">
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in mutable_nationalities" :key="index">
                                 {{element}}
                             </div>
                         </div>
@@ -123,18 +123,57 @@
     export default {
         name: 'TheSectionProfileCv',
         components: { ShapeEllipse },
+        data () {
+            return {
+                mutable_country: '',
+                mutable_nationalities: [],
+                mutable_languages: [],
+            }
+        },
         props: {
             data: Object,
             ellipse: Boolean,
             offset: String,
             nopadding: String,
         },
-        mounted() {
+        async mounted() {
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({
                 scrollTrigger: {
                     trigger: ".c-section-profile-cv",
                 }
+            })
+
+            await this.$axios.$get('/api/countries/' + this.$props.data.country)
+            .then((res) => {
+                console.log(res)
+                this.mutable_country = res.name
+            })
+            .catch((err) => {
+                console.error(err)
+            });
+
+            this.$props.data.nationalities.forEach(async (el) => {
+                console.log(el)
+                await this.$axios.$get('/api/countries/' + el)
+                .then((res) => {
+                    console.log(res)
+                    this.mutable_nationalities.push(res.name)
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
+            })
+
+            this.$props.data.languages.forEach(async (el) => {
+                await this.$axios.$get('/api/languages/' + el)
+                .then((res) => {
+                    console.log(res)
+                    this.mutable_languages.push(res.name)
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
             })
 
             this.tl.set('.a-stagger-element__section-profile-cv', {autoAlpha: 0, y:30})

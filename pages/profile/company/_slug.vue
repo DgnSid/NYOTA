@@ -4,7 +4,7 @@
             :photo="profileCompanyDataApi.profilePicture"
             :company_name="profileCompanyDataApi.name"
             :contact_name="profileCompanyDataApi.contactName"
-            :contact_role="profileCompanyDataApi.contactRole"
+            :contact_role="profileCompanyDataApi.contactJob"
             :contact_mail="profileCompanyDataApi.email"
             :contact_phone="profileCompanyDataApi.phoneNumber"
             :id="id"

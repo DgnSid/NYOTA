@@ -7,7 +7,7 @@
             :mail="profileTalentDataApi.email"
             :phone="profileTalentDataApi.phoneNumber"
             :resume="profileTalentDataApi.resume"
-            :file="profileTalentData.blockHeader.file"
+            file="profileTalentData.blockHeader.file"
             :id="id"
         />
         <TheSectionProfileCv

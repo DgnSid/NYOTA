@@ -17,6 +17,12 @@
 							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>
+					<div class="offset-lg-1 col-lg-18">
+						<div class="c-formcompany__field">
+  		  	  	  			<label>{{$t('pageregistercompany.label_contact_role')}}</label>
+  		  	  	  			<input v-model="input_contact_role" type="text" :name="$t('pageregistercompany.label_contact_role')" placeholder="" />
+						</div>
+					</div>
 					<div class="offset-lg-1 col-lg-9">
 						<div class="c-formcompany__field">
   		  	  	  			<label>{{$t('pageregistercompany.label_email')}} <span>*</span></label>
@@ -95,6 +101,7 @@
 			return {
 				input_company: '',
 				input_contact: '',
+				input_contact_role: '',
 				input_email: '',
 				input_phone: '',
 				input_password: '',
@@ -151,6 +158,7 @@
 					await this.$axios.post('/api/companies/register', {
   					  	"company": this.input_company,
   						"name": this.input_contact,
+						"contactJob": this.input_contact_role,
   						"email": this.input_email,
   						"phone": this.input_phone,
   						"profilePicture": image_uploaded_id,
