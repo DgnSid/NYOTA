@@ -19,6 +19,7 @@ Template
         />
         <the-section-list-talents 
             :list="talentsDataApi['hydra:member']"
+            :totalItems="talentsDataApi['hydra:totalItems']"
         />
     </div>
 </template>
@@ -32,8 +33,15 @@ Template
         components: { TheHeaderTalentsList, TheSectionListTalents },
         async asyncData({ app, params, $axios, route, $config: { baseURL } }) {
             const current_lang = app.i18n.locale
-            const query_job = route.query.job
-            const talentsDataApi = await $axios.$get(`/api/c/talents?job=${query_job }`, {
+            const query_job = route.query.job ? route.query.job : ''
+
+            let url_query = 'itemsPerPage=9&page=1'
+
+            if(query_job) {
+              url_query = `itemsPerPage=9&page=1&job=${query_job}`
+            }
+
+            const talentsDataApi = await $axios.$get(`/api/c/talents?${url_query}`, {
                 headers: {
                   'Accept-Language': app.i18n.locale,
                 },

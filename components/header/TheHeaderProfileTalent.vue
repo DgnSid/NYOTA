@@ -24,13 +24,15 @@
                                 <div class="c-header-profiletalent__content__infos">
                                     <h2 class="c-header-profiletalent__content__infos__title">{{$t('page_profile_talent.personal_info')}}</h2>
                                     <div class="c-header-profiletalent__content__infos__name">{{lastname}} {{ firstname }}</div>
-                                    <div v-if="input_mail" class="c-header-profiletalent__content__infos__mail">
-                                        <IconMail class="mr-xs" />
-                                        <div>{{input_mail}}</div>
-                                    </div>
-                                    <div v-if="input_phone" class="c-header-profiletalent__content__infos__phone">
-                                        <IconPhone class="mr-xs" />
-                                        <div>{{input_phone}}</div>
+                                    <div class="c-header-profiletalent__content__infos__contact">
+                                        <div v-if="input_mail" class="c-header-profiletalent__content__infos__mail">
+                                            <IconMail class="mr-xs" />
+                                            <div>{{input_mail}}</div>
+                                        </div>
+                                        <div v-if="input_phone" class="c-header-profiletalent__content__infos__phone">
+                                            <IconPhone class="mr-xs" />
+                                            <div>{{input_phone}}</div>
+                                        </div>
                                     </div>
                                     <div @click="openFormInfo()">
                                         <cta
@@ -46,35 +48,36 @@
                                     <h2 class="c-header-profiletalent__content__infos__title">{{$t('page_profile_talent.cv')}}</h2>
                                     <div class="c-header-profiletalent__content__infos__file">
                                         <IconFile class="mr-xs" />
-                                        <div class="c-header-profiletalent__content__infos__file__name">{{file}}</div>
+                                        <div class="c-header-profiletalent__content__infos__file__name">{{resume.fileOriginalName}}</div>
                                     </div>
                                     
                                     
 
                                     <div class="c-header-profiletalent__content__infos__field">
 						            	<div class="c-header-profiletalent__content__infos__field__upload">
-						            		<div ref="input_file_dropzone" class="c-header-profiletalent__content__infos__field__upload__trigger" @click="triggerUpload('input_file_logo')">
+						            		<div ref="input_file_dropzone" class="c-header-profiletalent__content__infos__field__upload__trigger" @click="triggerUpload('input_file_cv')">
 						            			<div class="c-header-profiletalent__content__infos__field__upload__dropzone" @dragenter="onDragenter('input_file_dropzone')" @dragleave="onDragleave('input_file_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_dropzone')"></div>
 						            			<div class="c-header-profiletalent__content__infos__field__upload__delete" ref="input_file_close" @click="deleteFile($event)">X</div>
-						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__uploaded hidden" ref="input_file_logo_uploaded"></div>
-						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__container" ref="input_file_logo_container">
+						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__uploaded hidden" ref="input_file_cv_uploaded"></div>
+						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__container" ref="input_file_cv_container">
 						            				<icon-download class="c-header-profiletalent__content__infos__field__upload__trigger__icon" />
 						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__text">{{$t('pageregistercompany.label_download_instruction')}}</div>
 						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__meta">{{$t('pageregistercompany.label_download_extension')}}</div>
 						            			</div>
 						            		</div>
-						            		<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" @change="onChangeInput($event)"/>
+						            		<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
 						            		<div class="c-header-profiletalent__content__infos__field__error">{{ $t('registerform.form.error_message') }}</div>
 						            	</div>
 						            </div>
 
 
-
-                                    <cta
-                                        url=""
-                                        title="Valider"
-                                        class="--bordered"
-                                    />
+                                    <div @click="updateCv()">
+                                        <cta
+                                            url=""
+                                            title="Valider"
+                                            class="--bordered"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,6 +154,7 @@
                 input_mail: this.$props.mail,
                 input_phone: this.$props.phone,
                 is_form_edit_active: false,
+                file_cv: '',
             }
         },
         props: {
@@ -192,6 +196,9 @@
             this.tl.set('.a-stagger-element__header-profile-talent', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__header-profile-talent', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
 
+
+
+            // EVENT HANDLING AVATAR CHANGE
             this.$refs.input_file_avatar.addEventListener('change', async () => {
                 let image_uploaded_id = null
 				const formData = new FormData();
@@ -217,6 +224,22 @@
                     window.location.reload(true)
   				})
             })
+
+            //EVENT HANDLING CV CHANGE
+            this.$refs.input_file_cv.addEventListener('change', () => {
+				const file = this.$refs.input_file_cv.files[0];			
+				this.file_cv = file	
+
+				if(file) {					
+					this.$refs.input_file_cv_uploaded.classList.remove('hidden')
+					this.$refs.input_file_cv_uploaded.append(file.name)
+
+					this.$refs.input_file_cv_container.classList.add('hidden')
+				} else {
+					this.$refs.input_file_cv_uploaded.classList.add('hidden')
+					this.$refs.input_file_cv_container.classList.remove('hidden')
+				}
+			})
         },
         methods: {
             async handleSubmit() {
@@ -241,6 +264,93 @@
             },
             closeFormInfo() {
                 this.$refs.form_edit.classList.remove('active')
+            },
+			triggerUpload(ref) {
+                console.log('triggerUpload(ref)')
+				this.$refs[`${ref}`].click()
+			},
+			onChange($event) {
+
+				const type = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0].type : this.$refs.input_file_cv[0].type
+				const size = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0].size : this.$refs.input_file_cv[0].size
+
+				if(type === 'image/jpeg' || type === 'image/png') {
+					if(size <= 5000000) {
+						this.files = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0] : this.$refs.input_file_cv[0]
+
+						this.$refs.input_file_cv_uploaded.classList.remove('hidden')
+						this.$refs.input_file_cv_container.classList.add('hidden')
+
+						this.$refs.input_file_close.classList.add('active')
+
+						this.$refs.input_file_cv_uploaded.innerHTML = this.files.name
+
+						// $event.target.closest('.c-header-profiletalent__content__infos__field__error').classList.remove('error')
+						return;
+					}
+				}
+
+				$event.target.closest('.c-header-profiletalent__content__infos__field__error').classList.add('error')
+				this.$refs.input_file_cv_uploaded.classList.add('hidden')
+				this.$refs.input_file_cv_container.classList.remove('hidden')
+    		},
+			onDragenter(ref) {
+				this.$refs[`${ref}`].classList.add('active')
+			},
+			onDragleave(ref) {
+				this.$refs[`${ref}`].classList.remove('active')
+			},
+			onDrop(e, ref) {
+				e.preventDefault();
+				this.$refs[`${ref}`].classList.remove('active')
+
+				this.$refs.input_file_cv = e.dataTransfer.files;
+
+				console.log('this.$refs.input_file_cv', this.$refs.input_file_cv)
+
+				this.onChange(e)
+			},
+			onChangeInput(e) {
+				console.log(this.$refs.input_file_cv.value)
+
+				console.log('this.$refs.input_file_cv', this.$refs.input_file_cv)
+
+				this.onChange(e)
+			},
+			deleteFile(e) {
+				e.preventDefault()
+				console.log(this.$refs.input_file_cv.value)
+			},
+            async updateCv() {
+                console.log('UPDATE CV')
+                let cv_uploaded_id = null
+				const formData_cv = new FormData();					
+				formData_cv.append("file", this.file_cv)
+
+                console.log('this.file_cv.name ', this.file_cv)
+				
+				if(this.file_cv.name) {
+					await this.$axios.post('/api/resumes', formData_cv, {
+    					headers: {
+      						'Content-Type': 'multipart/form-data'
+    					}
+					})
+					.then(function (response) {
+                        console.log(response)
+						cv_uploaded_id = response.data['@id']
+                        // window.location.reload(true)
+  					})
+
+                    if(cv_uploaded_id) {
+                        await this.$axios.put(`/api/t/talents/${this.$props.id}`, {
+                            "resume": cv_uploaded_id,
+                        })
+                        .then(function (response) {
+                            console.log('response', response)
+                            window.location.reload(true)
+  				        })
+                    }
+				}
             }
         }
     }
@@ -319,6 +429,8 @@ Style scoped
 			        		width: 100%;
 			        		height: 100%;
 			        		background-size: contain;
+
+                            word-break: break-all;
                         
 			        		text-align: center;
 			        		display: flex;
@@ -374,16 +486,18 @@ Style scoped
                     -webkit-text-fill-color: transparent;
                 }
 
-                .c-header-profiletalent__content__infos__phone {
-                    display: flex;
-                    align-items: center;
-                    color: $black;
-
+                .c-header-profiletalent__content__infos__contact {
                     margin-bottom: 80px;
 
                     @include media-breakpoint-down(md) {
                         margin-bottom: 20px;
                     }
+                }
+
+                .c-header-profiletalent__content__infos__phone {
+                    display: flex;
+                    align-items: center;
+                    color: $black;                    
                 }
                 .c-header-profiletalent__content__infos__mail {
                     display: flex;
@@ -396,6 +510,7 @@ Style scoped
                     display: flex;
                     align-items: center;
                     color: $black;
+                    margin-bottom: 20px;
 
                     .c-header-profiletalent__content__infos__file__name {
                         word-break: break-all;
@@ -403,6 +518,14 @@ Style scoped
 
                     svg {
                         min-width: 32px;
+                    }
+                }
+
+                .c-header-profiletalent__content__infos__field__error {
+                    display: none;
+
+                    &.error {
+                        display: block;
                     }
                 }
             }
@@ -435,6 +558,7 @@ Style scoped
 
         .c-header-profiletalent__title {
             font-family: $font-family-custom;
+            text-align: center;
             font-size: 4rem;
             line-height: 4.5rem;
             font-weight: 800;
