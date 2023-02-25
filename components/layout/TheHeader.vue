@@ -7,7 +7,7 @@ Template
     <header class="header" ref="header">
         <div class="container">            
             <div class="header__inner">
-                <nuxt-link class="a-stagger-element__header" to="/">
+                <nuxt-link class="a-stagger-element__header" :to="'/' + currentLang">
                     <img src="/logo-nyota.png" alt="Nyota logo" />
                 </nuxt-link>
                 <div class="header__inner__menu">
@@ -17,7 +17,7 @@ Template
                     <nuxt-link :to="$t('menu.contact_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.contact_title')}}</nuxt-link>
                     <nuxt-link :to="$t('menu.news_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.news_title')}}</nuxt-link>
                     <div v-if="this.$auth.loggedIn" class="header__inner__menu__element --orange">
-                        <nuxt-link v-if="user_type == 'Talent'" :to="$t('menu.profile_talent_url') + user_id" class="a-stagger-element__header">{{$t('menu.profile_title')}}</nuxt-link>
+                        <nuxt-link v-if="currentUser.user_type == 'Talent'" :to="$t('menu.profile_talent_url') + currentUser.user_id" class="a-stagger-element__header">{{$t('menu.profile_title')}}</nuxt-link>
                         <nuxt-link v-else :to="$t('menu.profile_company_url') + user_id" class="a-stagger-element__header">{{$t('menu.profile_title')}}</nuxt-link>
                         <span class="mx-xs a-stagger-element__header">|</span>
                         <span @click="logOut" :to="$t('menu.disconnect_url')" class="a-stagger-element__header">{{$t('menu.disconnect_title')}}</span>
@@ -76,8 +76,6 @@ Script
             return {
                 isPopupActive: false,
                 active: false,
-                user_id: '',
-                user_type: '',
             }
         },
         mounted: function () {
@@ -128,6 +126,15 @@ Script
         computed: {
             availableLocales () {
                 return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+            },
+            currentLang () {
+                return this.$i18n.locale == 'en' ? this.$i18n.locale : ''
+            },
+            currentUser () {
+                const user_id = this.$auth.user ? this.$auth.user.id : ''
+                const user_type = this.$auth.user ? this.$auth.user['@type'] : ''
+
+                return {user_id, user_type}
             }
         }
     };

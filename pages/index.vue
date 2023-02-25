@@ -64,6 +64,18 @@ import ShapeEllipse from '../components/ui/ShapeEllipse';
 
 export default {
     name: "IndexPage",
+    head() {
+      return {
+        title: this.homeDataApi.seo.title,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.homeDataApi.seo.description
+          }
+        ]
+      }
+    },
     components: { 
         TheHeaderHome, 
         TheSectionPartners, 
@@ -74,7 +86,7 @@ export default {
         TheSectionListNews,
         ShapeEllipse,
     },
-    async asyncData({app, params, $axios, $config: { baseURL } }) {      
+    async asyncData({app, params, $axios, $config: { baseURL } }) {
       
       const homeDataApi = await $axios.$get(`/api/homepage`, {
           headers: {

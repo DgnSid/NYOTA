@@ -20,7 +20,7 @@
 						</div>
 
 						<div class="c-formregistertalent__field">
-                        	<label>{{$t('registerform.steps.two.nine.label_question_two')}}</label>
+                        	<label class="--question">{{$t('registerform.steps.two.nine.label_question_two')}}</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
 								<div v-for="(element) in contracts" :key="element.id" class="c-formregistertalent__field__radioelement">
 									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="contract" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
@@ -90,7 +90,7 @@
 				this.$store.commit('registertalent/mutateInputContract', this.contract)
 				this.$store.commit('registertalent/mutateInputJobName', this.job_name)
 				this.$store.commit('registertalent/mutateInputYearsOfExperience', this.years_of_experience)
-				this.$router.push({path: '/register/talent/steps/2/10'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/10`})
 			},
 			isFormSubmittable() {
 				if(this.contract && this.job_name && this.years_of_experience) {
@@ -113,6 +113,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

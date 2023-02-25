@@ -74,7 +74,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputExpectedStartDate', this.expected_starts_date)
-				this.$router.push({path: '/register/talent/steps/2/9'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/9`})
 			},
 			isFormSubmittable() {
 				if(this.expected_starts_date) {
@@ -91,6 +91,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

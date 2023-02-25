@@ -1,6 +1,6 @@
 <template>
     <article class="c-card-news" :class="class_string" >
-        <NuxtLink class="c-card-news__link" :to="'/news/' + url"></NuxtLink>
+        <NuxtLink class="c-card-news__link" :to="this.lang + '/news/' + url"></NuxtLink>
         <div class="c-card-news__image">
             <ImageBordered 
                 :url="image_url"
@@ -30,6 +30,11 @@
     export default {
         name: 'cardNews',
         components: { ImageBordered },
+        data () {
+            return {
+                lang: this.$i18n.locale == 'en' ? this.$i18n.locale : '',
+            }
+        },
         props: {
             class_string: String,
             title: String,

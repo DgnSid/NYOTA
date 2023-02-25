@@ -7,35 +7,35 @@ Template
     <div class="c-footer">       
         <div class="container">
             <div class="c-footer__top">
-                <nuxt-link class="c-footer__top__logo a-stagger-element__footer" to="/">
+                <nuxt-link class="c-footer__top__logo a-stagger-element__footer" :to="'/' + currentLang">
                     <img src="/logo-nyota.png" alt="Nyota logo" />
                 </nuxt-link>
                 <div  class="c-footer__top__text a-stagger-element__footer">
                     {{$t('footer.baseline')}}
                 </div>
                 <div  class="c-footer__top__menu a-stagger-element__footer">
-                    <nuxt-link to="/">
-                        <span class="c-footer__top__menu__element ">{{$t('footer.menu.about')}}</span>
+                    <nuxt-link :to="$t('footer.menu.about_url')">
+                        <span class="c-footer__top__menu__element">{{$t('footer.menu.about')}}</span>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link :to="$t('footer.menu.talent_url')">
                         <span class="c-footer__top__menu__element">{{$t('footer.menu.talent')}}</span>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link :to="$t('footer.menu.company_url')">
                         <span class="c-footer__top__menu__element">{{$t('footer.menu.company')}}</span>
                     </nuxt-link>
                 </div>
                 <div class="c-footer__top__social a-stagger-element__footer">
-                    <nuxt-link to="/">
+                    <nuxt-link :to="$t('footer.menu.facebook_url')">
                         <div class="c-footer__top__social__element">
                             <Facebook />
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link :to="$t('footer.menu.instagram_url')">
                         <div class="c-footer__top__social__element">
                             <Instagram />
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link :to="$t('footer.menu.linkedin_url')">
                         <div class="c-footer__top__social__element">
                             <Linkedin />
                         </div>
@@ -52,9 +52,9 @@ Template
         </div>
         <div class="c-footer__bottom">
             <span class="c-footer__bottom__element a-stagger-element__footer">© {{current_year}} Nyota</span>
-            <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" to="#">{{$t('footer.mentions')}}</nuxt-link>
-            <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" to="#">{{$t('footer.rgpd')}}</nuxt-link>
-            <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" to="#">{{$t('footer.adveris')}}</nuxt-link>
+            <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" :to="$t('footer.mentions_url')">{{$t('footer.mentions')}}</nuxt-link>
+            <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" :to="$t('footer.rgpd_url')">{{$t('footer.rgpd')}}</nuxt-link>
+            <a class="c-footer__bottom__element a-stagger-element__footer" :href="$t('footer.adveris_url')" target="_blank" rel="noopener noreferrer">{{$t('footer.adveris')}}</a>
         </div>
     </div>
 </template>
@@ -96,6 +96,11 @@ Script
             this.tl.staggerTo('.a-stagger-element__footer', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
                    
         },
+        computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? this.$i18n.locale : ''
+            },
+        }
     };
 </script> 
 

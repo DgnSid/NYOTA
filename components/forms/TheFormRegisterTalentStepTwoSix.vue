@@ -72,7 +72,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateSelectNationality', this.nationality)
-				this.$router.push({path: '/register/talent/steps/2/7'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/7`})
 			},
 			isFormSubmittable() {
 				if(this.nationality.length) {
@@ -89,6 +89,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

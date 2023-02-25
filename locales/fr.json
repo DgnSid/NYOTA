@@ -45,13 +45,23 @@
         "baseline": "Nous connectons les meilleurs talents avec de grandes entreprises mondiales",
         "menu": {
             "about": " A propos",
+            "about_url": "/about",
             "talent": "Talent",
-            "company": "Entreprises"
+            "talent_url": "/landing/talent",
+            "company": "Entreprises",
+            "company_url": "/landing/company",
+            "facebook_url": "#",
+            "linkedin_url": "#",
+            "instagram_url": "#"
         },
         "mentions": "Mentions légales",
+        "mentions_url": "",
         "rgpd": "Politique de confidentialité",
+        "rgpd_url": "",
         "adveris": "Site internet crée par Adveris",
-        "contact": "Nous contacter"
+        "adveris_url": "https://adveris.fr",
+        "contact": "Nous contacter",
+        "contact_url": "/contact"
     },
     "pagehome": {
         "section_news": {
@@ -213,7 +223,23 @@
         "id_mail": "id_mail",
         "label_password": "Mot de passe",
         "id_password": "id_password",
-        "label_submit": "Se connecter"
+        "label_submit": "Se connecter",
+        "label_forgottenpassword": "Tu as oublié ton mot de passe ?",
+        "badlogin": "Vos informations de connexion sont erronées."
+    },
+    "pageforgottenpassword": {
+        "label_type": "Vous êtes",
+        "id_type": "id_type",
+        "option_type": [
+            {
+                "value": "t",
+                "name": "Un talent"
+            },
+            {
+                "value": "c",
+                "name": "Une entreprise"
+            }
+        ]
     },
     "registertalent": {
         "header": {
@@ -543,11 +569,22 @@
             },
             "three": {
                 "title": "CV",
+                "cv_title": "Dépose ton CV",
+                "cv_instruction": "Sélectionner ou glisser votre CV ici pour le remplacer",
+                "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
+                "photo_title": "Ajoute une photo de profil",
+                "photo_instruction": "Sélectionner ou glisser votre photo de profil",
+                "photo_meta": "PDF, JPG ou PNG - 10mo maximum",
                 "url": "#"
             },
             "four": {
                 "title": "Création du compte",
-                "url": "#"
+                "url": "#",
+                "label_mail": "ADRESSE E-MAIL",
+                "label_password": "MOT DE PASSE",
+                "label_password_confirmation": "CONFIRMATION MOT DE PASSE",
+                "label_marketing": "MARKETING",
+                "label_rgpd": "RGPD"
             },
             "confirm": {
                 "title": "Confirmation",

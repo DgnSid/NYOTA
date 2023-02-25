@@ -10,31 +10,49 @@
 					</div>
 					<div class="offset-lg-2 col-lg-8">
 						<div class="c-formregistertalent__upload">
-							<h2 class="c-formregistertalent__upload__title">Dépose ton CV</h2>
-							<div class="c-formregistertalent__upload__trigger" @click="triggerUpload('input_file_cv')">
+							<h2 class="c-formregistertalent__upload__title">{{ $t("registerform.steps.three.cv_title") }}</h2>
+							<div ref="input_file_cv_dropzone" class="c-formregistertalent__upload__trigger" @click="triggerUpload('input_file_cv', 'cv')">
+								<div ref="input_file_cv_dropzone__cover" class="c-formregistertalent__upload__dropzone" @dragenter="onDragenter('input_file_cv_dropzone')" @dragleave="onDragleave('input_file_cv_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_cv_dropzone', 'cv')"></div>
+								<div class="c-formregistertalent__upload__delete" ref="input_file_cv_close" @click="deleteFile($event, 'cv')">✕</div>
 								<div class="c-formregistertalent__upload__trigger__uploaded hidden" ref="input_file_cv_uploaded"></div>
 								<div class="c-formregistertalent__upload__trigger__container" ref="input_file_cv_container">
 									<icon-download class="c-formregistertalent__upload__trigger__icon" />
-									<div class="c-formregistertalent__upload__trigger__text">Sélectionner ou glisser votre CV ici pour le remplacer</div>
-									<div class="c-formregistertalent__upload__trigger__meta">PDF, JPG ou PNG - 10mo maximum</div>
+									<div class="c-formregistertalent__upload__trigger__text">{{$t('registerform.steps.three.cv_instruction')}}</div>
+									<div class="c-formregistertalent__upload__trigger__meta">{{$t('registerform.steps.three.cv_meta')}}</div>
 								</div>
 							</div>
-							<input type="file"  accept=".pdf, .jpg, .jpeg, .png" hidden ref="input_file_cv" />
+							<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
+							<div ref="input_file_cv_error" class="c-formregistertalent__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>
+
+
+
+
+
+
+
+
+
+
+
+
 					<div class="c-formregistertalent__separator"></div>
 					<div class="offset-lg-4 col-lg-8">
 						<div class="c-formregistertalent__upload">
-							<h2 class="c-formregistertalent__upload__title">Ajoute une photo de profil</h2>
-							<div class="c-formregistertalent__upload__trigger" @click="triggerUpload('input_file_picture')">
+							<h2 class="c-formregistertalent__upload__title">{{ $t("registerform.steps.three.photo_title") }}</h2>
+							<div ref="input_file_picture_dropzone" class="c-formregistertalent__upload__trigger" @click="triggerUpload('input_file_picture', 'picture')">
+								<div ref="input_file_picture_dropzone__cover" class="c-formregistertalent__upload__dropzone" @dragenter="onDragenter('input_file_picture_dropzone')" @dragleave="onDragleave('input_file_picture_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_picture_dropzone', 'picture')"></div>
+								<div class="c-formregistertalent__upload__delete" ref="input_file_picture_close" @click="deleteFile($event, 'picture')">✕</div>
 								<div class="c-formregistertalent__upload__trigger__uploaded hidden" ref="input_file_picture_uploaded"></div>
 								<div class="c-formregistertalent__upload__trigger__container" ref="input_file_picture_container">
 									<icon-picture class="c-formregistertalent__upload__trigger__icon" />
-									<div class="c-formregistertalent__upload__trigger__text">Sélectionner ou glisser votre photo de profil</div>
-									<div class="c-formregistertalent__upload__trigger__meta">PDF, JPG ou PNG - 10mo maximum</div>
+									<div class="c-formregistertalent__upload__trigger__text">{{$t('registerform.steps.three.photo_instruction')}}</div>
+									<div class="c-formregistertalent__upload__trigger__meta">{{$t('registerform.steps.three.photo_meta')}}</div>
 								</div>
 							</div>
-							<input type="file"  accept=".pdf, .jpg, .jpeg, .png" hidden ref="input_file_picture" />
+							<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_picture" @change="onChangeInput($event)"/>
+							<div ref="input_file_picture_error" class="c-formregistertalent__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>
 					<div class="offset-lg-8 col-lg-8">
@@ -76,6 +94,10 @@
 				file_cv: '',
 				file_picture: '',
 				is_form_submittable: false,
+				upload_type : '',
+				upload_technic : '',
+				mutable_input_file_cv: '',
+				mutable_input_file_picture: '',
 			}
 		},
         props: {
@@ -88,16 +110,13 @@
 			submit_url: String,
         },
 		mounted() {
-			// this.file_cv = this.$store.state.registertalent.inputFileCv
-			// this.file_picture = this.$store.state.registertalent.inputFilePicture			
-
 			this.$refs.input_file_cv.addEventListener('change', () => {
 				const file = this.$refs.input_file_cv.files[0];			
 				this.file_cv = file	
 
 				if(file) {					
 					this.$refs.input_file_cv_uploaded.classList.remove('hidden')
-					this.$refs.input_file_cv_uploaded.append(file.name)
+					this.$refs.input_file_cv_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_cv_container.classList.add('hidden')
 				} else {
@@ -112,7 +131,7 @@
 
 				if(file) {					
 					this.$refs.input_file_picture_uploaded.classList.remove('hidden')
-					this.$refs.input_file_picture_uploaded.append(file.name)
+					this.$refs.input_file_picture_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_picture_container.classList.add('hidden')
 				} else {
@@ -157,7 +176,7 @@
 					this.$store.commit('registertalent/mutateInputFilePicture', picture_uploaded_id)
 				}
 
-				this.$router.push({path: '/register/talent/steps/4/'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/4/`})
 			},
 			isFormSubmittable() {
 				if(this.file_cv && this.file_picture) {
@@ -168,8 +187,119 @@
 					this.is_form_submittable = false
 				}
 			},
-			triggerUpload(ref) {
-				this.$refs[`${ref}`].click()
+			triggerUpload(ref, type) {
+				if(this.file_cv && this.upload_type === 'cv') {
+					return;
+				}
+
+				if(this.file_picture && this.upload_type === 'picture') {
+					return;
+				}
+
+				this.upload_type = type
+				this.upload_technic = 'click'
+
+				if(this.upload_type === 'cv') {
+					this.$refs.input_file_cv.click()
+				} else if(this.upload_type === 'picture') {
+					this.$refs.input_file_picture.click()
+				}				
+			},
+			onChange($event, ref_type, ref_type_uploaded, ref_type_container, ref_type_close, ref_type_error) {
+
+				let size = ''
+				let type = ''
+
+				if(this.upload_type === 'cv') {
+					type =  this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].type : this.mutable_input_file_cv[0].type
+					size = this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].size : this.mutable_input_file_cv[0].size
+				} else {
+					type =  this.upload_technic === 'click' ? this.$refs.input_file_picture.files[0].type : this.mutable_input_file_picture[0].type
+					size = this.upload_technic === 'click' ? this.$refs.input_file_picture.files[0].size : this.mutable_input_file_picture[0].size
+				}
+
+				if(type === 'image/jpeg' || type === 'image/png' || type === 'application/pdf') {
+					if(size <= 10000000) {		
+						if(this.upload_type === 'cv') {
+							this.file_cv = this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0] : this.mutable_input_file_cv[0] 
+							this.$refs.input_file_cv_uploaded.classList.remove('hidden')
+							this.$refs.input_file_cv_container.classList.add('hidden')
+							this.$refs.input_file_cv_close.classList.add('active')
+							this.$refs.input_file_cv_uploaded.innerHTML = this.file_cv.name
+							this.$refs.input_file_cv_error.classList.remove('error')
+						} else {
+							this.file_picture = this.upload_technic === 'click' ? this.$refs.input_file_picture.files[0] : this.mutable_input_file_picture[0] 
+							this.$refs.input_file_picture_uploaded.classList.remove('hidden')
+							this.$refs.input_file_picture_container.classList.add('hidden')
+							this.$refs.input_file_picture_close.classList.add('active')
+							this.$refs.input_file_picture_uploaded.innerHTML = this.file_cv.name
+							this.$refs.input_file_picture_error.classList.remove('error')
+						}
+
+						return;
+					}
+				}
+
+				if(this.upload_type === 'cv') {
+					this.$refs.input_file_cv_error.classList.add('error')
+					this.$refs.input_file_cv_uploaded.classList.add('hidden')
+					this.$refs.input_file_cv_container.classList.remove('hidden')
+				} else {
+					this.$refs.input_file_picture_error.classList.add('error')
+					this.$refs.input_file_picture_uploaded.classList.add('hidden')
+					this.$refs.input_file_picture_container.classList.remove('hidden')
+				}
+				
+    		},
+			onDragenter(ref) {
+				console.log('onDragenter')
+				this.$refs[`${ref}`].classList.add('active')
+			},
+			onDragleave(ref) {
+				console.log('onDragleave')
+				this.$refs[`${ref}`].classList.remove('active')
+			},
+			onDrop(e, ref, type) {
+				console.log('onDrop')
+				e.preventDefault();
+				this.$refs[`${ref}`].classList.remove('active')
+
+				
+
+				this.upload_type = type
+				this.upload_technic = 'drop'
+
+				if(type === 'cv') {
+					this.mutable_input_file_cv = e.dataTransfer.files;
+					this.onChange(e)
+				} else {
+					this.mutable_input_file_picture = e.dataTransfer.files;
+					this.onChange(e)
+				}				
+			},
+			onChangeInput(e) {
+				this.onChange(e)
+			},
+			deleteFile(e, type) {
+				e.preventDefault()
+
+				if(type === 'cv') {
+					setTimeout(() => {
+						this.file_cv = ''
+						this.$refs.input_file_cv_close.classList.remove('active')
+						this.$refs.input_file_cv_container.classList.remove('hidden')
+						this.$refs.input_file_cv_uploaded.classList.add('hidden')
+						this.$refs.input_file_cv_uploaded.innerHTML = ''
+					})
+				} else {
+					setTimeout(() => {
+						this.file_cv = ''
+						this.$refs.input_file_picture_close.classList.remove('active')
+						this.$refs.input_file_picture_container.classList.remove('hidden')
+						this.$refs.input_file_picture_uploaded.classList.add('hidden')
+						this.$refs.input_file_picture_uploaded.innerHTML = ''
+					})
+				}
 			}
 		},
 		watch: {
@@ -180,6 +310,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 
@@ -190,4 +325,49 @@ Style scoped
 ------>
 <style lang="scss" scoped>
 	@import '@/assets/sass/app/form/register.scss';
+
+
+	.c-formregistertalent__upload__trigger {
+			position: relative;
+			margin-bottom: 0;
+		.c-formregistertalent__upload__dropzone {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.c-formregistertalent__upload__delete {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 2;
+			color: $orange;
+			height: 25px;
+			width: 25px;
+			border-radius: 100%;
+			border: 1px solid $orange;
+			opacity: 0;
+			display: none;
+
+
+			&.active {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 1;
+			}
+		}
+	}
+
+	.c-formregistertalent__error {
+		color: red;
+		opacity: 0;
+		display: none;
+
+		&.error {
+			opacity: 1;
+			display: block;
+		}
+	}
 </style>

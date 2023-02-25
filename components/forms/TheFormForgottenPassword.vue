@@ -7,8 +7,16 @@
 						<div class="c-formforgottenpassword__intro">
 							Veuillez saisir votre adresse e-mail ci-dessous. Nous vous enverrons les instructions pour créer un nouveau mot de passe.
 						</div>
+						
+						<label>{{$t('pageforgottenpassword.label_type')}} <span>*</span></label>
+  		  	  	  		<select v-model="login_type" type="text" :name="$t('pageforgottenpassword.id_type')" required>
+							<option v-for="(element, index) in $t('pageforgottenpassword.option_type')" :key="index" :value="element.value">
+								{{ element.name }}
+							</option>
+						</select>
+
   		  	  	  		<label>Adresse e-mail  <span>*</span></label>
-  		  	  	  		<input type="text" name="object" placeholder="" required />
+  		  	  	  		<input  v-model="login_mail" type="text" name="object" placeholder="" required />
 						
 						<button class="c-formforgottenpassword__submit --bordered" type="submit ">
 							<span class="c-formforgottenpassword__submit__text">Réinitialiser le mot de passe</span>
@@ -23,9 +31,23 @@
 <script>
   	export default {
       	name: 'theFormForgottenPassword',
+		data: function () {
+			return {
+				login_type: 'c',
+				login_mail: ''
+			}
+		},
 		methods: {
 			async handleSubmit() {
 				console.log('handleSubmit')
+
+				await this.$axios.post(`/api/${this.login_type}/reset/ask`, {
+					"email": this.login_mail,
+				})
+				.then(function (response) {
+					console.log(response)
+  				})
+
 			}
 		},
 	}
@@ -70,6 +92,22 @@ Style scoped
 			margin-bottom: 32px;
 			padding-left: 20px;
 		}
+
+		select {
+        	border: 1px solid $orange;
+        	border-radius: 40px;
+        	color: $black;
+        	width: 300px;
+        	background-color: transparent;
+        	padding: 20px 16px;
+			margin-bottom: 32px;
+        	display: block;
+
+        	appearance: none;
+        	background-image: url('/arrow-down.svg');
+        	background-repeat: no-repeat;
+        	background-position: calc(100% - 20px) center;
+    	}
 
 		.c-formforgottenpassword__submit {
         	position: relative;

@@ -15,10 +15,425 @@
         "login_title": "Login",
         "login_url": "/en/login"
     },
+    "popup_register": {
+        "talent": {
+            "type": "Talent",
+            "title": "I am looking for an opportunity in Africa",
+            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "cta_url": "/en/register/talent/steps/1",
+            "cta_title": "Register"
+        },
+        "company": {
+            "type": "Company",
+            "title": "I am a company based in Africa",
+            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "cta_url": "/en/register/company",
+            "cta_title": "Register"
+        }
+    },
+    "footer": {
+        "baseline": "We connect top talent with leading global companies",
+        "menu": {
+            "about": " About",
+            "about_url": "/en/about",
+            "talent": "Talent",
+            "talent_url": "/en/landing/talent",
+            "company": "Company",
+            "company_url": "/en/landing/company",
+            "facebook_url": "#",
+            "linkedin_url": "#",
+            "instagram_url": "#"
+        },
+        "mentions": "Legal notice",
+        "mentions_url": "",
+        "rgpd": "Privacy policy",
+        "rgpd_url": "",
+        "adveris": "Website created by Adveris",
+        "adveris_url": "https://adveris.fr",
+        "contact": "Contact us",
+        "contact_url": "/en/contact"
+    },
     "section_figures_title": "Nyota in<br>figures it's...",
     "single_news": {
         "back": "Back to news",
         "published": "published",
         "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser EN"
+    },
+    "pagehome": {
+        "section_news": {
+            "title": "Discover our news",
+            "cta_url": "/en/news/page/1",
+            "cta_title": "See all news"
+        },
+        "section_features": {
+            "cta": {
+                "title": "Contact us",
+                "url": "/en/contact"
+            }
+        },
+        "section_quotes": {
+            "cta": {
+                "title": "Register",
+                "url": "#"
+            }
+        }
+    },
+    "registertalent": {
+        "header": {
+            "title": "Register",
+            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+            "confirm_title": "You are registered !",
+            "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        }
+    },
+    "registerform": {
+        "steps": {
+            "one": {
+                "title": "Personal informations",
+                "url": "#",
+                "label_name": "Last name",
+                "id_name": "id_name",
+                "label_firstname": "First name",
+                "id_firstname": "id_firstname",
+                "label_gender": "Gender",
+                "id_gender": "id_gender",
+                "genders": [
+                    {
+                        "name": "Homme",
+                        "value": "/api/genders/1"
+                    },{
+                        "name": "Femme",
+                        "value": "/api/genders/2"
+                    },{
+                        "name": "Non listé",
+                        "value": "/api/genders/3"
+                    }
+                ]
+            },
+            "two": {
+                "title": "Formation and experience",
+                "url": "#",
+                "one": {
+                    "label_question": "WHAT INDUSTRY HAVE YOU WORKED IN?",
+                    "id_answers": "id_answers",
+                    "answers": [
+                        {
+                            "name": "Agriculture",
+                            "value": "/api/industries/1"
+                        },
+                        {
+                            "name": "Conseil",
+                            "value": "/api/industries/2"
+                        },
+                        {
+                            "name": "Construction",
+                            "value": "/api/industries/3"
+                        },
+                        {
+                            "name": "Commerce",
+                            "value": "/api/industries/4"
+                        },
+                        {
+                            "name": "Services financiers",
+                            "value": "/api/industries/5"
+                        },
+                        {
+                            "name": "éducation",
+                            "value": "/api/industries/6"
+                        },
+                        {
+                            "name": "Soin de santé",
+                            "value": "/api/industries/7"
+                        },
+                        {
+                            "name": "Mines",
+                            "value": "/api/industries/8"
+                        },
+                        {
+                            "name": "Transport",
+                            "value": "/api/industries/9"
+                        },
+                        {
+                            "name": "Télécommunications",
+                            "value": "/api/industries/10"
+                        },
+                        {
+                            "name": "Informatique",
+                            "value": "/api/industries/11"
+                        },
+                        {
+                            "name": "Ingénierie écanique et électrique",
+                            "value": "/api/industries/12"
+                        },
+                        {
+                            "name": "Production de pétrole et de gaz",
+                            "value": "/api/industries/13"
+                        }
+                    ]
+                },
+                "two": {
+                    "label_question": "WHAT INDUSTRY DO YOU LIKE TO WORK IN?",
+                    "id_answers": "id_answers",
+                    "answers": [
+                        {
+                            "name": "Agriculture",
+                            "value": "/api/industries/1"
+                        },
+                        {
+                            "name": "Conseil",
+                            "value": "/api/industries/2"
+                        },
+                        {
+                            "name": "Construction",
+                            "value": "/api/industries/3"
+                        },
+                        {
+                            "name": "Commerce",
+                            "value": "/api/industries/4"
+                        },
+                        {
+                            "name": "Services financiers",
+                            "value": "/api/industries/5"
+                        },
+                        {
+                            "name": "éducation",
+                            "value": "/api/industries/6"
+                        },
+                        {
+                            "name": "Soin de santé",
+                            "value": "/api/industries/7"
+                        },
+                        {
+                            "name": "Mines",
+                            "value": "/api/industries/8"
+                        },
+                        {
+                            "name": "Transport",
+                            "value": "/api/industries/9"
+                        },
+                        {
+                            "name": "Télécommunications",
+                            "value": "/api/industries/10"
+                        },
+                        {
+                            "name": "Informatique",
+                            "value": "/api/industries/11"
+                        },
+                        {
+                            "name": "Ingénierie écanique et électrique",
+                            "value": "/api/industries/12"
+                        },
+                        {
+                            "name": "Production de pétrole et de gaz",
+                            "value": "/api/industries/13"
+                        }
+                    ]
+                },
+                "three": {
+                    "label_question": "IN WHAT FIELD DID YOU OBTAIN A SPECIALIZATION?",
+                    "id_answers": "id_answers",
+                    "answers": [
+                        {
+                            "name": "Agriculture et conservation des ressources naturelles",
+                            "value": "/api/domains/1"
+                        },
+                        {
+                            "name": "Architecture",
+                            "value": "/api/domains/2"
+                        },
+                        {
+                            "name": "Business",
+                            "value": "/api/domains/3"
+                        },
+                        {
+                            "name": "Communications",
+                            "value": "/api/domains/4"
+                        },
+                        {
+                            "name": "Informatique et mathématiques",
+                            "value": "/api/domains/5"
+                        },
+                        {
+                            "name": "éducation",
+                            "value": "/api/domains/6"
+                        },
+                        {
+                            "name": "Ingénierie",
+                            "value": "/api/domains/7"
+                        },
+                        {
+                            "name": "Réparation, production et construction",
+                            "value": "/api/domains/8"
+                        },
+                        {
+                            "name": "Sciences sociales et droit",
+                            "value": "/api/domains/9"
+                        }
+                    ]
+                },
+                "four": {
+                    "label_question": "Where would you like to work?",
+                    "id_answers": "id_answers",
+                    "answers": [
+                        {
+                            "name": "Afrique du Nord",
+                            "value": "/api/workplaces/1"
+                        },
+                        {
+                            "name": "Afrique du Sud",
+                            "value": "/api/workplaces/2"
+                        },
+                        {
+                            "name": "Afrique de l'Est",
+                            "value": "/api/workplaces/3"
+                        },
+                        {
+                            "name": "Afrique de l'Ouest",
+                            "value": "/api/workplaces/4"
+                        },
+                        {
+                            "name": "Afrique centrale",
+                            "value": "/api/workplaces/5"
+                        },
+                        {
+                            "name": "À distance",
+                            "value": "/api/workplaces/6"
+                        }
+                    ]
+                },
+                "five": {
+                    "label_question": "Where are you located?",
+                    "id_answers": "id_answers",
+                    "select_placeholder": "Pays"
+                },
+                "six": {
+                    "label_question": "What is your nationality?",
+                    "id_answers": "id_answers",
+                    "select_placeholder": "Nationalité"
+                },
+                "seven": {
+                    "label_question": "In which languages ​​can you work?",
+                    "id_answers": "id_answers",
+                    "select_placeholder": "Langue"
+                },
+                "eight": {
+                    "label_question": "When do you plan to start your new job?",
+                    "id_answers": "id_answers",
+                    "answers": [
+                        {
+                            "name": "Le plus tôt possible",
+                            "value": "/api/expected_start_dates/1"
+                        },
+                        {
+                            "name": "Dans l’année qui vient",
+                            "value": "/api/expected_start_dates/2"
+                        },
+                        {
+                            "name": "Je ne suis pas sûr, je bougerai pour le bon poste",
+                            "value": "/api/expected_start_dates/3"
+                        }
+                    ]
+                },
+                "nine": {
+                    "label_question_one": "Desired job title",
+                    "id_question_one": "id_question_one",
+                    "placeholder_question_one": "Job",
+                    "label_question_two": "What level of position are you aiming for?",
+                    "id_question_two": "id_question_two",
+                    "answers": [
+                        {
+                            "name": "Stage",
+                            "value": "/api/contracts/1"
+                        },
+                        {
+                            "name": "Junior (0-2 ans)",
+                            "value": "/api/contracts/2"
+                        },
+                        {
+                            "name": "Niveau intermédiaire (3-4 ans)",
+                            "value": "/api/contracts/3"
+                        },
+                        {
+                            "name": "Expert & leaders (9 ans et plus)",
+                            "value": "/api/contracts/3"
+                        }
+                    ],
+                    "label_question_three": "How many years of experience do you have?",
+                    "id_question_three": "id_question_three",
+                    "placeholder_question_three": "Years of experience"
+                },
+                "ten": {
+                    "label_question": "Do you have previous work experience in Africa?",
+                    "id_question": "id_question",
+                    "answers": [
+                        {
+                            "name": "Yes",
+                            "value": "true"
+                        },
+                        {
+                            "name": "No",
+                            "value": "false"
+                        }
+                    ]
+                },
+                "eleven": {
+                    "label_question_one": "What is your highest level of education?",
+                    "id_question": "id_question_one",
+                    "answers": [
+                        {
+                            "name": "Diplôme d'études secondaires",
+                            "value": "/api/diplomas/1"
+                        },
+                        {
+                            "name": "Baccalauréat",
+                            "value": "/api/diplomas/2"
+                        },
+                        {
+                            "name": "Master",
+                            "value": "/api/diplomas/3"
+                        },
+                        {
+                            "name": "Doctorat",
+                            "value": "/api/diplomas/4"
+                        }
+                    ],
+                    "label_question_two": "In which school did you complete your last level of education?",
+                    "placeholder_question_two": "Etablissement"
+                },
+                "twelve": {
+                    "label_question": "WHAT IS YOUR EXPECTED MINIMUM SALARY?"
+                }
+            },
+            "three": {
+                "title": "CV",
+                "cv_title": "Drop your CV",
+                "cv_instruction": "Select or drag your CV here to replace it",
+                "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
+                "photo_title": "Add a profile picture",
+                "photo_instruction": "Select or drop your profile picture",
+                "photo_meta": "PDF, JPG ou PNG - 10mo maximum",
+                "url": "#"
+            },
+            "four": {
+                "title": "Account creation",
+                "url": "#",
+                "label_mail": "E-mail address",
+                "label_password": "Password",
+                "label_password_confirmation": "Password confirmation",
+                "label_marketing": "Marketing",
+                "label_rgpd": "rgpd"
+            },
+            "confirm": {
+                "title": "Confirmation",
+                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+            }
+        },
+        "form": {
+            "back_title": "Back",
+            "next": "next",
+            "submit": "validate",
+            "mandatory": "* mandatory field",
+            "error_message": "Field is not correct"
+        }
     }
 }

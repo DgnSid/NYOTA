@@ -8,7 +8,7 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label class="--question">Quel est votre plus haut niveau d’éducation ?</label>
+                        	<label class="--question">{{$t('registerform.steps.two.eleven.label_question_one')}}</label>
 							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
 								<div v-for="(element) in diplomas" :key="element.id" class="c-formregistertalent__field__radioelement">
 									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="diploma" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
@@ -84,7 +84,7 @@
 				this.$store.commit('registertalent/mutateInputDiplomas', this.diploma)
 				this.$store.commit('registertalent/mutateInputSchoolname', this.school_name)
 
-				this.$router.push({path: '/register/talent/steps/2/12'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/12`})
 			},
 			isFormSubmittable() {
 				if(this.diploma) {
@@ -101,6 +101,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

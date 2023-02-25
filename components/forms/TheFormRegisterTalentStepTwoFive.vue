@@ -67,12 +67,11 @@
         },
 		mounted() {
 			this.country_from = this.$store.state.registertalent.selectCountryFrom
-		},
-		
+		},		
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateSelectCountryFrom', this.country_from)
-				this.$router.push({path: '/register/talent/steps/2/6'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/6`})
 			},
 			isFormSubmittable() {
 				if(this.country_from) {
@@ -89,6 +88,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

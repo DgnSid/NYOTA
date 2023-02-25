@@ -8,29 +8,29 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label>Adresse e-mail  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_mail')}}  <span>*</span></label>
   		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputEmail($event)" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
-                        	<label>Mot de passe  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_password')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
-                        	<label>Confirmation mot de passe  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_password_confirmation')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password_confirm" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div class="c-formregistertalent__field">
   		  	  	  			<input v-model="rgpd" type="checkbox" name="rgpd" placeholder="" required />
-							<label>RGPD  <span>*</span></label>
+							<label>{{$t('registerform.steps.four.label_rgpd')}}  <span>*</span></label>
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div class="c-formregistertalent__field">
                         	
   		  	  	  			<input v-model="marketing" type="checkbox" name="marketing" placeholder="" />
-							<label>Marketing</label>
+							<label>{{$t('registerform.steps.four.label_marketing')}}</label>
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
@@ -176,6 +176,11 @@ import { cpuUsage } from 'process';
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

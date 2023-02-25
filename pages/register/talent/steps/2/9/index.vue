@@ -18,7 +18,7 @@ Template
             :step_current_specific="9"
             :step_current_total="12"
             :back_title="$t('registerform.form.back_title')"
-            back_url="/register/talent/steps/2/8"
+            :back_url="this.currentLang + '/register/talent/steps/2/8'"
             :submit_title="$t('registerform.form.next')"
             :contracts="this.ContractsApi['hydra:member']"
         />
@@ -48,7 +48,12 @@ Template
 			});    
 
 			return { ContractsApi }
-        }
+        },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 

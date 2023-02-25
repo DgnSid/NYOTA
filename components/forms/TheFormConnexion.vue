@@ -21,6 +21,8 @@
 							<nuxt-link class="c-formconnexion__link" to="/forgotten-password">{{$t('pageconnexion.label_forgottenpassword')}}</nuxt-link>
 						</div>
 
+						<div class="c-formconnexion__error" :class="{ active: isErrorLogin }">{{$t('pageconnexion.badlogin')}}</div>
+
 						<button class="c-formconnexion__submit --bordered" type="submit">
 							<span class="c-formconnexion__submit__text">{{$t('pageconnexion.label_submit')}}</span>
 						</button>
@@ -42,7 +44,6 @@
 
   	export default {
       	name: 'theFormConnexion',
-		// auth: false,
 		data: function () {
 			return {
                 login: {
@@ -53,7 +54,8 @@
                 formErrors: false,
                 formErrorsMessage: "",
                 isLogout: false,
-                isUpdated: false
+                isUpdated: false,
+				isErrorLogin: false,
 			}
 		},
 		head() {
@@ -82,13 +84,6 @@
 		methods: {
 			async userLogin() {
 				try {
-					
-					//let response = await axios.post('/api/companies/login_check', {
-  					//	"username": this.login.input_email,
-  					//	"password": this.login.input_password,
-  					//})
-
-
 					let response = this.login_type == "talent" ? await this.$auth.loginWith('local_talent', { data: this.login }) : await this.$auth.loginWith('local_company', { data: this.login })
 
 					console.log(response)
@@ -115,6 +110,7 @@
 				}
 				catch (error) {
  			 	  	console.log('Login error:', error)
+					this.isErrorLogin = true
  			 	}
             }
 
@@ -133,6 +129,18 @@ Style scoped
 		padding-top: 48px;
 		background-color: $white;
 		overflow-x: hidden;
+
+		.c-formconnexion__error {
+			opacity: 0;
+			display: none;
+
+			color: red;
+			margin-bottom: 20px;
+			&.active {
+				display: block;
+				opacity: 1;
+			}
+		}
 
 		label {
 			color: $black;

@@ -18,7 +18,7 @@ Template
             :step_current_specific="3"
             :step_current_total="12"
             :back_title="$t('registerform.form.back_title')"
-            back_url="/register/talent/steps/2/2"
+            :back_url="this.currentLang + '/register/talent/steps/2/2'"
             :submit_title="$t('registerform.form.next')"
             :domains="this.DomainsApi['hydra:member']"
         />
@@ -34,7 +34,11 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoThree },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
-            const DomainsApi = await $axios.$get(`/api/domains`)
+            const DomainsApi = await $axios.$get(`/api/domains`, {
+                headers: {
+                    'Accept-Language': app.i18n.locale,
+                }
+            })
 			.then((res) => {
 			  console.log(res)
 			  return res
@@ -44,7 +48,12 @@ Template
 			});    
 
 			return { DomainsApi }
-        }
+        },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 

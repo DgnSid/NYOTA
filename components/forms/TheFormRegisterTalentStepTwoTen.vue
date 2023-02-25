@@ -73,7 +73,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputHasAfricanPastExperience', this.has_african_past_experience)
-				this.$router.push({path: '/register/talent/steps/2/11'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/11`})
 			},
 			isFormSubmittable() {
 				if(this.has_african_past_experience) {
@@ -90,6 +90,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 
