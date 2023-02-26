@@ -128,11 +128,13 @@ import { cpuUsage } from 'process';
   				})
 				.then(function (response) {
   					console.log(response);
-					this.$router.push({path: '/register/talent/steps/confirm'})
+					this.router.push({path: '/register/talent/steps/confirm'})
   				})
   				.catch(function (error) {
   					console.log(error);
-  				});				
+  				});
+				
+				this.$router.push({path: '/register/talent/steps/confirm'})
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {
