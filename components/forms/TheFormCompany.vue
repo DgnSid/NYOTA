@@ -230,7 +230,6 @@
 				this.$refs.input_file_logo.click()
 			},
 			onChange($event) {
-
 				let size = ''
 				let type = ''
 

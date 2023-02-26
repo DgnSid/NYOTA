@@ -57,16 +57,16 @@
 						            	<div class="c-header-profiletalent__content__infos__field__upload">
 						            		<div ref="input_file_dropzone" class="c-header-profiletalent__content__infos__field__upload__trigger" @click="triggerUpload('input_file_cv')">
 						            			<div class="c-header-profiletalent__content__infos__field__upload__dropzone" @dragenter="onDragenter('input_file_dropzone')" @dragleave="onDragleave('input_file_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_dropzone')"></div>
-						            			<div class="c-header-profiletalent__content__infos__field__upload__delete" ref="input_file_close" @click="deleteFile($event)">X</div>
+						            			<div class="c-header-profiletalent__content__infos__field__upload__delete" ref="input_file_cv_close" @click="deleteFile($event)">✕</div>
 						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__uploaded hidden" ref="input_file_cv_uploaded"></div>
 						            			<div class="c-header-profiletalent__content__infos__field__upload__trigger__container" ref="input_file_cv_container">
 						            				<icon-download class="c-header-profiletalent__content__infos__field__upload__trigger__icon" />
-						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__text">{{$t('pageregistercompany.label_download_instruction')}}</div>
-						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__meta">{{$t('pageregistercompany.label_download_extension')}}</div>
+						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__text">{{$t('registerform.steps.three.cv_instruction')}}</div>
+						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__meta">{{$t('registerform.steps.three.cv_meta')}}</div>
 						            			</div>
 						            		</div>
 						            		<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
-						            		<div class="c-header-profiletalent__content__infos__field__error">{{ $t('registerform.form.error_message') }}</div>
+						            		<div ref="input_file_cv_error" class="c-header-profiletalent__content__infos__field__error">{{ $t('registerform.form.error_message') }}</div>
 						            	</div>
 						            </div>
 
@@ -155,6 +155,8 @@
                 input_phone: this.$props.phone,
                 is_form_edit_active: false,
                 file_cv: '',
+                mutable_input_file_cv: '',
+                upload_technic: '',
             }
         },
         props: {
@@ -232,7 +234,7 @@
 
 				if(file) {					
 					this.$refs.input_file_cv_uploaded.classList.remove('hidden')
-					this.$refs.input_file_cv_uploaded.append(file.name)
+					this.$refs.input_file_cv_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_cv_container.classList.add('hidden')
 				} else {
@@ -266,31 +268,34 @@
                 this.$refs.form_edit.classList.remove('active')
             },
 			triggerUpload(ref) {
-                console.log('triggerUpload(ref)')
-				this.$refs[`${ref}`].click()
+                if(this.file_cv) {
+					return;
+				}
+
+				this.upload_technic = 'click'
+
+				this.$refs.input_file_cv.click()
 			},
 			onChange($event) {
+                let size = ''
+				let type = ''
 
-				const type = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0].type : this.$refs.input_file_cv[0].type
-				const size = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0].size : this.$refs.input_file_cv[0].size
+				type =  this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].type : this.mutable_input_file_cv[0].type
+				size = this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].size : this.mutable_input_file_cv[0].size
 
 				if(type === 'image/jpeg' || type === 'image/png') {
 					if(size <= 5000000) {
-						this.files = this.$refs.input_file_cv.files ? this.$refs.input_file_cv.files[0] : this.$refs.input_file_cv[0]
-
+						this.file_cv = this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0] : this.mutable_input_file_cv[0] 
 						this.$refs.input_file_cv_uploaded.classList.remove('hidden')
 						this.$refs.input_file_cv_container.classList.add('hidden')
-
-						this.$refs.input_file_close.classList.add('active')
-
-						this.$refs.input_file_cv_uploaded.innerHTML = this.files.name
-
-						// $event.target.closest('.c-header-profiletalent__content__infos__field__error').classList.remove('error')
+						this.$refs.input_file_cv_close.classList.add('active')
+						this.$refs.input_file_cv_uploaded.innerHTML = this.file_cv.name
+						this.$refs.input_file_cv_error.classList.remove('error')
 						return;
 					}
 				}
 
-				$event.target.closest('.c-header-profiletalent__content__infos__field__error').classList.add('error')
+				this.$refs.input_file_cv_error.classList.add('error')
 				this.$refs.input_file_cv_uploaded.classList.add('hidden')
 				this.$refs.input_file_cv_container.classList.remove('hidden')
     		},
@@ -304,22 +309,23 @@
 				e.preventDefault();
 				this.$refs[`${ref}`].classList.remove('active')
 
-				this.$refs.input_file_cv = e.dataTransfer.files;
+				this.upload_technic = 'drop'
 
-				console.log('this.$refs.input_file_cv', this.$refs.input_file_cv)
-
+				this.mutable_input_file_cv = e.dataTransfer.files;
 				this.onChange(e)
 			},
 			onChangeInput(e) {
-				console.log(this.$refs.input_file_cv.value)
-
-				console.log('this.$refs.input_file_cv', this.$refs.input_file_cv)
-
 				this.onChange(e)
 			},
 			deleteFile(e) {
 				e.preventDefault()
-				console.log(this.$refs.input_file_cv.value)
+				setTimeout(() => {
+					this.file_cv = ''
+					this.$refs.input_file_cv_close.classList.remove('active')
+					this.$refs.input_file_cv_container.classList.remove('hidden')
+					this.$refs.input_file_cv_uploaded.classList.add('hidden')
+					this.$refs.input_file_cv_uploaded.innerHTML = ''
+				})
 			},
             async updateCv() {
                 console.log('UPDATE CV')
@@ -396,22 +402,29 @@ Style scoped
 			        	width: 100%;
 			        	height: 100%;
 			        }
-                
-			        .c-header-profiletalent__content__infos__field__upload__delete {
+
+                    .c-header-profiletalent__content__infos__field__upload__delete {
 			        	position: absolute;
-			        	top: 40px;
+			        	top: 10px;
 			        	right: 10px;
 			        	z-index: 2;
-			        	color: red;
-                    
+			        	color: $orange;
+			        	height: 25px;
+			        	width: 25px;
+			        	border-radius: 100%;
+			        	border: 1px solid $orange;
 			        	opacity: 0;
 			        	display: none;
-                    
+
+
 			        	&.active {
-			        		display: block;
+			        		display: flex;
+			        		align-items: center;
+			        		justify-content: center;
 			        		opacity: 1;
 			        	}
 			        }
+                
 			        .c-header-profiletalent__content__infos__field__upload__trigger {
 			        	border: 1px dashed orange;
 			        	border-radius: 10px;
@@ -461,11 +474,13 @@ Style scoped
 			        		color: $black;
 			        		font-size: .8rem;
 			        		margin-bottom: 20px;
+                            text-align: center;
 			        	}
                     
 			        	.c-header-profiletalent__content__infos__field__upload__trigger__meta {
 			        		color: $orange;
-			        		font-size: 1rem;
+			        		font-size: .75rem;
+                            text-align: center;
 			        	}
 			        }
                 }

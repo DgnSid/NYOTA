@@ -31,8 +31,8 @@
             {{ $t('pagetalentlist.card.already_seen') }}
         </div>
         <div class="c-card-talent__bottom">
-            <div class="c-card-talent__bottom__element" v-for="(element, index) in industry" :key="index">
-                {{ element }}
+            <div class="c-card-talent__bottom__element">
+                {{ industry.name }}
             </div>
         </div>
     </article>

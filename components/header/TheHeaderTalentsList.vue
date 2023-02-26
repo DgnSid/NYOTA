@@ -239,17 +239,17 @@
 
                 if(mode === 'paginated') {
                     if(this.input_job) {
-                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}`
                     } else {
-                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}`
                     }
                 } else {
                     this.currentPage = 1
 
                     if(this.input_job) {
-                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}`
                     } else {
-                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}`
                     }
                 }               
 
