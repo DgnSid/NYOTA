@@ -431,7 +431,8 @@
             "confirm": {
                 "title": "Confirmation",
                 "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-                "cta_title": "See my profile"
+                "cta_title": "Login",
+                "cta_url": "/en/login?type=t"
             }
         },
         "form": {
@@ -441,5 +442,26 @@
             "mandatory": "* mandatory field",
             "error_message": "Field is not correct"
         }
+    },
+    "pageconnexion": {
+        "label_type": "You are",
+        "id_type": "id_type",
+        "option_type": [
+            {
+                "value": "talent",
+                "name": "Talent"
+            },
+            {
+                "value": "company",
+                "name": "Company"
+            }
+        ],
+        "label_mail": "E-mail address",
+        "id_mail": "id_mail",
+        "label_password": "Password",
+        "id_password": "id_password",
+        "label_submit": "Login",
+        "label_forgottenpassword": "You have forgotten your password ?",
+        "badlogin": "Your login informations are not correct."
     }
 }
