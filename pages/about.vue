@@ -71,6 +71,18 @@ import ShapeEllipse from '../components/ui/ShapeEllipse';
 
 export default {
     name: "AboutPage",
+    head() {
+      return {
+        title: this.aboutDataApi.seo.title,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.aboutDataApi.seo.description
+          }
+        ]
+      }
+    },
     components: {
         TheSectionTwocols,
         TheHeaderHome,

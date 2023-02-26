@@ -15,6 +15,7 @@
             :list="$t('pagelandingtalent.header.list')"
             :cta="$t('pagelandingtalent.header.cta')"
             :share="true"
+            :share_url="$t('pagelandingtalent.header.share_url')"
         />
         <TheSectionTwocols
             :title="landingTalentDataApi.blockRecipe.title"
@@ -61,6 +62,18 @@ import TheSectionTestimonial from '../../components/section/TheSectionTestimonia
 
 export default {
     name: "LandingTalentPage",
+		head() {
+			return {
+				title: this.landingTalentDataApi.seo.title,
+				meta: [
+					{
+						hid: 'description',
+						name: 'description',
+						content: this.landingTalentDataApi.seo.description
+					}
+				]
+			}
+		},
     components: {
         TheHeaderHome,
         TheSectionTwocols,

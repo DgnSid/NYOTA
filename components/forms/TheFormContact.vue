@@ -95,13 +95,20 @@
   					});
 
 					await this.$recaptcha.reset()
+
+					this.$router.push({path: `${this.currentLang}/contact/confirm`}) 
  			 	} catch (error) {
- 			 	  	console.log('Login error:', error)
+ 			 	  	console.log('error:', error)
  			 	}
 			}
 		},
 		beforeDestroy() {
   			this.$recaptcha.destroy()
+		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
 		}
 	}
 </script>

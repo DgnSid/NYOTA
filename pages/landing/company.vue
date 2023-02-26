@@ -77,6 +77,18 @@ import TheSectionTestimonial from '../../components/section/TheSectionTestimonia
 
 export default {
     name: "LandingCompanyPage",
+		head() {
+			return {
+				title: this.landingCompanyDataApi.seo.title,
+				meta: [
+					{
+						hid: 'description',
+						name: 'description',
+						content: this.landingCompanyDataApi.seo.description
+					}
+				]
+			}
+		},
     components: {
         TheHeaderHome,
         TheSectionTwocols,

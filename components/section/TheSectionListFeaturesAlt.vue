@@ -108,6 +108,7 @@ Style scoped
 
         .c-section-listfeatures-alt__element {
             display: flex;
+            justify-content: space-between;
             border-bottom: 1px solid $orange;
             padding-bottom: 32px;
             margin-bottom: 32px;
@@ -134,6 +135,7 @@ Style scoped
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 max-width: 45%;
+                padding-right: 60px;
 
                 @include media-breakpoint-down(md) {
                     max-width: 90%;
