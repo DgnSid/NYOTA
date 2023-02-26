@@ -25,18 +25,6 @@
 							<div ref="input_file_cv_error" class="c-formregistertalent__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-
-
-
 					<div class="c-formregistertalent__separator"></div>
 					<div class="offset-lg-4 col-lg-8">
 						<div class="c-formregistertalent__upload">
@@ -205,7 +193,7 @@
 					this.$refs.input_file_picture.click()
 				}				
 			},
-			onChange($event, ref_type, ref_type_uploaded, ref_type_container, ref_type_close, ref_type_error) {
+			onChange($event) {
 
 				let size = ''
 				let type = ''
@@ -262,9 +250,7 @@
 			onDrop(e, ref, type) {
 				console.log('onDrop')
 				e.preventDefault();
-				this.$refs[`${ref}`].classList.remove('active')
-
-				
+				this.$refs[`${ref}`].classList.remove('active')				
 
 				this.upload_type = type
 				this.upload_technic = 'drop'

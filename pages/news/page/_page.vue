@@ -30,7 +30,7 @@ export default {
       eventHub.$on('filter-news-by-category', (data) => {
         console.log(data)
         console.log(this.$i18n.locale)
-        this.$axios.$get(`/api/news?itemsPerPage=1&page=1&category=${data}`, {
+        this.$axios.$get(`/api/news?itemsPerPage=12&page=1&category=${data}`, {
           headers: {
             'Accept-Language': this.$i18n.locale,
           },
@@ -63,7 +63,7 @@ export default {
           console.error(err)
         });
 
-        const newsList = await $axios.$get(`/api/news?itemsPerPage=1&page=${params.page}`, {
+        const newsList = await $axios.$get(`/api/news?itemsPerPage=12&page=${params.page}`, {
           headers: {
             'Accept-Language': app.i18n.locale,
           },
@@ -76,111 +76,7 @@ export default {
           console.error(err)
         });  
 
-
-
-        
-
-        const pageNewsData = {
-    "seo": {
-        "title": "string",
-        "description": "string"
-    },
-    "blockHeader": {
-        "title": "Actualité FR"
-    },
-    "blockNews": {
-        "news": [
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            },
-            {
-                "title": "string 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            }
-        ]
-    }
-}
-
-        const pageNewsDataPaginated = {
-    "seo": {
-        "title": "string",
-        "description": "string"
-    },
-    "blockHeader": {
-        "title": "Actualité FR"
-    },
-    "blockNews": {
-        "news": [
-            {
-                "title": "string 1 page 1",
-                "url": "#",
-                "publicationDate": "2022-11-16T16:35:49.556Z",
-                "image": {
-                  "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "A définir"
-                }
-            }
-        ]
-    }
-}
-
-        return { newsCategories, newsList, pageNewsData, pageNewsDataPaginated, current_lang }
+        return { newsCategories, newsList, current_lang }
     }
 }
 </script>

@@ -569,5 +569,36 @@
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "cta_title": "Home",
         "cta_url": "/en/"
+    },
+    "registercompanyconfirm": {
+        "seo_title": "Account created",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Account created!",
+        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "cta_title": "Home",
+        "cta_url": "/en/"
+    },
+    "pageregistercompany": {
+        "id_company_name": "id_company_name",
+        "label_company_name": "Company name",
+        "id_contact_name": "id_contact_name",
+        "label_contact_name": "Last name and first name of the referring contact",
+        "label_contact_role": "Role of the referent contact",
+        "label_email": "Email address of the referring contact",
+        "label_phone": "Referral contact phone number",
+        "id_phone": "id_phone",
+        "label_logo": "Company logo",
+        "label_password": "Password",
+        "label_password_confirm": "Password confirmation",
+        "label_rgpd": "By checking this box, I confirm that I have read Nyota's privacy policy.",
+        "label_marketing": "marketing",
+        "submit_title": "create my account",
+        "mandatory": "* mandatory field",
+        "label_download_instruction": "Select or drag your company logo",
+        "label_download_extension": "PDF, JPG ou PNG - 5mo maximum",
+        "title": "Inscription",
+        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
     }
 }

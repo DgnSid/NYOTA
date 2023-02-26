@@ -40,7 +40,7 @@
 								<label>{{$t('pageregistercompany.label_logo')}}</label>
 								<div ref="input_file_dropzone" class="c-formcompany__field__upload__trigger" @click="triggerUpload('input_file_logo')">
 									<div class="c-formcompany__field__upload__dropzone" @dragenter="onDragenter('input_file_dropzone')" @dragleave="onDragleave('input_file_dropzone')" @dragover.prevent="" @drop="onDrop($event, 'input_file_dropzone')"></div>
-									<div class="c-formcompany__field__upload__delete" ref="input_file_close" @click="deleteFile($event)">X</div>
+									<div class="c-formcompany__field__upload__delete" ref="input_file_logo_close" @click="deleteFile($event)">✕</div>
 									<div class="c-formcompany__field__upload__trigger__uploaded hidden" ref="input_file_logo_uploaded"></div>
 									<div class="c-formcompany__field__upload__trigger__container" ref="input_file_logo_container">
 										<icon-picture class="c-formcompany__field__upload__trigger__icon" />
@@ -49,7 +49,7 @@
 									</div>
 								</div>
 								<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_logo" @change="onChangeInput($event)"/>
-								<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+								<div ref="input_file_logo_error" class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
 							</div>
 						</div>
 					</div>
@@ -108,7 +108,9 @@
 				input_password_confirm: '',
 				rgpd: false,
 				marketing: false,
-				files: [],
+				files: '',
+				upload_technic: '',
+				mutable_input_file_logo: '',
 			}
 		},
 		async mounted() {
@@ -170,13 +172,14 @@
   					})
 					.then(function (response) {
   						console.log(response);
-						this.$router.push('/')
   					})
   					.catch(function (error) {
   						console.log(error);
   					});
 
 					await this.$recaptcha.reset()
+
+					this.$router.push({path: `${this.currentLang}/register/company/confirm`}) 
  			 	} catch (error) {
  			 	  	console.log('Login error:', error)
  			 	}
@@ -218,30 +221,36 @@
 				this.isFormSubmittable()
 			},
 			triggerUpload(ref) {
-				this.$refs[`${ref}`].click()
+				if(this.files) {
+					return;
+				}
+
+				this.upload_technic = 'click'
+
+				this.$refs.input_file_logo.click()
 			},
 			onChange($event) {
 
-				const type = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0].type : this.$refs.input_file_logo[0].type
-				const size = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0].size : this.$refs.input_file_logo[0].size
+				let size = ''
+				let type = ''
+
+				type =  this.upload_technic === 'click' ? this.$refs.input_file_logo.files[0].type : this.mutable_input_file_logo[0].type
+				size = this.upload_technic === 'click' ? this.$refs.input_file_logo.files[0].size : this.mutable_input_file_logo[0].size
+
 
 				if(type === 'image/jpeg' || type === 'image/png') {
 					if(size <= 5000000) {
-						this.files = this.$refs.input_file_logo.files ? this.$refs.input_file_logo.files[0] : this.$refs.input_file_logo[0]
-
+						this.files = this.upload_technic === 'click' ? this.$refs.input_file_logo.files[0] : this.mutable_input_file_logo[0] 
 						this.$refs.input_file_logo_uploaded.classList.remove('hidden')
 						this.$refs.input_file_logo_container.classList.add('hidden')
-
-						this.$refs.input_file_close.classList.add('active')
-
+						this.$refs.input_file_logo_close.classList.add('active')
 						this.$refs.input_file_logo_uploaded.innerHTML = this.files.name
-
-						$event.target.closest('.c-formcompany__field').classList.remove('error')
+						this.$refs.input_file_logo_error.classList.remove('error')
 						return;
 					}
 				}
 
-				$event.target.closest('.c-formcompany__field').classList.add('error')
+				this.$refs.input_file_logo_error.classList.add('error')
 				this.$refs.input_file_logo_uploaded.classList.add('hidden')
 				this.$refs.input_file_logo_container.classList.remove('hidden')
     		},
@@ -255,22 +264,23 @@
 				e.preventDefault();
 				this.$refs[`${ref}`].classList.remove('active')
 
-				this.$refs.input_file_logo = e.dataTransfer.files;
+				this.upload_technic = 'drop'
 
-				console.log('this.$refs.input_file_logo', this.$refs.input_file_logo)
-
+				this.mutable_input_file_logo = e.dataTransfer.files;
 				this.onChange(e)
 			},
 			onChangeInput(e) {
-				console.log(this.$refs.input_file_logo.value)
-
-				console.log('this.$refs.input_file_logo', this.$refs.input_file_logo)
-
 				this.onChange(e)
 			},
 			deleteFile(e) {
 				e.preventDefault()
-				console.log(this.$refs.input_file_logo.value)
+				setTimeout(() => {
+					this.files = ''
+					this.$refs.input_file_logo_close.classList.remove('active')
+					this.$refs.input_file_logo_container.classList.remove('hidden')
+					this.$refs.input_file_logo_uploaded.classList.add('hidden')
+					this.$refs.input_file_logo_uploaded.innerHTML = ''
+				})
 			}
 		},
 		beforeDestroy() {
@@ -289,6 +299,11 @@
 		},
 		beforeDestroy() {
   			this.$recaptcha.destroy()
+		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
 		}
 	}
 </script>
@@ -413,20 +428,27 @@ Style scoped
 
 			.c-formcompany__field__upload__delete {
 				position: absolute;
-				top: 40px;
+				top: 10px;
 				right: 10px;
 				z-index: 2;
-				color: red;
-
+				color: $orange;
+				height: 25px;
+				width: 25px;
+				border-radius: 100%;
+				border: 1px solid $orange;
 				opacity: 0;
 				display: none;
 
+
 				&.active {
-					display: block;
+					display: flex;
+					align-items: center;
+					justify-content: center;
 					opacity: 1;
 				}
 			}
 			.c-formcompany__field__upload__trigger {
+				position: relative;
 				border: 1px dashed orange;
 				border-radius: 10px;
 				padding: 20px;
