@@ -86,8 +86,6 @@
 				try {
 					let response = this.login_type == "talent" ? await this.$auth.loginWith('local_talent', { data: this.login }) : await this.$auth.loginWith('local_company', { data: this.login })
 
-					console.log(response)
-
 					let token = response.data.token
 
 					// set token

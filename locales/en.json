@@ -13,7 +13,12 @@
         "register_title": "Register",
         "register_url": "/en/register",
         "login_title": "Login",
-        "login_url": "/en/login"
+        "login_url": "/en/login",
+        "disconnect_title": "Disconnect",
+        "profile_title": "My profile",
+        "profile_company_url": "/en/profile/company/",
+        "profile_talent_url": "/en/profile/talent/",
+        "disconnect_url": "/en/login?logout=true"
     },
     "popup_register": {
         "talent": {
@@ -82,7 +87,7 @@
         "header": {
             "title": "Register",
             "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-            "confirm_title": "You are registered !",
+            "confirm_title": "You are registered!",
             "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
         }
     },
@@ -425,7 +430,8 @@
             },
             "confirm": {
                 "title": "Confirmation",
-                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+                "cta_title": "See my profile"
             }
         },
         "form": {

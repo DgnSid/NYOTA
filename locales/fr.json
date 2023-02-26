@@ -588,7 +588,8 @@
             },
             "confirm": {
                 "title": "Confirmation",
-                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+                "cta_title": "Voir mon profile"
             }
         },
         "form": {

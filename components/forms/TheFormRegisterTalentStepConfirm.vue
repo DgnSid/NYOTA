@@ -4,6 +4,15 @@
 				<confirm-badge class="c-formregistertalentconfirm__icon" />
 				<h2 class="c-formregistertalentconfirm__title" >{{ title }}</h2>
 				<div class="c-formregistertalentconfirm__text">{{ text }}</div>
+
+				<div class="c-formregistertalentconfirm__cta-container">
+            		<cta
+            		    :url="cta_url"
+            		    :title="cta_title"
+            		    class="--bordered"
+            		/>
+       			</div>
+
 			<shape-ellipse class="c-formregistertalentconfirm__ellipse" :size="210" />
 		</div>
 	</div>
@@ -12,13 +21,16 @@
 <script>
 	import ShapeEllipse from '@/components/ui/ShapeEllipse';
 	import ConfirmBadge from '@/components/svg/ConfirmBadge';
+	import Cta from '@/components/Cta';
   	
 	export default {
       	name: 'FormRegisterTalentConfirm',
-		components: { ShapeEllipse, ConfirmBadge},
+		components: { ShapeEllipse, ConfirmBadge, Cta},
         props: {
    			title: String,
 			text: String,
+			cta_title: String,
+			cta_url: String
         },
 	}
 </script>
@@ -52,6 +64,11 @@ Style scoped
 			text-align: center;
 			max-width: 600px;
 			display: block;
+			margin: 0 auto 40px auto;
+		}
+
+		.c-formregistertalentconfirm__cta-container {
+			display: table;
 			margin: 0 auto;
 		}
 
