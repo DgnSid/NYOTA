@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="container a-stagger-element__listnewsalt">
-            <Pagination v-if="(mutableTotal > 1)" :total="mutableTotal" :perPage="1" />
+            <Pagination v-if="(mutableTotal > 12)" :total="mutableTotal" :perPage="1" />
         </div>
     </div>
 </template>

@@ -206,7 +206,9 @@
         "submit_title": "Créer mon compte",
         "mandatory": "* Champ obligatoire",
         "label_download_instruction": "Sélectionner ou glisser le logo de votre entreprise",
-        "label_download_extension": "PDF, JPG ou PNG - 5mo maximum"
+        "label_download_extension": "PDF, JPG ou PNG - 5mo maximum",
+        "title": "Inscription",
+        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
     },
     "pageconnexion": {
         "label_type": "Vous êtes",
@@ -649,6 +651,16 @@
         "seo_title": "Message envoyé !",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Message envoyé !",
+        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "cta_title": "Accueil",
+        "cta_url": "/"
+    },
+    "registercompanyconfirm": {
+        "seo_title": "Compte créé",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Compte créé !",
         "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "body_title": "Confirmation",
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
