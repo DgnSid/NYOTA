@@ -96,7 +96,7 @@ import { cpuUsage } from 'process';
 				const nationalities_code_array =  this.$store.state.registertalent.selectNationality.map(a => a.code)
 				const langs_code_array =  this.$store.state.registertalent.selectLangs.map(a => a.code)
 				const has_african_passed_experience_bool = this.$store.state.registertalent.inputHasAfricanPastExperience === "true" ? true : false
-				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))
+				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))				
 
 				await this.$axios.post('/api/talents/register', {						
 					"profilePicture": this.$store.state.registertalent.inputFilePicture,
@@ -128,13 +128,12 @@ import { cpuUsage } from 'process';
   				})
 				.then(function (response) {
   					console.log(response);
-					this.router.push({path: '/register/talent/steps/confirm'})
   				})
   				.catch(function (error) {
   					console.log(error);
   				});
 				
-				this.$router.push({path: '/register/talent/steps/confirm'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/confirm`}) 
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {
