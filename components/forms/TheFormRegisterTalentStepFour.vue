@@ -77,6 +77,10 @@ import { cpuUsage } from 'process';
 				rgpd: '',
 				marketing: '',
 				is_form_submittable: false,
+				login: {
+                    username: '',
+                    password: '',
+                },
 			}
 		},
         props: {
@@ -128,13 +132,15 @@ import { cpuUsage } from 'process';
   				})
 				.then(function (response) {
   					console.log(response);
-					// this.app.router.push({path: '/register/talent/steps/confirm'})
+					this.login.username = this.input_email
+					this.login.password = this.input_password
   				})
   				.catch(function (error) {
   					console.log(error);
   				});
 
 				//LOGIN WITH CREATED ACCOUNT
+				
 				let response = await this.$auth.loginWith('local_talent', { data: this.login })
 
 				await this.$recaptcha.reset()
