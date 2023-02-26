@@ -190,7 +190,8 @@
                 input_sector: [],
                 input_diploma: [],
                 input_job: this.$props.job ? this.$props.job : '',
-                mutableTotalResults: this.$props.totalresults
+                mutableTotalResults: this.$props.totalresults,
+                currentPage: 1,
             }
         },
         props: {
@@ -216,12 +217,17 @@
             this.tl.staggerTo('.a-stagger-element__header-small', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
             
             eventHub.$on('update-talents-list', (data) => {
-                console.log(data)
+                this.currentPage = 1
                 this.mutableTotalResults = data['hydra:totalItems']
+            })
+
+            eventHub.$on('update-talents-list-paginated', (currentPage) => {
+                this.currentPage = currentPage
+                this.filterTalents('paginated')
             }) 
         },
         methods: {
-            async filterTalents() {
+            async filterTalents(mode) {
                 const query_input_expected_start_date = JSON.stringify(this.input_expected_start_date).replace('[', '').replace(']', '')
                 const query_input_contract =            JSON.stringify(this.input_contract).replace('[', '').replace(']', '')
                 const query_input_domain =              JSON.stringify(this.input_domain).replace('[', '').replace(']', '')
@@ -229,7 +235,23 @@
                 const query_input_workplace =           JSON.stringify(this.input_workplace).replace('[', '').replace(']', '')
                 const query_input_sector =              JSON.stringify(this.input_sector).replace('[', '').replace(']', '')
 
-                const url_query = `/api/c/talents?job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplace[]=${query_input_workplace}&sector[]=${query_input_sector}`
+                let url_query = ''
+
+                if(mode === 'paginated') {
+                    if(this.input_job) {
+                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                    } else {
+                        url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                    }
+                } else {
+                    this.currentPage = 1
+
+                    if(this.input_job) {
+                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                    } else {
+                        url_query = `/api/c/talents?itemsPerPage=9&page=${this.currentPage}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
+                    }
+                }               
 
                 console.log(url_query)
                 await this.$axios.$get( url_query, {
@@ -239,7 +261,12 @@
                 })
                 .then((res) => {
                     console.log(res)
-                    eventHub.$emit('update-talents-list', res)
+                    if(mode === 'paginated') {
+                        eventHub.$emit('update-talents-list-paginated-results', res)
+                    } else {
+                        this.currentPage = 1
+                        eventHub.$emit('update-talents-list', res)
+                    }                    
                 })
                 .catch((err) => {
                     console.log(err)

@@ -23,7 +23,7 @@
 
 						<div class="c-formregistertalent__field">
                         	<label>{{$t('registerform.steps.one.label_gender')}} <span>*</span></label>
-							<div class="c-formregistertalent__field__radiolist" role="radiogroup">
+							<div class="c-formregistertalent__field__radiolist --left" role="radiogroup">
 								<div v-for="(element) in genders" :key="element.id" class="c-formregistertalent__field__radioelement">
 									<input type="radio" :id="element.id" :name="element.name" :value="element.id" v-model="gender" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
 									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
@@ -96,7 +96,7 @@
 				this.$store.commit('registertalent/mutateInputLastName', this.input_lastname)
 				this.$store.commit('registertalent/mutateInputFirstName', this.input_firstname)
 				this.$store.commit('registertalent/mutateInputGender', this.gender)
-				this.$router.push({path: '/register/talent/steps/2/1'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/1`})
 			},
 			checkInputFirstName($event) {
 				const value = $event.target.value
@@ -133,15 +133,14 @@
 			}
 		},
 		watch: {
-   			gender() {
-				
+   			gender() {				
 				this.isFormSubmittable()
    			},
 		},
 		computed: {
-    		count () {
-      			return this.$store.state.count
-    		}
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
 		}
 	}
 </script>

@@ -18,7 +18,7 @@ Template
             :step_current_specific="1"
             :step_current_total="1"
             :back_title="$t('registerform.form.back_title')"
-            back_url="/register/talent/steps/2/12"
+            :back_url="this.currentLang + '/register/talent/steps/2/12'"
             :submit_title="$t('registerform.form.next')"
             submit_url="/register/talent/steps/4"
         />
@@ -35,7 +35,12 @@ Template
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepThree },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
 
-        }
+        },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 

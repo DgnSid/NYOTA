@@ -259,6 +259,7 @@
                     text-transform: uppercase;
                     padding: 9px 16px;
                     font-weight: 700;
+                    font-size: .8rem;
 
                     &:not(:last-child) {
                         margin-right: 8px;

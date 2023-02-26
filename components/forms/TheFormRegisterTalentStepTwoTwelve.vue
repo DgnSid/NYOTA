@@ -74,7 +74,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputSalaries', this.salary)
-				this.$router.push({path: '/register/talent/steps/3'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/3`})
 			},
 			isFormSubmittable() {
 				if(this.salary) {
@@ -91,6 +91,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

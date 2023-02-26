@@ -74,7 +74,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputIndustryExperience', this.industry)
-				this.$router.push({path: '/register/talent/steps/2/2'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/2`})
 			},
 			isFormSubmittable() {
 				if(this.industry) {
@@ -91,6 +91,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

@@ -8,29 +8,29 @@
                             <sup>{{step_current_specific}}/{{step_current_total}}</sup>
                         </h2>
 						<div class="c-formregistertalent__field">
-                        	<label>Adresse e-mail  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_mail')}}  <span>*</span></label>
   		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputEmail($event)" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
-                        	<label>Mot de passe  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_password')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
-                        	<label>Confirmation mot de passe  <span>*</span></label>
+                        	<label>{{$t('registerform.steps.four.label_password_confirmation')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password_confirm" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div class="c-formregistertalent__field">
   		  	  	  			<input v-model="rgpd" type="checkbox" name="rgpd" placeholder="" required />
-							<label>RGPD  <span>*</span></label>
+							<label>{{$t('registerform.steps.four.label_rgpd')}}  <span>*</span></label>
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 						<div class="c-formregistertalent__field">
                         	
   		  	  	  			<input v-model="marketing" type="checkbox" name="marketing" placeholder="" />
-							<label>Marketing</label>
+							<label>{{$t('registerform.steps.four.label_marketing')}}</label>
 							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 
@@ -123,18 +123,32 @@ import { cpuUsage } from 'process';
 					"diploma": `/api/diplomas/${this.$store.state.registertalent.inputDiplomas}`,
 					"school": `${this.$store.state.registertalent.inputSchoolname}`,
   					"captcha": await this.$recaptcha.execute('login'),
-  					// "gdpr": this.rgpd,
-  					// "marketing": this.marketing
+  					"gdpr": this.rgpd,
+  					"marketing": this.marketing
   				})
 				.then(function (response) {
   					console.log(response);
-					this.app.router.push({path: '/register/talent/steps/confirm'})
+					// this.app.router.push({path: '/register/talent/steps/confirm'})
   				})
   				.catch(function (error) {
   					console.log(error);
   				});
 
+				//LOGIN WITH CREATED ACCOUNT
+				let response = await this.$auth.loginWith('local_talent', { data: this.login })
+
 				await this.$recaptcha.reset()
+				
+				this.$auth.strategy.token.set(token)
+                axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+				
+				response = await axios.get(this.$auth.strategies.local_talent.options.endpoints.user.url)
+ 				let user = response.data
+                user.token = token 
+                this.$auth.setUser(user)
+                this.$auth.$storage.setUniversal('user', user, true)
+				
+				this.app.router.push({path: '/register/talent/steps/confirm'})
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {
@@ -176,6 +190,11 @@ import { cpuUsage } from 'process';
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

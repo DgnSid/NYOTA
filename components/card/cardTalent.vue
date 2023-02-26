@@ -92,6 +92,7 @@ Style scoped
         border: 1px solid $grey;
         border-radius: 40px;
         padding: 24px 32px 45px 32px;
+        margin-bottom: 64px;
 
         .c-card-talent__link {
             position: absolute;

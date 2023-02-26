@@ -26,6 +26,18 @@ Template
                 this.$auth.$storage.removeUniversal('user')
             }
         },
+        async fetch() {
+            // const configurationDataApi = await this.$axios.$get(`/api/configurations`)
+            // .then((res) => {
+            //   console.log(res)
+            //   return res
+            // })
+            // .catch((err) => {
+            //   console.error(err)
+            // });
+// 
+            // return {configurationDataApi}
+        },
 	}
 </script>
 

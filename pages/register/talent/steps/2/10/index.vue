@@ -18,7 +18,7 @@ Template
             :step_current_specific="10"
             :step_current_total="12"
             :back_title="$t('registerform.form.back_title')"
-            back_url="/register/talent/steps/2/9"
+            :back_url="this.currentLang + '/register/talent/steps/2/9'"
             :submit_title="$t('registerform.form.next')"
         />
     </div>
@@ -32,6 +32,11 @@ Template
     export default {
         name: "Talents",
         components: { TheHeaderRegister, TheSectionListRegisterSteps, TheFormRegisterTalentStepTwoTen },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 

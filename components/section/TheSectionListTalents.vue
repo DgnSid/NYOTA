@@ -12,18 +12,20 @@
                         :yearsOfExperience="element.yearsOfExperience"
                         :hasBeenConsulted="element.hasBeenConsulted"
                         from="Paris"
-                        :industry="element.industry"
+                        :industry="element.newIndustry"
                         :id="element['@id'].split('/').pop()"
                     />
                 </div>
             </div>
         </div>
-        <div v-if="list.totalItems > 9" class="container a-stagger-element__listtalents">
-            <cta
-                url="cta.url"
-                title="Afficher plus de profil"
-                class="c-section-listtalents__cta --bordered"
-            />
+        <div v-if="mutableTotalItems > itemPerPage" class="container a-stagger-element__listtalents">
+            <div @click="paginatedListUpdate()">
+                <cta
+                    url=""
+                    title="Afficher plus de profil"
+                    class="c-section-listtalents__cta --bordered"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -45,11 +47,15 @@
         components: { cardTalent, Cta },
         data: function () {
             return {
+                currentPage: 1,
+                itemPerPage: 9,
                 mutableTalents: this.$props.list,
+                mutableTotalItems: this.$props.totalItems
             }
         },
         props: { 
             list: Array,
+            totalItems: Number,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -64,8 +70,22 @@
 
             eventHub.$on('update-talents-list', (data) => {
                 this.mutableTalents = data['hydra:member']
-            })                   
+                this.currentPage = 1
+                this.itemPerPage = 9
+                this.mutableTotalItems = data['hydra:totalItems']
+            })
+            
+            eventHub.$on('update-talents-list-paginated-results', (data) => {
+                this.mutableTalents = data['hydra:member']
+                this.itemPerPage = data['hydra:member'].length
+            })            
         },
+        methods: {
+            paginatedListUpdate() {
+                this.currentPage = this.currentPage + 1
+                eventHub.$emit('update-talents-list-paginated', this.currentPage)
+            }
+        }
     }
 </script>
 

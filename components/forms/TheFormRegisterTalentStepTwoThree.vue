@@ -74,7 +74,7 @@
 		methods: {
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputSpecialization', this.specialization)
-				this.$router.push({path: '/register/talent/steps/2/4'})
+				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/4`})
 			},
 			isFormSubmittable() {
 				if(this.specialization) {
@@ -91,6 +91,11 @@
 				this.isFormSubmittable()
    			},
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 
