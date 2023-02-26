@@ -58,18 +58,19 @@ export default {
             {
                 responseType: 'arraybuffer',
             })
-            .then(function (res) {
+            .then((res) => {
                 console.log(res)
-                console.log({ headers: res.headers });
-                // const url = window.URL.createObjectURL(new Blob([res]));
-                // const link = document.createElement('a');
-                // link.href = url;
-                // link.setAttribute('download', 'file.png');
-                // document.body.appendChild(link);
-                // link.click();
+                const file_extension = this.singleTalentDataApi.resume.fileOriginalName.split('.').pop()
+                const lastname = this.singleTalentDataApi.lastname
+                
+                const url = window.URL.createObjectURL(new Blob([res]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `cv_nyota_${lastname}.${file_extension}`);
+                document.body.appendChild(link);
+                link.click();
             })
             .catch((err) => {
-                console.log('err')
                 console.error(err)
             });
         }
