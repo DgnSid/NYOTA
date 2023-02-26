@@ -72,7 +72,7 @@
             </div>
         </div>
         <span class="c-header-home__share" v-if="share">
-            <a href="#" class="" >
+            <a :href="share_url" class="" >
                 <IconShare />
             </a>
         </span>
@@ -107,6 +107,7 @@
             logo: Boolean,
             big: Boolean,
             share: Boolean,
+            share_url: String,
         },
         mounted() {
             const gsap = this.$gsap;

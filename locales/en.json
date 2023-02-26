@@ -3,9 +3,9 @@
         "about_title": "About",
         "about_url": "/en/about",
         "talent_title": "Talent",
-        "talent_url": "en/talent",
+        "talent_url": "/en/landing/talent",
         "company_title": "Company",
-        "company_url": "/en/company",
+        "company_url": "/en/landing/company",
         "contact_title": "Contact",
         "contact_url": "/en/contact",
         "news_title": "News",
@@ -463,5 +463,111 @@
         "label_submit": "Login",
         "label_forgottenpassword": "You have forgotten your password ?",
         "badlogin": "Your login informations are not correct."
+    },
+    "pageabout": {
+        "section_goals": {
+            "title": "Our goals"
+        },
+        "section_podcast": {
+            "cta_text": "Register on our platform",
+            "cta_url": "#"
+        },
+        "section_news": {
+            "title": "Discover our news",
+            "hook": "Are you<br>interested ?",
+            "cta_title": "Discover our news",
+            "cta_url": "/en/news/page/1",
+            "cta_first_text": "I am a talent",
+            "cta_first_url": "/en/register/talent/steps/1",
+            "cta_second_text": "Discover our offers",
+            "cta_second_url": "#"
+        }
+    },
+    "pagelandingtalent": {
+        "header": {
+            "list": ["An internship to live a new experience", "A job in a company in line with your values", "A meaningful mission"],
+            "cta": {
+                "title": "Drop your cv",
+                "url":"/en/register/talent/steps/one"
+            },
+            "share_url": "#"
+        },
+        "section_goals_one": {
+            "title": "Nyota, a new way of doing things"
+        },
+        "section_goals_two": {
+            "title": "Enrich your professional career"
+        },
+        "section_news": {
+            "title": "Discover our news",
+            "hook": "Are you<br>interested?",
+            "cta_title": "Discover our news",
+            "cta_url": "/en/news/page/1",
+            "cta_first_text": "You are a talent",
+            "cta_first_url": "#",
+            "cta_second_text": "Discover our offers",
+            "cta_second_url": "#"
+        },
+        "section_quotes": {
+            "cta": {
+                "title": "Register",
+                "url": "/en/register/talent/steps/one"
+            }
+        }
+    },
+    "pagelandingcompany": {
+        "header": {
+            "list": ["An internship to live a new experience", "A job in a company in line with your values", "A meaningful mission"],
+            "cta": {
+                "title": "Contact us",
+                "url":"/en/contact"
+            },
+            "share_url": "#"
+        },
+        "section_goals_one": {
+            "title": "Benefit from the best talents with Nyota"
+        },
+        "section_goals_two": {
+            "title": "A suitable offer for each need"
+        },
+        "section_feature": {
+            "title": "Most of Nyota"
+        },
+        "section_news": {
+            "title": "Discover our news",
+            "hook": "Are you<br>interested?",
+            "cta_title": "Discover our news",
+            "cta_url": "/en/news/page/1",
+            "cta_first_text": "I am a talent",
+            "cta_first_url": "#",
+            "cta_second_text": "Discover our offers",
+            "cta_second_url": "#"
+        }
+    },
+    "page_contact": {
+        "label_object": "Object",
+        "label_name": "Full name",
+        "label_company": "Company",
+        "label_mail": "E-mail",
+        "label_phone": "Phone number",
+        "label_message": "Message",
+        "label_message_max": "(1500 max characters)",
+        "label_rgpd": "rgpd",
+        "label_submit": "Send a message",
+        "label_mandatory": "* mandatory field",
+        "seo_title": "CONTACT TITLE",
+        "seo_description": "CONTACT DESCRIPTION",
+        "title": "Contact EN",
+        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+    },
+    "contactconfirm": {
+        "seo_title": "Message sent",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Message sent!",
+        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "cta_title": "Home",
+        "cta_url": "/en/"
     }
 }

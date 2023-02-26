@@ -107,7 +107,8 @@
             "cta": {
                 "title": "Nous contacter",
                 "url":"/contact"
-            }
+            },
+            "share_url": "#"
         },
         "section_goals_one": {
             "title": "Bénéficier des meilleurs talents avec Nyota"
@@ -135,7 +136,8 @@
             "cta": {
                 "title": "Déposer votre cv",
                 "url":"/register/talent/steps/one"
-            }
+            },
+            "share_url": "#"
         },
         "section_goals_one": {
             "title": "Nyota, une nouvelle façon de faire les choses"
@@ -637,6 +639,20 @@
         "label_message_max": "(1500 CARATÈRES MAX)",
         "label_rgpd": "rgpd",
         "label_submit": "Envoyer un message",
-        "label_mandatory": "* champ obligatoire"
+        "label_mandatory": "* champ obligatoire",
+        "seo_title": "CONTACT TITLE",
+        "seo_description": "CONTACT DESCRIPTION",
+        "title": "Contact FR",
+        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+    },
+    "contactconfirm": {
+        "seo_title": "Message envoyé !",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Message envoyé !",
+        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "cta_title": "Accueil",
+        "cta_url": "/"
     }
 }

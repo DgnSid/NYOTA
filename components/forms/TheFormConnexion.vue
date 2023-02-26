@@ -104,7 +104,7 @@
  
                     this.$auth.$storage.setUniversal('user', user, true)
 
-					this.$router.push(`/`)
+					this.$router.push(`${this.currentLang}/`)
 				}
 				catch (error) {
  			 	  	console.log('Login error:', error)
@@ -113,6 +113,11 @@
             }
 
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 
