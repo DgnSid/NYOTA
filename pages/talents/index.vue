@@ -123,9 +123,6 @@ Template
 
             return { talentsDataApi, IndustriesApi, DomainsApi, ContractsApi, ExpectedStartDatesApi, WorkplacesApi, query_job }
         },
-        mounted () {
-          console.log('params ', this.$route.query)
-        }
     }
 </script>
 

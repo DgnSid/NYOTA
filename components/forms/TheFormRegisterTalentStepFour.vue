@@ -128,32 +128,11 @@ import { cpuUsage } from 'process';
   				})
 				.then(function (response) {
   					console.log(response);
+					this.app.router.push({path: '/register/talent/steps/confirm'})
   				})
   				.catch(function (error) {
   					console.log(error);
-  				});
-
-				//LOGIN WITH CREATED ACCOUNT
-
-
-				
-				let response = await this.$auth.loginWith('local_talent', { data: {
-					"username": this.input_email,
-					"password": this.input_password,
-				} })
-
-				await this.$recaptcha.reset()
-				
-				this.$auth.strategy.token.set(token)
-                axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-				
-				response = await axios.get(this.$auth.strategies.local_talent.options.endpoints.user.url)
- 				let user = response.data
-                user.token = token 
-                this.$auth.setUser(user)
-                this.$auth.$storage.setUniversal('user', user, true)
-				
-				this.app.router.push({path: '/register/talent/steps/confirm'})
+  				});				
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {
