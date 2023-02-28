@@ -21,6 +21,7 @@ Template
             :back_url="this.currentLang + '/register/talent/steps/2/6'"
             :submit_title="$t('registerform.form.next')"
             :languages="this.LanguagesApi['hydra:member']"
+            :langs_featured="$t('registerform.steps.two.seven.answers')"
         />
     </div>
 </template>

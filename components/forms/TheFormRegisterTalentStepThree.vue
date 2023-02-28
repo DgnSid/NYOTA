@@ -104,6 +104,7 @@
 
 				if(file) {					
 					this.$refs.input_file_cv_uploaded.classList.remove('hidden')
+					console.log('file.name cv ', file.name)
 					this.$refs.input_file_cv_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_cv_container.classList.add('hidden')
@@ -119,6 +120,7 @@
 
 				if(file) {					
 					this.$refs.input_file_picture_uploaded.classList.remove('hidden')
+					console.log('file.name picture ', file.name)
 					this.$refs.input_file_picture_uploaded.innerHTML = file.name
 
 					this.$refs.input_file_picture_container.classList.add('hidden')
@@ -146,6 +148,8 @@
   					})
 
 					this.$store.commit('registertalent/mutateInputFileCv', cv_uploaded_id)
+				} else {
+					this.$store.commit('registertalent/mutateInputFileCv', '')
 				}
 
 				const formData = new FormData();					
@@ -162,12 +166,14 @@
   					})
 
 					this.$store.commit('registertalent/mutateInputFilePicture', picture_uploaded_id)
+				} else {
+					this.$store.commit('registertalent/mutateInputFilePicture', '')
 				}
 
 				this.$router.push({path: `${this.currentLang}/register/talent/steps/4/`})
 			},
 			isFormSubmittable() {
-				if(this.file_cv && this.file_picture) {
+				if(this.file_cv) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -176,16 +182,23 @@
 				}
 			},
 			triggerUpload(ref, type) {
-				if(this.file_cv && this.upload_type === 'cv') {
+				console.log('this.upload_type :', this.upload_type)
+				console.log('this.file_picture :', this.file_picture)
+				console.log('this.file_cv :', this.file_cv)
+				console.log('ref :', ref)
+
+				if(this.file_cv && this.upload_type === 'cv' && ref === 'input_file_cv') {
 					return;
 				}
 
-				if(this.file_picture && this.upload_type === 'picture') {
+				if(this.file_picture && this.upload_type === 'picture' && ref === 'input_file_picture') {
 					return;
 				}
 
 				this.upload_type = type
 				this.upload_technic = 'click'
+
+				console.log('this.upload_type :', this.upload_type)
 
 				if(this.upload_type === 'cv') {
 					this.$refs.input_file_cv.click()
@@ -199,11 +212,37 @@
 				let type = ''
 
 				if(this.upload_type === 'cv') {
-					type =  this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].type : this.mutable_input_file_cv[0].type
-					size = this.upload_technic === 'click' ? this.$refs.input_file_cv.files[0].size : this.mutable_input_file_cv[0].size
+					if(this.upload_technic === 'click') {
+						if(!this.$refs.input_file_cv.files[0]) {
+							return
+						}
+
+						type = this.$refs.input_file_cv.files[0].type
+						size = this.$refs.input_file_cv.files[0].size
+					} else {
+						if(!this.mutable_input_file_cv[0]) {
+							return
+						}
+
+						type = this.mutable_input_file_cv[0].type
+						size = this.mutable_input_file_cv[0].size
+					}
 				} else {
-					type =  this.upload_technic === 'click' ? this.$refs.input_file_picture.files[0].type : this.mutable_input_file_picture[0].type
-					size = this.upload_technic === 'click' ? this.$refs.input_file_picture.files[0].size : this.mutable_input_file_picture[0].size
+					if(this.upload_technic === 'click') {
+						if(!this.$refs.input_file_picture.files[0]) {
+							return
+						}
+
+						type = this.$refs.input_file_picture.files[0].type
+						size = this.$refs.input_file_picture.files[0].size
+					} else {
+						if(!this.mutable_input_file_picture[0]) {
+							return
+						}
+
+						type = this.mutable_input_file_picture[0].type
+						size = this.mutable_input_file_picture[0].size
+					}
 				}
 
 				if(type === 'image/jpeg' || type === 'image/png' || type === 'application/pdf') {
@@ -220,7 +259,7 @@
 							this.$refs.input_file_picture_uploaded.classList.remove('hidden')
 							this.$refs.input_file_picture_container.classList.add('hidden')
 							this.$refs.input_file_picture_close.classList.add('active')
-							this.$refs.input_file_picture_uploaded.innerHTML = this.file_cv.name
+							this.$refs.input_file_picture_uploaded.innerHTML = this.file_picture.name
 							this.$refs.input_file_picture_error.classList.remove('error')
 						}
 
@@ -279,7 +318,7 @@
 					})
 				} else {
 					setTimeout(() => {
-						this.file_cv = ''
+						this.file_picture = ''
 						this.$refs.input_file_picture_close.classList.remove('active')
 						this.$refs.input_file_picture_container.classList.remove('hidden')
 						this.$refs.input_file_picture_uploaded.classList.add('hidden')
@@ -291,10 +330,7 @@
 		watch: {
    			file_cv() {
 				this.isFormSubmittable()
-   			},
-			file_picture() {
-				this.isFormSubmittable()
-   			},
+   			}
 		},
 		computed: {
             currentLang () {

@@ -77,7 +77,6 @@
 				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/5`})
 			},
 			isFormSubmittable() {
-				console.log(this.workplace)
 				if(this.workplace.length >= 1) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true

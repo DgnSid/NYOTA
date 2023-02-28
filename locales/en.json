@@ -319,7 +319,25 @@
                 "seven": {
                     "label_question": "In which languages ​​can you work?",
                     "id_answers": "id_answers",
-                    "select_placeholder": "Langue"
+                    "select_placeholder": "Langue",
+                    "answers": [
+                        {
+                            "name": "French",
+                            "value": "fr"
+                        },
+                        {
+                            "name": "English",
+                            "value": "en"
+                        },
+                        {
+                            "name": "Swahili",
+                            "value": "sw"
+                        },
+                        {
+                            "name": "Arab",
+                            "value": "ar"
+                        }
+                    ]
                 },
                 "eight": {
                     "label_question": "When do you plan to start your new job?",
@@ -416,7 +434,7 @@
                 "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
                 "photo_title": "Add a profile picture",
                 "photo_instruction": "Select or drop your profile picture",
-                "photo_meta": "PDF, JPG ou PNG - 10mo maximum",
+                "photo_meta": "JPG or PNG - 10mo maximum",
                 "url": "#"
             },
             "four": {
