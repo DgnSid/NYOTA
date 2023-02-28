@@ -9,7 +9,15 @@
                         </h2>
 						<div class="c-formregistertalent__field">
                         	<label class="--question">{{ $t('registerform.steps.two.seven.label_question') }}</label>
-							<multiselect v-model="langs" track-by="name" label="name" :multiple="true" :options="languages" :searchable="false" :close-on-select="false" :show-labels="false" :placeholder="$t('registerform.steps.two.seven.select_placeholder')" :internal-search="false">
+
+							<div class="c-formregistertalent__field__checkboxlist --margin-bottom" role="radiogroup">
+								<div v-for="(element, index) in langs_featured" :key="element.index" class="c-formregistertalent__field__checkboxelement">
+									<input type="checkbox" :id="index" :name="element.name" :value="element.value" v-model="langs_featured_array" role="radio" aria-checked="false"  :aria-labelledby="'label-' + index">
+									<label :id="'label-'+ index" :for="index" tabindex="0">{{element.name}}</label>
+								</div>
+							</div>
+
+							<multiselect v-model="langs" track-by="name" label="name" :multiple="true" :options="languages" :searchable="true" :close-on-select="true" :show-labels="false" :placeholder="$t('registerform.steps.two.seven.select_placeholder')" :internal-search="true">
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.name }}</strong></template>
 							</multiselect>
 						</div>
@@ -52,6 +60,7 @@
 		data: () => {
 			return {
 				langs: '',
+				langs_featured_array: [],
 				options: ['France', 'Algérie', 'Maroc', 'Tunisie', 'Mali', 'Sénégal'],
 				is_form_submittable: true,
 			}
@@ -65,17 +74,20 @@
 			submit_title: String,
 			submit_url: String,
 			languages: Array,
+			langs_featured: Array,
         },
 		mounted() {
 			this.langs = this.$store.state.registertalent.selectLangs
+			this.langs_featured_array = this.$store.state.registertalent.selectLangsFeatured
 		},
 		methods: {
 			handleSubmit(){
+				this.$store.commit('registertalent/mutateSelectLangsFeatured', this.langs_featured_array)
 				this.$store.commit('registertalent/mutateSelectLangs', this.langs)
 				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/8`})
 			},
 			isFormSubmittable() {
-				if(this.langs.length) {
+				if(this.langs_featured_array.length >= 1 || this.langs ) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {
@@ -85,7 +97,7 @@
 			}
 		},
 		watch: {
-   			langs() {
+			langs_featured_array() {
 				this.isFormSubmittable()
    			},
 		},
@@ -99,6 +111,15 @@
 
 <style src="@/node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	@import '@/assets/sass/app/form/register.scss';
+	.multiselect__input {
+		border: none !important;
+	}
+
+	.c-formregistertalent__field__checkboxlist {
+		&.--margin-bottom {
+			margin-bottom: 20px;
+		}
+	}
 </style>

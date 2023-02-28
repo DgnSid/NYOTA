@@ -8,6 +8,7 @@ export const state = () => ({
     selectCountryFrom: "",
     selectNationality: "",
     selectLangs: "",
+    selectLangsFeatured: [],
     inputExpectedStartDate: "",
     inputDiplomas: "",
     inputHasAfricanPastExperience: "",
@@ -52,6 +53,9 @@ export const mutations = {
     },
     mutateSelectLangs(state, payload) {
         state.selectLangs = payload
+    },
+    mutateSelectLangsFeatured(state, payload) {
+        state.selectLangsFeatured = payload
     },
     mutateInputExpectedStartDate(state, payload) {
         state.inputExpectedStartDate = payload

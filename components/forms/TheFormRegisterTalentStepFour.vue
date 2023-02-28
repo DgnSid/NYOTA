@@ -95,8 +95,11 @@ import { cpuUsage } from 'process';
 			async handleSubmit(){
 				const nationalities_code_array =  this.$store.state.registertalent.selectNationality.map(a => a.code)
 				const langs_code_array =  this.$store.state.registertalent.selectLangs.map(a => a.code)
+				const langs_code_array_merged = langs_code_array.concat(this.$store.state.registertalent.selectLangsFeatured)
 				const has_african_passed_experience_bool = this.$store.state.registertalent.inputHasAfricanPastExperience === "true" ? true : false
-				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))				
+				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))
+				
+				console.log('langs_code_array_merged :', langs_code_array_merged)
 
 				await this.$axios.post('/api/talents/register', {						
 					"profilePicture": this.$store.state.registertalent.inputFilePicture,
@@ -112,7 +115,7 @@ import { cpuUsage } from 'process';
 					"newIndustry": `/api/industries/${this.$store.state.registertalent.inputIndustryWanted}`,
 					"country": this.$store.state.registertalent.selectCountryFrom,
 					"nationalities": nationalities_code_array,
-					"languages": langs_code_array,
+					"languages": langs_code_array_merged,
 					"expectedStartDate": `/api/expected_start_dates/${this.$store.state.registertalent.inputExpectedStartDate}`,
 					"job": `${this.$store.state.registertalent.inputJobName}`,
 					"salary": `/api/salaries/${this.$store.state.registertalent.inputSalaries}`,
