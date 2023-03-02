@@ -17,8 +17,8 @@
                     <div class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.seven.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in mutable_languages" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.languages" :key="index">
+                                {{element.name}}
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.five.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
                             <div class="c-section-profile-cv__answers__element">
-                                {{mutable_country}}
+                                {{data.country.name}}
                             </div>
                         </div>
                     </div>
@@ -90,8 +90,8 @@
                     <div :class="offset" class="col-lg-10 mb-md a-stagger-element__section-profile-cv">
                         <div class="c-section-profile-cv__question">{{$t('registerform.steps.two.six.label_question')}}</div>
                         <div class="c-section-profile-cv__answers">
-                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in mutable_nationalities" :key="index">
-                                {{element}}
+                            <div class="c-section-profile-cv__answers__element" v-for="(element, index) in data.nationalities" :key="index">
+                                {{element.name}}
                             </div>
                         </div>
                     </div>

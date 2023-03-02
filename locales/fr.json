@@ -55,9 +55,9 @@
             "instagram_url": "#"
         },
         "mentions": "Mentions légales",
-        "mentions_url": "",
+        "mentions_url": "/legal-notice",
         "rgpd": "Politique de confidentialité",
-        "rgpd_url": "",
+        "rgpd_url": "/privacy-policy",
         "adveris": "Site internet crée par Adveris",
         "adveris_url": "https://adveris.fr",
         "contact": "Nous contacter",
@@ -229,7 +229,10 @@
         "id_password": "id_password",
         "label_submit": "Se connecter",
         "label_forgottenpassword": "Tu as oublié ton mot de passe ?",
-        "badlogin": "Vos informations de connexion sont erronées."
+        "badlogin": "Vos informations de connexion sont erronées.",
+        "mandatory": "* champ obligatoire",
+        "noaccount_intro": "Vous n’avez pas de compte ?",
+        "noaccount_span": "Inscrivez-vous ici !"
     },
     "pageforgottenpassword": {
         "label_type": "Vous êtes",
@@ -684,5 +687,34 @@
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "cta_title": "Accueil",
         "cta_url": "/"
+    },
+    "errorpage": {
+        "404_title": "404 - Cette page n'existe pas",
+        "cta_title": "Accueil",
+        "cta_url": "/"
+    },
+    "privacypolicypage": {
+        "title": "Politique de confidentialité"
+    },
+    "legalnoticepage": {
+        "title": "Mentions légales"
+    },
+    "forgottenpasswordconfirm": {
+        "seo_title": "Un mail a été envoyé !",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Un mail a été envoyé !",
+        "confirm_text": "Vérifiez votre boîte mail.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+    },
+    "changepasswordconfirm": {
+        "seo_title": "Mot de passe changé !",
+        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_title": "Votre mot de passe a été changé !",
+        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_title": "Confirmation",
+        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "cta_title": "Se connecter",
+        "cta_url": "/login"
     }
 }

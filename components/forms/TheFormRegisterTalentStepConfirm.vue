@@ -5,7 +5,7 @@
 				<h2 class="c-formregistertalentconfirm__title" >{{ title }}</h2>
 				<div class="c-formregistertalentconfirm__text">{{ text }}</div>
 
-				<div class="c-formregistertalentconfirm__cta-container">
+				<div v-if="cta_url" class="c-formregistertalentconfirm__cta-container">
             		<cta
             		    :url="cta_url"
             		    :title="cta_title"
