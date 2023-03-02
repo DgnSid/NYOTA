@@ -44,12 +44,18 @@
 				await this.$axios.post(`/api/${this.login_type}/reset/ask`, {
 					"email": this.login_mail,
 				})
-				.then(function (response) {
+				.then((response) => {
 					console.log(response)
+					this.$router.push(`${this.currentLang}/forgotten-password/confirm`)
   				})
 
 			}
 		},
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
 	}
 </script>
 

@@ -27,10 +27,10 @@
 							<span class="c-formconnexion__submit__text">{{$t('pageconnexion.label_submit')}}</span>
 						</button>
 
-						<div class="c-formconnexion__mandatory-text">* champ obligatoire</div>
+						<div class="c-formconnexion__mandatory-text">{{$t('pageconnexion.mandatory')}}</div>
 
-						<div class="c-formconnexion__register" >
-							Vous n’avez pas de compte ? <nuxt-link to="/forgotten-password">Inscrivez-vous ici</nuxt-link>
+						<div class="c-formconnexion__register" @click="openPopup()" >
+							{{$t('pageconnexion.noaccount_intro')}} <span>{{$t('pageconnexion.noaccount_span')}}</span>
 						</div>
 					</div>
   		  	  	</div>
@@ -41,6 +41,7 @@
 
 <script>
 	import axios from 'axios';
+	import { eventHub } from '@/plugins/eventhub'
 
   	export default {
       	name: 'theFormConnexion',
@@ -110,7 +111,10 @@
  			 	  	console.log('Login error:', error)
 					this.isErrorLogin = true
  			 	}
-            }
+            },
+			openPopup() {
+                eventHub.$emit('open-popup', true)
+            },
 
 		},
 		computed: {
@@ -241,7 +245,8 @@ Style scoped
 			color: $black;
 			padding-bottom: 40px;
 
-			a {
+			span {
+				cursor: pointer;
 				color: $orange;
 				text-decoration: underline;
 			}
