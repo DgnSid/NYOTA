@@ -106,6 +106,10 @@ Style scoped
         align-items: center;
         border-bottom: 1px solid $grey;
 
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+
         .c-section-listregistersteps__list {
             display: flex;
             justify-content: center;

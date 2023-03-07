@@ -21,6 +21,10 @@
         color: $black;
         font-size: .75rem;
         margin-bottom: 42px;
+
+        @include media-breakpoint-down(md) {
+            text-align: center;
+        }
     }
 
     .c-formregistertalent__separator {
@@ -31,6 +35,10 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
     }
 
     .c-formregistertalent__upload {
@@ -142,6 +150,10 @@
             margin-bottom: 40px;
             justify-content: center;
             display: flex;
+
+            @include media-breakpoint-down(md) {
+                text-align: center;
+            }
         }
 
         a,
@@ -176,6 +188,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 8px;
+        text-align: center;
 
         &:not(:last-child) {
             margin-right: 8px;
@@ -266,12 +279,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+        }
+
         .c-formregistertalent__bottom__back {
             color: $orange;
 
             svg {
                 margin-bottom: 2px;
                 margin-right: 10px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-bottom: 20px;
             }
         }
 
@@ -311,6 +333,10 @@
         position: absolute;
         right: -100px;
         bottom: 0;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
     }
 
     .multiselect {
