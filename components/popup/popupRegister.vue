@@ -115,6 +115,13 @@ Style scoped
             border-radius: 32px;
             overflow: hidden;
 
+            @include media-breakpoint-down(md) {
+                flex-direction: column;
+                max-height: calc(90vh - 140px);
+                margin-top: 20px;
+                overflow-y: auto;
+            }
+
             .c-popup-register__content__close {
                 position: absolute;
                 top: 15px;
@@ -128,10 +135,19 @@ Style scoped
                 color: $white;
                 padding: 80px 60px;
 
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                    padding: 20px 10px;
+                }
+
                 .c-popup-register__content__left__title {
                     font-size: 1.25rem;
                     margin-bottom: 4px;
                     color: $white;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 1.1rem;
+                    }
                 }
 
                 .c-popup-register__content__left__intro {
@@ -140,6 +156,11 @@ Style scoped
                     margin-bottom: 10px;
                     font-family: $font-family-custom;
                     font-weight: 400;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 1.5rem;
+                        line-height: 1.8rem;
+                    }
                 }
                 .c-popup-register__content__left__text {
                     font-size: 1rem;
@@ -155,10 +176,20 @@ Style scoped
                 width: 50%;
                 color: $black;
                 padding: 80px 60px;
+
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                    padding: 20px 10px;
+                }
+
                 .c-popup-register__content__right__title {
                     font-size: 1.25rem;
                     margin-bottom: 4px;
                     color: $orange;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 1.1rem;
+                    }
                 }
 
                 .c-popup-register__content__right__intro {
@@ -167,6 +198,11 @@ Style scoped
                     margin-bottom: 10px;
                     font-family: $font-family-custom;
                     font-weight: 400;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 1.5rem;
+                        line-height: 1.8rem;
+                    }
                 }
                 .c-popup-register__content__right__text {
                     font-size: 1rem;
