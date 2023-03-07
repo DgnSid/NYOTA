@@ -140,6 +140,7 @@ Style scoped
 		.c-formconnexion__error {
 			opacity: 0;
 			display: none;
+			font-size: 12px;
 
 			color: red;
 			margin-bottom: 20px;

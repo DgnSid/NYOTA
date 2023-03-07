@@ -21,6 +21,18 @@ import TheHeaderProfileCompany from '@/components/header/TheHeaderProfileCompany
 
 export default {
     name: "ProfileCompany",
+    head() {
+      return {
+        title: "",
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: ""
+          }
+        ]
+      }
+    },
     components: {
         TheHeaderProfileCompany,
     },

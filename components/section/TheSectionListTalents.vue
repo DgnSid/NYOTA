@@ -11,7 +11,7 @@
                         :profilePicture="element.profilePicture"
                         :yearsOfExperience="element.yearsOfExperience"
                         :hasBeenConsulted="element.hasBeenConsulted"
-                        from="Paris"
+                        :from="element.country.name"
                         :industry="element.newIndustry"
                         :id="element['@id'].split('/').pop()"
                     />

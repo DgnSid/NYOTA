@@ -15,9 +15,12 @@
   		  	  	  		<label>{{ $t("page_contact.label_company") }}</label>
   		  	  	  		<input v-model="input_company" type="text" name="company" placeholder="" />
 					</div>
-					<div class=" offset-lg-1 col-lg-9">
-  		  	  	  		<label>{{ $t("page_contact.label_mail") }} <span>*</span></label>
-  		  	  	  		<input v-model="input_mail" type="text" name="mail" placeholder="" required />
+					<div class="offset-lg-1 col-lg-9">
+						<div class="c-formcontact__field">
+  		  	  	  			<label>{{ $t("page_contact.label_mail") }} <span>*</span></label>
+  		  	  	  			<input v-model="input_mail" type="email" name="mail" placeholder="" required @change="checkInputEmail($event)" />
+							<div class="c-formcontact__field__error">{{ $t('registerform.form.error_message') }}</div>
+						</div>
 					</div>
 					<div class="col-lg-9">
   		  	  	  		<label>{{ $t("page_contact.label_phone") }}</label>
@@ -28,11 +31,18 @@
   		  	  	  		<textarea v-model="input_message" name="message" maxlength="1500"></textarea>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<input v-model="input_rgpd" id="rgpd" type="checkbox" name="name" placeholder="" required />
-						<label for="rgpd" name="rgpd" class="--checkbox">{{ $t("page_contact.label_rgpd") }}</label>
+						<div class="c-formcontact__checkbox">
+  		  	  	  			<input v-model="input_rgpd" id="rgpd" type="checkbox" name="name" placeholder="" required />
+							<label for="rgpd" name="rgpd" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
+								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.
+							</label>
+							<label for="rgpd" name="rgpd" class="--checkbox" v-else>
+								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.
+							</label>
+						</div>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<button class="c-formcontact__submit --bordered" type="submit ">
+  		  	  	  		<button class="c-formcontact__submit --bordered disabled" type="submit" ref="submit">
 							<span class="c-formcontact__submit__text">{{ $t("page_contact.label_submit") }}</span>
 						</button>
 					</div>
@@ -72,6 +82,29 @@
   			}
 		},
 		methods: {
+			checkInputEmail($event) {
+				const value = $event.target.value
+				if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
+					$event.target.closest('.c-formcontact__field').classList.remove('error')
+					this.input_mail = value
+					this.isFormSubmittable()
+    			} else {
+					$event.target.closest('.c-formcontact__field').classList.add('error')
+    			}
+
+				
+			},
+			isFormSubmittable() {
+				if(this.input_mail) {
+					console.log('submittable')
+					this.$refs.submit.classList.remove('disabled')
+					this.is_form_submittable = true
+				} else {
+					console.log('not submittable')
+					this.$refs.submit.classList.add('disabled')
+					this.is_form_submittable = false
+				}
+			},
 			async handleSubmit() {
 				console.log('handleSubmit')
 
@@ -161,6 +194,7 @@ Style scoped
 			}
 		}
 
+		input[type="email"],
 		input[type="text"] {
 			border: 1px solid $grey;
 			border-radius: 40px;
@@ -169,6 +203,52 @@ Style scoped
 			margin-bottom: 32px;
 			padding-left: 20px;
 		}
+
+		.c-formcontact__checkbox {
+			input {
+				display: none;
+			}
+
+			label {
+        	    cursor: pointer;
+        	    padding-left: 5px;
+        	    margin-left: 12px;
+        	    font-size: .75rem;
+        	    line-height: .75rem;
+
+				a {
+					color: $orange;
+				}
+
+        	    &::before {
+        	        content: '';
+        	        position: absolute;
+        	        left: 15px;
+        	        top: calc(50% - 1px);
+        	        border: 1px solid $orange;
+        	        height: 12px;
+        	        width: 12px;
+        	        border-radius: 4px;
+        	        background-color: $white;
+        	        transform: translate(0, -50%);
+        	    }
+        	}
+
+			input:checked + label::before {
+        	    content: '.';
+        	    color: $orange;
+        	    background-color: $white;
+        	}
+
+        	input:checked + label::after {
+        	    content: '✔';
+        	    color: $orange;
+        	    position: absolute;
+				left: 18px;
+   				top: 10px;
+        	    font-size: 8px;
+			}
+		}                           
 
 		textarea {
 			display: block;
@@ -212,6 +292,25 @@ Style scoped
 			padding-bottom: 50px;
 		}
 
+		.c-formcontact__field {
+			margin-bottom: 32px;
+
+        	&.error {
+				input[type="email"] {
+        	        border-color: red;
+        	        color: red;
+        	    }
+
+        	    .c-formcontact__field__error {
+        	        display: block;
+        	        color: red;
+					text-align: right;
+					font-size: 12px;
+					margin-top: -32px;
+        	    }
+        	}
+    	}
+
 		.c-formcontact__submit {
         	position: relative;
         	background: $gradientOrange;
@@ -224,6 +323,11 @@ Style scoped
        		@include media-breakpoint-down(md) {
        		    margin-bottom: 10px;
        		}
+
+			&.disabled {
+                filter: grayscale(1);
+                pointer-events: none;
+            }
 
        		&.--bordered {
        		    border: 1px solid $orange;

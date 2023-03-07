@@ -26,7 +26,7 @@
                          </div>
                          <h1 class="c-section-talent-curriculum__top__name">{{ data.firstname }} {{ data.lastname }}</h1>
                          <div class="c-section-talent-curriculum__top__school">{{ data.school }}</div>
-                         <div class="c-section-talent-curriculum__top__location">{{ mutable_country }}</div>
+                         <div class="c-section-talent-curriculum__top__location">{{ data.country.name }}</div>
                     </div>
                     <div class="c-section-talent-curriculum__bottom">
                         <div class="offset-lg-2 col-lg-20 p-0">
@@ -211,7 +211,7 @@
 
             .c-section-talent-curriculum__top__school {
                 color: $orange;
-                margin-bottom: 8px;
+                margin-bottom: 0;
                 font-size: 1.125rem;
                 line-height: 1.125rem;
             }
@@ -237,8 +237,9 @@
             .c-section-talent-curriculum__bottom-container__title {
                 font-size: 2rem;
                 line-height: 2rem;
-                font-weight: 200;
+                font-weight: lighter;
                 margin-bottom: 8px;
+                font-family: $font-family-default;
             }
 
             .c-section-talent-curriculum__bottom-container__text {
@@ -253,7 +254,7 @@
                 display: flex;
 
                 .c-section-talent-curriculum__bottom-container__list__element {
-                    background-color: $orange;
+                    background: $gradientOrange;
                     color: $white;
                     border-radius: 40px;
                     text-transform: uppercase;
