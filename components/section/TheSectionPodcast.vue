@@ -22,7 +22,7 @@
                     <cta v-if="cta"
                         :url="cta.url"
                         :title="cta.title"
-                        class="--bordered"
+                        class="--bordered --table"
                     />
                 </div>
             </div>
@@ -84,7 +84,7 @@ Style scoped
 
         .c-section-podcast__title {
             font-family: $font-family-custom;
-            font-weight: 400;
+            font-weight: 600;
             
             font-size: 4.125rem;
             line-height: 4.5rem;

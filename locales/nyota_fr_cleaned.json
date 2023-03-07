@@ -1,37 +1,26 @@
 {
     "menu": {
         "about_title": "À propos",
-        "about_url": "/about",
         "talent_title": "Talent",
-        "talent_url": "/landing/talent",
         "company_title": "Entreprises",
-        "company_url": "/landing/company",
         "contact_title": "Contact",
-        "contact_url": "/contact",
         "news_title": "Actualités",
-        "news_url": "/news",
         "register_title": "S'inscrire",
         "login_title": "Connexion",
-        "login_url": "/login",
         "disconnect_title": "Se déconnecter",
-        "profile_title": "Mon profil",
-        "profile_company_url": "/profile/company/",
-        "profile_talent_url": "/profile/talent/",
-        "disconnect_url": "/login?logout=true"
+        "profile_title": "Mon profil"
     },
     "popup_register": {
         "talent": {
             "type": "Talent",
             "title": "Je cherche une opportunité en Afrique",
             "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
-            "cta_url": "/register/talent/steps/1",
             "cta_title": "S'inscrire"
         },
         "company": {
             "type": "Entreprise",
             "title": "Je suis une entreprise implantée en Afrique",
             "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
-            "cta_url": "/register/company",
             "cta_title": "S'inscrire"
         }
     },
@@ -45,28 +34,17 @@
         "baseline": "Nous connectons les meilleurs talents avec de grandes entreprises mondiales",
         "menu": {
             "about": " A propos",
-            "about_url": "/about",
             "talent": "Talent",
-            "talent_url": "/landing/talent",
-            "company": "Entreprises",
-            "company_url": "/landing/company",
-            "facebook_url": "#",
-            "linkedin_url": "#",
-            "instagram_url": "#"
+            "company": "Entreprises"
         },
         "mentions": "Mentions légales",
-        "mentions_url": "/legal-notice",
         "rgpd": "Politique de confidentialité",
-        "rgpd_url": "/privacy-policy",
         "adveris": "Site internet crée par Adveris",
-        "adveris_url": "https://adveris.fr",
-        "contact": "Nous contacter",
-        "contact_url": "/contact"
+        "contact": "Nous contacter"
     },
     "pagehome": {
         "section_news": {
             "title": "Découvrez nos actualités",
-            "cta_url": "/news/page/1",
             "cta_title": "Voir toutes les actualités"
         },
         "section_features": {
@@ -77,8 +55,7 @@
         },
         "section_quotes": {
             "cta": {
-                "title": "S'inscrire",
-                "url": "/register/talent/steps/1"
+                "title": "S'inscrire"
             }
         }
     },
@@ -87,18 +64,14 @@
             "title": "Nos objectifs"
         },
         "section_podcast": {
-            "cta_text": "S'inscrire sur notre plateforme",
-            "cta_url": "#"
+            "cta_text": "S'inscrire sur notre plateforme"
         },
         "section_news": {
             "title": "Découvrez nos actualités",
             "hook": "Vous êtes<br>intéréssés ?",
             "cta_title": "Découvrez nos actualités",
-            "cta_url": "/news/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
-            "cta_first_url": "/register/talent/steps/1",
-            "cta_second_text": "Découvrir nos offres",
-            "cta_second_url": "/register/company"
+            "cta_second_text": "Découvrir nos offres"
         }
     },
     "pagelandingcompany": {
@@ -107,8 +80,7 @@
             "cta": {
                 "title": "Nous contacter",
                 "url":"/contact"
-            },
-            "share_url": "#"
+            }
         },
         "section_goals_one": {
             "title": "Bénéficier des meilleurs talents avec Nyota"
@@ -122,12 +94,9 @@
         "section_news": {
             "title": "Découvrez nos actualités",
             "hook": "Vous êtes<br>intéréssés ?",
-            "cta_title": "Voir toutes les actualités",
-            "cta_url": "/news/page/1",
+            "cta_title": "Découvrez nos actualités",
             "cta_first_text": "JE SUIS UN TALENT",
-            "cta_first_url": "/register/talent/steps/1",
-            "cta_second_text": "Découvrir nos offres",
-            "cta_second_url": "/register/company"
+            "cta_second_text": "Découvrir nos offres"
         }
     },
     "pagelandingtalent": {
@@ -136,8 +105,7 @@
             "cta": {
                 "title": "Déposer votre cv",
                 "url":"/register/talent/steps/one"
-            },
-            "share_url": "#"
+            }
         },
         "section_goals_one": {
             "title": "Nyota, une nouvelle façon de faire les choses"
@@ -148,12 +116,9 @@
         "section_news": {
             "title": "Découvrez nos actualités",
             "hook": "Vous êtes<br>intéréssés ?",
-            "cta_title": "Voir toutes les actualités",
-            "cta_url": "/news/page/1",
+            "cta_title": "Découvrez nos actualités",
             "cta_first_text": "JE SUIS UN TALENT",
-            "cta_first_url": "/register/talent/steps/1",
-            "cta_second_text": "Découvrir nos offres",
-            "cta_second_url": "/register/company"
+            "cta_second_text": "Découvrir nos offres"
         },
         "section_quotes": {
             "cta": {
@@ -179,8 +144,7 @@
         }
     },
     "pagetalentsingle": {
-        "backtotalents_url": "/talents",
-        "backtotalents_text": "Retour à la liste des candidats",
+        "backtotalents_text": "Retour à la liste de candidat",
         "formation": "Formation",
         "experience": "Expérience",
         "post": "Poste recherché",
@@ -190,14 +154,11 @@
         "formation_experience": "Formation et expérience"
     },
     "pageregistercompany": {
-        "id_company_name": "id_company_name",
         "label_company_name": "Nom de l'entreprise",
-        "id_contact_name": "id_contact_name",
         "label_contact_name": "Nom et prénom du contact référent",
         "label_contact_role": "Rôle du contact référent",
         "label_email": "Adresse e-mail du contact référent",
         "label_phone": "Numéro de téléphone du contact référent",
-        "id_phone": "id_phone",
         "label_logo": "Logo de l’entreprise",
         "label_password": "Mot de passe",
         "label_password_confirm": "Confirmation mot de passe",
@@ -212,7 +173,6 @@
     },
     "pageconnexion": {
         "label_type": "Vous êtes",
-        "id_type": "id_type",
         "option_type": [
             {
                 "value": "talent",
@@ -224,9 +184,7 @@
             }
         ],
         "label_mail": "Adresse mail",
-        "id_mail": "id_mail",
         "label_password": "Mot de passe",
-        "id_password": "id_password",
         "label_submit": "Se connecter",
         "label_forgottenpassword": "Tu as oublié ton mot de passe ?",
         "badlogin": "Vos informations de connexion sont erronées.",
@@ -236,7 +194,6 @@
     },
     "pageforgottenpassword": {
         "label_type": "Vous êtes",
-        "id_type": "id_type",
         "option_type": [
             {
                 "value": "t",
@@ -260,331 +217,51 @@
         "steps": {
             "one": {
                 "title": "Informations personnelles",
-                "url": "#",
                 "label_name": "Nom",
-                "id_name": "id_name",
                 "label_firstname": "Prénom",
-                "id_firstname": "id_firstname",
-                "label_gender": "Genre",
-                "id_gender": "id_gender",
-                "genders": [
-                    {
-                        "name": "Homme",
-                        "value": "/api/genders/1"
-                    },{
-                        "name": "Femme",
-                        "value": "/api/genders/2"
-                    },{
-                        "name": "Non listé",
-                        "value": "/api/genders/3"
-                    }
-                ]
+                "label_gender": "Genre"
             },
             "two": {
                 "title": "Formation et expérience",
-                "url": "#",
                 "one": {
-                    "label_question": "DANS QUELLE INDUSTRIE AVEZ-VOUS TRAVAILLÉ ?",
-                    "id_answers": "id_answers",
-                    "answers": [
-                        {
-                            "name": "Agriculture",
-                            "value": "/api/industries/1"
-                        },
-                        {
-                            "name": "Conseil",
-                            "value": "/api/industries/2"
-                        },
-                        {
-                            "name": "Construction",
-                            "value": "/api/industries/3"
-                        },
-                        {
-                            "name": "Commerce",
-                            "value": "/api/industries/4"
-                        },
-                        {
-                            "name": "Services financiers",
-                            "value": "/api/industries/5"
-                        },
-                        {
-                            "name": "éducation",
-                            "value": "/api/industries/6"
-                        },
-                        {
-                            "name": "Soin de santé",
-                            "value": "/api/industries/7"
-                        },
-                        {
-                            "name": "Mines",
-                            "value": "/api/industries/8"
-                        },
-                        {
-                            "name": "Transport",
-                            "value": "/api/industries/9"
-                        },
-                        {
-                            "name": "Télécommunications",
-                            "value": "/api/industries/10"
-                        },
-                        {
-                            "name": "Informatique",
-                            "value": "/api/industries/11"
-                        },
-                        {
-                            "name": "Ingénierie écanique et électrique",
-                            "value": "/api/industries/12"
-                        },
-                        {
-                            "name": "Production de pétrole et de gaz",
-                            "value": "/api/industries/13"
-                        }
-                    ]
+                    "label_question": "DANS QUELLE INDUSTRIE AVEZ-VOUS TRAVAILLÉ ?"
                 },
                 "two": {
-                    "label_question": "Dans quelle industrie souhaitez-vous travailler ?",
-                    "id_answers": "id_answers",
-                    "answers": [
-                        {
-                            "name": "Agriculture",
-                            "value": "/api/industries/1"
-                        },
-                        {
-                            "name": "Conseil",
-                            "value": "/api/industries/2"
-                        },
-                        {
-                            "name": "Construction",
-                            "value": "/api/industries/3"
-                        },
-                        {
-                            "name": "Commerce",
-                            "value": "/api/industries/4"
-                        },
-                        {
-                            "name": "Services financiers",
-                            "value": "/api/industries/5"
-                        },
-                        {
-                            "name": "éducation",
-                            "value": "/api/industries/6"
-                        },
-                        {
-                            "name": "Soin de santé",
-                            "value": "/api/industries/7"
-                        },
-                        {
-                            "name": "Mines",
-                            "value": "/api/industries/8"
-                        },
-                        {
-                            "name": "Transport",
-                            "value": "/api/industries/9"
-                        },
-                        {
-                            "name": "Télécommunications",
-                            "value": "/api/industries/10"
-                        },
-                        {
-                            "name": "Informatique",
-                            "value": "/api/industries/11"
-                        },
-                        {
-                            "name": "Ingénierie écanique et électrique",
-                            "value": "/api/industries/12"
-                        },
-                        {
-                            "name": "Production de pétrole et de gaz",
-                            "value": "/api/industries/13"
-                        }
-                    ]
+                    "label_question": "Dans quelle industrie souhaitez-vous travailler ?"
                 },
                 "three": {
-                    "label_question": "Dans quel domaine avez-vous obtenu une spécialisation ?",
-                    "id_answers": "id_answers",
-                    "answers": [
-                        {
-                            "name": "Agriculture et conservation des ressources naturelles",
-                            "value": "/api/domains/1"
-                        },
-                        {
-                            "name": "Architecture",
-                            "value": "/api/domains/2"
-                        },
-                        {
-                            "name": "Business",
-                            "value": "/api/domains/3"
-                        },
-                        {
-                            "name": "Communications",
-                            "value": "/api/domains/4"
-                        },
-                        {
-                            "name": "Informatique et mathématiques",
-                            "value": "/api/domains/5"
-                        },
-                        {
-                            "name": "éducation",
-                            "value": "/api/domains/6"
-                        },
-                        {
-                            "name": "Ingénierie",
-                            "value": "/api/domains/7"
-                        },
-                        {
-                            "name": "Réparation, production et construction",
-                            "value": "/api/domains/8"
-                        },
-                        {
-                            "name": "Sciences sociales et droit",
-                            "value": "/api/domains/9"
-                        }
-                    ]
+                    "label_question": "Dans quel domaine avez-vous obtenu une spécialisation ?"
                 },
                 "four": {
-                    "label_question": "Où aimeriez-vous travailler ?",
-                    "id_answers": "id_answers",
-                    "answers": [
-                        {
-                            "name": "Afrique du Nord",
-                            "value": "/api/workplaces/1"
-                        },
-                        {
-                            "name": "Afrique du Sud",
-                            "value": "/api/workplaces/2"
-                        },
-                        {
-                            "name": "Afrique de l'Est",
-                            "value": "/api/workplaces/3"
-                        },
-                        {
-                            "name": "Afrique de l'Ouest",
-                            "value": "/api/workplaces/4"
-                        },
-                        {
-                            "name": "Afrique centrale",
-                            "value": "/api/workplaces/5"
-                        },
-                        {
-                            "name": "À distance",
-                            "value": "/api/workplaces/6"
-                        }
-                    ]
+                    "label_question": "Où aimeriez-vous travailler ?"
                 },
                 "five": {
                     "label_question": "Où êtes-vous situé ?",
-                    "id_answers": "id_answers",
                     "select_placeholder": "Pays"
                 },
                 "six": {
                     "label_question": "Quelle est votre nationalité ?",
-                    "id_answers": "id_answers",
                     "select_placeholder": "Nationalité"
                 },
                 "seven": {
                     "label_question": "Dans quelles langues pouvez-vous travailler ?",
-                    "id_answers": "id_answers",
-                    "select_placeholder": "Langue",
-                    "answers": [
-                        {
-                            "name": "Français",
-                            "value": "fr"
-                        },
-                        {
-                            "name": "Anglais",
-                            "value": "en"
-                        },
-                        {
-                            "name": "Swahili",
-                            "value": "sw"
-                        },
-                        {
-                            "name": "Arabe",
-                            "value": "ar"
-                        }
-                    ]
+                    "select_placeholder": "Langue"
                 },
                 "eight": {
-                    "label_question": "Quand envisagez-vous de commencer votre nouvel emploi ?",
-                    "id_answers": "id_answers",
-                    "answers": [
-                        {
-                            "name": "Le plus tôt possible",
-                            "value": "/api/expected_start_dates/1"
-                        },
-                        {
-                            "name": "Dans l’année qui vient",
-                            "value": "/api/expected_start_dates/2"
-                        },
-                        {
-                            "name": "Je ne suis pas sûr, je bougerai pour le bon poste",
-                            "value": "/api/expected_start_dates/3"
-                        }
-                    ]
+                    "label_question": "Quand envisagez-vous de commencer votre nouvel emploi ?"
                 },
                 "nine": {
                     "label_question_one": "Intitulé du poste souhaité",
-                    "id_question_one": "id_question_one",
                     "placeholder_question_one": "Poste",
                     "label_question_two": "Quel niveau de poste visez-vous ?",
-                    "id_question_two": "id_question_two",
-                    "answers": [
-                        {
-                            "name": "Stage",
-                            "value": "/api/contracts/1"
-                        },
-                        {
-                            "name": "Junior (0-2 ans)",
-                            "value": "/api/contracts/2"
-                        },
-                        {
-                            "name": "Niveau intermédiaire (3-4 ans)",
-                            "value": "/api/contracts/3"
-                        },
-                        {
-                            "name": "Expert & leaders (9 ans et plus)",
-                            "value": "/api/contracts/3"
-                        }
-                    ],
                     "label_question_three": "Combien d'années d'expérience avez-vous ?",
-                    "id_question_three": "id_question_three",
                     "placeholder_question_three": "Années d'expérience"
                 },
                 "ten": {
-                    "label_question": "Avez-vous une expérience professionnelle antérieure en Afrique ?",
-                    "id_question": "id_question",
-                    "answers": [
-                        {
-                            "name": "Oui",
-                            "value": "true"
-                        },
-                        {
-                            "name": "Non",
-                            "value": "false"
-                        }
-                    ]
+                    "label_question": "Avez-vous une expérience professionnelle antérieure en Afrique ?"
                 },
                 "eleven": {
                     "label_question_one": "Quel est votre plus haut niveau d’éducation ?",
-                    "id_question": "id_question_one",
-                    "answers": [
-                        {
-                            "name": "Diplôme d'études secondaires",
-                            "value": "/api/diplomas/1"
-                        },
-                        {
-                            "name": "Baccalauréat",
-                            "value": "/api/diplomas/2"
-                        },
-                        {
-                            "name": "Master",
-                            "value": "/api/diplomas/3"
-                        },
-                        {
-                            "name": "Doctorat",
-                            "value": "/api/diplomas/4"
-                        }
-                    ],
                     "label_question_two": "Dans quel établissement avez-vous effectué votre dernier niveau d’éducation ?",
                     "placeholder_question_two": "Etablissement"
                 },
@@ -599,12 +276,10 @@
                 "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
                 "photo_title": "Ajoute une photo de profil",
                 "photo_instruction": "Sélectionner ou glisser votre photo de profil",
-                "photo_meta": "JPG ou PNG - 10mo maximum",
-                "url": "#"
+                "photo_meta": "JPG ou PNG - 10mo maximum"
             },
             "four": {
                 "title": "Création du compte",
-                "url": "#",
                 "label_mail": "ADRESSE E-MAIL",
                 "label_password": "MOT DE PASSE",
                 "label_password_confirmation": "CONFIRMATION MOT DE PASSE",
@@ -614,8 +289,7 @@
             "confirm": {
                 "title": "Confirmation",
                 "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-                "cta_title": "Se connecter",
-                "cta_url": "/login?type=t"
+                "cta_title": "Se connecter"
             }
         },
         "form": {
@@ -660,12 +334,12 @@
         "label_phone": "Numéro de téléphone",
         "label_message": "Message",
         "label_message_max": "(1500 CARATÈRES MAX)",
-        "label_rgpd": "rgpd <a href='/privacy-policy'>link</a>",
+        "label_rgpd": "rgpd",
         "label_submit": "Envoyer un message",
         "label_mandatory": "* champ obligatoire",
         "seo_title": "CONTACT TITLE",
         "seo_description": "CONTACT DESCRIPTION",
-        "title": "Contactez-nous",
+        "title": "Contact FR",
         "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
     },
     "contactconfirm": {
@@ -675,8 +349,7 @@
         "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "body_title": "Confirmation",
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-        "cta_title": "Accueil",
-        "cta_url": "/"
+        "cta_title": "Accueil"
     },
     "registercompanyconfirm": {
         "seo_title": "Compte créé",
@@ -685,13 +358,11 @@
         "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "body_title": "Confirmation",
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-        "cta_title": "Accueil",
-        "cta_url": "/"
+        "cta_title": "Accueil"
     },
     "errorpage": {
         "404_title": "404 - Cette page n'existe pas",
-        "cta_title": "Accueil",
-        "cta_url": "/"
+        "cta_title": "Accueil"
     },
     "privacypolicypage": {
         "title": "Politique de confidentialité"
@@ -714,7 +385,6 @@
         "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "body_title": "Confirmation",
         "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
-        "cta_title": "Se connecter",
-        "cta_url": "/login"
+        "cta_title": "Se connecter"
     }
 }

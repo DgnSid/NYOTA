@@ -55,16 +55,16 @@
                     </div>
                     <div class="offset-lg-1 col-lg-3">
                         <div class="c-header-news-single__bottom__share">
-                            <a class="c-header-news-single__bottom__share__element" href="#">
+                            <div class="c-header-news-single__bottom__share__element" :data-link="currentpage_url" @click="copyLink()">
                                 <Link />
-                            </a>
-                            <a class="c-header-news-single__bottom__share__element" href="#">
+                            </div>
+                            <a class="c-header-news-single__bottom__share__element" :href="'https://www.facebook.com/sharer/sharer.php?u=' + currentpage_url" target="blank_" rel="noopener noreferrer">
                                 <Facebook />
                             </a>
-                            <a class="c-header-news-single__bottom__share__element" href="#">
+                            <a class="c-header-news-single__bottom__share__element" :href="'https://twitter.com/intent/tweet?url=' + currentpage_url" target="blank_" rel="noopener noreferrer">
                                 <Twitter />
                             </a>
-                            <a class="c-header-news-single__bottom__share__element" href="#">
+                            <a class="c-header-news-single__bottom__share__element" :href="'http://www.linkedin.com/shareArticle?mini=true&url='+ currentpage_url" target="blank_" rel="noopener noreferrer">
                                 <Linkedin />
                             </a>
                         </div>
@@ -90,6 +90,11 @@
     export default {
         name: 'HeaderHome',
         components: {ImageBordered, ShapeEllipse, Facebook, Twitter, Linkedin, Link},
+        data () {
+            return {
+                currentpage_url: window.location.href
+            }
+        },
         props: {
             type: String,
             date: String,
@@ -97,6 +102,11 @@
             text: String,
             logo: Boolean,
             image: Object,
+        },
+        methods: {
+            copyLink() {
+                console.log('copylink')
+            }
         }
     }
 </script>

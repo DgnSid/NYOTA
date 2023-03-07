@@ -110,6 +110,7 @@ Style scoped
             .c-card-talent__top__name {
                 font-size: 2rem;
                 line-height: 2rem;
+                margin-bottom: 5px;
                 font-family: $font-family-custom;
             }
             
@@ -168,7 +169,7 @@ Style scoped
 
         .c-card-talent__seen {
             position: absolute;
-            bottom: 16px;
+            bottom: 20px;
             right: 24px;
         }
 

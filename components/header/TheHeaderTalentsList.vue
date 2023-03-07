@@ -237,9 +237,6 @@
 
                 let url_query = ''
 
-                console.log('query_input_workplace : ', query_input_workplace)
-                console.log('query_input_sector : ', query_input_sector)
-
                 if(mode === 'paginated') {
                     if(this.input_job) {
                         url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
@@ -256,7 +253,6 @@
                     }
                 }               
 
-                console.log(url_query)
                 await this.$axios.$get( url_query, {
                     headers: {
                       'Accept-Language': 'fr',
@@ -264,6 +260,7 @@
                 })
                 .then((res) => {
                     console.log(res)
+                    document.querySelector('.c-header-talentslist__bottom__element__dropdown.active').classList.remove('active')
                     if(mode === 'paginated') {
                         eventHub.$emit('update-talents-list-paginated-results', res)
                     } else {
@@ -309,8 +306,26 @@
                 this.filterTalents()
             },
             dropdownFilter(ref, $event) {
-                $event.target.closest('.js-filtermenutoggle-element').classList.toggle('active')
-                this.$refs[ref].classList.toggle('active')
+                if(this.$refs[ref].classList.contains('active')) {
+                    $event.target.closest('.js-filtermenutoggle-element').classList.remove('active')
+                    this.$refs[ref].classList.remove('active')
+
+                } else {
+                    if(document.querySelector('.c-header-talentslist__bottom__element__dropdown.active')) {
+                        document.querySelector('.c-header-talentslist__bottom__element__dropdown.active').classList.remove('active')
+                    }
+
+                    if(document.querySelector('.js-filtermenutoggle-element.active')) {
+                        document.querySelector('.js-filtermenutoggle-element.active').classList.remove('active')
+                    }
+
+                    $event.target.closest('.js-filtermenutoggle-element').classList.add('active')
+                    this.$refs[ref].classList.add('active')
+                }
+
+                
+
+                
             },
             toggleMobileFilter() {
                 this.$refs.menufilter.classList.toggle('active')

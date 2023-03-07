@@ -227,11 +227,11 @@ Style scoped
             }
             .c-section-profile-cv__answers__element {
                 color: $orange;
-                border: 1px solid $grey;
+                border: 1px solid rgba($grey, .2);
                 border-radius: 20px;
-                padding: 5px 10px;
+                padding: 8px 12px;
                 text-transform: uppercase;
-                font-weight: 500;
+                font-weight: 700;
 
                 font-size: .875rem;
                 line-height: .875rem;

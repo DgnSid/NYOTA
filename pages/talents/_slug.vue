@@ -19,7 +19,7 @@ Template
             <cta 
                 :title="$t('pagetalentsingle.download_cv')"
                 url=""
-                class="layout__talents__single__cta --bordered"
+                class="layout__talents__single__cta --bordered my-md"
             />
         </div>
     </div>

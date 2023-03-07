@@ -23,6 +23,18 @@ import TheSectionProfileCv from '@/components/section/TheSectionProfileCv.vue'
 
 export default {
     name: "ProfileTalent",
+    head() {
+      return {
+        title: "",
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: ""
+          }
+        ]
+      }
+    },
     components: {
         TheHeaderProfileTalent,
         TheSectionProfileCv,

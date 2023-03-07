@@ -407,8 +407,8 @@ Style scoped
                 input[type="text"] {
                     height: 72px;
                     border: 1px solid $orange;
-                    width: 360px;
-                    max-width: 95%;
+                    max-width: 360px;
+                    width: 95%;
                     border-radius: 90px;
                     padding-left: 40px;
                     padding-right: 70px;

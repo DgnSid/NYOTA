@@ -34,7 +34,7 @@
                                             <div>{{input_phone}}</div>
                                         </div>
                                     </div>
-                                    <div @click="openFormInfo()">
+                                    <div class="c-header-profiletalent__content__infos__cta" @click="openFormInfo()">
                                         <cta
                                             url=""
                                             :title="$t('page_profile_talent.modify')"
@@ -389,6 +389,8 @@ Style scoped
 
         .c-header-profiletalent__content {
             .c-header-profiletalent__content__infos {
+                height: 100%;
+                position: relative;
                 .c-header-profiletalent__content__infos__field {
                     .c-header-profiletalent__content__infos__field__upload {
 			            position: relative;
@@ -500,6 +502,17 @@ Style scoped
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
+
+                .c-header-profiletalent__content__infos__cta {
+                    position: absolute;
+                    bottom: 0;
+
+                    @include media-breakpoint-down(md) {
+                        position: static;
+                        margin-bottom: 50px;
+                    }
+                }
+
 
                 .c-header-profiletalent__content__infos__contact {
                     margin-bottom: 80px;
@@ -656,6 +669,10 @@ Style scoped
                 overflow-y: auto;
                 padding: 50px;
 
+                @include media-breakpoint-down(md) {
+                    max-height: calc(90vh - 120px);
+                    margin-top: 120px;
+                }
                 .c-header-profiletalent__popup-form-info__content__close {
                     position: absolute;
                     top: 40px;

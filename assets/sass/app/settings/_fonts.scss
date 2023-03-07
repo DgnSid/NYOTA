@@ -62,15 +62,25 @@
 
 // DM SERIF
 @font-face {
-	font-family: 'DM Serif';
-	src: url('~@/assets/fonts/dm_serif/DMSans-Regular.ttf') format('ttf'),
-	url('~@/assets/fonts/dm_serif/DMSans-Regular.ttf') format('ttf');
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'DM Serif Display';
+	font-style: normal;
 	font-weight: 400;
+	src: url('~@/assets/fonts/dm_serif_display/dm-serif-display-v11-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+		 url('~@/assets/fonts/dm_serif_display/dm-serif-display-v11-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+// SF PRO
+@font-face {
+	font-family: 'SF Pro';
+	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Thin.otf') format('otf'),
+	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Thin.otf') format('otf');
+	font-weight: lighter;
 	font-style: normal;
 	font-display: swap;
 }
 
-// SF PRO
 @font-face {
 	font-family: 'SF Pro';
 	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Regular.otf') format('otf'),

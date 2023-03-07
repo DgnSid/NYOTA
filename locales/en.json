@@ -79,7 +79,7 @@
         "section_quotes": {
             "cta": {
                 "title": "Register",
-                "url": "#"
+                "url": "/en/register/talent/steps/1"
             }
         }
     },
@@ -501,7 +501,7 @@
             "cta_first_text": "I am a talent",
             "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",
-            "cta_second_url": "#"
+            "cta_second_url": "/en/register/company"
         }
     },
     "pagelandingtalent": {
@@ -525,9 +525,9 @@
             "cta_title": "Discover our news",
             "cta_url": "/en/news/page/1",
             "cta_first_text": "You are a talent",
-            "cta_first_url": "#",
+            "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",
-            "cta_second_url": "#"
+            "cta_second_url": "/en/register/company"
         },
         "section_quotes": {
             "cta": {
@@ -560,9 +560,9 @@
             "cta_title": "Discover our news",
             "cta_url": "/en/news/page/1",
             "cta_first_text": "I am a talent",
-            "cta_first_url": "#",
+            "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",
-            "cta_second_url": "#"
+            "cta_second_url": "/en/register/company"
         }
     },
     "page_contact": {
@@ -578,7 +578,7 @@
         "label_mandatory": "* mandatory field",
         "seo_title": "CONTACT TITLE",
         "seo_description": "CONTACT DESCRIPTION",
-        "title": "Contact EN",
+        "title": "Contact us",
         "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
     },
     "contactconfirm": {

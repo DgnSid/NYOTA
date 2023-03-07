@@ -5,6 +5,7 @@ Template
 ------>
 <template>
     <div class="c-popup-register" :class="{ active: isActive }">
+        <div class="c-popup-register__cover" @click="closePopup"></div>
         <div class="c-popup-register__content">
             <div class="c-popup-register__content__close" @click="closePopup" >
                 <close />
@@ -95,6 +96,14 @@ Style scoped
             display: flex;
             opacity: 1;
             visibility: visible;
+        }
+
+        .c-popup-register__cover {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .c-popup-register__content {

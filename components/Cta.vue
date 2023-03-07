@@ -29,6 +29,10 @@ Style scoped
         border-radius: 100px;
         text-align: center;
 
+        &.--table {
+            display: table;
+        }
+
         @include media-breakpoint-down(md) {
             margin: 10px;
         }

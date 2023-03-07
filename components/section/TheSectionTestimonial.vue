@@ -77,6 +77,7 @@
                     autoplay: {
                         delay: 10000,
                     },
+                    watchOverflow: true,
                     loop: true,
                     slidesPerView: 1,
                     slidesPerGroup: 2,
@@ -95,6 +96,18 @@
                         767: {
                             slidesPerView: 2,
                             spaceBetween: 25
+                        }
+                    },
+                    on: {
+                        init: function () {
+                            if(window.innerWidth >= 767) {
+                                if (this.slides.length - this.loopedSlides*2 <= 2) {                
+                                    this.el.closest(".a-stagger-element__testimonials").querySelector(".swiper-container").style.pointerEvents = "none";
+                                    this.el.closest(".a-stagger-element__testimonials").querySelector(".swiper__prev").setAttribute('hidden', '');
+                                    this.el.closest(".a-stagger-element__testimonials").querySelector(".swiper__next").setAttribute('hidden', '');
+                                    this.el.closest(".a-stagger-element__testimonials").querySelector(".swiper-pagination").setAttribute('hidden', '');
+                                }
+                            }
                         }
                     }
                 }
