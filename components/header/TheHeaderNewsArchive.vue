@@ -97,6 +97,11 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        @include media-breakpoint-down(md) {
+            align-items: flex-start;
+            padding-top: 200px;
+        }
+
         .c-header-news__pen {
             @include media-breakpoint-down(sm) {
                 display: none;

@@ -58,9 +58,12 @@ Style scoped
         display: flex;
         align-items: center;
         margin-bottom: 60px;
-
         justify-content: center;
-        
+
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+        }
+
         .c-card-news__link {
             position: absolute;
             z-index: 4;

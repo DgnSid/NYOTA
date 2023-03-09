@@ -510,6 +510,10 @@ Style scoped
 				margin-bottom: 0;
 			}
 
+			.c-formcompany__field__error {
+				display: none;
+			}
+
         	&.error {
 				input[type="email"],
         	    input[type="text"] {

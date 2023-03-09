@@ -426,9 +426,15 @@ Style scoped
             color: $black;
             padding-left: 40px;
             padding-top: 16px;
-            width: 856px;
+            max-width: 856px;
+            width: 100%;
             display: block;
             margin: 0 auto;
+            text-align: center;
+
+            @include media-breakpoint-down(md) {
+                padding-left: 0;
+            }
         }
 
         .c-header-talentslist__bottom {
@@ -559,7 +565,7 @@ Style scoped
                             padding-left: 5px;
                             margin-left: 12px;
                             font-size: .75rem;
-                            line-height: .75rem;
+                            line-height: 1rem;
 
                             &::before {
                                 content: '';

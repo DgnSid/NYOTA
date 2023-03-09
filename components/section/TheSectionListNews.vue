@@ -142,8 +142,8 @@ Style scoped
             text-align: center;
 
             @include media-breakpoint-down(md) {
-                font-size: 2.825rem;
-                line-height: 3rem;
+                font-size: 2.225rem;
+                line-height: 2.5rem;
             }
         }
 

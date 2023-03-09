@@ -21,7 +21,7 @@
 									<div class="c-formregistertalent__upload__trigger__meta">{{$t('registerform.steps.three.cv_meta')}}</div>
 								</div>
 							</div>
-							<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
+							<input type="file"  accept=".jpg, .jpeg, .png, .pdf" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
 							<div ref="input_file_cv_error" class="c-formregistertalent__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>

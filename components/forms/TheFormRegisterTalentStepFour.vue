@@ -129,14 +129,15 @@ import { cpuUsage } from 'process';
   					"gdpr": this.rgpd,
   					"marketing": this.marketing
   				})
-				.then(function (response) {
+				.then((response) => {
   					console.log(response);
+					this.$router.push({path: `${this.currentLang}/register/talent/steps/confirm`}) 
   				})
   				.catch(function (error) {
   					console.log(error);
   				});
 				
-				this.$router.push({path: `${this.currentLang}/register/talent/steps/confirm`}) 
+				
 			},
 			isFormSubmittable() {
 				if(this.input_email && this.input_password && this.input_password_confirm && this.rgpd && (this.input_password == this.input_password_confirm)) {

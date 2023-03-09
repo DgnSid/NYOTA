@@ -65,6 +65,10 @@ Style scoped
         overflow: hidden;
         padding: 40px;
 
+        @include media-breakpoint-down(md) {
+            padding: 10px;
+        }
+
         &:not(:last-child) {
             margin-bottom: 20px;
         }

@@ -97,8 +97,8 @@ Style scoped
             color: $black;
 
             @include media-breakpoint-down(md) {
-                font-size: 2.825rem;
-                line-height: 3rem;
+                font-size: 2.225rem;
+                line-height: 2.5rem;
             }
         }
 
@@ -125,6 +125,10 @@ Style scoped
                 -webkit-text-fill-color: transparent;
                 font-weight: 200;
                 width: 10%;
+
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                }
             }
 
             .c-section-listfeatures-alt__element__title {

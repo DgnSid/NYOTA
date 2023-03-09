@@ -76,6 +76,10 @@ Style scoped
 			position: absolute;
         	right: -100px;
         	bottom: 0;
+
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
 		}
 	}
 </style>

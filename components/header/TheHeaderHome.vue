@@ -71,10 +71,8 @@
                 </div>
             </div>
         </div>
-        <span class="c-header-home__share" v-if="share">
-            <a :href="share_url" class="" >
-                <IconShare />
-            </a>
+        <span class="c-header-home__share" v-if="share" @click="copyUrl()">
+            <IconShare />
         </span>
     </header>
 </template>
@@ -108,6 +106,11 @@
             big: Boolean,
             share: Boolean,
             share_url: String,
+        },
+        methods: {
+            copyUrl() {
+                window.navigator.clipboard.writeText(window.location.href);
+            }
         },
         mounted() {
             const gsap = this.$gsap;
@@ -261,12 +264,16 @@ Style scoped
 
             .c-header-home__list-element {
                 display: flex;
+
+                
                 
                 &:not(:last-child) {
                     margin-bottom: 10px;
                 }
                 .c-header-home__list-element__icon {
                     margin-right: 20px;
+                    min-width: 34px;
+                    width: 34px;
                 }
                 .c-header-home__list-element__text {
                     color: $black;
@@ -278,6 +285,11 @@ Style scoped
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+
+            @include media-breakpoint-down(md) {
+                width: 90%;
+                max-width: 300px;
+            }
         }
 
         .c-header-home__ellipse {
