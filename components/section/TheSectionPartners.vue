@@ -167,11 +167,17 @@ Style scoped
             display: flex;
             justify-content: center;
             margin-bottom: 40px;
+
+            height: 100%;
+            max-height: 100px;
             .c-section-partners__logo__image {
                 display: block;
                 margin: 0 auto;
 
-                filter: grayscale(.5);
+                max-height: 100px;
+                height: 100%;
+
+                filter: grayscale(1);
 
                 transition: filter .2s ease-out;
             }

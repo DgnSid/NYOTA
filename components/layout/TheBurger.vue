@@ -75,7 +75,8 @@ Style scoped
             position: relative;
             
             width: 3.75rem;
-            height: 3.75rem;
+            height: 1.75rem;
+            padding-top: 15px;
         }
 
         .burger__bar {

@@ -65,7 +65,7 @@
 						            				<div class="c-header-profiletalent__content__infos__field__upload__trigger__meta">{{$t('registerform.steps.three.cv_meta')}}</div>
 						            			</div>
 						            		</div>
-						            		<input type="file"  accept=".jpg, .jpeg, .png" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
+						            		<input type="file"  accept=".jpg, .jpeg, .png, .pdf" hidden ref="input_file_cv" @change="onChangeInput($event)"/>
 						            		<div ref="input_file_cv_error" class="c-header-profiletalent__content__infos__field__error">{{ $t('registerform.form.error_message') }}</div>
 						            	</div>
 						            </div>
@@ -593,6 +593,7 @@ Style scoped
             margin-bottom: 24px;
             margin-right: 20px;
             color: $black;
+            word-break: break-all;
 
             strong, b {
                 background: $gradientOrange;

@@ -344,15 +344,19 @@ Style scoped
             @include media-breakpoint-down(md) {
                 display: flex;
                 flex-direction: column;
+                text-align: center;
 
-                font-size: 4.75rem;
-                line-height: 3.875rem;
+                font-size: 2.75rem;
+                line-height: 2.875rem;
+
+                word-break: break-all;
             }
 
             @include media-breakpoint-down(sm) {
-                font-size: 3.75rem;
+                font-size: 2.75rem;
                 line-height: 2.875rem;
             }
+            
         }
 
         .c-header-profilecompany__updatephoto {
@@ -360,6 +364,10 @@ Style scoped
             text-decoration: underline;
             font-size: 1.125rem;
             cursor: pointer;
+
+            @include media-breakpoint-down(md) {
+                margin-bottom: 40px;
+            }
         }
 
         .c-header-profilecompany__logo {
@@ -396,6 +404,7 @@ Style scoped
                 font-family: $font-family-custom;
                 text-align: center;
                 font-size: 2rem;
+                line-height: 2.2rem;
             }
 
             .c-header-profilecompany__content__bottom__form {

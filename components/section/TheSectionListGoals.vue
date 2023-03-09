@@ -64,6 +64,11 @@ Style scoped
     .c-section-listgoals {
         padding: 60px 0;
         background-color: $white;
+
+        @include media-breakpoint-down(md) {
+            padding: 20px 0;
+        }
+
         .c-section-listgoals__target {
             display: block;
             margin: 0 auto;
@@ -87,8 +92,8 @@ Style scoped
             margin: 0 auto;
 
             @include media-breakpoint-down(md) {
-                font-size: 2.825rem;
-                line-height: 3rem;
+                font-size: 2.225rem;
+                line-height: 2.5rem;
             }
         }
     }

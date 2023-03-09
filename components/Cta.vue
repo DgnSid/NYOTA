@@ -80,6 +80,10 @@ Style scoped
             @media screen and (max-width: 1400px) {
                 letter-spacing: 2px;
             }
+
+            @include media-breakpoint-down(md) {
+                font-size: .55rem !important;
+            }
         }
 
         &.cta-h-small {

@@ -104,8 +104,8 @@
             image: Object,
         },
         methods: {
-            copyLink() {
-                console.log('copylink')
+            copyUrl() {
+                window.navigator.clipboard.writeText(window.location.href);
             }
         }
     }
@@ -118,7 +118,7 @@ Style scoped
 ------>
 <style lang="scss" scoped>
     .c-header-news-single {
-
+        overflow-x: hidden;
         .c-header-news-single__top {
             position: relative;
 

@@ -47,6 +47,10 @@ Style scoped
         padding: 40px 20px 40px 20px;
         height: 100%;
 
+        @include media-breakpoint-down(md) {
+            padding: 20px 10px 20px 10px;
+        }
+
         .c-card-goal__icon {
             margin: 0 auto;
             display: block;
@@ -63,6 +67,11 @@ Style scoped
             -webkit-text-fill-color: transparent;
             padding-bottom: 20px;
             text-align: center;
+
+            @include media-breakpoint-down(md) {
+                font-size: 1.5rem;
+                line-height: 1.875rem;
+            }
         }
 
         .c-card-goal__description {

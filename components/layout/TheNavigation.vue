@@ -91,11 +91,22 @@ Script
                 
             },
             ...mapMutations('burger', ['closeBurger']),
+
 			openPopup() {
                 eventHub.$emit('open-popup', true)
             },
+
+            logOut() {
+                this.$auth.logout()
+                this.$auth.$storage.removeUniversal('user')
+            },
         },
         mounted() {
+            setTimeout(() => {
+                this.user_id = this.$auth.user ? this.$auth.user.id : ''
+                this.user_type = this.$auth.user ? this.$auth.user['@type'] : ''
+            }, 100)
+            
             const gsap = this.$gsap;
             this.tl = new gsap.timeline({ paused: true})
 
@@ -115,6 +126,12 @@ Script
         computed: {
             availableLocales () {
                 return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+            },
+            currentUser () {
+                const user_id = this.$auth.user ? this.$auth.user.id : ''
+                const user_type = this.$auth.user ? this.$auth.user['@type'] : ''
+
+                return {user_id, user_type}
             }
         },
     };

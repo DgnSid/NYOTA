@@ -8,7 +8,7 @@ Template
         <div class="container">            
             <div class="header__inner">
                 <nuxt-link class="a-stagger-element__header" :to="'/' + currentLang">
-                    <img src="/logo-nyota.png" alt="Nyota logo" />
+                    <img class="header__inner__logo" src="/logo-nyota.png" alt="Nyota logo" />
                 </nuxt-link>
                 <div class="header__inner__menu">
                     <nuxt-link :to="$t('menu.about_url')" class="header__inner__menu__element a-stagger-element__header">{{$t('menu.about_title')}}</nuxt-link>
@@ -173,7 +173,11 @@ Style scoped
         align-items: center;
         justify-content: space-between;
 
-        
+        .header__inner__logo {
+            @include media-breakpoint-down(md) {
+                height: 40px;
+            }
+        }
 
         .header__inner__menu {
             display: flex;

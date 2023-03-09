@@ -690,8 +690,11 @@
     },
     "errorpage": {
         "404_title": "404 - Cette page n'existe pas",
+        "401_title": "Vous ne pouvez pas accéder à cette page",
         "cta_title": "Accueil",
-        "cta_url": "/"
+        "cta_title_login": "Se connecter",
+        "cta_url": "/",
+        "cta_login_url": "/login"
     },
     "privacypolicypage": {
         "title": "Politique de confidentialité"

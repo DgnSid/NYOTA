@@ -624,8 +624,11 @@
     },
     "errorpage": {
         "404_title": "404 - Page not found",
+        "401_title": "You can't access this page",
         "cta_title": "Home",
-        "cta_url": "/en"
+        "cta_login_title": "Login",
+        "cta_url": "/en",
+        "cta_login_url": "/en/login"
     },
     "privacypolicypage": {
         "title": "Privacy policy"

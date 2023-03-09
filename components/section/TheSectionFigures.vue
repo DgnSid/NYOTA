@@ -9,7 +9,7 @@
                         <div class="col-lg-9 offset-lg-1">
                             <h2 class="c-section-figures__title a-stagger-element__figures" v-html="title"></h2>
                         </div>
-                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm a-stagger-element__figures pt-xl">
+                        <div class="col-lg-6 offset-lg-2 md-down-mb-sm a-stagger-element__figures pt-xl md-down-pt-0">
                             <cardFigure v-for="(element, index) in key_numbers.slice(0,2)"
                                 :key="index"
                                 :title="element.number"
