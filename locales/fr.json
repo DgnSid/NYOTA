@@ -103,7 +103,7 @@
     },
     "pagelandingcompany": {
         "header": {
-            "list": ["Un stage pour vivre une nouvelle expérience", "Un emploi dans une entreprise en phase avec vos valeurs", "Une mission qui a du sens"],
+            "list": "Vous recherchez",
             "cta": {
                 "title": "Nous contacter",
                 "url":"/contact"
@@ -132,7 +132,7 @@
     },
     "pagelandingtalent": {
         "header": {
-            "list": ["Un stage pour vivre une nouvelle expérience", "Un emploi dans une entreprise en phase avec vos valeurs", "Une mission qui a du sens"],
+            "list": "Vous recherchez",
             "cta": {
                 "title": "Déposer votre cv",
                 "url":"/register/talent/steps/one"

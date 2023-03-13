@@ -5,14 +5,14 @@
             :big_title="landingCompanyDataApi.blockHeader.bigTitle"
             :big_title_alt="landingCompanyDataApi.blockHeader.bigTitleAlt"
             class_title="--small"
-            :text="landingCompanyDataApi.blockHeader.text"
+            :text="$t('pagelandingcompany.header.list')"
             :image_top="landingCompanyDataApi.blockHeader.imageTop"
             :image_bottom="landingCompanyDataApi.blockHeader.imageBottom"
             :ellipse="true"
             :bulb="false"
             :logo="true"
             :share="true"
-            :list="$t('pagelandingcompany.header.list')"
+            :list="landingCompanyDataApi.blockHeader.text"
             :cta="$t('pagelandingcompany.header.cta')"
         />
         
@@ -29,8 +29,7 @@
             :title="landingCompanyDataApi.blockGoals.title"
             :goals="landingCompanyDataApi.blockGoals.goals"
             :background="true"
-        />
-        
+        />        
         
         <TheSectionListGoals
             :title="landingCompanyDataApi.blockFormulas.title"
@@ -46,8 +45,7 @@
         <TheSectionPartners 
             :title="landingCompanyDataApi.blockPartners.title"
             :partners="landingCompanyDataApi.blockPartners.partners"
-        />
-        
+        />      
         
         <TheSectionTestimonial 
             :title="landingCompanyDataApi.blockQuotes.title"

@@ -12,10 +12,10 @@
 						</select>
 
   		  	  	  		<label>{{$t('pageconnexion.label_mail')}} <span>*</span></label>
-  		  	  	  		<input v-model="login.username" type="text" :name="$t('pageconnexion.id_mail')" placeholder="" required />
+  		  	  	  		<input v-model="login.username" type="text" :name="$t('pageconnexion.id_mail')" :class="{ active: isErrorLogin }" placeholder="" required />
 						
 						<label>{{$t('pageconnexion.label_password')}} <span>*</span></label>
-  		  	  	  		<input v-model="login.password" type="password" :name="$t('pageconnexion.id_password')" placeholder="" required />
+  		  	  	  		<input v-model="login.password" type="password" :name="$t('pageconnexion.id_password')" :class="{ active: isErrorLogin }" placeholder="" required />
 
 						<div>
 							<nuxt-link class="c-formconnexion__link" to="/forgotten-password">{{$t('pageconnexion.label_forgottenpassword')}}</nuxt-link>
@@ -115,7 +115,6 @@
 			openPopup() {
                 eventHub.$emit('open-popup', true)
             },
-
 		},
 		computed: {
             currentLang () {
@@ -175,6 +174,10 @@ Style scoped
 			width: 100%;
 			margin-bottom: 32px;
 			padding-left: 20px;
+
+			&.active {
+				border-color: red;
+			}
 		}
 
 		select {

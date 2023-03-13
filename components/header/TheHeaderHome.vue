@@ -24,18 +24,7 @@
                         />
                     </div>
                     <div v-if="list" class="c-header-home__list-container a-stagger-element">
-                        <div class="c-header-home__list-element" v-for="(element, index) in list" :key="index">
-                            <svg class="c-header-home__list-element__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M29 10L15 24L8 17" stroke="url(#paint0_linear_2427_4495)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <defs>
-                                <linearGradient id="paint0_linear_2427_4495" x1="8" y1="24" x2="29.0491" y2="10.0742" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#FF7A00"/>
-                                <stop offset="0.645833" stop-color="#FB9B11"/>
-                                </linearGradient>
-                                </defs>
-                            </svg>
-                            <span class="c-header-home__list-element__text">{{element}}</span>
-                        </div>
+                        <div v-html="list" class="c-header-home__list-element"></div>
                         <div v-if="list" class="c-header-home__list-cta-container">
                             <cta
                                 v-if="cta"
@@ -71,9 +60,12 @@
                 </div>
             </div>
         </div>
-        <span class="c-header-home__share" v-if="share" @click="copyUrl()">
+        <span class="c-header-home__share" v-if="share" @click="openPopupShare()">
             <IconShare />
         </span>
+        <div v-if="share">
+            <popup-share />
+        </div>
     </header>
 </template>
 
@@ -84,10 +76,13 @@
     import Logo from '@/components/svg/Logo';
     import IconShare from '@/components/svg/IconShare';
     import ShapeEllipse from '../ui/ShapeEllipse';
+    import PopupShare from '@/components/popup/popupShare';
+
+    import { eventHub } from '@/plugins/eventhub'   
 
     export default {
         name: 'HeaderHome',
-        components: { Cta, ImageBordered, LightBulb, Logo, ShapeEllipse, IconShare },
+        components: { Cta, ImageBordered, LightBulb, Logo, ShapeEllipse, IconShare, PopupShare },
         props: {
             small_title: String,
             class_title: String,
@@ -108,8 +103,9 @@
             share_url: String,
         },
         methods: {
-            copyUrl() {
-                window.navigator.clipboard.writeText(window.location.href);
+            openPopupShare() {
+                console.log('openPopupShare')
+                eventHub.$emit('open-popup-share', true)
             }
         },
         mounted() {
@@ -118,7 +114,7 @@
 
             this.tl.set('.a-stagger-element', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
-        },
+        }
     }
 </script>
 
@@ -263,9 +259,32 @@ Style scoped
             }
 
             .c-header-home__list-element {
-                display: flex;
-
+                display: flex;                
                 
+                ::v-deep ul {
+                    list-style: none;
+	                padding-left: 0;
+                    color: $black;
+                
+                    li {
+                        position: relative;
+	                    padding-left: 48px;
+	                    margin-bottom: 0.5em;
+                        
+
+                        &::before {
+                            content: '';
+	                        position: absolute;
+	                        left: 0;
+	                        top: 0;
+	                        width: 34px;
+	                        height: 100%;
+	                        background-repeat: no-repeat;
+	                        background-image: url("/check-list.svg")
+                        }
+                    }
+
+                }
                 
                 &:not(:last-child) {
                     margin-bottom: 10px;
