@@ -94,7 +94,7 @@ import { cpuUsage } from 'process';
 		methods: {
 			async handleSubmit(){
 				const nationalities_code_array =  this.$store.state.registertalent.selectNationality.map(a => a.code)
-				const langs_code_array =  this.$store.state.registertalent.selectLangs.map(a => a.code)
+				const langs_code_array =  this.$store.state.registertalent.selectLangs ? this.$store.state.registertalent.selectLangs.map(a => a.code) : ['']
 				const langs_code_array_merged = langs_code_array.concat(this.$store.state.registertalent.selectLangsFeatured)
 				const has_african_passed_experience_bool = this.$store.state.registertalent.inputHasAfricanPastExperience === "true" ? true : false
 				const workplace_json = JSON.parse(JSON.stringify(this.$store.state.registertalent.inputWorkWhereWanted))
