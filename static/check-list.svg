@@ -1,0 +1,9 @@
+<svg class="c-header-home__list-element__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M29 10L15 24L8 17" stroke="url(#paint0_linear_2427_4495)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <defs>
+    <linearGradient id="paint0_linear_2427_4495" x1="8" y1="24" x2="29.0491" y2="10.0742" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FF7A00"/>
+    <stop offset="0.645833" stop-color="#FB9B11"/>
+    </linearGradient>
+    </defs>
+</svg>

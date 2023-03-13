@@ -506,7 +506,7 @@
     },
     "pagelandingtalent": {
         "header": {
-            "list": ["An internship to live a new experience", "A job in a company in line with your values", "A meaningful mission"],
+            "list": "You are looking for",
             "cta": {
                 "title": "Drop your cv",
                 "url":"/en/register/talent/steps/one"
