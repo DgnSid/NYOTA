@@ -2,7 +2,7 @@
     <div class="layout-landing-talent">
         
         <TheHeaderHome 
-            :small_title="landingTalentDataApi.blockHeader.smallTitle"
+            small_title=""
             :big_title="landingTalentDataApi.blockHeader.bigTitle"
             :big_title_alt="landingTalentDataApi.blockHeader.bigTitleAlt"
             class_title="--small"

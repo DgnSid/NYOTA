@@ -222,6 +222,7 @@
             })
 
             eventHub.$on('update-talents-list-paginated', (currentPage) => {
+                console.log('paginatedListUpdate ON')
                 this.currentPage = currentPage
                 this.filterTalents('paginated')
             }) 
@@ -259,8 +260,11 @@
                     },
                 })
                 .then((res) => {
-                    console.log(res)
-                    document.querySelector('.c-header-talentslist__bottom__element__dropdown.active').classList.remove('active')
+                    
+                    if(document.querySelector('.c-header-talentslist__bottom__element__dropdown.active')) {
+                        document.querySelector('.c-header-talentslist__bottom__element__dropdown.active').classList.remove('active')
+                    }
+
                     if(mode === 'paginated') {
                         eventHub.$emit('update-talents-list-paginated-results', res)
                     } else {

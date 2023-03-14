@@ -82,6 +82,7 @@
         },
         methods: {
             paginatedListUpdate() {
+                console.log('paginatedListUpdate')
                 this.currentPage = this.currentPage + 1
                 eventHub.$emit('update-talents-list-paginated', this.currentPage)
             }

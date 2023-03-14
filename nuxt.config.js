@@ -142,6 +142,7 @@ export default {
   },
 
   auth: {
+    redirect:false,
     strategies: {
       local_company: {
         scheme: 'local',
