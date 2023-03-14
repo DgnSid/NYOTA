@@ -79,11 +79,12 @@
             }
 
             if (this.$auth.user) {
-                this.$router.push('/')
+                // this.$router.push('/')
             }
         },
 		methods: {
 			async userLogin() {
+				console.log('efzegz2')
 				try {
 					let response = this.login_type == "talent" ? await this.$auth.loginWith('local_talent', { data: this.login }) : await this.$auth.loginWith('local_company', { data: this.login })
 
@@ -100,12 +101,12 @@
                     let user = response.data
  
                     user.token = token
- 
+  
                     this.$auth.setUser(user)
- 
+  
                     this.$auth.$storage.setUniversal('user', user, true)
 
-					this.$router.push(`${this.currentLang}/`)
+					this.$router.push(`${this.currentLang}/profile/${this.login_type}/${user.id}`)
 				}
 				catch (error) {
  			 	  	console.log('Login error:', error)

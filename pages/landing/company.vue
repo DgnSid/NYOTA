@@ -1,7 +1,7 @@
 <template>
     <div class="layout-landing-company">
         <TheHeaderHome 
-            :small_title="landingCompanyDataApi.blockHeader.smallTitle"
+            small_title=""
             :big_title="landingCompanyDataApi.blockHeader.bigTitle"
             :big_title_alt="landingCompanyDataApi.blockHeader.bigTitleAlt"
             class_title="--small"

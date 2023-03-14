@@ -491,7 +491,7 @@
         },
         "section_podcast": {
             "cta_text": "Register on our platform",
-            "cta_url": "#"
+            "cta_url": "/en/register/talent/steps/1"
         },
         "section_news": {
             "title": "Discover our news",
@@ -595,9 +595,9 @@
         "seo_title": "Account created",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Account created!",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "Thank you for registering! Tour account will be available soon!",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "Thank you for registering! Tour account will be available soon!",
         "cta_title": "Home",
         "cta_url": "/en/"
     },

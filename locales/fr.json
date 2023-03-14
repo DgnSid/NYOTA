@@ -88,7 +88,7 @@
         },
         "section_podcast": {
             "cta_text": "S'inscrire sur notre plateforme",
-            "cta_url": "#"
+            "cta_url": "/register/talent/steps/1"
         },
         "section_news": {
             "title": "Découvrez nos actualités",
@@ -682,9 +682,9 @@
         "seo_title": "Compte créé",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Compte créé !",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "Merci pour votre inscription, vous pourrez bientôt accéder aux profils",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "Merci pour votre inscription, vous pourrez bientôt accéder aux profils",
         "cta_title": "Accueil",
         "cta_url": "/"
     },

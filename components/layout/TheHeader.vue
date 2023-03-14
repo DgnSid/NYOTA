@@ -117,6 +117,7 @@ Script
             logOut() {
                 this.$auth.logout()
                 this.$auth.$storage.removeUniversal('user')
+                this.$router.push(`${this.currentLang}/login`)
             },
 
             openPopup() {
