@@ -69,11 +69,11 @@
 			workplaces: Array,
         },
 		mounted() {
-			this.workplace = this.$store.state.registertalent.inputWorkWhereWanted
+			this.workplace = this.$store.state.registertalent.inputWorkplaces
 		},
 		methods: {
 			handleSubmit(){
-				this.$store.commit('registertalent/mutateInputWorkWhereWanted', this.workplace)
+				this.$store.commit('registertalent/mutateInputWorkplaces', this.workplace)
 				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/5`})
 			},
 			isFormSubmittable() {

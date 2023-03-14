@@ -42,9 +42,6 @@ export const mutations = {
     mutateInputSpecialization (state, payload) {
         state.inputSpecialization = payload
     },
-    mutateInputWorkWhereWanted (state, payload) {
-        state.inputWorkWhereWanted = payload
-    },
     mutateSelectCountryFrom(state, payload) {
         state.selectCountryFrom = payload
     },
