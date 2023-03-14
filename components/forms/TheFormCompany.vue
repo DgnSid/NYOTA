@@ -197,7 +197,7 @@
 			},
 			checkInputEmail($event) {
 				const value = $event.target.value
-				if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
+				if (/^[\w-!#$%&'*+/=?^_`{|}~\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
 					$event.target.closest('.c-formcompany__field').classList.remove('error')
 					this.input_email = value
     			} else {
