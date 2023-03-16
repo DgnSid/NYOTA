@@ -5,10 +5,14 @@
                 <h1 class="c-header-talentslist__title">{{ title }}</h1>
                 <div class="c-header-talentslist__formtop">
                     <input v-model="input_job" type="text" :placeholder="placeholder" />
-                    <input type="submit" value="" @click.prevent="filterTalents()" />
+                    <input type="submit" value="" ref="submit_search_input" @click.prevent="filterTalents()" />
                 </div>
                 <div v-if="mutableTotalResults" class="c-header-talentslist__results">{{mutableTotalResults}} resultat<span v-if="mutableTotalResults > 1">s</span></div>
                 <div v-else class="c-header-talentslist__results">Désolé pas de résultat pour votre recherche.</div>
+
+                <div v-if="input_job !== ''" class="c-header-talentslist__formtop__close" :to="this.currentLang + '/talents'" @click="clearSearch()">
+                    Réinitialiser la recherche
+                </div>
             </div>
             <shape-ellipse class="c-header-talentslist__ellipse" :size="200" />
         </form>
@@ -338,7 +342,17 @@
                 console.log('toggleFilterMobile')
                 this.$refs[ref].classList.toggle('active')
             },
-        }
+            clearSearch() {
+                console.log('clearsearch')
+                this.input_job = ''
+                this.$refs.submit_search_input.click()
+            }
+        },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 
@@ -378,6 +392,12 @@ Style scoped
             font-size: 4rem;
         }
 
+        .c-header-talentslist__formtop__close {
+            text-decoration: underline;
+            text-align: center;
+            color: $black;
+            cursor: pointer;
+        }
         .c-header-talentslist__formtop {
             position: relative;
             display: table;
@@ -428,7 +448,7 @@ Style scoped
 
         .c-header-talentslist__results {
             color: $black;
-            padding-left: 40px;
+            padding-left: 0;
             padding-top: 16px;
             max-width: 856px;
             width: 100%;
@@ -784,6 +804,7 @@ Style scoped
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        cursor: pointer;
                     }
 
                     .c-header-talentslist__bottom__mobilefilter__menu__element__filtermenu__back {

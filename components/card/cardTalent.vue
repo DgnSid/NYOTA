@@ -1,5 +1,42 @@
 <template>
-    <article class="c-card-talent">
+    <article v-if="!mutableCanConsult && !mutableHasBeenConsulted" class="c-card-talent disabled">
+        <NuxtLink class="c-card-talent__link" :to="'/talents/' + id"></NuxtLink>
+        <div class="c-card-talent__top">
+            <div class="c-card-talent__top__photocontainer">
+                <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
+                <no-avatar v-else />
+            </div>
+            <div>
+                <div class="c-card-talent__top__name">{{ firstname }} {{ lastname }}.</div>
+                <div class="c-card-talent__top__job">{{ job }}</div>
+            </div>
+            <div class="c-card-talent__top__arrow"></div>
+        </div>
+        <div class="c-card-talent__body">
+            <div class="c-card-talent__body__row">
+                <graduation-cap />
+                <span>{{ school }}</span>
+            </div>
+            <div class="c-card-talent__body__row">
+                <briefcase />
+                <span>{{ yearsOfExperience }} {{ $t('pagetalentlist.card.years_of_experience') }} </span>
+            </div>
+            <div class="c-card-talent__body__row">
+                <map-pin />
+                <span>{{ from }}</span>
+            </div>
+        </div>
+        <div v-if="hasBeenConsulted" class="c-card-talent__seen">
+            <blue-check class="mr-sm" />
+            {{ $t('pagetalentlist.card.already_seen') }}
+        </div>
+        <div class="c-card-talent__bottom">
+            <div class="c-card-talent__bottom__element">
+                {{ industry.name }}
+            </div>
+        </div>
+    </article>
+    <article v-else class="c-card-talent">
         <NuxtLink class="c-card-talent__link" :to="'/talents/' + id"></NuxtLink>
         <div class="c-card-talent__top">
             <div class="c-card-talent__top__photocontainer">
@@ -51,6 +88,8 @@ import BlueCheck from '../svg/BlueCheck.vue'
         data () {
             return {
                 mutable_photo: {},
+                mutableCanConsult: this.$props.canConsult,
+                mutableHasBeenConsulted: this.$props.hasBeenConsulted
             }
         },
         props: {
@@ -67,6 +106,7 @@ import BlueCheck from '../svg/BlueCheck.vue'
             },
             industry: Object,
             id: String,
+            canConsult: Boolean,
         },
         async mounted() {
             await this.$axios.$get(this.$props.profilePicture)
@@ -93,6 +133,11 @@ Style scoped
         border-radius: 40px;
         padding: 24px 32px 45px 32px;
         margin-bottom: 64px;
+
+        &.disabled {
+            pointer-events: none;
+            filter: grayscale(1);
+        }
 
         .c-card-talent__link {
             position: absolute;
