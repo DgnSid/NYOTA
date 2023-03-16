@@ -15,11 +15,12 @@ Template
             :domains="DomainsApi['hydra:member']"
             :contracts="ContractsApi['hydra:member']"
             :expectedStartDates="ExpectedStartDatesApi['hydra:member']"
-            :workplaces="WorkplacesApi['hydra:member']"
+            :workplaces="WorkplacesApi['hydra:member']"            
         />
         <the-section-list-talents 
             :list="talentsDataApi['hydra:member']"
             :totalItems="talentsDataApi['hydra:totalItems']"
+            :canConsult="meApi.canConsult"
         />
     </div>
 </template>
@@ -120,8 +121,17 @@ Template
 			        console.error(err)
 			      });
 
+            //API ME
+            const meApi = await $axios.$get(`/api/c/me`)
+            .then((res) => {
+			        console.log(res)
+			        return res
+			      })
+			      .catch((err) => {
+			        console.error(err)
+			      });
 
-            return { talentsDataApi, IndustriesApi, DomainsApi, ContractsApi, ExpectedStartDatesApi, WorkplacesApi, query_job }
+            return { talentsDataApi, IndustriesApi, DomainsApi, ContractsApi, ExpectedStartDatesApi, WorkplacesApi, query_job, meApi }
         },
     }
 </script>

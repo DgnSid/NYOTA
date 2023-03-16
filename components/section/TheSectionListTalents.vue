@@ -14,6 +14,7 @@
                         :from="element.country.name"
                         :industry="element.newIndustry"
                         :id="element['@id'].split('/').pop()"
+                        :canConsult="mutableCanConsult"
                     />
                 </div>
             </div>
@@ -50,12 +51,14 @@
                 currentPage: 1,
                 itemPerPage: 9,
                 mutableTalents: this.$props.list,
-                mutableTotalItems: this.$props.totalItems
+                mutableTotalItems: this.$props.totalItems,
+                mutableCanConsult: this.$props.canConsult
             }
         },
         props: { 
             list: Array,
             totalItems: Number,
+            canConsult: Boolean,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -69,10 +72,12 @@
             this.tl.staggerTo('.a-stagger-element__listtalents', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
 
             eventHub.$on('update-talents-list', (data) => {
+                console.log('update-talents-list')
                 this.mutableTalents = data['hydra:member']
                 this.currentPage = 1
                 this.itemPerPage = 9
                 this.mutableTotalItems = data['hydra:totalItems']
+                this.mutableCanConsult = this.$props.canConsult
             })
             
             eventHub.$on('update-talents-list-paginated-results', (data) => {
