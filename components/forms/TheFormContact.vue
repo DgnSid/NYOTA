@@ -113,7 +113,7 @@
 					await this.$axios.post('/api/requests', {
 						"subject": this.input_object,
     					"email": this.input_mail,
-						"phone": this.input_phone,
+						"phoneNumber": this.input_phone,
 						"company": this.input_company,
     					"name": this.input_name,
     					"captcha": await this.$recaptcha.execute('login'),
