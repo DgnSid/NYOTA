@@ -272,7 +272,7 @@
             "three": {
                 "title": "CV",
                 "cv_title": "Dépose ton CV",
-                "cv_instruction": "Sélectionner ou glisser votre CV ici pour le remplacer",
+                "cv_instruction": "Sélectionner ou glisser votre CV ici pour le désposé",
                 "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
                 "photo_title": "Ajoute une photo de profil",
                 "photo_instruction": "Sélectionner ou glisser votre photo de profil",

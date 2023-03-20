@@ -168,14 +168,14 @@ Style scoped
             justify-content: center;
             margin-bottom: 40px;
 
-            height: 100%;
+            height: auto;
             max-height: 100px;
             .c-section-partners__logo__image {
                 display: block;
                 margin: 0 auto;
 
                 max-height: 100px;
-                height: 100%;
+                height: auto;
 
                 filter: grayscale(1);
 
