@@ -2,7 +2,7 @@
     "menu": {
         "about_title": "À propos",
         "about_url": "/about",
-        "talent_title": "Talent",
+        "talent_title": "Talents",
         "talent_url": "/landing/talent",
         "company_title": "Entreprises",
         "company_url": "/landing/company",
@@ -92,7 +92,7 @@
         },
         "section_news": {
             "title": "Découvrez nos actualités",
-            "hook": "Vous êtes<br>intéréssés ?",
+            "hook": "Vous êtes<br>intéressés ?",
             "cta_title": "Découvrez nos actualités",
             "cta_url": "/news/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
@@ -121,7 +121,7 @@
         },
         "section_news": {
             "title": "Découvrez nos actualités",
-            "hook": "Vous êtes<br>intéréssés ?",
+            "hook": "Vous êtes<br>intéressés ?",
             "cta_title": "Voir toutes les actualités",
             "cta_url": "/news/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
@@ -147,7 +147,7 @@
         },
         "section_news": {
             "title": "Découvrez nos actualités",
-            "hook": "Vous êtes<br>intéréssés ?",
+            "hook": "Vous êtes<br>intéressés ?",
             "cta_title": "Voir toutes les actualités",
             "cta_url": "/news/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
@@ -595,7 +595,7 @@
             "three": {
                 "title": "CV",
                 "cv_title": "Dépose ton CV",
-                "cv_instruction": "Sélectionner ou glisser votre CV ici pour le remplacer",
+                "cv_instruction": "Sélectionner ou glisser votre CV ici pour le déposer",
                 "cv_meta": "PDF, JPG ou PNG - 10mo maximum",
                 "photo_title": "Ajoute une photo de profil",
                 "photo_instruction": "Sélectionner ou glisser votre photo de profil",
@@ -622,7 +622,7 @@
             "back_title": "Retour",
             "next": "suivant",
             "submit": "valider",
-            "mandatory": "* champs obligatoire",
+            "mandatory": "* champs obligatoires",
             "error_message": "Le champ n'est pas correct"
         }
     },
@@ -682,7 +682,7 @@
         "seo_title": "Compte créé",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Compte créé !",
-        "confirm_text": "Merci pour votre inscription, vous pourrez bientôt accéder aux profils",
+        "confirm_text": "",
         "body_title": "Confirmation",
         "body_text": "Merci pour votre inscription, vous pourrez bientôt accéder aux profils",
         "cta_title": "Accueil",
@@ -691,6 +691,7 @@
     "errorpage": {
         "404_title": "404 - Cette page n'existe pas",
         "401_title": "Vous ne pouvez pas accéder à cette page",
+        "403_title": "Vous n'avez pas le droit d'accéder à cette page",
         "cta_title": "Accueil",
         "cta_login_title": "Se connecter",
         "cta_url": "/",

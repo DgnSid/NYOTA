@@ -2,7 +2,7 @@
     "menu": {
         "about_title": "About",
         "about_url": "/en/about",
-        "talent_title": "Talent",
+        "talent_title": "Talents",
         "talent_url": "/en/landing/talent",
         "company_title": "Company",
         "company_url": "/en/landing/company",
@@ -595,7 +595,7 @@
         "seo_title": "Account created",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Account created!",
-        "confirm_text": "Thank you for registering! Tour account will be available soon!",
+        "confirm_text": "",
         "body_title": "Confirmation",
         "body_text": "Thank you for registering! Tour account will be available soon!",
         "cta_title": "Home",
@@ -625,6 +625,7 @@
     "errorpage": {
         "404_title": "404 - Page not found",
         "401_title": "You can't access this page",
+        "403_title": "You don't have the rights to access this page",
         "cta_title": "Home",
         "cta_login_title": "Login",
         "cta_url": "/en",

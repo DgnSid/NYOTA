@@ -7,7 +7,7 @@
                         <h1 class="c-header-register__title a-stagger-element__header-small">
                             {{title}}
                         </h1>
-                        <div class="c-header-register__text a-stagger-element__header-small">
+                        <div v-if="text" class="c-header-register__text a-stagger-element__header-small">
                             {{text}}
                         </div>
                     </div>

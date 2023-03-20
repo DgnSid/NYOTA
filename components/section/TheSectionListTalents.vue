@@ -14,7 +14,7 @@
                         :from="element.country.name"
                         :industry="element.newIndustry"
                         :id="element['@id'].split('/').pop()"
-                        :canConsult="mutableCanConsult"
+                        :class="{ disabled: !mutableCanConsult && !element.hasBeenConsulted }"
                     />
                 </div>
             </div>
