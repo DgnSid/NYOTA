@@ -15,8 +15,8 @@
 
 						<div class="c-formregistertalent__field">
                         	<label class="--question">{{$t('registerform.steps.two.nine.label_question_three')}} <span>*</span></label>
-  		  	  	  			<input v-model="years_of_experience" type="text" name="job_name" :placeholder="$t('registerform.steps.two.nine.placeholder_question_three')" required />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+  		  	  	  			<input v-model="years_of_experience" type="text" name="experience_name" :placeholder="$t('registerform.steps.two.nine.placeholder_question_three')" required @change="checkExperience($event)"/>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message_digits') }}</div>
 						</div>
 
 						<div class="c-formregistertalent__field">
@@ -68,6 +68,7 @@
 				contract: '',
 				years_of_experience: '',
 				is_form_submittable: false,
+				noerror: true,
 			}
 		},
         props: {
@@ -86,6 +87,19 @@
 			this.years_of_experience = this.$store.state.registertalent.inputYearsOfExperience
 		},
 		methods: {
+			checkExperience($event) {
+				const value = $event.target.value
+				if (/^[0-9]+$/.test(value)) {
+					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
+					this.years_of_experience = value
+					this.noerror = true
+    			} else {
+					$event.target.closest('.c-formregistertalent__field').classList.add('error')
+					this.noerror = false
+    			}
+
+				this.isFormSubmittable()
+			},
 			handleSubmit(){
 				this.$store.commit('registertalent/mutateInputContract', this.contract)
 				this.$store.commit('registertalent/mutateInputJobName', this.job_name)
@@ -93,7 +107,7 @@
 				this.$router.push({path: `${this.currentLang}/register/talent/steps/2/10`})
 			},
 			isFormSubmittable() {
-				if(this.contract && this.job_name && this.years_of_experience) {
+				if(this.contract && this.job_name && this.years_of_experience && this.noerror) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {

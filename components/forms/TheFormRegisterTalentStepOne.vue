@@ -74,6 +74,7 @@
 				input_lastname: '',
 				gender: '',
 				is_form_submittable: false,
+				noerror: true,
 			}
 		},
         props: {
@@ -103,9 +104,10 @@
 				if (/^[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ]*((-|'|\s)*[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ])*$/.test(value)) {
 					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
 					this.input_firstname = value
+					this.noerror = true
     			} else {
 					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_firstname = ''
+					this.noerror = false
     			}
 
 				this.isFormSubmittable()
@@ -115,15 +117,16 @@
 				if (/^[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ]*((-|'|\s)*[_A-zàâäéèêëîïôöùûüÿçÀÁÂÄÇÉÈÊËÍÌÎÏÑÓÒÔÖÚÙÛÜ])*$/.test(value)) {
 					$event.target.closest('.c-formregistertalent__field').classList.remove('error')
 					this.input_lastname = value
+					this.noerror = true
     			} else {
 					$event.target.closest('.c-formregistertalent__field').classList.add('error')
-					this.input_lastname = ''
+					this.noerror = false
     			}
 
 				this.isFormSubmittable()
 			},
 			isFormSubmittable() {
-				if(this.gender && this.input_lastname && this.input_firstname) {
+				if(this.gender && this.input_lastname && this.input_firstname && this.noerror) {
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
 				} else {

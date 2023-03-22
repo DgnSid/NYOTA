@@ -30,7 +30,7 @@
                                 </svg>
 								<span>{{back_title}}</span>
 							</nuxt-link>
-						    <button ref="submit" class="c-formregistertalent__bottom__submit --bordered disable" @click="handleSubmit()">
+						    <button ref="submit" class="c-formregistertalent__bottom__submit --bordered disabled" @click="handleSubmit()">
 						    	<span class="c-formregistertalent__bottom__submit__text">{{submit_title}}</span>
 						    </button>
                         </div>

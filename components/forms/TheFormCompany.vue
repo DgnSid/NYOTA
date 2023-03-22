@@ -27,11 +27,11 @@
 						<div class="c-formcompany__field">
   		  	  	  			<label>{{$t('pageregistercompany.label_email')}} <span>*</span></label>
   		  	  	  			<input type="email" :name="$t('pageregistercompany.label_contact_name')" placeholder="" @change="checkInputEmail($event)" />
-							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message_mail') }}</div>
 						</div>
 					</div>
 					<div class="col-lg-9">
-  		  	  	  		<label>{{$t('pageregistercompany.label_phone')}}</label>
+  		  	  	  		<label>{{$t('pageregistercompany.label_phone')}} <span>*</span></label>
   		  	  	  		<input v-model="input_phone" type="text" :name="$t('pageregistercompany.id_phone')" placeholder="" required />
 					</div>
 					<div class="offset-lg-1 col-lg-18">
@@ -54,26 +54,39 @@
 						</div>
 					</div>
 					<div class="offset-lg-1 col-lg-9">
-						<div ref="error_password" class="c-formcompany__field">
+						<div ref="error_password_first" class="c-formcompany__field">
   		  	  	  			<label>{{$t('pageregistercompany.label_password')}} <span>*</span></label>
   		  	  	  			<input v-model="input_password" type="password" :name="$t('pageregistercompany.label_contact_name')" placeholder="" @change="checkInputPasswordMatch()" />
-							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
 						</div>
 					</div>
 					<div class="col-lg-9">
 						<div ref="error_password" class="c-formcompany__field">
   		  	  	  			<label>{{$t('pageregistercompany.label_password_confirm')}} <span>*</span></label>
   		  	  	  			<input v-model="input_password_confirm" type="password" :name="$t('pageregistercompany.label_contact_name')" placeholder="" @change="checkInputPasswordMatch()" />
-							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formcompany__field__error">{{ $t('registerform.form.error_message_password') }}</div>
 						</div>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<input v-model="rgpd" id="rgpd" type="checkbox" name="name" placeholder="" required />
-						<label for="rgpd" name="rgpd" class="--checkbox">{{$t('pageregistercompany.label_rgpd')}}</label>
+						<div class="c-formcompany__checkbox">
+  		  	  	  			<input v-model="rgpd" id="rgpd" type="checkbox" name="rgpd" placeholder="" required />
+							<label for="rgpd" name="rgpd" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
+								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
+							</label>
+							<label for="rgpd" name="rgpd" class="--checkbox" v-else>
+								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
+							</label>
+						</div>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
-  		  	  	  		<input v-model="marketing" id="marketing" type="checkbox" name="name" placeholder="" />
-						<label for="marketing" name="marketing" class="--checkbox">{{$t('pageregistercompany.label_marketing')}}</label>
+						<div class="c-formcompany__checkbox">
+							<input v-model="marketing" id="marketing" type="checkbox" name="marketing" placeholder="" />
+							<label for="marketing" name="marketing" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
+								marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							</label>
+							<label for="marketing" name="marketing" class="--checkbox" v-else>
+								marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							</label>
+						</div>
 					</div>
 					<div class="offset-lg-1 col-lg-18">
   		  	  	  		<button class="c-formcontact__submit --bordered disabled" type="submit" ref="submit">
@@ -211,8 +224,10 @@
 				if(this.input_password && this.input_password_confirm) {
 					if((this.input_password == this.input_password_confirm) && (this.input_password.length >= 8)) {
 						this.$refs.error_password.classList.remove('error')
+						this.$refs.error_password_first.classList.remove('error')
 					} else {
 						this.$refs.error_password.classList.add('error')
+						this.$refs.error_password_first.classList.add('error')
 					}
 				} else {
 					this.$refs.error_password.classList.remove('error')
@@ -503,9 +518,67 @@ Style scoped
 			}
 		}
 
+		.c-formcompany__checkbox {
+		position: relative;
+
+		input {
+			display: none;
+		}
+
+		label {
+            cursor: pointer;
+            padding-left: 5px;
+            margin-left: 12px;
+            font-size: .75rem;
+            line-height: .75rem;
+
+			a {
+				color: $orange;
+			}
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                border: 1px solid $orange;
+                height: 12px;
+                width: 12px;
+                border-radius: 4px;
+                background-color: $white;
+                transform: translate(-100%, -50%);
+            }
+
+			&.--checkbox {
+				font-size: .75rem;
+				line-height: .75rem;
+				text-transform: none;
+				letter-spacing: 0;
+				cursor: pointer;
+				padding-left: 15px;
+			}
+        }
+
+		input:checked + label::before {
+            content: '.';
+            color: $orange;
+            background-color: $white;
+        }
+
+        input:checked + label::after {
+            content: '✔';
+            color: $orange;
+            position: absolute;
+			left: 6px;
+   			top: 10px;
+            font-size: 8px;
+		}
+	}  
+
 		.c-formcompany__field {
 			margin-bottom: 32px;
 
+			input[type="password"],
 			input[type="email"] {
 				margin-bottom: 0;
 			}
@@ -515,8 +588,9 @@ Style scoped
 			}
 
         	&.error {
+				input[type="password"],
 				input[type="email"],
-        	    input[type="text"] {
+        	    input[type="text"] {					
         	        border-color: red;
         	        color: red;
         	    }
@@ -524,6 +598,8 @@ Style scoped
         	    .c-formcompany__field__error {
         	        display: block;
         	        color: red;
+					text-align: right;
+					font-size: .75rem;
         	    }
         	}
     	}

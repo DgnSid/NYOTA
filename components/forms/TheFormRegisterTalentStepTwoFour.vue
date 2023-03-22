@@ -9,9 +9,9 @@
                         </h2>
 						<div class="c-formregistertalent__field">
                         	<label class="--question">{{$t('registerform.steps.two.four.label_question')}}</label>
-							<div class="c-formregistertalent__field__checkboxlist" role="radiogroup">
+							<div class="c-formregistertalent__field__checkboxlist" role="checkboxgroup">
 								<div v-for="(element) in workplaces" :key="element.id" class="c-formregistertalent__field__checkboxelement">
-									<input type="checkbox" :id="element.id" :name="element.name" :value="'/api/workplaces/' + element.id" v-model="workplace" role="radio" aria-checked="false"  :aria-labelledby="'label-' + element.id">
+									<input type="checkbox" :id="element.id" :name="element.name" :value="'/api/workplaces/' + element.id" v-model="workplace" role="checkbox" aria-checked="false"  :aria-labelledby="'label-' + element.id">
 									<label :id="'label-'+ element.id" :for="element.id" tabindex="0">{{element.name}}</label>
 								</div>
 							</div>
@@ -88,6 +88,7 @@
 		},
 		watch: {
    			workplace() {
+				console.log(this.workplace)
 				this.isFormSubmittable()
    			},
 		},
