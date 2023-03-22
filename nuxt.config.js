@@ -132,6 +132,7 @@ export default {
     '@nuxtjs/recaptcha',
     '@nuxtjs/proxy',
     '@nuxtjs/auth-next',
+    'nuxt-lazy-load',
   ],
 
   recaptcha: {
