@@ -458,7 +458,10 @@
             "next": "next",
             "submit": "validate",
             "mandatory": "* mandatory field",
-            "error_message": "Field is not correct"
+            "error_message": "Field is not correct",
+            "error_message_digits": "Field is not correct. Use only digits.",
+            "error_message_mail": "Field is not correct. Use a valid mail address.",
+            "error_message_password": "Field is not correct. Password has to have more than 8 characters. Passwords have to be the same"
         }
     },
     "pageconnexion": {

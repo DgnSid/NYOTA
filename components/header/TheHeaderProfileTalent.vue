@@ -9,8 +9,9 @@
                                 <img v-if="photo" class="c-header-profiletalent__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of' + lastname" />
                                 <no-avatar v-else />
                             </div>
-                            <h1 class="c-header-profiletalent__title a-stagger-element__header-profile-talent">
-                                {{ firstname }} {{lastname}}
+                            <h1 class="c-header-profiletalent__title a-stagger-element__header-profile-talent" :class="{ smaller: name_length > 20 }">
+                                {{ firstname }}<br>
+                                {{lastname}}
                             </h1>
                             <div class="c-header-profiletalent__updatephoto a-stagger-element__header-profile-talent">
                                 <span @click="triggerPictureUpload()">{{ $t('page_profile_talent.editpicture') }}</span>
@@ -157,6 +158,7 @@
                 file_cv: '',
                 mutable_input_file_cv: '',
                 upload_technic: '',
+                name_length: this.$props.firstname.length + this.$props.lastname.length,
             }
         },
         props: {
@@ -571,6 +573,10 @@ Style scoped
             align-items: center;
             justify-content: center;
             border-right: 1px solid $light-grey;
+
+            @include media-breakpoint-down(md) {
+                border-right: none;
+            }
         }
         .c-header-profiletalent__photocontainer {
             height: 100px;
@@ -594,6 +600,11 @@ Style scoped
             margin-right: 20px;
             color: $black;
             word-break: break-all;
+
+            &.smaller {
+                font-size: 3rem;
+                line-height: 3.1rem;
+            }
 
             strong, b {
                 background: $gradientOrange;

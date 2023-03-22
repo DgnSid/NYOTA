@@ -10,28 +10,40 @@
 						<div class="c-formregistertalent__field">
                         	<label>{{$t('registerform.steps.four.label_mail')}}  <span>*</span></label>
   		  	  	  			<input type="text" name="object" placeholder="" required @change="checkInputEmail($event)" />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message_mail') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
                         	<label>{{$t('registerform.steps.four.label_password')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message_password') }}</div>
 						</div>
 						<div ref="error_password" class="c-formregistertalent__field">
                         	<label>{{$t('registerform.steps.four.label_password_confirmation')}}  <span>*</span></label>
   		  	  	  			<input v-model="input_password_confirm" type="password" name="object" placeholder="" required @change="checkInputPasswordMatch()" />
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message_password') }}</div>
 						</div>
 						<div class="c-formregistertalent__field">
-  		  	  	  			<input v-model="rgpd" type="checkbox" name="rgpd" placeholder="" required />
-							<label>{{$t('registerform.steps.four.label_rgpd')}}  <span>*</span></label>
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formtalent__checkbox">
+  		  	  	  				<input v-model="rgpd" id="rgpd" type="checkbox" name="rgpd" placeholder="" required />
+								<label for="rgpd" name="rgpd" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
+									En cochant cette case, j’affirme avoir pris connaissance de la <a href="/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
+								</label>
+								<label for="rgpd" name="rgpd" class="--checkbox" v-else>
+									En cochant cette case, j’affirme avoir pris connaissance de la <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
+								</label>
+								<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							</div>
 						</div>
 						<div class="c-formregistertalent__field">
-                        	
-  		  	  	  			<input v-model="marketing" type="checkbox" name="marketing" placeholder="" />
-							<label>{{$t('registerform.steps.four.label_marketing')}}</label>
-							<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
+							<div class="c-formtalent__checkbox">
+								<input v-model="marketing" id="marketing" type="checkbox" name="marketing" placeholder="" />
+								<label for="marketing" name="marketing" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
+									marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</label>
+								<label for="marketing" name="marketing" class="--checkbox" v-else>
+									marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</label>
+							</div>
 						</div>
 
 						<div class="c-formregistertalent__mandatory">{{ $t('registerform.form.mandatory') }}</div>
@@ -228,4 +240,61 @@ Style scoped
 ------>
 <style lang="scss" scoped>
 	@import '@/assets/sass/app/form/register.scss';
+
+	.c-formtalent__checkbox {
+		position: relative;
+
+		input {
+			display: none;
+		}
+
+		label {
+            cursor: pointer;
+            padding-left: 5px;
+            margin-left: 12px;
+            font-size: .75rem;
+            line-height: .75rem;
+
+			a {
+				color: $orange;
+			}
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 15px;
+                top: 6px;
+                border: 1px solid $orange;
+                height: 12px;
+                width: 12px;
+                border-radius: 4px;
+                background-color: $white;
+                transform: translate(-100%, -50%);
+            }
+
+			&.--checkbox {
+				font-size: .75rem;
+				line-height: .75rem;
+				text-transform: none;
+				letter-spacing: 0;
+				cursor: pointer;
+				padding-left: 15px;
+			}
+        }
+
+		input:checked + label::before {
+            content: '.';
+            color: $orange;
+            background-color: $white;
+        }
+
+        input:checked + label::after {
+            content: '✔';
+            color: $orange;
+            position: absolute;
+			left: 6px;
+   			top: 1px;
+            font-size: 8px;
+		}
+	}  
 </style>

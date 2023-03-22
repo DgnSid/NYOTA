@@ -623,7 +623,10 @@
             "next": "suivant",
             "submit": "valider",
             "mandatory": "* champs obligatoires",
-            "error_message": "Le champ n'est pas correct"
+            "error_message": "Le champ n'est pas correct",
+            "error_message_digits": "Le champ n'est pas correct. Veuillez utiliser que des chiffres.",
+            "error_message_mail": "Le champ n'est pas correct. Veuillez mettre une adresse mail valide.",
+            "error_message_password": "Le champ n'est pas correct. Le mot de passe doit faire plus de 8 caractères. Les champs doivent être identiques"
         }
     },
     "pagenews": {
