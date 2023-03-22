@@ -74,8 +74,8 @@
 // SF PRO
 @font-face {
 	font-family: 'SF Pro';
-	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Thin.otf') format('otf'),
-	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Thin.otf') format('otf');
+	src: url('~@/assets/fonts/sf_pro/SFProDisplay-Thin.woff') format('woff'),
+	url('~@/assets/fonts/sf_pro/SFProDisplay-Thin.woff2') format('woff2');
 	font-weight: lighter;
 	font-style: normal;
 	font-display: swap;
@@ -83,8 +83,8 @@
 
 @font-face {
 	font-family: 'SF Pro';
-	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Regular.otf') format('otf'),
-	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Regular.otf') format('otf');
+	src: url('~@/assets/fonts/sf_pro/SFProDisplay-Regular.woff') format('woff'),
+	url('~@/assets/fonts/sf_pro/SFProDisplay-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -92,8 +92,8 @@
 
 @font-face {
 	font-family: 'SF Pro';
-	src: url('~@/assets/fonts/sf_pro/SF-Pro-Text-Bold.otf') format('otf'),
-	url('~@/assets/fonts/sf_pro/SF-Pro-Text-Bold.otf') format('otf');
+	src: url('~@/assets/fonts/sf_pro/SFProText-Bold.woff') format('woff'),
+	url('~@/assets/fonts/sf_pro/SFProText-Bold.woff2') format('woff2');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -101,8 +101,8 @@
 
 @font-face {
 	font-family: 'SF Pro';
-	src: url('~@/assets/fonts/sf_pro/SF-Pro-Display-Black.otf') format('otf'),
-	url('~@/assets/fonts/sf_pro/SF-Pro-Display-Black.otf') format('otf');
+	src: url('~@/assets/fonts/sf_pro/SFProDisplay-Heavy.woff') format('woff'),
+	url('~@/assets/fonts/sf_pro/SFProDisplay-Heavy.woff2') format('woff2');
 	font-weight: 800;
 	font-style: normal;
 	font-display: swap;

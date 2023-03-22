@@ -21,6 +21,13 @@ Template
 
 <script>	
   	export default {
+        head() {
+            return {
+                htmlAttrs: {
+                    lang: this.$i18n.locale
+                }
+            }
+        },
 		beforeCreate: function() {
             if(!this.$auth.loggedIn) {
                 this.$auth.$storage.removeUniversal('user')
