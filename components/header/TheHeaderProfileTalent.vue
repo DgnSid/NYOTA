@@ -657,7 +657,7 @@ Style scoped
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 2;
+            z-index: 20;
             justify-content: center;
             align-items: center;
 
