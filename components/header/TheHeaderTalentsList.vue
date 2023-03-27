@@ -5,7 +5,10 @@
                 <h1 class="c-header-talentslist__title">{{ title }}</h1>
                 <div class="c-header-talentslist__formtop">
                     <input v-model="input_job" type="text" :placeholder="placeholder" />
-                    <input type="submit" value="" ref="submit_search_input" @click.prevent="filterTalents()" />
+                    <div class="c-header-talentslist__formtop__submit">
+                        <input type="submit" value="" ref="submit_search_input" @click.prevent="filterTalents()" />
+                        <div class="loader"></div>
+                    </div>
                 </div>
                 <div v-if="mutableTotalResults" class="c-header-talentslist__results">{{mutableTotalResults}} resultat<span v-if="mutableTotalResults > 1">s</span></div>
                 <div v-else class="c-header-talentslist__results">Désolé pas de résultat pour votre recherche.</div>
@@ -242,6 +245,9 @@
 
                 let url_query = ''
 
+                this.$refs.submit_search_input.classList.add('--noarrow')
+                this.$refs.submit_search_input.classList.add('--searching')
+
                 if(mode === 'paginated') {
                     if(this.input_job) {
                         url_query = `/api/c/talents?itemsPerPage=${ 9 * this.currentPage}&page=1&job=${this.input_job}&expectedStartDate[]=${query_input_expected_start_date}&contract[]=${query_input_contract}&domain[]=${query_input_domain}&diploma[]=${query_input_diploma}&workplaces.id[]=${query_input_workplace}&industry[]=${query_input_sector}`
@@ -274,6 +280,8 @@
                     } else {
                         this.currentPage = 1
                         eventHub.$emit('update-talents-list', res)
+                        this.$refs.submit_search_input.classList.remove('--noarrow')
+                        this.$refs.submit_search_input.classList.remove('--searching')
                     }                    
                 })
                 .catch((err) => {
@@ -403,6 +411,45 @@ Style scoped
             display: table;
             margin: 0 auto;
 
+            .c-header-talentslist__formtop__submit {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                height: 56px;
+                width: 56px;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+
+                .loader {
+                    position: relative;
+                    z-index: 2;
+                    height: 15px;
+                    width: 15px;
+	                border: .2em solid $orange;
+	                border-radius: 50%;
+	                animation: loader 1s ease-out infinite;
+
+                    display: none;
+                }
+
+                @keyframes loader {
+                	0% {
+                		transform: scale(0);
+                		opacity: 0;
+                	}
+                	50% {
+                		opacity: 1;
+                	}
+                	100% {
+                		transform: scale(1);
+                		opacity: 0;
+                	}
+                }
+            }
+
             input[type="text"] {
                 height: 72px;
                 border: 1px solid $orange;
@@ -424,7 +471,7 @@ Style scoped
 
             input[type="submit"] {
                 position: absolute;
-                right: 10px;
+                right: 0;
                 cursor: pointer;
                 top: 50%;
                 transform: translateY(-50%);
@@ -438,11 +485,28 @@ Style scoped
                 background-repeat: no-repeat;
                 background-position: center center;
 
+                &.--noarrow {
+                    background-image: none;
+                }
+
+                &.--searching,
                 &:hover {
                     background-color: $white;
                     color: $orange;
                     background-image: url('/arrow-orange.svg');
+
+                    &.--noarrow {
+                        background-image: none;
+                    }
                 }
+
+                &.--searching {
+                    pointer-events: none;
+                }
+            }
+
+            .--searching + .loader {
+                display: block;
             }
         }
 
@@ -815,8 +879,7 @@ Style scoped
                         cursor: pointer;
                     }
                 }
-            }
-            
+            }            
 
             &.active {
                 transform: translateX(0);
