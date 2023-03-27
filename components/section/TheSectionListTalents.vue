@@ -8,7 +8,7 @@
                         :lastname="element.lastname.slice(0,1)"
                         :job="element.job"
                         :school="element.school"
-                        :profilePicture="element.profilePicture"
+                        :profilePicture="arrayProfilePicture[index] ? arrayProfilePicture[index] : element.profilePicture"
                         :yearsOfExperience="element.yearsOfExperience"
                         :hasBeenConsulted="element.hasBeenConsulted"
                         :from="element.country.name"
@@ -52,7 +52,8 @@
                 itemPerPage: 9,
                 mutableTalents: this.$props.list,
                 mutableTotalItems: this.$props.totalItems,
-                mutableCanConsult: this.$props.canConsult
+                mutableCanConsult: this.$props.canConsult,
+                arrayProfilePicture: []
             }
         },
         props: { 
@@ -71,9 +72,33 @@
             this.tl.set('.a-stagger-element__listtalents', {autoAlpha: 0, y:30})
             this.tl.staggerTo('.a-stagger-element__listtalents', 0.6, {autoAlpha: 1, y:0, ease: "Power1.easeOut"}, .15, "=0.4")
 
+            
+            this.mutableTalents.forEach(async (el, index) => {
+                await this.$axios.$get(el.profilePicture)
+                .then((res) => {
+                    this.arrayProfilePicture.push(res.contentUrl)            
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
+            })
+
+            
             eventHub.$on('update-talents-list', (data) => {
                 console.log('update-talents-list')
+                this.arrayProfilePicture = []
                 this.mutableTalents = data['hydra:member']
+
+                this.mutableTalents.forEach(async (el, index) => {
+                    await this.$axios.$get(el.profilePicture)
+                    .then((res) => {
+                        this.arrayProfilePicture.push(res.contentUrl)            
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                    });
+                })
+
                 this.currentPage = 1
                 this.itemPerPage = 9
                 this.mutableTotalItems = data['hydra:totalItems']
@@ -83,6 +108,16 @@
             eventHub.$on('update-talents-list-paginated-results', (data) => {
                 this.mutableTalents = data['hydra:member']
                 this.itemPerPage = data['hydra:member'].length
+
+                this.mutableTalents.forEach(async (el, index) => {
+                    await this.$axios.$get(el.profilePicture)
+                    .then((res) => {
+                        this.arrayProfilePicture.push(res.contentUrl)            
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                    });
+                })
             })            
         },
         methods: {
