@@ -3,7 +3,10 @@
         <NuxtLink class="c-card-talent__link" :to="'/talents/' + id"></NuxtLink>
         <div class="c-card-talent__top">
             <div class="c-card-talent__top__photocontainer">
-                <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
+                <!---
+                    <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
+                -->
+                <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + profilePicture" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
                 <no-avatar v-else />
             </div>
             <div>
@@ -50,7 +53,8 @@ import BlueCheck from '../svg/BlueCheck.vue'
         components: { NoAvatar, MapPin, Briefcase, GraduationCap, BlueCheck },
         data () {
             return {
-                mutable_photo: {},
+                mutable_photo: '',
+                mutable_profile_picture: this.$props.profilePicture,
                 mutableCanConsult: this.$props.canConsult,
                 mutableHasBeenConsulted: this.$props.hasBeenConsulted
             }
@@ -78,7 +82,9 @@ import BlueCheck from '../svg/BlueCheck.vue'
             
             await this.$axios.$get(this.$props.profilePicture)
             .then((res) => {
-                this.mutable_photo = res
+                this.mutable_photo = res.contentUrl
+                console.log('MOUNTED')
+                console.log(res)                
             })
             .catch((err) => {
                 console.error(err)
@@ -124,6 +130,7 @@ Style scoped
                 line-height: 2rem;
                 margin-bottom: 5px;
                 font-family: $font-family-custom;
+                word-break: break-all;
             }
             
             .c-card-talent__top__job {
