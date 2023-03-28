@@ -50,7 +50,7 @@ Script
         data: function () {
             return {
                 isActive: false,
-                currentpage_url: window.location.href
+                currentpage_url: process.client ? window.location.href : `https://${this.$nuxt.context.req.headers.host}/${this.$route.path}`
             }
         },
         mounted: function () {
@@ -66,7 +66,7 @@ Script
             },
         }
     };
-</script> 
+</script>
 
 <!-----
 *
@@ -145,7 +145,7 @@ Style scoped
                     border: 1px solid $orange;
 
                     &:hover {
-                        background: rgba($orange, .5);                        
+                        background: rgba($orange, .5);
                     }
                 }
             }
