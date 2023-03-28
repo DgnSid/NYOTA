@@ -97,8 +97,7 @@
 	}
 </script>
 
-<style src="@/node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
-
 <style lang="scss">
+	@import '@/node_modules/vue-multiselect/dist/vue-multiselect.min.css';
 	@import '@/assets/sass/app/form/register.scss';	
 </style>
