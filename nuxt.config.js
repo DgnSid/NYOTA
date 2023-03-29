@@ -3,15 +3,14 @@ import path from 'path'
 import fs from 'fs'
 
 export default {
-
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: 'nyota.adveris.dev', // default: localhost
-  //   https: {
-  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-  //   },
-  // },
+  server: {
+    port: 3010, // default: 3000
+    //   host: 'nyota.adveris.dev', // default: localhost
+    //   https: {
+    //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+    //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    //   },
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
