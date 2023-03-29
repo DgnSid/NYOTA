@@ -1,6 +1,7 @@
 <template>
     <div class="c-cta">
         <NuxtLink v-if="url" class="c-cta__link" :to="url"></NuxtLink>
+        <div class="c-cta__cover"></div>
         <span class="c-cta__text">{{title}}</span>
     </div>
 </template>
@@ -68,7 +69,22 @@ Style scoped
             margin-right: 16px;           
         }
 
+        .c-cta__cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 100px;
+            background: $gradientOrange;
+            opacity: 1;
+
+            transition: opacity .2s ease-out;
+        }
+
         .c-cta__text {
+            position: relative;
+            z-index: 2;
             font-weight: 700;
             font-size: 0.675rem;
             text-transform: uppercase;
@@ -98,6 +114,10 @@ Style scoped
             background: $white;
             .c-cta__text {
                 color: $orange;
+            }
+
+            .c-cta__cover {
+                opacity: 0;
             }
         }
     }

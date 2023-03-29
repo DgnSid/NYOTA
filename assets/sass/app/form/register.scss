@@ -196,7 +196,8 @@
         }
 
         label {
-            border: 1px solid rgba($dark-grey, .2);
+            border: 1px solid;
+            border-color: rgba($dark-grey, .2);
             border-radius: 40px;
             cursor: pointer;
             text-transform: uppercase;
@@ -211,14 +212,15 @@
 
         input[type="radio"]:checked + label {
             background-color: $orange;
+            border-color: $orange;
             color: $white;
-            font-weight: 400;
+            font-weight: 700;
         }
 
         input[type="radio"] + label:focus {
             background-color: $orange;
             color: $white;
-            font-weight: 400;
+            font-weight: 700;
         }
     }
 
@@ -238,7 +240,8 @@
         }
 
         label {
-            border: 1px solid rgba($dark-grey, .2);
+            border: 1px solid;
+            border-color: rgba($dark-grey, .2);
             border-radius: 40px;
             cursor: pointer;
             text-transform: uppercase;
@@ -253,8 +256,9 @@
 
         input[type="checkbox"]:checked + label {
             background-color: $orange;
+            border-color: $orange;
             color: $white;
-            font-weight: 400;
+            font-weight: 700;
         }
     }
 
@@ -303,19 +307,37 @@
         .c-formregistertalent__bottom__submit {
             position: relative;
             width: 270px;
-               background: $gradientOrange;
-               padding: 24px 40px;
-               border-radius: 100px;
-               text-align: center;
+            background: $gradientOrange;
+            padding: 24px 40px;
+            border-radius: 100px;
+            text-align: center;
+            
             cursor: pointer;
             border: 1px solid $orange;
+
+            transition: color .2s ease-out;
 
             &.disabled {
                 filter: grayscale(1);
                 pointer-events: none;
             }
 
+            .c-formregistertalent__bottom__submit__cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 100px;
+                background: $gradientOrange;
+                opacity: 1;
+
+                transition: opacity .2s ease-out;
+            }
+
             span {
+                position: relative;
+                z-index: 2;
                 text-transform: uppercase;
                 color: $white;
             }				
@@ -323,10 +345,19 @@
             &:focus,
             &:hover {
                 background: $white;
+
+                .c-formregistertalent__bottom__submit__cover {
+                    opacity: 0;
+                }
+
                 span {
                     color: $orange;
                 }
             }
+        }
+
+        .c-formregistertalent__bottom__submit {
+            padding: 19px 40px;
         }
     }
 
