@@ -2,7 +2,7 @@
     <div class="c-section-listtalents">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 a-stagger-element__listtalents" v-for="(element, index) in mutableTalents" :key="index">
+                <div class="col-xl-8 offset-xl-0 col-lg-12 offset-lg-0 col-md-16 offset-md-4 a-stagger-element__listtalents" v-for="(element, index) in mutableTalents" :key="index">
                     <card-talent 
                         :firstname="element.firstname"
                         :lastname="element.lastname.slice(0,1)"

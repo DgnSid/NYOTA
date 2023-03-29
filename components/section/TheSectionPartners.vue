@@ -119,7 +119,7 @@ Style scoped
             margin-bottom: 60px;
         }
         .c-section-partners__title {
-            font-weight: 600;
+            font-weight: 400;
             font-family: $font-family-custom;
             font-size: 4.125rem;
             line-height: 4.5rem;
@@ -178,13 +178,15 @@ Style scoped
                 height: auto;
 
                 filter: grayscale(1);
+                opacity: .5;
 
-                transition: filter .2s ease-out;
+                transition: filter .2s ease-out, opacity .2s ease-out;
             }
 
             &:hover {
                 .c-section-partners__logo__image {
                     filter: grayscale(0);
+                    opacity: 1;
                 }
             }
         }

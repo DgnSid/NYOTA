@@ -1,7 +1,7 @@
 <template>
     <section class="c-section-twocols" :class="background ? '--background' : ''">
         <div class="container">
-            <div class="row">
+            <div class="row ai-center">
                 <div class="col-lg-8 p-r order-md-2 order-sm-2 order-2" :class="is_image_left ? 'order-lg-1' : 'offset-lg-2 order-lg-2'">
                     <ImageBordered 
                         :url="this.$config.API_URL + image.url"
@@ -9,7 +9,7 @@
                         class_string="--right a-stagger-element__twocols"
                     />
                 </div>
-                <div class="col-lg-14 order-md-1 order-sm-1 order-1" :class="is_image_left ? 'offset-lg-2 order-lg-2' : 'order-lg-1'">
+                <div class="col-lg-14 order-md-1 order-sm-1 order-1" :class="is_image_left ? 'offset-lg-2 order-lg-2 ' + class_string : 'order-lg-1 ' + class_string">
                     <h2 class="c-section-twocols__title a-stagger-element__twocols">
                         {{title}}
                     </h2>
@@ -50,6 +50,7 @@
             cta: Object,
             is_image_left: Boolean,
             background: Boolean,
+            class_string: String,
         },
         mounted() {
             const gsap = this.$gsap;
@@ -76,6 +77,10 @@ Style scoped
         background-color: $white;
         padding: 120px 0;
 
+        .--padding {
+            padding: 120px 0;
+        }
+
         &.--background {
             background-image: url('/gradient-home.png');
             background-position: center;
@@ -84,7 +89,7 @@ Style scoped
 
         .c-section-twocols__title {
             font-family: $font-family-custom;
-            font-weight: 600;
+            font-weight: 400;
             
             font-size: 4.125rem;
             line-height: 4.5rem;

@@ -20,6 +20,7 @@
                 :image="aboutDataApi.blockAboutUs.image"
                 :is_image_left="true"
                 :background="false"
+                class_string=""
             />
             <shape-ellipse :size="148" class="c-about-ellipse-whoweare"/>
         </div>

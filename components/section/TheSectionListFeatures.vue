@@ -96,6 +96,7 @@ Style scoped
             line-height: 4.5rem;
             color: $black;
             padding-bottom: 60px;
+            font-weight: 400;
 
             @include media-breakpoint-down(md) {
                 font-size: 2.225rem;

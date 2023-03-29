@@ -3,13 +3,10 @@
         <NuxtLink class="c-card-talent__link" :to="'/talents/' + id"></NuxtLink>
         <div class="c-card-talent__top">
             <div class="c-card-talent__top__photocontainer">
-                <!---
-                    <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + mutable_photo.contentUrl" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
-                -->
                 <img v-if="profilePicture" class="c-card-talent__top__photo" :src="this.$config.API_URL + profilePicture" :alt="'Avatar of ' + firstname + ' ' + lastname + '.'" />
                 <no-avatar v-else />
             </div>
-            <div>
+            <div class="c-card-talent__top__textcontainer">
                 <div class="c-card-talent__top__name">{{ firstname }} {{ lastname }}.</div>
                 <div class="c-card-talent__top__job">{{ job }}</div>
             </div>
@@ -30,7 +27,7 @@
             </div>
         </div>
         <div v-if="hasBeenConsulted" class="c-card-talent__seen">
-            <blue-check class="mr-sm" />
+            <blue-check class="mr-xs" />
             {{ $t('pagetalentlist.card.already_seen') }}
         </div>
         <div class="c-card-talent__bottom">
@@ -158,6 +155,10 @@ Style scoped
                 margin-right: 16px;
             }
 
+            .c-card-talent__top__textcontainer {
+                max-width: 160px;
+            }
+
             .c-card-talent__top__arrow {
                 margin-left: 16px;
                 cursor: pointer;
@@ -171,6 +172,10 @@ Style scoped
                 background-image: url('/arrow.svg');
                 background-repeat: no-repeat;
                 background-position: center center;
+
+                position: absolute;
+                top: 40px;
+                right: 25px;
             }
         }
         .c-card-talent__body {
@@ -188,7 +193,7 @@ Style scoped
 
         .c-card-talent__seen {
             position: absolute;
-            bottom: 20px;
+            bottom: 24px;
             right: 24px;
         }
 
@@ -206,6 +211,7 @@ Style scoped
                 text-transform: uppercase;
                 padding: 5px 16px;
                 border-radius: 40px;
+                letter-spacing: 1px;
             }
         }
 
