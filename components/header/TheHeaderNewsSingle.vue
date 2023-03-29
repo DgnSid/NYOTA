@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="row">
                     <div class="offset-lg-1 col-lg-18 p-r">
-                        <ImageBordered 
+                        <ImageBordered
                             :url="this.$config.API_URL + image.url"
                             :alt="image.alt"
                             class_string="--left"
@@ -69,11 +69,11 @@
                             </a>
                         </div>
                     </div>
-                </div>            
+                </div>
             </div>
         </div>
-        
-       
+
+
     </header>
 </template>
 
@@ -92,7 +92,7 @@
         components: {ImageBordered, ShapeEllipse, Facebook, Twitter, Linkedin, Link},
         data () {
             return {
-                currentpage_url: window.location.href
+                currentpage_url: process.client ? window.location.href : `https://${this.$nuxt.context.req.headers.host}/${this.$route.path}`
             }
         },
         props: {
@@ -234,7 +234,7 @@ Style scoped
                     border: 1px solid $orange;
 
                     &:hover {
-                        background: rgba($orange, .5);                        
+                        background: rgba($orange, .5);
                     }
                 }
             }

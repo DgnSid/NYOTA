@@ -3,33 +3,32 @@ import path from 'path'
 import fs from 'fs'
 
 export default {
-
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: 'nyota.adveris.dev', // default: localhost
-  //   https: {
-  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-  //   },
-  // },
+  server: {
+    port: 3010, // default: 3000
+    //   host: 'nyota.adveris.dev', // default: localhost
+    //   https: {
+    //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+    //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    //   },
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  ssr: false,
+  ssr: true,
 
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  target: 'static',
+  target: 'server',
 
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || 'Nuxt starter',
+    title: 'Nyota',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -65,7 +64,7 @@ export default {
     '~/plugins/mixins.js',
     '~/plugins/axios',
     { src: '@/plugins/slider', mode: 'client' },
-    { src: '@/plugins/persistedState.js' },
+    { src: '@/plugins/persistedState.js', mode: 'client' },
   ],
 
   /*
@@ -210,7 +209,7 @@ export default {
       scrollTo: true
     }
   },
-  
+
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -218,6 +217,7 @@ export default {
   build: {
     extractCSS: true,
     transpile: [
+      "defu",
       "direction",
       "comma-separated-tokens",
       "bcp-47-match",
