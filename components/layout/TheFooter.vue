@@ -8,7 +8,7 @@ Template
         <div class="container">
             <div class="c-footer__top">
                 <nuxt-link class="c-footer__top__logo a-stagger-element__footer" :to="'/' + currentLang">
-                    <img src="/logo-nyota.png" alt="Nyota logo" />
+                    <img src="/logo-nyota.svg" alt="Nyota logo" />
                 </nuxt-link>
                 <div  class="c-footer__top__text a-stagger-element__footer">
                     {{$t('footer.baseline')}}
@@ -45,7 +45,7 @@ Template
                     <cta 
                         url="/contact"
                         :title="$t('footer.contact')"
-                        class="--bordered cta-h-small"
+                        class="--bordered"
                     />
                 </div>
             </div>

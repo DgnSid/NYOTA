@@ -207,6 +207,7 @@
                 font-size: 4rem;
                 line-height: 4rem;
                 margin-bottom: 16px;
+                font-weight: 400;
             }
 
             .c-section-talent-curriculum__top__school {
@@ -237,14 +238,14 @@
             .c-section-talent-curriculum__bottom-container__title {
                 font-size: 2rem;
                 line-height: 2rem;
-                font-weight: lighter;
+                font-weight: 200;
                 margin-bottom: 8px;
                 font-family: $font-family-default;
             }
 
             .c-section-talent-curriculum__bottom-container__text {
                 color: $orange;
-                font-weight: 800;
+                font-weight: 700;
                 font-size: 1.125rem;
                 line-height: 1.125rem;
                 margin-bottom: 40px;

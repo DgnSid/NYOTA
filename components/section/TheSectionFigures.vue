@@ -81,6 +81,7 @@ Style scoped
         .c-section-figures__title {
             font-size: 4.125rem;
             line-height: 4.5rem;
+            font-weight: 400;
 
             @include media-breakpoint-down(md) {
                 font-size: 3.125rem;
@@ -102,7 +103,7 @@ Style scoped
                 z-index: 2;
                 top: 0;
                 left: 0;
-                background-color: rgba($blue, .5);
+                background-color: rgba($blue-alt, .7);
             }
 
             .c-section-figures__container__image {

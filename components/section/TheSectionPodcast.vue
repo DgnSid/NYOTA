@@ -84,7 +84,7 @@ Style scoped
 
         .c-section-podcast__title {
             font-family: $font-family-custom;
-            font-weight: 600;
+            font-weight: 400;
             
             font-size: 4.125rem;
             line-height: 4.5rem;

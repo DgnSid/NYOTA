@@ -28,11 +28,11 @@
                                         <div class="c-header-profilecompany__content__infos__name a-stagger-element__header-profile-company">{{contact_name}}</div>
                                         <div class="c-header-profilecompany__content__infos__role a-stagger-element__header-profile-company">{{contact_role}}</div>
                                         <a :href="'mailto:' + contact_mail" class="c-header-profilecompany__content__infos__phone a-stagger-element__header-profile-company">
-                                            <IconMail class="mr-xs" />
+                                            <IconMail class="mr-sm" />
                                             <div>{{contact_mail}}</div>
                                         </a>
                                         <a :href="'tel:' + contact_phone" class="c-header-profilecompany__content__infos__mail a-stagger-element__header-profile-company">
-                                            <IconPhone class="mr-xs" />
+                                            <IconPhone class="mr-sm" />
                                             <div>{{contact_phone}}</div>
                                         </a>
                                         <div @click="openFormInfo()">
@@ -275,6 +275,10 @@ Style scoped
                     display: flex;
                     align-items: center;
                     color: $black;
+
+                    svg {
+                        min-width: 32px;
+                    }
                 }
 
                 .c-header-profilecompany__content__infos__mail {
@@ -282,6 +286,10 @@ Style scoped
                     align-items: center;
                     color: $black;
                     margin-bottom: 20px;
+
+                    svg {
+                        min-width: 32px;
+                    }
                 }
 
                 .c-header-profilecompany__content__infos__file {
@@ -416,11 +424,14 @@ Style scoped
                 input[type="text"] {
                     height: 72px;
                     border: 1px solid $orange;
-                    max-width: 360px;
-                    width: 95%;
+                    width: 360px;
                     border-radius: 90px;
                     padding-left: 40px;
                     padding-right: 70px;
+
+                    @include media-breakpoint-down(sm) {
+                        width: 95%;  
+                    }
 
                     &::placeholder {
                         color: $orange;

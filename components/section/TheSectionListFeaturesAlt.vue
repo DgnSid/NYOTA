@@ -95,6 +95,7 @@ Style scoped
             line-height: 4.5rem;
             text-align: center;
             color: $black;
+            font-weight: 400;
 
             @include media-breakpoint-down(md) {
                 font-size: 2.225rem;
@@ -140,6 +141,8 @@ Style scoped
                 -webkit-text-fill-color: transparent;
                 max-width: 45%;
                 padding-right: 60px;
+
+                font-style: italic;
 
                 @include media-breakpoint-down(md) {
                     max-width: 90%;

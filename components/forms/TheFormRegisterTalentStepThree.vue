@@ -58,6 +58,7 @@
 								<span>{{back_title}}</span>
 							</nuxt-link>
 						    <button ref="submit" class="c-formregistertalent__bottom__submit --bordered disabled" @click="handleSubmit()">
+								<div class="c-formregistertalent__bottom__submit__cover"></div>
 						    	<span class="c-formregistertalent__bottom__submit__text">{{submit_title}}</span>
 						    </button>
                         </div>

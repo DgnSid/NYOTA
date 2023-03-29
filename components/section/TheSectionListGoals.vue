@@ -81,7 +81,7 @@ Style scoped
         }
 
         .c-section-listgoals__title {
-            font-weight: 600;
+            font-weight: 400;
             font-family: $font-family-custom;
             font-size: 4.125rem;
             line-height: 4.5rem;

@@ -159,6 +159,8 @@ Style scoped
                     border-radius: 20px;
                     margin-right: 20px;
                     background: $gradientOrange;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
                 }
 
                 .c-header-news-single__content__top__date {

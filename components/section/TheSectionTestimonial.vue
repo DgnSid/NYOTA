@@ -151,6 +151,7 @@
             margin-bottom: 80px;
             max-width: 925px;
             margin: 0 auto;
+            font-weight: 400;
 
             @include media-breakpoint-down(md) {
                 font-size: 2.225rem;

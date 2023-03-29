@@ -137,6 +137,7 @@ Style scoped
         .c-section-listnews__title {
             font-size: 4.125rem;
             line-height: 4.5rem;
+            font-weight: 400;
             color: $black;
             padding-bottom: 60px;
             text-align: center;
@@ -194,6 +195,7 @@ Style scoped
                     line-height: 4.2rem;
                     font-family: $font-family-custom;
                     margin-bottom: 40px;
+                    font-weight: 400;
 
                     @include media-breakpoint-down(md) {
                         font-size: 2.825rem;
