@@ -1,6 +1,6 @@
 <template>
     <div class="c-cta">
-        <NuxtLink v-if="url" class="c-cta__link" :to="url"></NuxtLink>
+        <nuxt-link v-if="url" class="c-cta__link" :to="url"></nuxt-link>
         <div class="c-cta__cover"></div>
         <span class="c-cta__text">{{title}}</span>
     </div>
@@ -59,6 +59,7 @@ Style scoped
 
         .c-cta__link {
             position: absolute;
+            z-index: 3;
             top: 0;
             left: 0;
             width: 100%;
