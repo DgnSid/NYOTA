@@ -11,7 +11,7 @@
         "news_title": "Actualités",
         "news_url": "/news",
         "register_title": "S'inscrire",
-        "login_title": "Connexion",
+        "login_title": "Se connecter",
         "login_url": "/login",
         "disconnect_title": "Se déconnecter",
         "profile_title": "Mon profil",
