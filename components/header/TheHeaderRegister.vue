@@ -61,8 +61,8 @@ Style scoped
 <style lang="scss" scoped>
     .c-header-register {
         position: relative;
-        height: 380px;
-
+        min-height: calc(100vh - 215px);
+        overflow: hidden;
         display: flex;
         align-items: center;
 
