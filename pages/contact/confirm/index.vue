@@ -10,12 +10,12 @@ Template
             :text="$t('contactconfirm.confirm_text')"
             :logo="true"
         />
-        <TheFormRegisterTalentStepConfirm
+        <!-- <TheFormRegisterTalentStepConfirm
             :title="$t('contactconfirm.body_title')"
             :text="$t('contactconfirm.body_text')"
             :cta_title="$t('contactconfirm.cta_title')"
             :cta_url="$t('contactconfirm.cta_url')"
-        />
+        /> -->
     </div>
 </template>
 

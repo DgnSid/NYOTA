@@ -25,21 +25,21 @@ Template
                     </nuxt-link>
                 </div>
                 <div class="c-footer__top__social a-stagger-element__footer">
-                    <nuxt-link :to="$t('footer.menu.facebook_url')">
+                    <a :href="$t('footer.menu.facebook_url')">
                         <div class="c-footer__top__social__element">
                             <Facebook />
                         </div>
-                    </nuxt-link>
-                    <nuxt-link :to="$t('footer.menu.instagram_url')">
+                    </a>
+                    <a :href="$t('footer.menu.instagram_url')">
                         <div class="c-footer__top__social__element">
                             <Instagram />
                         </div>
-                    </nuxt-link>
-                    <nuxt-link :to="$t('footer.menu.linkedin_url')">
+                    </a>
+                    <a :href="$t('footer.menu.linkedin_url')">
                         <div class="c-footer__top__social__element">
                             <Linkedin />
                         </div>
-                    </nuxt-link>
+                    </a>
                 </div>
                 <div class="a-stagger-element__footer">
                     <cta 

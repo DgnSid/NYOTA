@@ -44,6 +44,10 @@ Style scoped
                 color: $orange;
             }
 
+            .c-cta__cover {
+                background: $white;
+            }
+
             &:hover {
                 background: $gradientOrange;
 

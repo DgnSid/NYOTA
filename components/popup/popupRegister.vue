@@ -11,7 +11,7 @@ Template
                 <close />
             </div>
             <div class="c-popup-register__content__left">
-                <h2 class="c-popup-register__content__left__title">{{ $t('popup_register.talent.type') }}</h2>
+                <div class="c-popup-register__content__left__title">{{ $t('popup_register.talent.type') }}</div>
                 <div class="c-popup-register__content__left__intro">{{ $t('popup_register.talent.title') }}</div>
                 <div class="c-popup-register__content__left__text">{{ $t('popup_register.talent.text') }}</div>
                 <div @click="closePopup">
@@ -23,7 +23,7 @@ Template
                 </div>
             </div>
             <div class="c-popup-register__content__right">
-                <h2 class="c-popup-register__content__right__title">{{ $t('popup_register.company.type') }}</h2>
+                <div class="c-popup-register__content__right__title">{{ $t('popup_register.company.type') }}</div>
                 <div class="c-popup-register__content__right__intro">{{ $t('popup_register.company.title') }}</div>
                 <div class="c-popup-register__content__right__text">{{ $t('popup_register.company.text') }}</div>
                 <div @click="closePopup">
@@ -148,6 +148,7 @@ Style scoped
                     font-size: 1.25rem;
                     margin-bottom: 4px;
                     color: $white;
+                    font-family: $font-family-custom;
 
                     @include media-breakpoint-down(md) {
                         font-size: 1.1rem;
@@ -190,6 +191,7 @@ Style scoped
                     font-size: 1.25rem;
                     margin-bottom: 4px;
                     color: $orange;
+                    font-family: $font-family-custom;
 
                     @include media-breakpoint-down(md) {
                         font-size: 1.1rem;

@@ -72,7 +72,12 @@ export default {
             hid: 'description',
             name: 'description',
             content: this.homeDataApi.seo.description
-          }
+          },
+          {hid: 'og:title', property: 'og:title', content: this.homeDataApi.seo.title},
+          {hid: 'og:description', property: 'og:description', content: this.homeDataApi.seo.description},
+          {hid: 'og:url', property: 'og:url', content: 'document.location.href'},
+          {hid: 'og:image', property: 'og:image', content: this.homeDataApi.blockHeader.imageTop},
+          {hid: 'og:site_name', property: 'og:site_name', content: 'Nyota'},
         ]
       }
     },

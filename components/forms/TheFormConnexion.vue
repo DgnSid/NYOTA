@@ -51,7 +51,7 @@
                     username: '',
                     password: '',
                 },
-				login_type: this.$route.query.type == "t" ? 'talent' : 'company',
+				login_type: this.$route.query.type == "c" ? 'company' : 'talent',
                 formErrors: false,
                 formErrorsMessage: "",
                 isLogout: false,
