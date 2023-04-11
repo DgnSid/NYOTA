@@ -18,7 +18,8 @@
         "profile_title": "My profile",
         "profile_company_url": "/en/profile/company/",
         "profile_talent_url": "/en/profile/talent/",
-        "disconnect_url": "/en/login?logout=true"
+        "disconnect_url": "/en/login?logout=true",
+        "burger": "Close"
     },
     "popup_register": {
         "talent": {
@@ -45,9 +46,9 @@
             "talent_url": "/en/landing/talent",
             "company": "Company",
             "company_url": "/en/landing/company",
-            "facebook_url": "#",
-            "linkedin_url": "#",
-            "instagram_url": "#"
+            "facebook_url": "https://www.facebook.com/profile.php?id=100087268223336",
+            "linkedin_url": "https://www.linkedin.com/company/nyota-recrutement/",
+            "instagram_url": "https://www.instagram.com/nyota_hr/"
         },
         "mentions": "Legal notice",
         "mentions_url": "/en/legal-notice",

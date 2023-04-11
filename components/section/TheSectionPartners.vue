@@ -67,6 +67,9 @@
                 api_url: this.$config.API_URL,
                 swiperOptions: {
                     loop: true,
+                    autoplay: {
+                        delay: 2000,
+                    },
                     slidesPerView: 2,
                     spaceBetween: 30,
                     speed: 1000,

@@ -95,7 +95,7 @@
 				
 			},
 			isFormSubmittable() {
-				if(this.input_mail) {
+				if(this.input_mail && this.input_message && this.input_name) {
 					console.log('submittable')
 					this.$refs.submit.classList.remove('disabled')
 					this.is_form_submittable = true
@@ -133,6 +133,14 @@
  			 	} catch (error) {
  			 	  	console.log('error:', error)
  			 	}
+			}
+		},
+		watch: {
+			input_message () {
+				this.isFormSubmittable()
+			},
+			input_name () {
+				this.isFormSubmittable()
 			}
 		},
 		beforeDestroy() {

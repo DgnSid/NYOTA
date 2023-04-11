@@ -81,6 +81,10 @@ Style scoped
         background-position: center;
         background-size: cover;
 
+        @include media-breakpoint-down(sm) {
+            overflow-x: hidden;
+        }
+
         .c-header-connexion__content {
             position: absolute;
             top: 170px;
@@ -123,6 +127,10 @@ Style scoped
         .c-header-connexion__text {
             color: $black;
             max-width: 600px;
+
+            @include media-breakpoint-down(sm) {
+                max-width: 100%;
+            }
         }
 
         .c-header-connexion__image {

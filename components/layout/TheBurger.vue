@@ -11,7 +11,7 @@ Template
            <span class="burger__bar"></span>
        </div>
        <div class="burger__text">
-           <span v-if="isOpen">{{ textOpen }}</span>
+           <span v-if="isOpen">{{ $t('menu.burger') }}</span>
            <span v-else>{{ text }}</span>
        </div>
    </button>

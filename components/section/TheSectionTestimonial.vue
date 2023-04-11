@@ -80,7 +80,7 @@
                     watchOverflow: true,
                     loop: true,
                     slidesPerView: 1,
-                    slidesPerGroup: 2,
+                    slidesPerGroup: 1,
                     spaceBetween: 30,
                     speed: 1000,
                     pagination: {
