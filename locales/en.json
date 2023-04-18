@@ -8,8 +8,8 @@
         "company_url": "/en/landing/company",
         "contact_title": "Contact",
         "contact_url": "/en/contact",
-        "news_title": "News",
-        "news_url": "/en/news",
+        "news_title": "Media",
+        "news_url": "/en/medias",
         "register_title": "Register",
         "register_url": "/en/register",
         "login_title": "Login",
@@ -25,24 +25,24 @@
         "talent": {
             "type": "Talent",
             "title": "I am looking for an opportunity in Africa",
-            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "text": "I’m looking for an opportunity in Africa. I am a student, graduate or experienced professional and I am looking for an opportunity related to the African continent.",
             "cta_url": "/en/register/talent/steps/1",
             "cta_title": "Register"
         },
         "company": {
             "type": "Company",
             "title": "I am a company based in Africa",
-            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "text": "I am a company linked to the African continent. I am a company based on the continent where I work in connection with Africa and I seek to recruit talent.",
             "cta_url": "/en/register/company",
             "cta_title": "Register"
         }
     },
     "footer": {
-        "baseline": "We connect top talent with leading global companies",
+        "baseline": "We connect the best talent with companies linked to the African continent",
         "menu": {
             "about": " About",
             "about_url": "/en/about",
-            "talent": "Talent",
+            "talent": "Talents",
             "talent_url": "/en/landing/talent",
             "company": "Company",
             "company_url": "/en/landing/company",
@@ -61,15 +61,15 @@
     },
     "section_figures_title": "Nyota in<br>figures it's...",
     "single_news": {
-        "back": "Back to news",
+        "back": "Back to medias",
         "published": "published",
         "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser EN"
     },
     "pagehome": {
         "section_news": {
-            "title": "Discover our news",
-            "cta_url": "/en/news/page/1",
-            "cta_title": "See all news"
+            "title": "Discover our medias",
+            "cta_url": "/en/medias/page/1",
+            "cta_title": "See all medias"
         },
         "section_features": {
             "cta": {
@@ -465,6 +465,11 @@
             "error_message_password": "Field is not correct. Password has to have more than 8 characters. Passwords have to be the same"
         }
     },
+    "pagenews": {
+        "header": {
+            "title": "Medias"
+        }
+    },
     "pageconnexion": {
         "label_type": "You are",
         "id_type": "id_type",
@@ -498,10 +503,10 @@
             "cta_url": "/en/register/talent/steps/1"
         },
         "section_news": {
-            "title": "Discover our news",
+            "title": "Discover our medias",
             "hook": "Are you<br>interested ?",
-            "cta_title": "Discover our news",
-            "cta_url": "/en/news/page/1",
+            "cta_title": "Discover our medias",
+            "cta_url": "/en/medias/page/1",
             "cta_first_text": "I am a talent",
             "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",
@@ -524,10 +529,10 @@
             "title": "Enrich your professional career"
         },
         "section_news": {
-            "title": "Discover our news",
+            "title": "Discover our medias",
             "hook": "Are you<br>interested?",
-            "cta_title": "Discover our news",
-            "cta_url": "/en/news/page/1",
+            "cta_title": "Discover our medias",
+            "cta_url": "/en/medias/page/1",
             "cta_first_text": "You are a talent",
             "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",
@@ -559,10 +564,10 @@
             "title": "Most of Nyota"
         },
         "section_news": {
-            "title": "Discover our news",
+            "title": "Discover our medias",
             "hook": "Are you<br>interested?",
-            "cta_title": "Discover our news",
-            "cta_url": "/en/news/page/1",
+            "cta_title": "Discover our medias",
+            "cta_url": "/en/medias/page/1",
             "cta_first_text": "I am a talent",
             "cta_first_url": "/en/register/talent/steps/1",
             "cta_second_text": "Discover our offers",

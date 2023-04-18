@@ -5,14 +5,14 @@
             :big_title="landingCompanyDataApi.blockHeader.bigTitle"
             :big_title_alt="landingCompanyDataApi.blockHeader.bigTitleAlt"
             class_title="--small"
-            :text="$t('pagelandingcompany.header.list')"
+            :text="landingCompanyDataApi.blockHeader.text"
             :image_top="landingCompanyDataApi.blockHeader.imageTop"
             :image_bottom="landingCompanyDataApi.blockHeader.imageBottom"
             :ellipse="true"
             :bulb="false"
             :logo="true"
             :share="true"
-            :list="landingCompanyDataApi.blockHeader.text"
+            :list="landingCompanyDataApi.blockHeader.list"
             :cta="$t('pagelandingcompany.header.cta')"
         />
         
@@ -31,10 +31,12 @@
             :background="true"
         />        
         
-        <TheSectionListGoals
-            :title="landingCompanyDataApi.blockFormulas.title"
-            :goals="landingCompanyDataApi.blockFormulas.formulas"
-        />
+        <div v-if="landingCompanyDataApi.blockFormulas.formulas.length >= 1">
+          <TheSectionListGoals
+              :title="landingCompanyDataApi.blockFormulas.title"
+              :goals="landingCompanyDataApi.blockFormulas.formulas"
+          />
+        </div>
         
         <TheSectionListFeaturesAlt
             :title="$t('pagelandingcompany.section_feature.title')"

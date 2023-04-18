@@ -24,7 +24,8 @@
             :cta="$t('pagehome.section_features.cta')"
             :features="homeDataApi.blockFeatures.features"
         />
-        <div class="p-r">
+
+        <div class="p-r" v-if="homeDataApi.blockFormulas.formulas.length >= 1">
           <shape-ellipse class="c-section-listfeatures-ellipse" :size="140" />
           <TheSectionListFormulas
               :title="homeDataApi.blockFormulas.title"

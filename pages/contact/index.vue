@@ -2,7 +2,6 @@
     <div class="layout-contact">
         <TheHeaderSmall
             :title="$t('page_contact.title')"
-            :text="$t('page_contact.text')"
             :logo="true"
         />
         <TheFormContact />

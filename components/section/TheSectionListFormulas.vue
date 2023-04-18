@@ -64,7 +64,6 @@ Style scoped
     .c-section-listformulas {
         padding: 60px 0 150px 0;
         background-color: $white;
-
         .c-section-listformulas__title {
             font-weight: 400;
             font-family: $font-family-custom;

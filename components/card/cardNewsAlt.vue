@@ -1,6 +1,6 @@
 <template>
     <article class="c-card-news-alt" >
-        <NuxtLink class="c-card-news-alt__link" :to="'/news/' + slug"></NuxtLink>
+        <NuxtLink class="c-card-news-alt__link" :to="'/medias/' + slug"></NuxtLink>
         <div class="c-card-news-alt__image">
             <ImageBordered 
                 :url="this.$config.API_URL + image_url"

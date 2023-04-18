@@ -1,7 +1,7 @@
 <script>
 export default {
   middleware({ redirect }) {
-    return redirect('301', '/news/page/1');
+    return redirect('301', '/medias/page/1');
   },
 };
 </script>
