@@ -24,14 +24,14 @@
         "talent": {
             "type": "Talent",
             "title": "Je cherche une opportunité en Afrique",
-            "text": "Je cherche une opportunité en Afrique. Je suis étudiant, jeune diplômé ou professionnel expérimenté et je suis à la recherche d’une opportunité liée au continent africain.",
+            "text": "Je suis étudiant, jeune diplômé ou professionnel expérimenté et je suis à la recherche d’une opportunité liée au continent africain.",
             "cta_url": "/register/talent/steps/1",
             "cta_title": "S'inscrire"
         },
         "company": {
             "type": "Entreprise",
-            "title": "Je suis une entreprise implantée en Afrique",
-            "text": "Je suis une entreprise liée au continent africain. Je suis une entreprise basée sur le continent ou je travaille en lien avec l’Afrique et je cherche à recruter des talents.",
+            "title": "Je suis une entreprise liée au continent africain.",
+            "text": "Je suis une entreprise basée sur le continent ou je travaille en lien avec l’Afrique et je cherche à recruter des talents.",
             "cta_url": "/register/company",
             "cta_title": "S'inscrire"
         }

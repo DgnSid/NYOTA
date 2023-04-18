@@ -1,6 +1,6 @@
 <template>
     <article class="c-card-news-alt" >
-        <NuxtLink class="c-card-news-alt__link" :to="'/medias/' + slug"></NuxtLink>
+        <NuxtLink class="c-card-news-alt__link" :to="this.currentLang + '/medias/' + slug"></NuxtLink>
         <div class="c-card-news-alt__image">
             <ImageBordered 
                 :url="this.$config.API_URL + image_url"
@@ -38,7 +38,12 @@
             image_alt: String,
             image_style: String,
             slug: String,
-        }
+        },
+		computed: {
+            currentLang () {
+                return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
+            },
+		}
     }
 </script>
 
