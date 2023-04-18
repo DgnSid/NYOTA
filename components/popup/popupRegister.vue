@@ -134,6 +134,7 @@ Style scoped
             }
 
             .c-popup-register__content__left {
+                position: relative;
                 width: 50%;
                 background-color: $blue-alt;
                 color: $white;
@@ -169,15 +170,24 @@ Style scoped
                 }
                 .c-popup-register__content__left__text {
                     font-size: 1rem;
-                    margin-bottom: 30px;
+                    margin-bottom: 80px;
                 }
 
                 .c-popup-register__content__left__cta {
                     display: table;
+                    position: absolute;
+                    bottom: 80px;
+                    left: 60px;
+
+                    @include media-breakpoint-down(md) {
+                        bottom: 0;
+                        left: 0;
+                    }
                 }
             }
 
             .c-popup-register__content__right {
+                position: relative;
                 width: 50%;
                 color: $black;
                 padding: 80px 60px;
@@ -212,11 +222,19 @@ Style scoped
                 }
                 .c-popup-register__content__right__text {
                     font-size: 1rem;
-                    margin-bottom: 30px;
+                    margin-bottom: 80px;
                 }
 
                 .c-popup-register__content__right__cta {
+                    position: absolute;
+                    bottom: 80px;
+                    left: 60px;
                     display: table;
+
+                    @include media-breakpoint-down(md) {
+                        bottom: 0;
+                        left: 0;
+                    }
                 }
             }
         }
