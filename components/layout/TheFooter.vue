@@ -54,7 +54,6 @@ Template
             <span class="c-footer__bottom__element a-stagger-element__footer">© {{current_year}} Nyota</span>
             <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" :to="$t('footer.mentions_url')">{{$t('footer.mentions')}}</nuxt-link>
             <nuxt-link class="c-footer__bottom__element a-stagger-element__footer" :to="$t('footer.rgpd_url')">{{$t('footer.rgpd')}}</nuxt-link>
-            <a class="c-footer__bottom__element a-stagger-element__footer" :href="$t('footer.adveris_url')" target="_blank" rel="noopener noreferrer">{{$t('footer.adveris')}}</a>
         </div>
     </div>
 </template>

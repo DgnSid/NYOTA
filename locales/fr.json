@@ -8,8 +8,8 @@
         "company_url": "/landing/company",
         "contact_title": "Contact",
         "contact_url": "/contact",
-        "news_title": "Actualités",
-        "news_url": "/news",
+        "news_title": "Média",
+        "news_url": "/medias",
         "register_title": "S'inscrire",
         "login_title": "Se connecter",
         "login_url": "/login",
@@ -24,30 +24,30 @@
         "talent": {
             "type": "Talent",
             "title": "Je cherche une opportunité en Afrique",
-            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "text": "Je cherche une opportunité en Afrique. Je suis étudiant, jeune diplômé ou professionnel expérimenté et je suis à la recherche d’une opportunité liée au continent africain.",
             "cta_url": "/register/talent/steps/1",
             "cta_title": "S'inscrire"
         },
         "company": {
             "type": "Entreprise",
             "title": "Je suis une entreprise implantée en Afrique",
-            "text": "Vivamus interdum massa quis maximus facilisis. Integer imperdiet mattis nisi a accumsan. Morbi finibus tincidunt vestibulum. Phasellus sed accumsan sapien, eget lacinia sem.",
+            "text": "Je suis une entreprise liée au continent africain. Je suis une entreprise basée sur le continent ou je travaille en lien avec l’Afrique et je cherche à recruter des talents.",
             "cta_url": "/register/company",
             "cta_title": "S'inscrire"
         }
     },
     "section_figures_title": "Nyota en<br>chiffres c’est...",
     "single_news": {
-        "back": "Retour aux actualités",
+        "back": "Retour aux médias",
         "published": "Publié le",
         "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser FR"
     }, 
     "footer": {
-        "baseline": "Nous connectons les meilleurs talents avec de grandes entreprises mondiales",
+        "baseline": "Nous connectons les meilleurs talents avec des entreprises liées au continent africain",
         "menu": {
             "about": " A propos",
             "about_url": "/about",
-            "talent": "Talent",
+            "talent": "Talents",
             "talent_url": "/landing/talent",
             "company": "Entreprises",
             "company_url": "/landing/company",
@@ -66,9 +66,9 @@
     },
     "pagehome": {
         "section_news": {
-            "title": "Découvrez nos actualités",
-            "cta_url": "/news/page/1",
-            "cta_title": "Voir toutes les actualités"
+            "title": "Découvrez nos médias",
+            "cta_url": "/medias/page/1",
+            "cta_title": "Voir tous les médias"
         },
         "section_features": {
             "cta": {
@@ -92,10 +92,10 @@
             "cta_url": "/register/talent/steps/1"
         },
         "section_news": {
-            "title": "Découvrez nos actualités",
+            "title": "Découvrez nos médias",
             "hook": "Vous êtes<br>intéressés ?",
-            "cta_title": "Découvrez nos actualités",
-            "cta_url": "/news/page/1",
+            "cta_title": "Découvrez nos médias",
+            "cta_url": "/medias/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
             "cta_first_url": "/register/talent/steps/1",
             "cta_second_text": "Découvrir nos offres",
@@ -121,10 +121,10 @@
             "title": "Les plus de Nyota"
         },
         "section_news": {
-            "title": "Découvrez nos actualités",
+            "title": "Découvrez nos médias",
             "hook": "Vous êtes<br>intéressés ?",
-            "cta_title": "Voir toutes les actualités",
-            "cta_url": "/news/page/1",
+            "cta_title": "Voir tous nos médias",
+            "cta_url": "/medias/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
             "cta_first_url": "/register/talent/steps/1",
             "cta_second_text": "Découvrir nos offres",
@@ -147,10 +147,10 @@
             "title": "Enrichir son parcours professionnel"
         },
         "section_news": {
-            "title": "Découvrez nos actualités",
+            "title": "Découvrez nos médias",
             "hook": "Vous êtes<br>intéressés ?",
-            "cta_title": "Voir toutes les actualités",
-            "cta_url": "/news/page/1",
+            "cta_title": "Voir tous nos médias",
+            "cta_url": "/medias/page/1",
             "cta_first_text": "JE SUIS UN TALENT",
             "cta_first_url": "/register/talent/steps/1",
             "cta_second_text": "Découvrir nos offres",
@@ -632,7 +632,7 @@
     },
     "pagenews": {
         "header": {
-            "title": "Actualités"
+            "title": "Médias"
         }
     },
     "page_profile_talent": {
