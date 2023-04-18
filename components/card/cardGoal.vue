@@ -44,7 +44,7 @@ Style scoped
         position: relative;
         border: 1px solid $orange;
         border-radius: 20px;
-        padding: 40px 20px 40px 20px;
+        padding: 40px 20px 104px 20px;
         height: 100%;
 
         @include media-breakpoint-down(md) {
@@ -89,6 +89,25 @@ Style scoped
             text-align: center;
             margin-top: 24px;
             margin-bottom: 24px;
+        }
+
+        .c-card-goal__cta-container {
+            position: absolute;
+            width: 220px;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include media-breakpoint-down(md) {
+                position: static;
+                transform: unset;
+                left: unset;
+                bottom: unset;
+
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
         }
     }
 </style>

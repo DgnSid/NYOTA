@@ -25,14 +25,14 @@
         "talent": {
             "type": "Talent",
             "title": "I am looking for an opportunity in Africa",
-            "text": "I’m looking for an opportunity in Africa. I am a student, graduate or experienced professional and I am looking for an opportunity related to the African continent.",
+            "text": "I am a student, graduate or experienced professional and I am looking for an opportunity related to the African continent.",
             "cta_url": "/en/register/talent/steps/1",
             "cta_title": "Register"
         },
         "company": {
             "type": "Company",
-            "title": "I am a company based in Africa",
-            "text": "I am a company linked to the African continent. I am a company based on the continent where I work in connection with Africa and I seek to recruit talent.",
+            "title": "I am a company linked to the African continent.",
+            "text": "I am a company based on the continent where I work in connection with Africa and I seek to recruit talent.",
             "cta_url": "/en/register/company",
             "cta_title": "Register"
         }
