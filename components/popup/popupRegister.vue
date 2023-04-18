@@ -131,6 +131,7 @@ Style scoped
                 top: 15px;
                 right: 15px;
                 cursor: pointer;
+                z-index: 2;
             }
 
             .c-popup-register__content__left {
