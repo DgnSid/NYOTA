@@ -142,6 +142,9 @@ Style scoped
             padding-bottom: 60px;
             text-align: center;
 
+            max-width: 900px;
+            margin: 0 auto;
+
             @include media-breakpoint-down(md) {
                 font-size: 2.225rem;
                 line-height: 2.5rem;
