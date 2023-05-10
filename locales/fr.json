@@ -40,7 +40,9 @@
     "single_news": {
         "back": "Retour aux médias",
         "published": "Publié le",
-        "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser"
+        "bottom_title": "Si vous aimez cet article, ceux-ci pourraient vous intéresser",
+        "bottom_cta_title": "Voir toutes les actualités",
+        "bottom_cta_url": "/medias/page/1"
     }, 
     "footer": {
         "baseline": "Nous connectons les meilleurs talents avec des entreprises liées au continent africain",

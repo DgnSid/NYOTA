@@ -21,7 +21,7 @@ Template
         <TheSectionListNews
             :title="$t('single_news.bottom_title')"
             :news="singleNewsList['hydra:member']"
-            :cta="{'title': 'Voir toutes les actualités', 'url': '/news'}"
+            :cta="{'title': $t('single_news.bottom_cta_title'), 'url': $t('single_news.bottom_cta_url')}"
             :logo="true"
         />
     </div>

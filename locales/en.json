@@ -63,7 +63,9 @@
     "single_news": {
         "back": "Back to medias",
         "published": "published",
-        "bottom_title": "If you like this article, these might interest you"
+        "bottom_title": "If you like this article, these might interest you",
+        "bottom_cta_title": "See all news",
+        "bottom_cta_url": "/en/medias/page/1"
     },
     "pagehome": {
         "section_news": {
