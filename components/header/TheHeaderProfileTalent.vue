@@ -75,7 +75,7 @@
                                     <div @click="updateCv()">
                                         <cta
                                             url=""
-                                            title="Valider"
+                                            :title="$t('page_profile_talent.submit')"
                                             class="--bordered"
                                         />
                                     </div>
@@ -90,7 +90,7 @@
         <div class="c-header-profiletalent__popup-form-info" ref="form_edit" :class="{ active: is_form_edit_active }">
             <div class="c-header-profiletalent__popup-form-info__content">
                 <div class="c-header-profiletalent__popup-form-info__content__close" @click="closeFormInfo()">✕</div>
-                <h2 class="c-header-profiletalent__popup-form-info__content__title">Modifier mes infos</h2>
+                <h2 class="c-header-profiletalent__popup-form-info__content__title">{{$t('registerform.form.edit_infos')}}</h2>
                 
                 <form class="c-formedittalent" @submit.prevent="handleSubmit">
                     <div class="c-edittalent__field">
