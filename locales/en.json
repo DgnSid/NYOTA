@@ -21,6 +21,39 @@
         "disconnect_url": "/en/login?logout=true",
         "burger": "Close"
     },
+    "pagetalentsingle": {
+        "backtotalents_url": "/en/talents",
+        "backtotalents_text": "Back to candidates",
+        "formation": "Formation",
+        "experience": "Experience",
+        "post": "Position searched",
+        "sector": "Sector",
+        "download_cv": "Download cv",
+        "years": "year(s)",
+        "formation_experience": "Formation and experience"
+    },
+    "page_profile_talent": {
+        "editpicture" : "Edit picture",
+        "personal_info": "Personal informations",
+        "cv": "CV",
+        "modify": "Edit",
+        "label_lastname": "Name",
+        "label_firstname": "Firstname",
+        "label_phone": "Phone number",
+        "label_mail": "E-mail address",
+        "label_role": "Contact role",
+        "label_name": "Contact name",
+        "label_submit": "Edit",
+        "submit": "Submit"
+    },
+    "page_profile_company": {
+        "editpicture" : "Edit picture",
+        "talent_title": "Talents",
+        "talent_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget.",
+        "talent_search_title": "Search a profile",
+        "talent_placeholder": "Position"
+        
+    },
     "popup_register": {
         "talent": {
             "type": "Talent",
@@ -122,7 +155,7 @@
                 "title": "Formation and experience",
                 "url": "#",
                 "one": {
-                    "label_question": "WHAT INDUSTRY HAVE YOU WORKED IN?",
+                    "label_question": "What industry have you worked in?",
                     "id_answers": "id_answers",
                     "answers": [
                         {
@@ -180,7 +213,7 @@
                     ]
                 },
                 "two": {
-                    "label_question": "WHAT INDUSTRY DO YOU LIKE TO WORK IN?",
+                    "label_question": "What industry do you like to work in?",
                     "id_answers": "id_answers",
                     "answers": [
                         {
@@ -238,7 +271,7 @@
                     ]
                 },
                 "three": {
-                    "label_question": "IN WHAT FIELD DID YOU OBTAIN A SPECIALIZATION?",
+                    "label_question": "In what field did you obtain a specialization?",
                     "id_answers": "id_answers",
                     "answers": [
                         {
@@ -427,7 +460,7 @@
                     "placeholder_question_two": "Etablissement"
                 },
                 "twelve": {
-                    "label_question": "WHAT IS YOUR EXPECTED MINIMUM SALARY?"
+                    "label_question": "What is your expected minimum salary"
                 }
             },
             "three": {
@@ -457,6 +490,7 @@
             }
         },
         "form": {
+            "edit_infos": "Edit informations",
             "back_title": "Back",
             "next": "next",
             "submit": "validate",
@@ -629,7 +663,7 @@
         "submit_title": "create my account",
         "mandatory": "* mandatory field",
         "label_download_instruction": "Select or drag your company logo",
-        "label_download_extension": "PDF, JPG ou PNG - 5mo maximum",
+        "label_download_extension": "PDF, JPG or PNG - 5mo maximum",
         "title": "Inscription",
         "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
     },

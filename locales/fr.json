@@ -287,7 +287,7 @@
                 "title": "Formation et expérience",
                 "url": "#",
                 "one": {
-                    "label_question": "DANS QUELLE INDUSTRIE AVEZ-VOUS TRAVAILLÉ ?",
+                    "label_question": "Dans quelle industrie avez-vous travaillé ?",
                     "id_answers": "id_answers",
                     "answers": [
                         {
@@ -622,6 +622,7 @@
             }
         },
         "form": {
+            "edit_infos": "Modifier les informations",
             "back_title": "Retour",
             "next": "suivant",
             "submit": "valider",
@@ -648,7 +649,8 @@
         "label_mail": "Adresse mail",
         "label_role": "Rôle du contact référent",
         "label_name": "Nom du contact référent",
-        "label_submit": "Modifier"
+        "label_submit": "Modifier",
+        "submit": "Valider"
     },
     "page_profile_company": {
         "editpicture" : "Modifier la photo",

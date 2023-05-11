@@ -117,7 +117,7 @@
 						"company": this.input_company,
     					"name": this.input_name,
     					"captcha": await this.$recaptcha.execute('login'),
-    					"message": this.input_mail,
+    					"message": this.input_message,
     					"gdpr": this.input_rgpd
   					})
 					.then(function (response) {
