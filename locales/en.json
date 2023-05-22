@@ -49,7 +49,7 @@
     "page_profile_company": {
         "editpicture" : "Edit picture",
         "talent_title": "Talents",
-        "talent_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget.",
+        "talent_text": "Search talents.",
         "talent_search_title": "Search a profile",
         "talent_placeholder": "Position"
         
@@ -122,9 +122,9 @@
     "registertalent": {
         "header": {
             "title": "Register",
-            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+            "text": "Create your account.",
             "confirm_title": "You are registered!",
-            "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+            "confirm_text": "Your account has been created."
         }
     },
     "registerform": {
@@ -484,7 +484,7 @@
             },
             "confirm": {
                 "title": "Confirmation",
-                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+                "text": "",
                 "cta_title": "Login",
                 "cta_url": "/en/login?type=t"
             }
@@ -624,15 +624,15 @@
         "seo_title": "CONTACT TITLE",
         "seo_description": "CONTACT DESCRIPTION",
         "title": "Contact us",
-        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "text": ""
     },
     "contactconfirm": {
         "seo_title": "Message sent",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Message sent!",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "",
         "cta_title": "Home",
         "cta_url": "/en/"
     },
@@ -665,7 +665,7 @@
         "label_download_instruction": "Select or drag your company logo",
         "label_download_extension": "PDF, JPG or PNG - 5mo maximum",
         "title": "Inscription",
-        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "text": ""
     },
     "errorpage": {
         "404_title": "404 - Page not found",
@@ -684,19 +684,19 @@
     },
     "forgottenpasswordconfirm": {
         "seo_title": "Password change email sent!",
-        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "seo_text": "",
         "confirm_title": "An email has been sent!",
         "confirm_text": "Check your inbox.",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "body_text": ""
     },
     "changepasswordconfirm": {
         "seo_title": "Password changed!",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Your password has been changed!",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "",
         "cta_title": "Login",
         "cta_url": "/en/login"
     }
