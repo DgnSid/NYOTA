@@ -211,7 +211,7 @@
         "label_download_instruction": "Sélectionner ou glisser le logo de votre entreprise",
         "label_download_extension": "PDF, JPG ou PNG - 5mo maximum",
         "title": "Inscription",
-        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "text": ""
     },
     "pageconnexion": {
         "label_type": "Vous êtes",
@@ -254,9 +254,9 @@
     "registertalent": {
         "header": {
             "title": "S’inscrire",
-            "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+            "text": "Créez votre compte.",
             "confirm_title": "Vous êtes inscrit !",
-            "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+            "confirm_text": "Votre compte a été créé."
         }
     },
     "registerform": {
@@ -616,7 +616,7 @@
             },
             "confirm": {
                 "title": "Confirmation",
-                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+                "text": "",
                 "cta_title": "Se connecter",
                 "cta_url": "/login?type=t"
             }
@@ -655,7 +655,7 @@
     "page_profile_company": {
         "editpicture" : "Modifier la photo",
         "talent_title": "Les talents",
-        "talent_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit tellus proin duis ut et at eget.",
+        "talent_text": "Recherchez des talents.",
         "talent_search_title": "Rechercher un profil",
         "talent_placeholder": "Poste"
         
@@ -674,15 +674,15 @@
         "seo_title": "CONTACT TITLE",
         "seo_description": "CONTACT DESCRIPTION",
         "title": "Contactez-nous",
-        "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "text": ""
     },
     "contactconfirm": {
         "seo_title": "Message envoyé !",
         "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
         "confirm_title": "Message envoyé !",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "",
         "cta_title": "Accueil",
         "cta_url": "/"
     },
@@ -717,15 +717,15 @@
         "confirm_title": "Un mail a été envoyé !",
         "confirm_text": "Vérifiez votre boîte mail.",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies."
+        "body_text": ""
     },
     "changepasswordconfirm": {
         "seo_title": "Mot de passe changé !",
-        "seo_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "seo_text": "",
         "confirm_title": "Votre mot de passe a été changé !",
-        "confirm_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "confirm_text": "",
         "body_title": "Confirmation",
-        "body_text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+        "body_text": "",
         "cta_title": "Se connecter",
         "cta_url": "/login"
     }
