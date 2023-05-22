@@ -345,17 +345,17 @@
                 "five": {
                     "label_question": "Where are you located?",
                     "id_answers": "id_answers",
-                    "select_placeholder": "Pays"
+                    "select_placeholder": "Country"
                 },
                 "six": {
                     "label_question": "What is your nationality?",
                     "id_answers": "id_answers",
-                    "select_placeholder": "Nationalité"
+                    "select_placeholder": "Nationality"
                 },
                 "seven": {
                     "label_question": "In which languages ​​can you work?",
                     "id_answers": "id_answers",
-                    "select_placeholder": "Langue",
+                    "select_placeholder": "Lang",
                     "answers": [
                         {
                             "name": "French",
