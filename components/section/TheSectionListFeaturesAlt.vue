@@ -8,13 +8,11 @@
                 <div class="c-section-listfeatures-alt__decoration-container col-lg-18 offset-lg-2 a-stagger-element__listfeatures-alt">
                     <div class="c-section-listfeatures-alt__decoration"></div>
                 </div>
-                <div v-for="(element, index) in features" :key="index">
-                    <div class="col-lg-18 offset-lg-3 a-stagger-element__listfeatures-alt">
-                        <div class="c-section-listfeatures-alt__element">
-                            <div class="c-section-listfeatures-alt__element__figure">0{{index + 1}}.</div>
-                            <div class="c-section-listfeatures-alt__element__title">{{element.title}}</div>
-                            <div class="c-section-listfeatures-alt__element__text" v-html="element.description"></div>
-                        </div>
+                <div class="col-lg-18 offset-lg-3 a-stagger-element__listfeatures-alt" v-for="(element, index) in features" :key="index">
+                    <div class="c-section-listfeatures-alt__element">
+                        <div class="c-section-listfeatures-alt__element__figure">0{{index + 1}}.</div>
+                        <div class="c-section-listfeatures-alt__element__title">{{element.title}}</div>
+                        <div class="c-section-listfeatures-alt__element__text" v-html="element.description"></div>
                     </div>
                 </div>
             </div>
@@ -140,6 +138,7 @@ Style scoped
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 max-width: 45%;
+                min-width: 45%;
                 padding-right: 60px;
 
                 font-style: italic;

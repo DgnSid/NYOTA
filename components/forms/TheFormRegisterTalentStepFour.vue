@@ -29,7 +29,7 @@
 									En cochant cette case, j’affirme avoir pris connaissance de la <a href="/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
 								</label>
 								<label for="rgpd" name="rgpd" class="--checkbox" v-else>
-									En cochant cette case, j’affirme avoir pris connaissance de la <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.<span>*</span>
+									By checking this box, I confirm that I have read the  <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> privacy policy</a> of Nyota.<span>*</span>
 								</label>
 								<div class="c-formregistertalent__field__error">{{ $t('registerform.form.error_message') }}</div>
 							</div>
@@ -38,10 +38,10 @@
 							<div class="c-formtalent__checkbox">
 								<input v-model="marketing" id="marketing" type="checkbox" name="marketing" placeholder="" />
 								<label for="marketing" name="marketing" class="--checkbox" v-if="this.$i18n.locale == 'fr'">
-									marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									Voulez-vous recevoir les informations concernant Nyota ?
 								</label>
 								<label for="marketing" name="marketing" class="--checkbox" v-else>
-									marketing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									Do you want to receive information about Nyota?
 								</label>
 							</div>
 						</div>

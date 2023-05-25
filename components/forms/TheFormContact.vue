@@ -37,7 +37,7 @@
 								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.
 							</label>
 							<label for="rgpd" name="rgpd" class="--checkbox" v-else>
-								En cochant cette case, j’affirme avoir pris connaissance de la <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> politique de confidentialité</a> de Nyota.
+								By checking this box, I confirm that I have read the  <a href="/en/privacy-policy" target="blank_" rel="noopener noreferrer"> privacy policy</a> of Nyota.
 							</label>
 						</div>
 					</div>

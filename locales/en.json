@@ -457,7 +457,7 @@
                         }
                     ],
                     "label_question_two": "In which school did you complete your last level of education?",
-                    "placeholder_question_two": "Etablissement"
+                    "placeholder_question_two": "Institution"
                 },
                 "twelve": {
                     "label_question": "What is your expected minimum salary"
