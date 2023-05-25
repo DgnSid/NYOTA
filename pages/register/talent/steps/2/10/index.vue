@@ -7,7 +7,7 @@ Template
 	<div class="layout__registertalents">
         <TheHeaderRegister
             :title="$t('registertalent.header.title')"
-            :text="$t('registertalent.header.text')"
+            :text="HeaderRegisterApi.description"
             :logo="true"
         />
         <TheSectionListRegisterSteps
@@ -36,7 +36,23 @@ Template
             currentLang () {
                 return this.$i18n.locale == 'en' ? '/' + this.$i18n.locale : ''
             },
-		}
+		},
+        async asyncData({ app, params, $axios, $config: { baseURL } }) {
+            const HeaderRegisterApi = await $axios.$get(`/api/configuration/talent-registration`, {
+                headers: {
+                    'Accept-Language': app.i18n.locale,
+                }
+            })
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});
+            
+            return { HeaderRegisterApi }
+        },
     }
 </script>
 

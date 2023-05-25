@@ -7,7 +7,7 @@ Template
 	<div class="layout__registertalents">
         <TheHeaderRegister
             :title="$t('registertalent.header.confirm_title')"
-            :text="$t('registertalent.header.confirm_text')"
+            :text="HeaderRegisterApi.header"
             :logo="true"
         />
         <TheFormRegisterTalentStepConfirm
@@ -27,7 +27,20 @@ Template
         name: "Talents",
         components: { TheHeaderRegister, TheFormRegisterTalentStepConfirm },
         async asyncData({ app, params, $axios, $config: { baseURL } }) {
+            const HeaderRegisterApi = await $axios.$get(`/api/configuration/talent-registration`, {
+                headers: {
+                    'Accept-Language': app.i18n.locale,
+                }
+            })
+			.then((res) => {
+			  console.log(res)
+			  return res
+			})
+			.catch((err) => {
+			  console.error(err)
+			});
 
+            return { HeaderRegisterApi }
         },
     }
 </script>

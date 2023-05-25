@@ -1,8 +1,16 @@
 <template>
     <div class="layout-contact">
         <TheHeaderConnexion
-            :title="connexionData.blockHeader.title"
-            :text="connexionData.blockHeader.text"
+            v-if="this.$i18n.locale == 'fr'"
+            title="Se connecter"
+            text=""
+            :image="connexionData.blockHeader.image"
+            :logo="true"
+        />
+        <TheHeaderConnexion
+            v-else            
+            title="Login"
+            text=""
             :image="connexionData.blockHeader.image"
             :logo="true"
         />
@@ -21,17 +29,18 @@ export default {
         TheFormConnexion,
     },
     async asyncData({ app, params, $axios, $config: { baseURL } }) {
+
+        console.log('this.$i18n.locale ', app)
         const connexionData = {
             "seo": {
                 "title": "string",
                 "description": "string"
             },
             "blockHeader": {
-                "title": "Se connecter",
-                "text": "Fusce venenatis aliquam sem, sit amet cursus eros fringilla et. Maecenas eu orci ipsum. Mauris gravida pulvinar erat consequat ultricies.",
+                "text": "",
                 "image": {
                   "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                  "alt": "alt à définir"
+                  "alt": ""
                 },
             }
         }
