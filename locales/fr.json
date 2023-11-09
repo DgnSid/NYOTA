@@ -138,7 +138,7 @@
             "list": "Vous recherchez",
             "cta": {
                 "title": "Déposer votre cv",
-                "url":"/register/talent/steps/one"
+                "url":"/register/talent/steps/1"
             },
             "share_url": "#"
         },
@@ -161,7 +161,7 @@
         "section_quotes": {
             "cta": {
                 "title": "S'inscrire",
-                "url": "/register/talent/steps/one"
+                "url": "/register/talent/steps/1"
             }
         }
     },
