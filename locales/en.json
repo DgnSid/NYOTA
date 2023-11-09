@@ -554,7 +554,7 @@
             "list": "You are looking for",
             "cta": {
                 "title": "Drop your cv",
-                "url":"/en/register/talent/steps/one"
+                "url":"/en/register/talent/steps/1"
             },
             "share_url": "#"
         },
@@ -577,7 +577,7 @@
         "section_quotes": {
             "cta": {
                 "title": "Register",
-                "url": "/en/register/talent/steps/one"
+                "url": "/en/register/talent/steps/1"
             }
         }
     },
