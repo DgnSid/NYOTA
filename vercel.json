@@ -6,14 +6,8 @@
       "config": {
         "distDir": "dist",
         "nodeVersion": "20.x",
-        "installCommand": "npm install --engine-strict=false"
+        "installCommand": "yarn install --ignore-engines --ignore-platform --ignore-optional"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/$1"
     }
   ]
 }
