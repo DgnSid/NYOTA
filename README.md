@@ -15,11 +15,3 @@
 - Page transition
 - Global CSS  
 
-## Support
-
-  
-
-> If you have any question or suggestions feel free to contact the authors :
-
-- Thomas Royer : <thomas.royer@adveris.fr>
-- Kevin Vacherot : <kevin.vacherot@adveris.fr>
