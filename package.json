@@ -7,10 +7,10 @@
   },
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt generate",  
+    "build": "nuxt generate",
     "start": "nuxt start",
-    "generate": "nuxt generate",  
-    "vercel-build": "yarn install --ignore-engines && yarn generate",
+    "generate": "nuxt generate",
+    "vercel-build": "yarn install --ignore-engines && yarn generate"
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.5.3",
@@ -39,7 +39,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^25.0.8"
-  }, 
+  },
   "resolutions": {
     "@nuxt/babel-preset-app": "2.17.0"
   }
