@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 
 export default {
+    target: 'static',
   server: {
     port: 3010, // default: 3000
     //   host: 'nyota.adveris.dev', // default: localhost
