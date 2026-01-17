@@ -4,10 +4,9 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "nodeVersion": "20.x",
-        "installCommand": "yarn install --ignore-engines --ignore-platform --ignore-optional"
+        "distDir": "dist"
       }
     }
-  ]
+  ],
+  "installCommand": "yarn install --ignore-engines --ignore-platform --ignore-optional"
 }
