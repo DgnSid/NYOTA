@@ -25,7 +25,7 @@
             :features="homeDataApi.blockFeatures.features"
         />
 
-        <div class="p-r" v-if="homeDataApi.blockFormulas.formulas.length >= 1">
+        <div class="p-r" v-if="homeDataApi.blockFormulas && homeDataApi.blockFormulas.formulas && homeDataApi.blockFormulas.formulas.length >= 1">
           <shape-ellipse class="c-section-listfeatures-ellipse" :size="140" />
           <TheSectionListFormulas
               :title="homeDataApi.blockFormulas.title"
@@ -93,7 +93,16 @@ export default {
         ShapeEllipse,
     },
     async asyncData({app, params, $axios, $config: { baseURL } }) {
-      
+      const defaultHomeData = {
+        seo: { title: 'Nyota', description: '' },
+        blockHeader: { smallTitle: '', bigTitle: '', text: '', imageTop: '', imageBottom: '', ctaLeft: {}, ctaRight: {} },
+        blockPartners: { title: '', partners: [] },
+        blockFeatures: { title: '', image: '', features: [] },
+        blockFormulas: { title: '', formulas: [] },
+        blockKeyNumbers: { title: '', keyNumbers: [] },
+        blockQuotes: { title: '', quotes: [] }
+      };
+
       const homeDataApi = await $axios.$get(`/api/homepage`, {
           headers: {
             'Accept-Language': app.i18n.locale,
@@ -104,7 +113,8 @@ export default {
         return res
       })
       .catch((err) => {
-        console.error(err)
+        console.error('errrrro', err?.response?.status)
+        return defaultHomeData
       });
 
       const homeDataNewsApi = await $axios.$get(`/api/news?itemsPerPage=4&page=1`, {
@@ -117,10 +127,11 @@ export default {
         return res
       })
       .catch((err) => {
-        console.error(err)
+        console.error('errrrro', err?.response?.status)
+        return { 'hydra:member': [] }
       });      
 
-      return { homeDataApi, homeDataNewsApi }
+      return { homeDataApi: homeDataApi || defaultHomeData, homeDataNewsApi: homeDataNewsApi || { 'hydra:member': [] } }
     }
 }
 </script>
